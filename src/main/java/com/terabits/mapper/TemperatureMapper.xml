@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.terabits.mapper.TemperatureMapper">
+
+    <!-- 自定义返回结果集 -->
+    <resultMap id="temperatureMap" type="com.terabits.meta.po.TemperaturePO">
+        <id property="id" column="id" javaType="java.lang.Integer"></id>
+        <result property="imei" column="imei" javaType="java.lang.String"></result>
+        <result property="temperature" column="temperature" javaType="java.lang.Double"></result>
+        <result property="gmtCreate" column="gmtcreate" javaType="java.lang.String"></result>
+        <result property="gmtModified" column="gmtmodified" javaType="java.lang.String"></result>
+    </resultMap>
+
+    <insert id="insertTemperature" keyProperty="id">
+        insert into temperature (imei, temperature, gmtcreate, gmtmodified) values
+        (#{imei}, #{temperature}, now(),now())
+    </insert>
+
+    <select id="selectOneTemperature" parameterType="String" resultMap="temperatureMap">
+        select * from temperature where imei = #{imei}
+    </select>
+
+    <select id="selectAllTemperature" resultMap="temperatureMap" parameterType="com.terabits.meta.bo.TimeSpanBO">
+        select * from temperature
+        <where>
+            <if test="beginTime != null and beginTime != ''">
+                and gmtcreate >= #{beginTime}
+            </if>
+            <if test="endTime != null and endTime != ''">
+                and gmtcreate &lt; #{endTime}
+            </if>
+        </where>
+    </select>
+
+
+</mapper>
