@@ -1,1 +1,4 @@
-thumb.db
+*.db
+*.iml
+/.idea/*
+/watermachine/*
