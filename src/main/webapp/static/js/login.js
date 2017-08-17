@@ -68,7 +68,7 @@ function RQ(){
                 dataType:'json',
                 success:function(data){
                     if (data["displayId"] !== null){
-                        window.location.href = "http://www.terabits-wx.cn/smartsocket/info/" + data["displayId"];
+                        window.location.href = "http://www.terabits-wx.cn/watermachine/info/" + data["displayId"];
                     }
                     else{
                         alert("扫码故障");
