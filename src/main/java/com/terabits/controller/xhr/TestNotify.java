@@ -1,34 +1,7 @@
 package com.terabits.controller.xhr;
 
-import com.terabits.meta.model.TerminalModel;
-import com.terabits.config.Constants;
-import com.terabits.config.WeixinGlobal;
-import com.terabits.manager.TerminalManager;
-import com.terabits.meta.bo.CommunicationBO;
-import com.terabits.meta.bo.TerminalUpdateBO;
-import com.terabits.meta.po.OperationPO;
-import com.terabits.meta.po.OrderPO;
-import com.terabits.service.OperationService;
-import com.terabits.service.OrderService;
-import com.terabits.service.TerminalService;
-import com.terabits.utils.PayCommonUtil;
-import com.terabits.utils.XMLUtil;
-import com.terabits.utils.huawei.PlatformGlobal;
-import org.apache.commons.codec.Charsets;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Map;
 
 /**
  * Created by Administrator on 2017/7/13.

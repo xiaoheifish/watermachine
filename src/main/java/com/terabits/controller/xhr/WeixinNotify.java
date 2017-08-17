@@ -3,8 +3,7 @@ package com.terabits.controller.xhr;
 
 import com.terabits.config.Constants;
 import com.terabits.config.WeixinGlobal;
-import com.terabits.manager.RedisTemplateTest;
-import com.terabits.manager.TerminalManager;
+import com.terabits.service.CredentialService;
 import com.terabits.meta.bo.CommunicationBO;
 import com.terabits.meta.bo.TerminalUpdateBO;
 import com.terabits.meta.model.TerminalModel;
@@ -43,7 +42,7 @@ public class WeixinNotify{
     @Autowired
     private OrderService orderService;
     @Autowired
-    private RedisTemplateTest redisTemplateTest;
+    private CredentialService CredentialService;
     @Autowired
     private TerminalService terminalService;
     @Autowired
@@ -97,7 +96,7 @@ public class WeixinNotify{
                         terminalModel.setTerminalId(orderPO.getDisplayId());
                         terminalModel.setTime(time);
                         terminalModel.setHour(premoney * 2);
-                        redisTemplateTest.createTerminal(terminalModel);
+                        CredentialService.createTerminal(terminalModel);
                         //更新终端状态
                         TerminalUpdateBO terminalUpdateBO = new TerminalUpdateBO();
                         terminalUpdateBO.setDisplayId(orderPO.getDisplayId());

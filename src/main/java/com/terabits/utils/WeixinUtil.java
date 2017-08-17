@@ -97,6 +97,7 @@ public class WeixinUtil {
      */
     public final static String access_token_url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=APPSECRET";
     public final static String send_template_url ="https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=ACCESS_TOKEN";
+    public final static String get_qrcode_url = "https://api.weixin.qq.com/cgi-bin/qrcode/create?access_token=TOKEN";
     public static AccessTokenBO getAccessToken(String appid, String appsecret) {
         AccessTokenBO accessToken = null;
 
@@ -169,6 +170,20 @@ public class WeixinUtil {
         }
         return jsapiTicket;
     }
-
+   /* public static void main(String[] args){
+        String token = "ll7-C7JGKJMasLoSf-aUUsN2xtqcszb9I93BKlXyn3boUPJBzV8U8f5cvN_dLw-3JRO07XIZoWYR8O4ik6bIV8sRHtDlHKUI_jYkbfndt-LFFXZgqDgNCYiI09dOurqETVDjAGAJLT";
+        String requestUrl = get_qrcode_url.replace("TOKEN", token);
+        String qrscene = "{\n" +
+                "    \"action_name\": \"QR_LIMIT_SCENE\",\n" +
+                "    \"action_info\": {\n" +
+                "        \"scene\": {\n" +
+                "            \"scene_id\": 4\n" +
+                "        }\n" +
+                "    }\n" +
+                "}";
+        String data = httpRequest(requestUrl, "POST", qrscene);
+        System.out.println("Data:"+ data);
+        log.error(data);
+    }*/
 
 }

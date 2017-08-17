@@ -1,6 +1,6 @@
 package com.terabits.service;
 
-import com.terabits.manager.RedisTemplateTest;
+import com.terabits.service.CredentialService;
 import com.terabits.mapper.NotifyDataMapper;
 import com.terabits.meta.po.NotifyDataPO;
 import org.junit.Test;
@@ -13,7 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
  */
 public class TokenTest extends BaseTest{
     @Autowired(required = false)
-    private RedisTemplateTest redisTemplateTest;
+    private CredentialService CredentialService;
     @Autowired(required = false)
     private NotifyDataMapper notifyDataMapper;
     //private TerminalManager terminalManager;
@@ -26,8 +26,8 @@ public class TokenTest extends BaseTest{
         terminalModel.setTime("1234325");
         terminalModel.setHour(8);
         //terminalManager.createNewTerminal(terminalModel);
-        //redisTemplateTest.createTerminal(terminalModel);
-        String re = redisTemplateTest.getTerminalTime("000001");
+        //CredentialService.createTerminal(terminalModel);
+        String re = CredentialService.getTerminalTime("000001");
         SimpleDateFormat dfs = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         long between = 0;
         try {
@@ -38,8 +38,8 @@ public class TokenTest extends BaseTest{
             ex.printStackTrace();
         }
         String formatre = TimeUtils.secToTime(between);
-        String lefttime = redisTemplateTest.getLeftTime("000001");*/
-       /* String re = redisTemplateTest.getTerminalTime("000001");
+        String lefttime = CredentialService.getLeftTime("000001");*/
+       /* String re = CredentialService.getTerminalTime("000001");
         System.out.println("lefttime:::::"+re);*/
        NotifyDataPO notifyDataPO = new NotifyDataPO();
        notifyDataPO.setContent("97 92 95");

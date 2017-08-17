@@ -14,7 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
-
+import com.terabits.service.CredentialService;
 import java.util.Date;
 import java.util.List;
 
@@ -30,7 +30,7 @@ public class DeleteTerminalManager {
     @Autowired
     private OperationService operationService;
     @Autowired
-    private RedisTemplateTest redisTemplateTest;
+    private CredentialService CredentialService;
     @Scheduled(cron = "0 0/1 * * * *")
 
         //原本的思路是找出数据库中修改时间为1小时，2小时或5小时的，后来发现只需要找出当前在线的终端，若发现redis中已经被清除了，表明
@@ -41,7 +41,7 @@ public class DeleteTerminalManager {
             String displayId = numberBO.getDisplayId();
             Date date = new Date();
             System.out.println("taskdate:::::"+date.getTime());
-            String time = redisTemplateTest.getTerminalTime(displayId);
+            String time = CredentialService.getTerminalTime(displayId);
             if(time == null){
                 System.out.println("time==null"+displayId);
                 //下发关断插座命令给终端

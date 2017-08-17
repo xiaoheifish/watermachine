@@ -2,8 +2,7 @@ package com.terabits.controller;
 
 
 import com.terabits.config.Constants;
-import com.terabits.manager.RedisTemplateTest;
-import com.terabits.manager.TerminalManager;
+import com.terabits.service.CredentialService;
 import com.terabits.meta.bo.CommunicationBO;
 import com.terabits.meta.bo.TerminalUpdateBO;
 import com.terabits.meta.model.TerminalModel;
@@ -30,10 +29,9 @@ import java.util.Map;
  */
 @Controller
 public class RedisController {
+
     @Autowired
-    private TerminalManager terminalManager;
-    @Autowired
-    private RedisTemplateTest redisTemplateTest;
+    private CredentialService CredentialService;
     @Autowired
     private TerminalService terminalService;
     @Autowired
@@ -44,16 +42,16 @@ public class RedisController {
                           @ModelAttribute("terminalModel")TerminalModel terminalModel) throws IOException {
         Map<String, Object> map = new HashMap<String, Object>();
         System.out.println(terminalModel);
-        terminalManager.createNewTerminal(terminalModel);
+        CredentialService.createTerminal(terminalModel);
         System.out.println("插入成功");
     }
 
-    @RequestMapping(value = {"/query", "/add.html" }, method = { RequestMethod.GET})
+    @RequestMapping(value = {"/query", "/query.html" }, method = { RequestMethod.GET})
     public void queryMember(HttpServletRequest request,
                           HttpServletResponse response) throws Exception, IOException {
        String id = request.getParameter("terminalId");
        long termiid = Long.parseLong(id);
-       String time =  terminalManager.getTerminalTime(termiid);
+       String time =  CredentialService.getTerminalTime(id);
        System.out.println("取回成功");
        response.getWriter().print(time);
     }
@@ -67,7 +65,7 @@ public class RedisController {
         terminalModel.setTerminalId("000002");
         terminalModel.setTime(time);
         terminalModel.setHour(1);
-        redisTemplateTest.createTerminal(terminalModel);
+        CredentialService.createTerminal(terminalModel);
         System.out.println("插入terminalModel");
         //更新终端状态
         TerminalUpdateBO terminalUpdateBO = new TerminalUpdateBO();

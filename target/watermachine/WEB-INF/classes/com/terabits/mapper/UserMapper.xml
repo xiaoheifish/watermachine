@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.terabits.mapper.UserMapper">
+    <select id="getUser" parameterType="java.lang.Integer" resultType="com.terabits.meta.po.User">
+        SELECT * FROM t_user WHERE id = #{id}
+    </select>
+
+    <insert id="insertUser" parameterType="com.terabits.meta.po.User">
+        insert into t_user (username, age, gender, birthday)
+        values
+        <foreach collection ="list" item="User" index= "index" separator =",">
+            (
+            #{User.username},
+            #{User.age},
+            #{User.gender},
+            #{User.birthday}
+            )
+        </foreach >
+    </insert>
+</mapper>

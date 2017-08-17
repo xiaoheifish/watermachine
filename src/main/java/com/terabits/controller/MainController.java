@@ -1,7 +1,7 @@
 package com.terabits.controller;
 
-import com.terabits.manager.RedisTemplateTest;
-import com.terabits.manager.TerminalManager;
+import com.terabits.service.CredentialService;
+
 import com.terabits.meta.po.TerminalPO;
 import com.terabits.meta.po.User;
 import com.terabits.service.OperationService;
@@ -11,6 +11,8 @@ import com.terabits.service.UserService;
 import com.terabits.utils.TimeSpanUtil;
 import com.terabits.utils.TimeUtils;
 import net.sf.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -30,14 +32,17 @@ import java.util.Date;
 public class MainController
 {
     @Autowired
-    private RedisTemplateTest redisTemplateTest;
+    private CredentialService CredentialService;
     @Autowired
     private TerminalService terminalService;
+
+    private static Logger logger = LoggerFactory.getLogger(MainController.class);
+
     @RequestMapping(value="/info/{displayId}",method=RequestMethod.GET)
     public String getProductInfo(@PathVariable("displayId") String displayId, HttpServletRequest request, ModelMap model) throws Exception {
         System.out.println("displayId"+displayId);
         Long display = Long.parseLong(displayId);
-        String time = redisTemplateTest.getTerminalTime(displayId);
+        String time = CredentialService.getTerminalTime(displayId);
         TerminalPO terminalPO = terminalService.selectOneTerminal(displayId);
         if(time == null){
             model.addAttribute("status","空闲");
@@ -57,7 +62,7 @@ public class MainController
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
-            String leftTime = redisTemplateTest.getLeftTime(displayId);
+            String leftTime = CredentialService.getLeftTime(displayId);
             System.out.println("lefttime:::::::::" + leftTime);
             long money = (between + Long.parseLong(leftTime)) / 40;
             System.out.println("money::::::" + String.valueOf(money));
@@ -74,6 +79,10 @@ public class MainController
 
     @RequestMapping(value="/mainpage",method=RequestMethod.GET)
     public String main(){
+
+        String id = "123";
+        String symbol = "12233243faf";
+        logger.debug("Processing trade with id: {} and symbol : {} ", id, symbol);
         return "main/login.jsp";
     }
 
