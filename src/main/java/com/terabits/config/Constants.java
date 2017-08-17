@@ -36,15 +36,28 @@ public class Constants {
      * 硬件通信命令
      */
     //对终端下发控制命令开始标志
-    public static final byte SEND_COMMAND_START = (byte)0xAA;
+    public static final byte SEND_COMMAND_START = (byte)0xBA;
 
     //对终端下发断电命令
     public static final byte CUT_OFF_COMMAND = (byte)0x0D;
 
     //对终端下发上电命令
-    public static final byte
-            POWER_ON_COMMAND = (byte)0x0C;
+    public static final byte POWER_ON_COMMAND = (byte)0x0C;
 
     //对终端下发控制命令结束标志
-    public static final byte SEND_COMMAND_END = (byte)0xEA;
+    public static final byte SEND_COMMAND_END = (byte)0xFA;
+
+    //流量值标记
+    public static final byte TWO_M_WATER = (byte)0x01;
+
+    public static final byte FIVE_M_WATER = (byte)0x02;
+
+    public static final byte ONE_L_WATER = (byte)0x03;
+
+    public static final byte THREE_L_WATER = (byte)0x04;
+
+    //指令编号
+    public static final byte COMMAND_ONE = (byte)0x1f;
+
+    public static final byte COMMAND_TWO = (byte)0x2f;
 }

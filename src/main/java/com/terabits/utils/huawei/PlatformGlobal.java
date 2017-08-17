@@ -14,14 +14,15 @@ import java.util.Map;
 public class PlatformGlobal {
     public static int limitDevicesByOneTerminal = 32;
 
+
     public static String appId = HuaweiPlatformGlobal.APP_ID;
     public static String secret = HuaweiPlatformGlobal.APP_PASSWORD;
 
-    public static String urlLogin = "https://112.17.33.73:8743/iocm/app/sec/v1.1.0/login";
-    public static String urlReg = "https://112.17.33.73:8743/iocm/app/reg/v1.2.0/devices";
-    public static String urlSetDeviceInfo = "https://112.17.33.73:8743/iocm/app/dm/v1.2.0/devices/";
-    public static String urlDelete = "https://112.17.33.73:8743/iocm/app/dm/v1.1.0/devices/";
-    public static String urlPostAsynCmd = "https://112.17.33.73:8743/iocm/app/cmd/v1.2.0/devices/%s/commands";
+    public static String urlLogin = HuaweiPlatformGlobal.APP_URL + "/iocm/app/sec/v1.1.0/login";
+    public static String urlReg = HuaweiPlatformGlobal.APP_URL + "/iocm/app/reg/v1.2.0/devices";
+    public static String urlSetDeviceInfo = HuaweiPlatformGlobal.APP_URL + "/iocm/app/dm/v1.2.0/devices/";
+    public static String urlDelete = HuaweiPlatformGlobal.APP_URL + "/iocm/app/dm/v1.1.0/devices/";
+    public static String urlPostAsynCmd = HuaweiPlatformGlobal.APP_URL + "/iocm/app/cmd/v1.2.0/devices/%s/commands";
 
     public static String manufacturerId= "terabits";
     public static String manufacturerName = "terabits";
@@ -31,6 +32,7 @@ public class PlatformGlobal {
     public static String serviceId = "ElectricityService";
     public static String callbackUrl = "http://112.124.6.31/watermachine/receive/data";
     public static int expireTime = 0;
+
 
 
     @SuppressWarnings("unchecked")
