@@ -10,8 +10,10 @@ import java.util.List;
 public interface AccessTokenMapper {
     //插入新的token
     public int insertToken(AccessTokenPO accessTokenPO) throws Exception;
-    //取回最后一个token
-    public AccessTokenPO selectLastToken() throws Exception;
-    //取回全部token
-    public List<AccessTokenPO> selectAllToken() throws Exception;
+    //取回token
+    public AccessTokenPO selectToken() throws Exception;
+    //更新token
+    public int updateToken(AccessTokenPO accessTokenPO) throws Exception;
+
+
 }

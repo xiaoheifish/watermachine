@@ -23,7 +23,7 @@ public class WeixinJsConfig {
     @Autowired
     private JsapiTicketService jsapiTicketService;
     @RequestMapping(value = {"/wxconfig"},method ={RequestMethod.POST})
-    public void getconfig(@RequestParam(value = "url", required = true) String url, HttpServletResponse response) throws ParseException,IOException {
+    public void getconfig(@RequestParam(value = "url", required = true) String url, HttpServletResponse response) throws ParseException,IOException,Exception {
         //String url = request.getScheme() +"://" + request.getServerName() + ":" +request.getServerPort() + request.getServletPath();
         System.out.println("url"+url);
         String ticket = jsapiTicketService.getLatestJsapi().getJsapiTicket();

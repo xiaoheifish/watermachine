@@ -11,5 +11,5 @@ public interface JsapiTicketService {
     public int insertJsapi(JsapiTicketPO jsapiTicketPO);
 
     //获取最新可用的jsapi_ticket
-    public JsapiTicketPO getLatestJsapi();
+    public JsapiTicketPO getLatestJsapi() throws Exception;
 }

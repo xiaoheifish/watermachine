@@ -7,9 +7,12 @@ import com.terabits.meta.po.AccessTokenPO;
  */
 public interface AccessTokenService {
 
-    //插入accesstoken
-    public int insertToken(AccessTokenPO accessTokenPO);
+    //插入新的token
+    public int insertToken(AccessTokenPO accessTokenPO) throws Exception;
 
-    //获取最新的accesstoken，先从数据库中拿，若过期则重新获取
-    public AccessTokenPO getLatestToken();
+    //更新token
+    public int updateToken(AccessTokenPO accessTokenPO) throws Exception;
+
+    //取回最新有效的token
+    public AccessTokenPO getLatestToken() throws Exception;
 }

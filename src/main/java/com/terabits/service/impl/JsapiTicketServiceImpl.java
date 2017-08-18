@@ -30,7 +30,7 @@ public class JsapiTicketServiceImpl implements JsapiTicketService {
         }
         return result;
     }
-    public JsapiTicketPO getLatestJsapi(){
+    public JsapiTicketPO getLatestJsapi() throws Exception{
         JsapiTicketPO jsapiTicketPO = null;
         try {
             jsapiTicketPO = jsapiTicketMapper.selectLastJsapi();

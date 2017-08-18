@@ -7,210 +7,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8d9f3772-32a4-48cb-827d-39eada15222d" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/terabits/controller/TestController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/terabits/meta/po/UserPO.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/com/terabits/service/BaseTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/com/terabits/service/TokenTest.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/terabits/meta/po/User.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/terabits/mapper/OrderMapper.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/terabits/mapper/OrderMapper.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/terabits/meta/po/OrderPO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/terabits/meta/po/User.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/terabits/service/HuaweiServiceTest.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/terabits/service/QrCodeTest.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/mapper/OrderMapper.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/mapper/OrderMapper.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/meta/po/OrderPO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/meta/po/User.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/main/java/com.terabits/service/BaseTest.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/main/java/com.terabits/service/HuaweiServiceTest.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/main/java/com.terabits/service/QrCodeTest.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/main/java/com.terabits/service/TokenTest.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/terabits/config/Constants.class" afterPath="$PROJECT_DIR$/target/classes/com/terabits/config/Constants.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/terabits/mapper/HuaweiTokenMapper.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/terabits/mapper/HuaweiTokenMapper.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/terabits/meta/po/HuaweiTokenPO.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/terabits/service/HuaweiTokenService.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/terabits/service/impl/HuaweiTokenServiceImpl.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/terabits/config/HuaweiPlatformGlobal.class" afterPath="$PROJECT_DIR$/target/classes/com/terabits/config/HuaweiPlatformGlobal.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/terabits/config/MyConfig.class" afterPath="$PROJECT_DIR$/target/classes/com/terabits/config/MyConfig.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/terabits/config/ResultStatus.class" afterPath="$PROJECT_DIR$/target/classes/com/terabits/config/ResultStatus.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/terabits/config/WeixinGlobal.class" afterPath="$PROJECT_DIR$/target/classes/com/terabits/config/WeixinGlobal.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/terabits/controller/ExistenceController.class" afterPath="$PROJECT_DIR$/target/classes/com/terabits/controller/ExistenceController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/terabits/controller/MainController.class" afterPath="$PROJECT_DIR$/target/classes/com/terabits/controller/MainController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/terabits/controller/ReceiveController.class" afterPath="$PROJECT_DIR$/target/classes/com/terabits/controller/ReceiveController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/terabits/controller/RedisController.class" afterPath="$PROJECT_DIR$/target/classes/com/terabits/controller/RedisController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/terabits/controller/xhr/TestNotify.class" afterPath="$PROJECT_DIR$/target/classes/com/terabits/controller/xhr/TestNotify.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/terabits/controller/xhr/WeixinGetCode.class" afterPath="$PROJECT_DIR$/target/classes/com/terabits/controller/xhr/WeixinGetCode.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/terabits/controller/xhr/WeixinJsConfig.class" afterPath="$PROJECT_DIR$/target/classes/com/terabits/controller/xhr/WeixinJsConfig.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/terabits/controller/xhr/WeixinNotify.class" afterPath="$PROJECT_DIR$/target/classes/com/terabits/controller/xhr/WeixinNotify.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/terabits/controller/xhr/WeixinPay.class" afterPath="$PROJECT_DIR$/target/classes/com/terabits/controller/xhr/WeixinPay.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/terabits/manager/DeleteTerminalManager.class" afterPath="$PROJECT_DIR$/target/classes/com/terabits/manager/DeleteTerminalManager.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/terabits/mapper/AccessTokenMapper.class" afterPath="$PROJECT_DIR$/target/classes/com/terabits/mapper/AccessTokenMapper.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/terabits/mapper/JsapiTicketMapper.class" afterPath="$PROJECT_DIR$/target/classes/com/terabits/mapper/JsapiTicketMapper.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/terabits/mapper/NotifyDataMapper.class" afterPath="$PROJECT_DIR$/target/classes/com/terabits/mapper/NotifyDataMapper.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/terabits/mapper/OperationMapper.class" afterPath="$PROJECT_DIR$/target/classes/com/terabits/mapper/OperationMapper.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/terabits/mapper/TemperatureMapper.class" afterPath="$PROJECT_DIR$/target/classes/com/terabits/mapper/TemperatureMapper.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/terabits/mapper/TerminalMapper.class" afterPath="$PROJECT_DIR$/target/classes/com/terabits/mapper/TerminalMapper.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/terabits/mapper/UserMapper.class" afterPath="$PROJECT_DIR$/target/classes/com/terabits/mapper/UserMapper.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/terabits/meta/bo/AccessTokenBO.class" afterPath="$PROJECT_DIR$/target/classes/com/terabits/meta/bo/AccessTokenBO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/terabits/meta/bo/CommunicationBO.class" afterPath="$PROJECT_DIR$/target/classes/com/terabits/meta/bo/CommunicationBO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/terabits/meta/bo/JsapiConfigBO.class" afterPath="$PROJECT_DIR$/target/classes/com/terabits/meta/bo/JsapiConfigBO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/terabits/meta/bo/NumberBO.class" afterPath="$PROJECT_DIR$/target/classes/com/terabits/meta/bo/NumberBO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/terabits/meta/bo/TerminalUpdateBO.class" afterPath="$PROJECT_DIR$/target/classes/com/terabits/meta/bo/TerminalUpdateBO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/terabits/meta/bo/TimeSpanBO.class" afterPath="$PROJECT_DIR$/target/classes/com/terabits/meta/bo/TimeSpanBO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/terabits/meta/model/ResultModel.class" afterPath="$PROJECT_DIR$/target/classes/com/terabits/meta/model/ResultModel.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/terabits/meta/model/TerminalModel.class" afterPath="$PROJECT_DIR$/target/classes/com/terabits/meta/model/TerminalModel.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/terabits/meta/model/TokenModel.class" afterPath="$PROJECT_DIR$/target/classes/com/terabits/meta/model/TokenModel.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/terabits/meta/po/AccessTokenPO.class" afterPath="$PROJECT_DIR$/target/classes/com/terabits/meta/po/AccessTokenPO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/terabits/meta/po/JsapiTicketPO.class" afterPath="$PROJECT_DIR$/target/classes/com/terabits/meta/po/JsapiTicketPO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/terabits/meta/po/NotifyDataPO.class" afterPath="$PROJECT_DIR$/target/classes/com/terabits/meta/po/NotifyDataPO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/terabits/meta/po/OperationPO.class" afterPath="$PROJECT_DIR$/target/classes/com/terabits/meta/po/OperationPO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/terabits/meta/po/TemperaturePO.class" afterPath="$PROJECT_DIR$/target/classes/com/terabits/meta/po/TemperaturePO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/terabits/meta/po/TerminalPO.class" afterPath="$PROJECT_DIR$/target/classes/com/terabits/meta/po/TerminalPO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/terabits/meta/po/UnifiedOrderPO.class" afterPath="$PROJECT_DIR$/target/classes/com/terabits/meta/po/UnifiedOrderPO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/terabits/service/AccessTokenService.class" afterPath="$PROJECT_DIR$/target/classes/com/terabits/service/AccessTokenService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/terabits/service/CredentialService.class" afterPath="$PROJECT_DIR$/target/classes/com/terabits/service/CredentialService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/terabits/service/JsapiTicketService.class" afterPath="$PROJECT_DIR$/target/classes/com/terabits/service/JsapiTicketService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/terabits/service/NotifyDataService.class" afterPath="$PROJECT_DIR$/target/classes/com/terabits/service/NotifyDataService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/terabits/service/OperationService.class" afterPath="$PROJECT_DIR$/target/classes/com/terabits/service/OperationService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/terabits/service/OrderService.class" afterPath="$PROJECT_DIR$/target/classes/com/terabits/service/OrderService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/terabits/service/TemperatureService.class" afterPath="$PROJECT_DIR$/target/classes/com/terabits/service/TemperatureService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/terabits/service/TerminalService.class" afterPath="$PROJECT_DIR$/target/classes/com/terabits/service/TerminalService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/terabits/service/UnifiedOrderService.class" afterPath="$PROJECT_DIR$/target/classes/com/terabits/service/UnifiedOrderService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/terabits/service/UserService.class" afterPath="$PROJECT_DIR$/target/classes/com/terabits/service/UserService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/terabits/service/impl/AccessTokenServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/com/terabits/service/impl/AccessTokenServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/terabits/service/impl/CredentialServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/com/terabits/service/impl/CredentialServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/terabits/service/impl/JsapiTicketServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/com/terabits/service/impl/JsapiTicketServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/terabits/service/impl/NotifyDataServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/com/terabits/service/impl/NotifyDataServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/terabits/service/impl/OperationServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/com/terabits/service/impl/OperationServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/terabits/service/impl/OrderServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/com/terabits/service/impl/OrderServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/terabits/service/impl/TemperatureServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/com/terabits/service/impl/TemperatureServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/terabits/service/impl/TerminalServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/com/terabits/service/impl/TerminalServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/terabits/service/impl/UnifiedOrderServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/com/terabits/service/impl/UnifiedOrderServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/terabits/service/impl/UserServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/com/terabits/service/impl/UserServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/terabits/utils/GenerateOrderId.class" afterPath="$PROJECT_DIR$/target/classes/com/terabits/utils/GenerateOrderId.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/terabits/utils/JssdkConfigUtil.class" afterPath="$PROJECT_DIR$/target/classes/com/terabits/utils/JssdkConfigUtil.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/terabits/utils/MD5Util.class" afterPath="$PROJECT_DIR$/target/classes/com/terabits/utils/MD5Util.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/terabits/utils/MapUtils$1.class" afterPath="$PROJECT_DIR$/target/classes/com/terabits/utils/MapUtils$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/terabits/utils/MapUtils.class" afterPath="$PROJECT_DIR$/target/classes/com/terabits/utils/MapUtils.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/terabits/utils/MyX509TrustManager.class" afterPath="$PROJECT_DIR$/target/classes/com/terabits/utils/MyX509TrustManager.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/terabits/utils/PayCommonUtil.class" afterPath="$PROJECT_DIR$/target/classes/com/terabits/utils/PayCommonUtil.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/terabits/utils/Sha1Util.class" afterPath="$PROJECT_DIR$/target/classes/com/terabits/utils/Sha1Util.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/terabits/utils/SmsDemo.class" afterPath="$PROJECT_DIR$/target/classes/com/terabits/utils/SmsDemo.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/terabits/utils/TimeSpanUtil.class" afterPath="$PROJECT_DIR$/target/classes/com/terabits/utils/TimeSpanUtil.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/terabits/utils/TimeUtils.class" afterPath="$PROJECT_DIR$/target/classes/com/terabits/utils/TimeUtils.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/terabits/utils/WeixinUtil.class" afterPath="$PROJECT_DIR$/target/classes/com/terabits/utils/WeixinUtil.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/terabits/utils/XMLUtil.class" afterPath="$PROJECT_DIR$/target/classes/com/terabits/utils/XMLUtil.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/terabits/utils/huawei/CodecComponent.class" afterPath="$PROJECT_DIR$/target/classes/com/terabits/utils/huawei/CodecComponent.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/terabits/utils/huawei/HttpsUtil.class" afterPath="$PROJECT_DIR$/target/classes/com/terabits/utils/huawei/HttpsUtil.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/terabits/utils/huawei/HuaweiTest.class" afterPath="$PROJECT_DIR$/target/classes/com/terabits/utils/huawei/HuaweiTest.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/terabits/utils/huawei/JsonUtil.class" afterPath="$PROJECT_DIR$/target/classes/com/terabits/utils/huawei/JsonUtil.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/terabits/controller/TestController.class" afterPath="$PROJECT_DIR$/target/classes/com/terabits/controller/TestController.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/terabits/utils/huawei/PlatformGlobal.class" afterPath="$PROJECT_DIR$/target/classes/com/terabits/utils/huawei/PlatformGlobal.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/terabits/utils/huawei/StreamClosedHttpResponse.class" afterPath="$PROJECT_DIR$/target/classes/com/terabits/utils/huawei/StreamClosedHttpResponse.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/terabits/utils/huawei/StreamUtil.class" afterPath="$PROJECT_DIR$/target/classes/com/terabits/utils/huawei/StreamUtil.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/terabits/utils/huawei/StringUtil.class" afterPath="$PROJECT_DIR$/target/classes/com/terabits/utils/huawei/StringUtil.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/com/terabits/service/BaseTest.class" afterPath="$PROJECT_DIR$/target/test-classes/com/terabits/service/BaseTest.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/com/terabits/service/TokenTest.class" afterPath="$PROJECT_DIR$/target/test-classes/com/terabits/service/TokenTest.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/config/Constants.class" afterPath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/config/Constants.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/config/HuaweiPlatformGlobal.class" afterPath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/config/HuaweiPlatformGlobal.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/config/MyConfig.class" afterPath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/config/MyConfig.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/config/ResultStatus.class" afterPath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/config/ResultStatus.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/config/WeixinGlobal.class" afterPath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/config/WeixinGlobal.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/controller/ExistenceController.class" afterPath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/controller/ExistenceController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/controller/MainController.class" afterPath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/controller/MainController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/controller/ReceiveController.class" afterPath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/controller/ReceiveController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/controller/RedisController.class" afterPath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/controller/RedisController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/controller/xhr/TestNotify.class" afterPath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/controller/xhr/TestNotify.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/controller/xhr/WeixinGetCode.class" afterPath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/controller/xhr/WeixinGetCode.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/controller/xhr/WeixinJsConfig.class" afterPath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/controller/xhr/WeixinJsConfig.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/controller/xhr/WeixinNotify.class" afterPath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/controller/xhr/WeixinNotify.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/controller/xhr/WeixinPay.class" afterPath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/controller/xhr/WeixinPay.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/manager/DeleteTerminalManager.class" afterPath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/manager/DeleteTerminalManager.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/mapper/AccessTokenMapper.class" afterPath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/mapper/AccessTokenMapper.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/mapper/JsapiTicketMapper.class" afterPath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/mapper/JsapiTicketMapper.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/mapper/NotifyDataMapper.class" afterPath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/mapper/NotifyDataMapper.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/mapper/OperationMapper.class" afterPath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/mapper/OperationMapper.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/mapper/TemperatureMapper.class" afterPath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/mapper/TemperatureMapper.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/mapper/TerminalMapper.class" afterPath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/mapper/TerminalMapper.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/mapper/UserMapper.class" afterPath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/mapper/UserMapper.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/meta/bo/AccessTokenBO.class" afterPath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/meta/bo/AccessTokenBO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/meta/bo/CommunicationBO.class" afterPath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/meta/bo/CommunicationBO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/meta/bo/JsapiConfigBO.class" afterPath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/meta/bo/JsapiConfigBO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/meta/bo/NumberBO.class" afterPath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/meta/bo/NumberBO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/meta/bo/TerminalUpdateBO.class" afterPath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/meta/bo/TerminalUpdateBO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/meta/bo/TimeSpanBO.class" afterPath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/meta/bo/TimeSpanBO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/meta/model/ResultModel.class" afterPath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/meta/model/ResultModel.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/meta/model/TerminalModel.class" afterPath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/meta/model/TerminalModel.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/meta/model/TokenModel.class" afterPath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/meta/model/TokenModel.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/meta/po/AccessTokenPO.class" afterPath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/meta/po/AccessTokenPO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/meta/po/JsapiTicketPO.class" afterPath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/meta/po/JsapiTicketPO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/meta/po/NotifyDataPO.class" afterPath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/meta/po/NotifyDataPO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/meta/po/OperationPO.class" afterPath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/meta/po/OperationPO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/meta/po/TemperaturePO.class" afterPath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/meta/po/TemperaturePO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/meta/po/TerminalPO.class" afterPath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/meta/po/TerminalPO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/meta/po/UnifiedOrderPO.class" afterPath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/meta/po/UnifiedOrderPO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/service/AccessTokenService.class" afterPath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/service/AccessTokenService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/service/CredentialService.class" afterPath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/service/CredentialService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/service/JsapiTicketService.class" afterPath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/service/JsapiTicketService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/service/NotifyDataService.class" afterPath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/service/NotifyDataService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/service/OperationService.class" afterPath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/service/OperationService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/service/OrderService.class" afterPath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/service/OrderService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/service/TemperatureService.class" afterPath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/service/TemperatureService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/service/TerminalService.class" afterPath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/service/TerminalService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/service/UnifiedOrderService.class" afterPath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/service/UnifiedOrderService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/service/UserService.class" afterPath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/service/UserService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/service/impl/AccessTokenServiceImpl.class" afterPath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/service/impl/AccessTokenServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/service/impl/CredentialServiceImpl.class" afterPath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/service/impl/CredentialServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/service/impl/JsapiTicketServiceImpl.class" afterPath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/service/impl/JsapiTicketServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/service/impl/NotifyDataServiceImpl.class" afterPath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/service/impl/NotifyDataServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/service/impl/OperationServiceImpl.class" afterPath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/service/impl/OperationServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/service/impl/OrderServiceImpl.class" afterPath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/service/impl/OrderServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/service/impl/TemperatureServiceImpl.class" afterPath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/service/impl/TemperatureServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/service/impl/TerminalServiceImpl.class" afterPath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/service/impl/TerminalServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/service/impl/UnifiedOrderServiceImpl.class" afterPath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/service/impl/UnifiedOrderServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/service/impl/UserServiceImpl.class" afterPath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/service/impl/UserServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/utils/GenerateOrderId.class" afterPath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/utils/GenerateOrderId.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/utils/JssdkConfigUtil.class" afterPath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/utils/JssdkConfigUtil.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/utils/MD5Util.class" afterPath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/utils/MD5Util.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/utils/MapUtils$1.class" afterPath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/utils/MapUtils$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/utils/MapUtils.class" afterPath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/utils/MapUtils.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/utils/MyX509TrustManager.class" afterPath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/utils/MyX509TrustManager.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/utils/PayCommonUtil.class" afterPath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/utils/PayCommonUtil.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/utils/Sha1Util.class" afterPath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/utils/Sha1Util.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/utils/SmsDemo.class" afterPath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/utils/SmsDemo.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/utils/TimeSpanUtil.class" afterPath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/utils/TimeSpanUtil.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/utils/TimeUtils.class" afterPath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/utils/TimeUtils.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/utils/WeixinUtil.class" afterPath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/utils/WeixinUtil.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/utils/XMLUtil.class" afterPath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/utils/XMLUtil.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/utils/huawei/CodecComponent.class" afterPath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/utils/huawei/CodecComponent.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/utils/huawei/HttpsUtil.class" afterPath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/utils/huawei/HttpsUtil.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/utils/huawei/HuaweiTest.class" afterPath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/utils/huawei/HuaweiTest.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/utils/huawei/JsonUtil.class" afterPath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/utils/huawei/JsonUtil.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/controller/TestController.class" afterPath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/controller/TestController.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/utils/huawei/PlatformGlobal.class" afterPath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/utils/huawei/PlatformGlobal.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/utils/huawei/StreamClosedHttpResponse.class" afterPath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/utils/huawei/StreamClosedHttpResponse.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/utils/huawei/StreamUtil.class" afterPath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/utils/huawei/StreamUtil.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/utils/huawei/StringUtil.class" afterPath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/utils/huawei/StringUtil.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/terabits/config/HuaweiPlatformGlobal.java" afterPath="$PROJECT_DIR$/src/main/java/com/terabits/config/HuaweiPlatformGlobal.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/terabits/controller/MainController.java" afterPath="$PROJECT_DIR$/src/main/java/com/terabits/controller/MainController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/terabits/controller/xhr/WeixinNotify.java" afterPath="$PROJECT_DIR$/src/main/java/com/terabits/controller/xhr/WeixinNotify.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/terabits/controller/xhr/WeixinPay.java" afterPath="$PROJECT_DIR$/src/main/java/com/terabits/controller/xhr/WeixinPay.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/terabits/mapper/NotifyDataMapper.xml" afterPath="$PROJECT_DIR$/src/main/java/com/terabits/mapper/NotifyDataMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/terabits/mapper/UserMapper.java" afterPath="$PROJECT_DIR$/src/main/java/com/terabits/mapper/UserMapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/terabits/mapper/UserMapper.xml" afterPath="$PROJECT_DIR$/src/main/java/com/terabits/mapper/UserMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/terabits/meta/po/NotifyDataPO.java" afterPath="$PROJECT_DIR$/src/main/java/com/terabits/meta/po/NotifyDataPO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/terabits/service/NotifyDataService.java" afterPath="$PROJECT_DIR$/src/main/java/com/terabits/service/NotifyDataService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/terabits/service/OrderService.java" afterPath="$PROJECT_DIR$/src/main/java/com/terabits/service/OrderService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/terabits/service/UserService.java" afterPath="$PROJECT_DIR$/src/main/java/com/terabits/service/UserService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/terabits/service/impl/NotifyDataServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/terabits/service/impl/NotifyDataServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/terabits/service/impl/OrderServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/terabits/service/impl/OrderServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/terabits/service/impl/UserServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/terabits/service/impl/UserServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/terabits/mapper/NotifyDataMapper.xml" afterPath="$PROJECT_DIR$/target/classes/com/terabits/mapper/NotifyDataMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/terabits/mapper/UserMapper.xml" afterPath="$PROJECT_DIR$/target/classes/com/terabits/mapper/UserMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/mapper/NotifyDataMapper.xml" afterPath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/mapper/NotifyDataMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/mapper/UserMapper.xml" afterPath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/mapper/UserMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/watermachine.iml" afterPath="$PROJECT_DIR$/watermachine.iml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/terabits/mapper/OrderMapper.java" afterPath="$PROJECT_DIR$/src/main/java/com/terabits/mapper/RechargeOrderMapper.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/terabits/mapper/OrderMapper.xml" afterPath="$PROJECT_DIR$/src/main/java/com/terabits/mapper/RechargeOrderMapper.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/terabits/meta/po/OrderPO.java" afterPath="$PROJECT_DIR$/src/main/java/com/terabits/meta/po/RechargeOrderPO.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/terabits/controller/TestController.java" afterPath="$PROJECT_DIR$/src/main/java/com/terabits/controller/TestController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/terabits/controller/xhr/WeixinJsConfig.java" afterPath="$PROJECT_DIR$/src/main/java/com/terabits/controller/xhr/WeixinJsConfig.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/terabits/mapper/AccessTokenMapper.java" afterPath="$PROJECT_DIR$/src/main/java/com/terabits/mapper/AccessTokenMapper.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/terabits/mapper/AccessTokenMapper.xml" afterPath="$PROJECT_DIR$/src/main/java/com/terabits/mapper/AccessTokenMapper.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/terabits/service/AccessTokenService.java" afterPath="$PROJECT_DIR$/src/main/java/com/terabits/service/AccessTokenService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/terabits/service/JsapiTicketService.java" afterPath="$PROJECT_DIR$/src/main/java/com/terabits/service/JsapiTicketService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/terabits/service/impl/AccessTokenServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/terabits/service/impl/AccessTokenServiceImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/terabits/service/impl/JsapiTicketServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/terabits/service/impl/JsapiTicketServiceImpl.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -230,122 +46,111 @@
       <file leaf-file-name="TestController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/controller/TestController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="171">
-              <caret line="16" column="14" lean-forward="false" selection-start-line="16" selection-start-column="14" selection-end-line="16" selection-end-column="14" />
+            <state relative-caret-position="399">
+              <caret line="41" column="39" lean-forward="false" selection-start-line="41" selection-start-column="39" selection-end-line="41" selection-end-column="39" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NotifyDataMapper.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/mapper/NotifyDataMapper.java">
+      <file leaf-file-name="JsapiTicketServiceImpl.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/service/impl/JsapiTicketServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="133">
-              <caret line="7" column="17" lean-forward="false" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+            <state relative-caret-position="247">
+              <caret line="32" column="58" lean-forward="false" selection-start-line="32" selection-start-column="4" selection-end-line="32" selection-end-column="58" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="application.properties" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
+      <file leaf-file-name="JsapiTicketService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/service/JsapiTicketService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="95">
-              <caret line="5" column="20" lean-forward="false" selection-start-line="5" selection-start-column="20" selection-end-line="5" selection-end-column="20" />
+            <state relative-caret-position="247">
+              <caret line="13" column="59" lean-forward="false" selection-start-line="13" selection-start-column="59" selection-end-line="13" selection-end-column="59" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="mvc-dispatcher-servlet.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/mvc-dispatcher-servlet.xml">
+      <file leaf-file-name="WeixinJsConfig.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/controller/xhr/WeixinJsConfig.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="475">
-              <caret line="25" column="3" lean-forward="false" selection-start-line="25" selection-start-column="3" selection-end-line="25" selection-end-column="3" />
+            <state relative-caret-position="418">
+              <caret line="35" column="0" lean-forward="true" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RedisController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/controller/RedisController.java">
+      <file leaf-file-name="HuaweiTokenServiceImpl.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/service/impl/HuaweiTokenServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-266">
-              <caret line="73" column="37" lean-forward="false" selection-start-line="73" selection-start-column="37" selection-end-line="73" selection-end-column="37" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="HuaweiPlatformGlobal.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/config/HuaweiPlatformGlobal.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="361">
-              <caret line="19" column="73" lean-forward="true" selection-start-line="19" selection-start-column="73" selection-end-line="19" selection-end-column="73" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RechargeOrderMapper.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/mapper/RechargeOrderMapper.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="133">
-              <caret line="12" column="17" lean-forward="false" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
+            <state relative-caret-position="608">
+              <caret line="62" column="13" lean-forward="true" selection-start-line="62" selection-start-column="13" selection-end-line="62" selection-end-column="13" />
               <folding>
-                <element signature="imports" expanded="false" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RechargeOrderMapper.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/mapper/RechargeOrderMapper.xml">
+      <file leaf-file-name="AccessTokenMapper.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/mapper/AccessTokenMapper.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1102">
-              <caret line="58" column="0" lean-forward="false" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
+            <state relative-caret-position="532">
+              <caret line="28" column="13" lean-forward="true" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="13" />
               <folding>
-                <marker date="1503034339693" expanded="true" signature="1593:1778" ph="insert into socketorder... " />
-                <marker date="1503034339693" expanded="true" signature="2759:2850" ph="update socke... " />
-                <marker date="1503034339693" expanded="true" signature="2959:3011" ph="select * fro... socketorder" />
+                <marker date="1503067150865" expanded="true" signature="1279:1379" ph="insert into accesstoken... " />
+                <marker date="1503067150865" expanded="true" signature="1511:1597" ph="update acces... " />
+                <marker date="1503067150865" expanded="true" signature="1517:1530" ph="select * fro... accesstoken" />
+                <marker date="1503067150865" expanded="true" signature="1678:1703" ph="select * fro... accesstoken" />
+                <marker date="1503067150865" expanded="true" signature="1678:1716" ph="select * fro... accesstoken" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RechargeOrderPO.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/meta/po/RechargeOrderPO.java">
+      <file leaf-file-name="HuaweiTokenMapper.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/mapper/HuaweiTokenMapper.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="722">
-              <caret line="61" column="0" lean-forward="true" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
+            <state relative-caret-position="513">
+              <caret line="27" column="13" lean-forward="true" selection-start-line="17" selection-start-column="3" selection-end-line="27" selection-end-column="13" />
+              <folding>
+                <marker date="1503064502917" expanded="true" signature="1278:1378" ph="insert into huaweitoken... " />
+                <marker date="1503064502917" expanded="true" signature="1483:1567" ph="update huawe... " />
+                <marker date="1503064502917" expanded="true" signature="1648:1686" ph="select * fro... huaweitoken" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AccessTokenServiceImpl.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/service/impl/AccessTokenServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="209">
+              <caret line="53" column="24" lean-forward="false" selection-start-line="53" selection-start-column="24" selection-end-line="53" selection-end-column="24" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NotifyDataPO.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/meta/po/NotifyDataPO.java">
+      <file leaf-file-name="AccessTokenService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/service/AccessTokenService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="665">
-              <caret line="51" column="18" lean-forward="false" selection-start-line="51" selection-start-column="18" selection-end-line="51" selection-end-column="18" />
-              <folding>
-                <element signature="e#284#285#0" expanded="false" />
-                <element signature="e#309#310#0" expanded="false" />
-                <element signature="e#342#343#0" expanded="false" />
-                <element signature="e#370#371#0" expanded="false" />
-                <element signature="e#404#405#0" expanded="false" />
-                <element signature="e#434#435#0" expanded="false" />
-                <element signature="e#480#481#0" expanded="false" />
-                <element signature="e#518#519#0" expanded="false" />
-                <element signature="e#554#555#0" expanded="false" />
-                <element signature="e#586#587#0" expanded="false" />
-                <element signature="e#636#637#0" expanded="false" />
-                <element signature="e#678#679#0" expanded="false" />
-                <element signature="e#716#717#0" expanded="false" />
-                <element signature="e#750#751#0" expanded="false" />
-                <element signature="e#804#805#0" expanded="false" />
-                <element signature="e#850#851#0" expanded="false" />
-              </folding>
+            <state relative-caret-position="323">
+              <caret line="17" column="1" lean-forward="false" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AccessTokenMapper.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/mapper/AccessTokenMapper.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="266">
+              <caret line="16" column="0" lean-forward="true" selection-start-line="10" selection-start-column="3" selection-end-line="16" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -356,24 +161,14 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="spring-beans.schema" />
-        <option value="Interface" />
         <option value="Jsp File" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>a</find>
-      <find>s</find>
-      <find>sm</find>
-      <find>sma</find>
-      <find>smary</find>
-      <find>smar</find>
-      <find>log4j</find>
-      <find>smart</find>
-      <find>ve</find>
-      <find>t</find>
       <find>test</find>
       <find>testcoe</find>
       <find>testco</find>
@@ -394,6 +189,16 @@
       <find>119.</find>
       <find>119</find>
       <find>11</find>
+      <find>l</find>
+      <find>lo</find>
+      <find>log</find>
+      <find>logge</find>
+      <find>logger、</find>
+      <find>logger</find>
+      <find>logger.</find>
+      <find>logger.e</find>
+      <find>logger.er</find>
+      <find>logger.err</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -415,22 +220,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/terabits/controller/xhr/WeixinGetCode.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/terabits/controller/xhr/WeixinPay.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/terabits/config/WeixinGlobal.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/terabits/controller/ExistenceController.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/static/js/using.js" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/main/using.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/static/js/information.js" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/main/information.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/main/confirm.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/static/js/confirm.js" />
-        <option value="$PROJECT_DIR$/src/main/java/com/terabits/mapper/AccessTokenMapper.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/terabits/mapper/JsapiTicketMapper.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/terabits/manager/impl/TerminalManagerImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/terabits/controller/TokenController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/terabits/manager/RedisTemplateTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/terabits/service/CredentialService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/terabits/manager/impl/RedisTemplateTestImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/terabits/service/impl/CredentialServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/resources/log4j.properties" />
@@ -459,13 +248,29 @@
         <option value="$PROJECT_DIR$/src/main/java/com/terabits/mapper/UserMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/terabits/service/UserService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/terabits/service/impl/UserServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/terabits/controller/TestController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/terabits/mapper/UserMapper.xml" />
         <option value="$PROJECT_DIR$/src/test/java/com/terabits/service/BaseTest.java" />
         <option value="$PROJECT_DIR$/src/test/com/terabits/service/BaseTest.java" />
         <option value="$PROJECT_DIR$/src/test/com/terabits/service/TokenTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/terabits/mapper/RechargeOrderMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/terabits/config/HuaweiPlatformGlobal.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/terabits/meta/po/Device/OperationPO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/terabits/meta/po/Device/TerminalPO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/terabits/meta/po/AccessTokenPO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/terabits/meta/po/HuaweiTokenPO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/terabits/mapper/HuaweiTokenMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/terabits/mapper/HuaweiTokenMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/terabits/service/HuaweiToken.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/terabits/service/HuaweiTokenService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/terabits/service/impl/HuaweiTokenServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/terabits/mapper/AccessTokenMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/terabits/mapper/AccessTokenMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/terabits/service/AccessTokenService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/terabits/service/impl/JsapiTicketServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/terabits/service/JsapiTicketService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/terabits/controller/xhr/WeixinJsConfig.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/terabits/controller/TestController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/terabits/service/impl/AccessTokenServiceImpl.java" />
       </list>
     </option>
   </component>
@@ -602,6 +407,66 @@
               <option name="myItemId" value="main" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="watermachine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="watermachine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="watermachine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="watermachine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -652,6 +517,120 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="terabits" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="utils" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="watermachine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="watermachine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="terabits" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="utils" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="huawei" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="watermachine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="watermachine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="terabits" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="service" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="watermachine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="watermachine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="terabits" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="service" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="impl" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -790,6 +769,36 @@
               <option name="myItemId" value="terabits" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="watermachine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="watermachine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="terabits" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="controller" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
@@ -844,22 +853,18 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\nb\workspace\watermachine\src\test" />
-      <recent name="D:\nb\workspace\smartsocket\src\main\webapp" />
-      <recent name="D:\nb\workspace\smartsocket\src\main\resources" />
-      <recent name="D:\nb\workspace\smartsocket\src\main\resources\mappers" />
-      <recent name="D:\nb\workspace\smartsocket\src\main\java\com\terabits\dao\impl" />
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.terabits.service.impl" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.terabits.service" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\nb\workspace\watermachine\src\main\java\com\terabits\meta\po" />
       <recent name="D:\nb\workspace\smartsocket\src\main\java\com\terabits\utils\huawei" />
       <recent name="D:\nb\workspace\smartsocket\src\main\java\com\terabits\mapper" />
       <recent name="D:\nb\workspace\smartsocket\src\main\webapp\WEB-INF" />
       <recent name="D:\nb\workspace\smartsocket\src\main\resources" />
-      <recent name="D:\nb\workspace\smartsocket\src\main\java\com\terabits" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.terabits.utils" />
@@ -868,8 +873,12 @@
       <recent name="com.terabits.service.impl" />
       <recent name="com.terabits.meta.po" />
     </key>
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="com.terabits.service.impl" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\nb\workspace\watermachine\src\test" />
+      <recent name="D:\nb\workspace\smartsocket\src\main\webapp" />
+      <recent name="D:\nb\workspace\smartsocket\src\main\resources" />
+      <recent name="D:\nb\workspace\smartsocket\src\main\resources\mappers" />
+      <recent name="D:\nb\workspace\smartsocket\src\main\java\com\terabits\dao\impl" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -1424,7 +1433,7 @@
       <method />
     </configuration>
     <configuration default="false" name="Tomcat8" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.0.43" ALTERNATIVE_JRE_ENABLED="true" ALTERNATIVE_JRE_PATH="1.8">
-      <option name="UPDATING_POLICY" value="restart-server" />
+      <option name="UPDATING_POLICY" value="redeploy-artifacts" />
       <deployment>
         <artifact name="watermachine:war exploded">
           <settings>
@@ -1549,7 +1558,7 @@
       <workItem from="1502856185885" duration="69000" />
       <workItem from="1502879810767" duration="594000" />
       <workItem from="1502935656543" duration="30514000" />
-      <workItem from="1503047604805" duration="2008000" />
+      <workItem from="1503047604805" duration="8950000" />
     </task>
     <servers />
   </component>
@@ -1586,7 +1595,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="369181000" />
+    <option name="totallyTimeSpent" value="376123000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="0" />
@@ -1594,7 +1603,7 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.102678575" sideWeight="0.18176973" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29464287" sideWeight="0.5490405" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32998884" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1391258" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1606,13 +1615,13 @@
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.6312849" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29464287" sideWeight="0.4551282" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29575893" sideWeight="0.45095947" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.102678575" sideWeight="0.8182303" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32142857" sideWeight="0.815032" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23880596" sideWeight="0.79241073" order="0" side_tool="false" content_ui="combo" />
@@ -1632,7 +1641,7 @@
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3273743" sideWeight="0.50213677" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29464287" sideWeight="0.5490405" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32998884" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1391258" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -1645,19 +1654,19 @@
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.6312849" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31173185" sideWeight="0.46581197" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29464287" sideWeight="0.45095947" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.36759776" sideWeight="0.8872863" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.109375" sideWeight="0.815032" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2318376" sideWeight="0.79241073" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23880596" sideWeight="0.79241073" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3273743" sideWeight="0.49786323" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24665178" sideWeight="0.48294243" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23081024" sideWeight="0.20758928" order="8" side_tool="true" content_ui="tabs" />
     </layout-to-restore>
@@ -1679,215 +1688,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/config/Constants.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="50" column="54" lean-forward="false" selection-start-line="50" selection-start-column="54" selection-end-line="50" selection-end-column="54" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/js/confirm.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="13" column="34" lean-forward="false" selection-start-line="13" selection-start-column="34" selection-end-line="13" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/controller/ExistenceController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="41" column="34" lean-forward="false" selection-start-line="41" selection-start-column="34" selection-end-line="41" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/js/login.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="65" column="15" lean-forward="false" selection-start-line="65" selection-start-column="15" selection-end-line="65" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/main/register.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-114">
-          <caret line="12" column="69" lean-forward="false" selection-start-line="12" selection-start-column="69" selection-end-line="12" selection-end-column="69" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="0">
-            <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/utils/SmsDemo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1776">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/js/register.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="17" column="35" lean-forward="false" selection-start-line="17" selection-start-column="35" selection-end-line="17" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/applicationContext-transactional.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-226">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/service/AccessTokenService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="13" column="25" lean-forward="false" selection-start-line="13" selection-start-column="25" selection-end-line="13" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/service/impl/AccessTokenServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="181">
-          <caret line="37" column="49" lean-forward="false" selection-start-line="37" selection-start-column="49" selection-end-line="37" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/mapper/AccessTokenMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="13" column="36" lean-forward="false" selection-start-line="13" selection-start-column="36" selection-end-line="13" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/service/impl/CredentialServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="14" column="28" lean-forward="false" selection-start-line="14" selection-start-column="28" selection-end-line="14" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/service/NotifyDataService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="8" column="74" lean-forward="false" selection-start-line="8" selection-start-column="74" selection-end-line="8" selection-end-column="74" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/service/impl/NotifyDataServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="23" column="65" lean-forward="false" selection-start-line="23" selection-start-column="65" selection-end-line="23" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/com.terabits/service/TokenTest.java" />
-    <entry file="file://$PROJECT_DIR$/src/test/com.terabits/service/QrCodeTest.java" />
-    <entry file="file://$PROJECT_DIR$/src/test/com.terabits/service/HuaweiServiceTest.java" />
-    <entry file="file://$PROJECT_DIR$/src/test/com.terabits/service/BaseTest.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/css/login.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1216">
-          <caret line="64" column="1" lean-forward="false" selection-start-line="64" selection-start-column="1" selection-end-line="64" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/service/applicationContext-dao.xml" />
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3335">
-          <caret line="346" column="16" lean-forward="false" selection-start-line="346" selection-start-column="16" selection-end-line="346" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/applicationContext-dao.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/com/terabits/service/QrCodeTest.java" />
-    <entry file="file://$PROJECT_DIR$/src/test/com/terabits/service/HuaweiServiceTest.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/mapper/AccessTokenMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1502936546119" expanded="true" signature="1228:1328" ph="insert into accesstoken... " />
-            <marker date="1502936546119" expanded="true" signature="1413:1470" ph="select * fro... accesstoken" />
-            <marker date="1502936546119" expanded="true" signature="1554:1579" ph="select * fro... accesstoken" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/mapper/JsapiTicketMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1502936729681" expanded="true" signature="1224:1324" ph="insert into jsapiticket... " />
-            <marker date="1502936729681" expanded="true" signature="1403:1460" ph="select * fro... jsapiticket" />
-            <marker date="1502936729681" expanded="true" signature="1538:1563" ph="select * fro... jsapiticket" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/meta/po/JsapiTicketPO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/mapper/NotifyDataMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-          <folding>
-            <marker date="1502980504000" expanded="true" signature="1219:1309" ph="insert into notifydata... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/meta/po/AccessTokenPO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
-          <caret line="22" column="18" lean-forward="false" selection-start-line="22" selection-start-column="18" selection-end-line="22" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/meta/po/UserPO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="494">
-          <caret line="29" column="31" lean-forward="false" selection-start-line="7" selection-start-column="1" selection-end-line="29" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/mapper/TerminalMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="15" column="1" lean-forward="false" selection-start-line="15" selection-start-column="1" selection-end-line="21" selection-end-column="70" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/controller/MainController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="35" column="81" lean-forward="false" selection-start-line="35" selection-start-column="3" selection-end-line="35" selection-end-column="81" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/mapper/TerminalMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -1958,40 +1758,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/controller/TestController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="16" column="14" lean-forward="false" selection-start-line="16" selection-start-column="14" selection-end-line="16" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/mapper/NotifyDataMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="7" column="17" lean-forward="false" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/mapper/RechargeOrderMapper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="133">
           <caret line="12" column="17" lean-forward="false" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
           <folding>
             <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/mapper/RechargeOrderMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1102">
-          <caret line="58" column="0" lean-forward="false" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
-          <folding>
-            <marker date="1503034339693" expanded="true" signature="1593:1778" ph="insert into socketorder... " />
-            <marker date="1503034339693" expanded="true" signature="2759:2850" ph="update socke... " />
-            <marker date="1503034339693" expanded="true" signature="2959:3011" ph="select * fro... socketorder" />
           </folding>
         </state>
       </provider>
@@ -2024,7 +1796,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/meta/po/RechargeOrderPO.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="722">
-          <caret line="61" column="0" lean-forward="true" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
+          <caret line="61" column="0" lean-forward="false" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -2055,8 +1827,329 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/config/HuaweiPlatformGlobal.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="19" column="73" lean-forward="true" selection-start-line="19" selection-start-column="73" selection-end-line="19" selection-end-column="73" />
+        <state relative-caret-position="475">
+          <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/js/login.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-214">
+          <caret line="65" column="15" lean-forward="false" selection-start-line="65" selection-start-column="15" selection-end-line="65" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/js/confirm.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="13" column="34" lean-forward="false" selection-start-line="13" selection-start-column="34" selection-end-line="13" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/js/information.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="590">
+          <caret line="33" column="92" lean-forward="false" selection-start-line="33" selection-start-column="92" selection-end-line="33" selection-end-column="92" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/js/register.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="661">
+          <caret line="52" column="1" lean-forward="true" selection-start-line="52" selection-start-column="1" selection-end-line="52" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/meta/po/Statistic/AuxcalPO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/meta/po/User/ConsumeOrderPO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/meta/po/User/RechargeOrderPO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/meta/po/Wechat/AccessTokenPO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/meta/po/Wechat/JsapiTicketPO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/meta/po/Admin/AdminPO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/meta/po/Huawei/NotifyDataPO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/meta/po/Huawei/HuaweiToken.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/meta/po/Admin/AdminRecordPO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/meta/po/OperationPO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="13" column="31" lean-forward="true" selection-start-line="7" selection-start-column="3" selection-end-line="13" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/meta/po/Device/OperationPO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="57">
+          <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/meta/po/Device/TerminalPO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="608">
+          <caret line="32" column="31" lean-forward="true" selection-start-line="32" selection-start-column="31" selection-end-line="32" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/meta/po/TerminalPO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="424">
+          <caret line="26" column="0" lean-forward="true" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/meta/po/JsapiTicketPO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="57">
+          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/mapper/RechargeOrderMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="614">
+          <caret line="58" column="0" lean-forward="false" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
+          <folding>
+            <marker date="1503034339693" expanded="true" signature="1593:1778" ph="insert into socketorder... " />
+            <marker date="1503034339693" expanded="true" signature="2759:2850" ph="update socke... " />
+            <marker date="1503034339693" expanded="true" signature="2959:3011" ph="select * fro... socketorder" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/meta/po/AccessTokenPO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/meta/po/HuaweiTokenPO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="576">
+          <caret line="52" column="18" lean-forward="false" selection-start-line="52" selection-start-column="18" selection-end-line="52" selection-end-column="18" />
+          <folding>
+            <element signature="e#275#276#0" expanded="true" />
+            <element signature="e#300#301#0" expanded="true" />
+            <element signature="e#333#334#0" expanded="true" />
+            <element signature="e#361#362#0" expanded="true" />
+            <element signature="e#399#400#0" expanded="true" />
+            <element signature="e#433#434#0" expanded="true" />
+            <element signature="e#487#488#0" expanded="true" />
+            <element signature="e#533#534#0" expanded="true" />
+            <element signature="e#569#570#0" expanded="true" />
+            <element signature="e#601#602#0" expanded="true" />
+            <element signature="e#651#652#0" expanded="true" />
+            <element signature="e#693#694#0" expanded="true" />
+            <element signature="e#731#732#0" expanded="true" />
+            <element signature="e#765#766#0" expanded="true" />
+            <element signature="e#819#820#0" expanded="true" />
+            <element signature="e#865#866#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/mapper/NotifyDataMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="7" column="17" lean-forward="false" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/mapper/JsapiTicketMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="9" column="17" lean-forward="false" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/utils/huawei/PlatformGlobal.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="249">
+          <caret line="38" column="25" lean-forward="false" selection-start-line="38" selection-start-column="25" selection-end-line="38" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/mapper/HuaweiTokenMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/service/HuaweiTokenService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/mapper/AccessTokenMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="532">
+          <caret line="28" column="13" lean-forward="true" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="13" />
+          <folding>
+            <marker date="1503067150865" expanded="true" signature="1279:1379" ph="insert into accesstoken... " />
+            <marker date="1503067150865" expanded="true" signature="1511:1597" ph="update acces... " />
+            <marker date="1503067150865" expanded="true" signature="1517:1530" ph="select * fro... accesstoken" />
+            <marker date="1503067150865" expanded="true" signature="1678:1703" ph="select * fro... accesstoken" />
+            <marker date="1503067150865" expanded="true" signature="1678:1716" ph="select * fro... accesstoken" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/mapper/AccessTokenMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="16" column="0" lean-forward="true" selection-start-line="10" selection-start-column="3" selection-end-line="16" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/service/AccessTokenService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="17" column="1" lean-forward="false" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/service/impl/JsapiTicketServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="32" column="58" lean-forward="false" selection-start-line="32" selection-start-column="4" selection-end-line="32" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/service/JsapiTicketService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="13" column="59" lean-forward="false" selection-start-line="13" selection-start-column="59" selection-end-line="13" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/controller/xhr/WeixinJsConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="35" column="0" lean-forward="true" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/mapper/HuaweiTokenMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="513">
+          <caret line="27" column="13" lean-forward="true" selection-start-line="17" selection-start-column="3" selection-end-line="27" selection-end-column="13" />
+          <folding>
+            <marker date="1503064502917" expanded="true" signature="1278:1378" ph="insert into huaweitoken... " />
+            <marker date="1503064502917" expanded="true" signature="1483:1567" ph="update huawe... " />
+            <marker date="1503064502917" expanded="true" signature="1648:1686" ph="select * fro... huaweitoken" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/service/impl/HuaweiTokenServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="608">
+          <caret line="62" column="13" lean-forward="true" selection-start-line="62" selection-start-column="13" selection-end-line="62" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/controller/TestController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="41" column="39" lean-forward="false" selection-start-line="41" selection-start-column="39" selection-end-line="41" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/service/impl/AccessTokenServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="53" column="24" lean-forward="false" selection-start-line="53" selection-start-column="24" selection-end-line="53" selection-end-column="24" />
           <folding />
         </state>
       </provider>

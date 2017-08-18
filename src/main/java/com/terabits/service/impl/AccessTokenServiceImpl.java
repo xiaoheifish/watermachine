@@ -23,19 +23,21 @@ public class AccessTokenServiceImpl implements AccessTokenService {
     @Autowired(required = false)
     private AccessTokenMapper accessTokenMapper;
 
-    public int insertToken(AccessTokenPO accessTokenPO){
-        int result = 0;
-        try {
-            result = accessTokenMapper.insertToken(accessTokenPO);
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        return result;
+    //插入新的token
+    public int insertToken(AccessTokenPO accessTokenPO)throws Exception{
+        return accessTokenMapper.insertToken(accessTokenPO);
     }
-    public AccessTokenPO getLatestToken(){
+
+    //更新token
+    public int updateToken(AccessTokenPO accessTokenPO)throws Exception{
+        return accessTokenMapper.updateToken(accessTokenPO);
+    }
+
+    //取回最新有效的token
+    public AccessTokenPO getLatestToken() throws Exception{
         AccessTokenPO accessTokenPO = null;
         try {
-            accessTokenPO = accessTokenMapper.selectLastToken();
+            accessTokenPO = accessTokenMapper.selectToken();
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -56,7 +58,7 @@ public class AccessTokenServiceImpl implements AccessTokenService {
             AccessTokenBO accessTokenBO = WeixinUtil.getAccessToken(APP_ID, APP_SECRET);
             AccessTokenPO accessTokenPO1 = new AccessTokenPO();
             accessTokenPO1.setAccessToken(accessTokenBO.getToken());
-            insertToken(accessTokenPO1);
+            accessTokenMapper.updateToken(accessTokenPO1);
             return accessTokenPO1;
         }
     }
