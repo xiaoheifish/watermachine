@@ -16,16 +16,16 @@
     <!--#{}中的内容，为占位符，当参数为某个JavaBean时，表示放置该Bean对象的属性值  -->
 
 
-    <insert id="insertJsapi" useGeneratedKeys="true" keyProperty="id">
+    <insert id="insertJsapi" useGeneratedKeys="true" keyProperty="id" parameterType="com.terabits.meta.po.JsapiTicketPO">
         insert into jsapiticket (jsapi_ticket, gmtcreate, gmtmodified) values (#{jsapiTicket}, now(), now())
     </insert>
 
-    <select id="selectLastJsapi" resultMap="jsapiMap">
-        select * from jsapiticket order by gmtcreate desc limit 1
-    </select>
+    <update id="updateJsapi" parameterType="com.terabits.meta.po.JsapiTicketPO">
+        update jsapiticket set jsapi_ticket = #{jsapiTicket}, gmtmodified = now() where id = 1
+    </update>
 
-    <select id="selectAllJsapi" resultMap="jsapiMap">
-        select * from jsapiticket
+    <select id="selectJsapi" resultMap="jsapiMap">
+        select * from jsapiticket where id = 1
     </select>
 
 

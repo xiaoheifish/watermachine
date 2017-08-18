@@ -7,25 +7,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8d9f3772-32a4-48cb-827d-39eada15222d" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/terabits/mapper/HuaweiTokenMapper.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/terabits/mapper/HuaweiTokenMapper.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/terabits/meta/po/HuaweiTokenPO.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/terabits/service/HuaweiTokenService.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/terabits/service/impl/HuaweiTokenServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/terabits/config/HuaweiPlatformGlobal.class" afterPath="$PROJECT_DIR$/target/classes/com/terabits/config/HuaweiPlatformGlobal.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/terabits/controller/TestController.class" afterPath="$PROJECT_DIR$/target/classes/com/terabits/controller/TestController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/terabits/utils/huawei/PlatformGlobal.class" afterPath="$PROJECT_DIR$/target/classes/com/terabits/utils/huawei/PlatformGlobal.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/config/HuaweiPlatformGlobal.class" afterPath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/config/HuaweiPlatformGlobal.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/controller/TestController.class" afterPath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/controller/TestController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/utils/huawei/PlatformGlobal.class" afterPath="$PROJECT_DIR$/target/watermachine/WEB-INF/classes/com/terabits/utils/huawei/PlatformGlobal.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/terabits/controller/TestController.java" afterPath="$PROJECT_DIR$/src/main/java/com/terabits/controller/TestController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/terabits/controller/xhr/WeixinJsConfig.java" afterPath="$PROJECT_DIR$/src/main/java/com/terabits/controller/xhr/WeixinJsConfig.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/terabits/mapper/AccessTokenMapper.java" afterPath="$PROJECT_DIR$/src/main/java/com/terabits/mapper/AccessTokenMapper.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/terabits/mapper/AccessTokenMapper.xml" afterPath="$PROJECT_DIR$/src/main/java/com/terabits/mapper/AccessTokenMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/terabits/service/AccessTokenService.java" afterPath="$PROJECT_DIR$/src/main/java/com/terabits/service/AccessTokenService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/terabits/mapper/JsapiTicketMapper.java" afterPath="$PROJECT_DIR$/src/main/java/com/terabits/mapper/JsapiTicketMapper.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/terabits/mapper/JsapiTicketMapper.xml" afterPath="$PROJECT_DIR$/src/main/java/com/terabits/mapper/JsapiTicketMapper.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/terabits/service/JsapiTicketService.java" afterPath="$PROJECT_DIR$/src/main/java/com/terabits/service/JsapiTicketService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/terabits/service/impl/AccessTokenServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/terabits/service/impl/AccessTokenServiceImpl.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/terabits/service/impl/JsapiTicketServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/terabits/service/impl/JsapiTicketServiceImpl.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -43,11 +29,37 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="TestController.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="TestController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/controller/TestController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="399">
-              <caret line="41" column="39" lean-forward="false" selection-start-line="41" selection-start-column="39" selection-end-line="41" selection-end-column="39" />
+            <state relative-caret-position="361">
+              <caret line="47" column="39" lean-forward="false" selection-start-line="47" selection-start-column="39" selection-end-line="47" selection-end-column="39" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AccessTokenMapper.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/mapper/AccessTokenMapper.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="266">
+              <caret line="22" column="29" lean-forward="false" selection-start-line="22" selection-start-column="29" selection-end-line="22" selection-end-column="29" />
+              <folding>
+                <marker date="1503067968829" expanded="true" signature="1279:1379" ph="insert into accesstoken... " />
+                <marker date="1503067968829" expanded="true" signature="1484:1570" ph="update acces... " />
+                <marker date="1503067968829" expanded="true" signature="1490:1503" ph="select * fro... accesstoken" />
+                <marker date="1503067968829" expanded="true" signature="1651:1676" ph="select * fro... accesstoken" />
+                <marker date="1503067968829" expanded="true" signature="1651:1689" ph="select * fro... accesstoken" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="JsapiTicketMapper.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/mapper/JsapiTicketMapper.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -57,7 +69,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/service/impl/JsapiTicketServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="247">
-              <caret line="32" column="58" lean-forward="false" selection-start-line="32" selection-start-column="4" selection-end-line="32" selection-end-column="58" />
+              <caret line="48" column="25" lean-forward="true" selection-start-line="48" selection-start-column="25" selection-end-line="48" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -66,46 +78,23 @@
       <file leaf-file-name="JsapiTicketService.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/service/JsapiTicketService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="247">
-              <caret line="13" column="59" lean-forward="false" selection-start-line="13" selection-start-column="59" selection-end-line="13" selection-end-column="59" />
+            <state relative-caret-position="285">
+              <caret line="15" column="24" lean-forward="false" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="24" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="WeixinJsConfig.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/controller/xhr/WeixinJsConfig.java">
+      <file leaf-file-name="JsapiTicketMapper.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/mapper/JsapiTicketMapper.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="418">
-              <caret line="35" column="0" lean-forward="true" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="HuaweiTokenServiceImpl.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/service/impl/HuaweiTokenServiceImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="608">
-              <caret line="62" column="13" lean-forward="true" selection-start-line="62" selection-start-column="13" selection-end-line="62" selection-end-column="13" />
+            <state relative-caret-position="266">
+              <caret line="22" column="22" lean-forward="false" selection-start-line="22" selection-start-column="22" selection-end-line="22" selection-end-column="22" />
               <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AccessTokenMapper.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/mapper/AccessTokenMapper.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="532">
-              <caret line="28" column="13" lean-forward="true" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="13" />
-              <folding>
-                <marker date="1503067150865" expanded="true" signature="1279:1379" ph="insert into accesstoken... " />
-                <marker date="1503067150865" expanded="true" signature="1511:1597" ph="update acces... " />
-                <marker date="1503067150865" expanded="true" signature="1517:1530" ph="select * fro... accesstoken" />
-                <marker date="1503067150865" expanded="true" signature="1678:1703" ph="select * fro... accesstoken" />
-                <marker date="1503067150865" expanded="true" signature="1678:1716" ph="select * fro... accesstoken" />
+                <marker date="1503068240691" expanded="true" signature="1275:1375" ph="insert into jsapiticket... " />
+                <marker date="1503068240691" expanded="true" signature="1480:1566" ph="update jsapi... " />
+                <marker date="1503068240691" expanded="true" signature="1486:1499" ph="select * fro... jsapiticket" />
+                <marker date="1503068240691" expanded="true" signature="1641:1679" ph="select * fro... jsapiticket" />
               </folding>
             </state>
           </provider>
@@ -114,8 +103,8 @@
       <file leaf-file-name="HuaweiTokenMapper.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/mapper/HuaweiTokenMapper.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="513">
-              <caret line="27" column="13" lean-forward="true" selection-start-line="17" selection-start-column="3" selection-end-line="27" selection-end-column="13" />
+            <state relative-caret-position="418">
+              <caret line="28" column="0" lean-forward="true" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
               <folding>
                 <marker date="1503064502917" expanded="true" signature="1278:1378" ph="insert into huaweitoken... " />
                 <marker date="1503064502917" expanded="true" signature="1483:1567" ph="update huawe... " />
@@ -125,7 +114,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AccessTokenServiceImpl.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="AccessTokenServiceImpl.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/service/impl/AccessTokenServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="209">
@@ -135,12 +124,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AccessTokenService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/service/AccessTokenService.java">
+      <file leaf-file-name="HuaweiTokenServiceImpl.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/service/impl/HuaweiTokenServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="323">
-              <caret line="17" column="1" lean-forward="false" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
-              <folding />
+              <caret line="62" column="13" lean-forward="true" selection-start-line="62" selection-start-column="13" selection-end-line="62" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -148,8 +139,8 @@
       <file leaf-file-name="AccessTokenMapper.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/mapper/AccessTokenMapper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="266">
-              <caret line="16" column="0" lean-forward="true" selection-start-line="10" selection-start-column="3" selection-end-line="16" selection-end-column="0" />
+            <state relative-caret-position="133">
+              <caret line="9" column="17" lean-forward="false" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -220,8 +211,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/terabits/manager/impl/RedisTemplateTestImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/terabits/service/impl/CredentialServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/resources/log4j.properties" />
         <option value="$PROJECT_DIR$/src/main/java/com/terabits/controller/xhr/WeixinNotify.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/terabits/manager/DeleteTerminalManager.java" />
@@ -263,14 +252,16 @@
         <option value="$PROJECT_DIR$/src/main/java/com/terabits/service/HuaweiToken.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/terabits/service/HuaweiTokenService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/terabits/service/impl/HuaweiTokenServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/terabits/mapper/AccessTokenMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/terabits/mapper/AccessTokenMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/terabits/service/AccessTokenService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/terabits/controller/xhr/WeixinJsConfig.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/terabits/service/impl/AccessTokenServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/terabits/mapper/AccessTokenMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/terabits/mapper/JsapiTicketMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/terabits/mapper/JsapiTicketMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/terabits/service/impl/JsapiTicketServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/terabits/service/JsapiTicketService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/terabits/controller/xhr/WeixinJsConfig.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/terabits/controller/TestController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/terabits/service/impl/AccessTokenServiceImpl.java" />
       </list>
     </option>
   </component>
@@ -1558,7 +1549,7 @@
       <workItem from="1502856185885" duration="69000" />
       <workItem from="1502879810767" duration="594000" />
       <workItem from="1502935656543" duration="30514000" />
-      <workItem from="1503047604805" duration="8950000" />
+      <workItem from="1503047604805" duration="10262000" />
     </task>
     <servers />
   </component>
@@ -1595,7 +1586,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="376123000" />
+    <option name="totallyTimeSpent" value="377435000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="0" />
@@ -1688,23 +1679,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/mapper/TerminalMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="34" column="84" lean-forward="false" selection-start-line="34" selection-start-column="84" selection-end-line="34" selection-end-column="84" />
-          <folding>
-            <marker date="1501688001047" expanded="true" signature="1890:2103" ph="insert into terminal... " />
-            <marker date="1501688001047" expanded="true" signature="3027:3078" ph="delete from " />
-            <marker date="1501688001047" expanded="true" signature="3195:3248" ph="select * fro... terminal" />
-            <marker date="1501688001047" expanded="true" signature="3374:3440" ph="select imei,... terminal" />
-            <marker date="1501688001047" expanded="true" signature="3524:3546" ph="select * fro... terminal" />
-            <marker date="1501688001047" expanded="true" signature="3631:3693" ph="select imei,... terminal" />
-            <marker date="1501688001047" expanded="true" signature="3813:3873" ph="select locat... terminal" />
-            <marker date="1501688001047" expanded="true" signature="3999:4052" ph="select displ... terminal" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/mapper/UserMapper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="651">
@@ -2030,26 +2004,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/mapper/JsapiTicketMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="9" column="17" lean-forward="false" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/utils/huawei/PlatformGlobal.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="249">
           <caret line="38" column="25" lean-forward="false" selection-start-line="38" selection-start-column="25" selection-end-line="38" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/mapper/HuaweiTokenMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -2062,48 +2020,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/mapper/AccessTokenMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="532">
-          <caret line="28" column="13" lean-forward="true" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="13" />
-          <folding>
-            <marker date="1503067150865" expanded="true" signature="1279:1379" ph="insert into accesstoken... " />
-            <marker date="1503067150865" expanded="true" signature="1511:1597" ph="update acces... " />
-            <marker date="1503067150865" expanded="true" signature="1517:1530" ph="select * fro... accesstoken" />
-            <marker date="1503067150865" expanded="true" signature="1678:1703" ph="select * fro... accesstoken" />
-            <marker date="1503067150865" expanded="true" signature="1678:1716" ph="select * fro... accesstoken" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/mapper/AccessTokenMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="16" column="0" lean-forward="true" selection-start-line="10" selection-start-column="3" selection-end-line="16" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/service/AccessTokenService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
           <caret line="17" column="1" lean-forward="false" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/service/impl/JsapiTicketServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="32" column="58" lean-forward="false" selection-start-line="32" selection-start-column="4" selection-end-line="32" selection-end-column="58" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/service/JsapiTicketService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="13" column="59" lean-forward="false" selection-start-line="13" selection-start-column="59" selection-end-line="13" selection-end-column="59" />
           <folding />
         </state>
       </provider>
@@ -2116,10 +2036,40 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/mapper/HuaweiTokenMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="12" column="9" lean-forward="true" selection-start-line="12" selection-start-column="9" selection-end-line="12" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/mapper/AccessTokenMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="9" column="17" lean-forward="false" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/mapper/AccessTokenMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="22" column="29" lean-forward="false" selection-start-line="22" selection-start-column="29" selection-end-line="22" selection-end-column="29" />
+          <folding>
+            <marker date="1503067968829" expanded="true" signature="1279:1379" ph="insert into accesstoken... " />
+            <marker date="1503067968829" expanded="true" signature="1484:1570" ph="update acces... " />
+            <marker date="1503067968829" expanded="true" signature="1490:1503" ph="select * fro... accesstoken" />
+            <marker date="1503067968829" expanded="true" signature="1651:1676" ph="select * fro... accesstoken" />
+            <marker date="1503067968829" expanded="true" signature="1651:1689" ph="select * fro... accesstoken" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/mapper/HuaweiTokenMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="513">
-          <caret line="27" column="13" lean-forward="true" selection-start-line="17" selection-start-column="3" selection-end-line="27" selection-end-column="13" />
+        <state relative-caret-position="418">
+          <caret line="28" column="0" lean-forward="true" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
           <folding>
             <marker date="1503064502917" expanded="true" signature="1278:1378" ph="insert into huaweitoken... " />
             <marker date="1503064502917" expanded="true" signature="1483:1567" ph="update huawe... " />
@@ -2128,9 +2078,54 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/mapper/JsapiTicketMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="22" column="22" lean-forward="false" selection-start-line="22" selection-start-column="22" selection-end-line="22" selection-end-column="22" />
+          <folding>
+            <marker date="1503068240691" expanded="true" signature="1275:1375" ph="insert into jsapiticket... " />
+            <marker date="1503068240691" expanded="true" signature="1480:1566" ph="update jsapi... " />
+            <marker date="1503068240691" expanded="true" signature="1486:1499" ph="select * fro... jsapiticket" />
+            <marker date="1503068240691" expanded="true" signature="1641:1679" ph="select * fro... jsapiticket" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/mapper/JsapiTicketMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/service/JsapiTicketService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="15" column="24" lean-forward="false" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/service/impl/JsapiTicketServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="48" column="25" lean-forward="true" selection-start-line="48" selection-start-column="25" selection-end-line="48" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/service/impl/AccessTokenServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="53" column="24" lean-forward="false" selection-start-line="53" selection-start-column="24" selection-end-line="53" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/service/impl/HuaweiTokenServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="608">
+        <state relative-caret-position="323">
           <caret line="62" column="13" lean-forward="true" selection-start-line="62" selection-start-column="13" selection-end-line="62" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -2140,16 +2135,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/controller/TestController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="41" column="39" lean-forward="false" selection-start-line="41" selection-start-column="39" selection-end-line="41" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/terabits/service/impl/AccessTokenServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="53" column="24" lean-forward="false" selection-start-line="53" selection-start-column="24" selection-end-line="53" selection-end-column="24" />
+        <state relative-caret-position="361">
+          <caret line="47" column="39" lean-forward="false" selection-start-line="47" selection-start-column="39" selection-end-line="47" selection-end-column="39" />
           <folding />
         </state>
       </provider>

@@ -21,19 +21,18 @@ public class JsapiTicketServiceImpl implements JsapiTicketService {
     private JsapiTicketMapper jsapiTicketMapper;
     @Autowired
     private AccessTokenService accessTokenService;
-    public int insertJsapi(JsapiTicketPO jsapiTicketPO){
-        int result = 0;
-        try {
-            result = jsapiTicketMapper.insertJsapi(jsapiTicketPO);
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        return result;
+
+    public int insertJsapi(JsapiTicketPO jsapiTicketPO)throws Exception{
+        return jsapiTicketMapper.insertJsapi(jsapiTicketPO);
+    }
+
+    public int updateJsapi(JsapiTicketPO jsapiTicketPO)throws Exception{
+        return jsapiTicketMapper.updateJsapi(jsapiTicketPO);
     }
     public JsapiTicketPO getLatestJsapi() throws Exception{
         JsapiTicketPO jsapiTicketPO = null;
         try {
-            jsapiTicketPO = jsapiTicketMapper.selectLastJsapi();
+            jsapiTicketPO = jsapiTicketMapper.selectJsapi();
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -47,7 +46,7 @@ public class JsapiTicketServiceImpl implements JsapiTicketService {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-        if(between < 7000){
+        if(between < 10){
             return jsapiTicketPO;
         }
         else {
@@ -55,7 +54,7 @@ public class JsapiTicketServiceImpl implements JsapiTicketService {
             String jsapiTicket = WeixinUtil.getJsapiTicket(accessTokenPO1.getAccessToken());
             JsapiTicketPO jsapiTicketPO1 = new JsapiTicketPO();
             jsapiTicketPO1.setJsapiTicket(jsapiTicket);
-            insertJsapi(jsapiTicketPO1);
+            jsapiTicketMapper.updateJsapi(jsapiTicketPO1);
             return jsapiTicketPO1;
         }
     }

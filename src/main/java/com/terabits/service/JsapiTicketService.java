@@ -7,9 +7,12 @@ import com.terabits.meta.po.JsapiTicketPO;
  */
 public interface JsapiTicketService {
 
-    //插入新获取到的jsapi_ticket
-    public int insertJsapi(JsapiTicketPO jsapiTicketPO);
+    //插入jsapiTicket
+    public int insertJsapi(JsapiTicketPO jsapiTicketPO)throws Exception;
 
-    //获取最新可用的jsapi_ticket
+    //更新jsapiTicket
+    public int updateJsapi(JsapiTicketPO jsapiTicketPO)throws Exception;
+
+    //获取最新有效的jsapiTicket
     public JsapiTicketPO getLatestJsapi() throws Exception;
 }

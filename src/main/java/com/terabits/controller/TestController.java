@@ -2,9 +2,11 @@ package com.terabits.controller;
 
 import com.terabits.meta.po.AccessTokenPO;
 import com.terabits.meta.po.HuaweiTokenPO;
+import com.terabits.meta.po.JsapiTicketPO;
 import com.terabits.meta.po.UserPO;
 import com.terabits.service.AccessTokenService;
 import com.terabits.service.HuaweiTokenService;
+import com.terabits.service.JsapiTicketService;
 import com.terabits.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,6 +26,8 @@ public class TestController {
     private HuaweiTokenService huaweiTokenService;
     @Autowired
     private AccessTokenService accessTokenService;
+    @Autowired
+    private JsapiTicketService jsapiTicketService;
     private static Logger logger = LoggerFactory.getLogger(TestController.class);
     @RequestMapping(value="/testuser",method= RequestMethod.GET)
     public String testuser(){
@@ -32,14 +36,16 @@ public class TestController {
         HuaweiTokenPO huaweiTokenPO = new HuaweiTokenPO();
         //huaweiTokenPO.setHuaweiToken("1rwerwe3");
         AccessTokenPO accessTokenPO = new AccessTokenPO();
+        JsapiTicketPO jsapiTicketPO = new JsapiTicketPO();
+
         //accessTokenPO.setAccessToken("2343423");
        try {
-           accessTokenPO = accessTokenService.getLatestToken();
+           jsapiTicketPO = jsapiTicketService.getLatestJsapi();
        }catch (Exception e){
            e.printStackTrace();
            logger.error("error!");
        }
-       System.out.println(accessTokenPO);
+       System.out.println(jsapiTicketPO);
        return "main/login.jsp";
     }
 
