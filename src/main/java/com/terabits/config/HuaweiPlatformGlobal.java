@@ -13,7 +13,7 @@ public class HuaweiPlatformGlobal {
 
     public final static String APP_ID = "2xLAn4welcYSPopKa4W1dYPvHRYa";
 
-    public final static String APP_PASSWORD = "MZytkVyl7XKuWuYeRrwN29dyenYa";
+    public final static String APP_PASSWORD = "XHAtU7LL9JUA94EfkCoXSpBrNLYa";
 
     public final static String APP_URL = "https://112.17.33.73:8743";
 

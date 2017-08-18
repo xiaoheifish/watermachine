@@ -1,9 +1,8 @@
 package com.terabits.service;
 
 import com.terabits.meta.bo.TimeSpanBO;
-import com.terabits.meta.po.OrderPO;
+import com.terabits.meta.po.RechargeOrderPO;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -11,7 +10,7 @@ import java.util.List;
  */
 public interface OrderService {
     //插入订单数据
-    public int insertOrder(OrderPO orderPO);
+    public int insertOrder(RechargeOrderPO orderPO);
 
     //查询今日总订单数
     public int selectCountByTime(TimeSpanBO timeSpanBO);
@@ -20,8 +19,8 @@ public interface OrderService {
     public int updatePaymentStatus(String tradeNo, String orderId);
 
     //查询全部充值数据
-    public List<OrderPO> selectAllPayment(TimeSpanBO timeSpanBO);
+    public List<RechargeOrderPO> selectAllPayment(TimeSpanBO timeSpanBO);
 
     //根据orderId查询Order
-    public OrderPO selectPaymentByOrderId(String orderId);
+    public RechargeOrderPO selectPaymentByOrderId(String orderId);
 }

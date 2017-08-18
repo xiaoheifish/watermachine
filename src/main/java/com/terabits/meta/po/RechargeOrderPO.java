@@ -5,7 +5,7 @@ package com.terabits.meta.po;
  * 每笔交易都需要存入数据库，交易人的openid，该笔交易在微信端的订单号，在平台的订单号，交易金额。
  * 注意统一下单时，会先将不含微信订单号的订单插入数据库，在前端支付成功通知后端时，根据orderId更新该笔交易，填上空缺的tradeno字段。
  */
-public class OrderPO {
+public class RechargeOrderPO {
     private int id;
     //设备在平台端的编号
     private String displayId;
@@ -87,7 +87,7 @@ public class OrderPO {
 
     @Override
     public String toString() {
-        return "OrderPO[" +
+        return "RechargeOrderPO[" +
                 "id=" + id +
                 ", displayId='" + displayId + '\'' +
                 ", orderId='" + orderId + '\'' +

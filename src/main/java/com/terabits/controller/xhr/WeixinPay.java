@@ -4,8 +4,7 @@ import com.github.wxpay.sdk.WXPay;
 import com.terabits.config.MyConfig;
 import com.terabits.config.WeixinGlobal;
 import com.terabits.meta.bo.JsapiConfigBO;
-import com.terabits.meta.bo.TimeSpanBO;
-import com.terabits.meta.po.OrderPO;
+import com.terabits.meta.po.RechargeOrderPO;
 import com.terabits.service.OrderService;
 import com.terabits.service.UnifiedOrderService;
 import com.terabits.utils.*;
@@ -14,7 +13,6 @@ import net.sf.json.JSONObject;
 import org.jdom.JDOMException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -23,11 +21,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.SortedMap;
 
 /**
  * Created by Administrator on 2017/6/28.
@@ -81,7 +76,7 @@ public class WeixinPay {
         JSONObject jsonConfig = JSONObject.fromObject(config);
 
         //将该条交易记录插入数据库
-        OrderPO orderPO = new OrderPO();
+        RechargeOrderPO orderPO = new RechargeOrderPO();
         orderPO.setPayment(totalmoney);
         orderPO.setOrderId(orderId);
         orderPO.setOpenId(openId);

@@ -14,13 +14,14 @@ public class NotifyDataServiceImpl implements NotifyDataService
 {
     @Autowired(required = false)
     private NotifyDataMapper notifyDataMapper;
-    public int insertNotifyData(NotifyDataPO notifyDataPO){
+    public int insertNotifyData(NotifyDataPO notifyDataPO)throws Exception{
         int result = 0;
-        try {
+       /* try {
             result = notifyDataMapper.insertNotifyData(notifyDataPO);
         }catch (Exception e){
             e.printStackTrace();
-        }
+        }*/
+        result = notifyDataMapper.insertNotifyData(notifyDataPO);
         return result;
     }
 }

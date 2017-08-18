@@ -1,8 +1,10 @@
 package com.terabits.service;
 
-import com.terabits.service.CredentialService;
-import com.terabits.mapper.NotifyDataMapper;
-import com.terabits.meta.po.NotifyDataPO;
+import com.terabits.config.Constants;
+
+import com.terabits.meta.po.UserPO;
+import com.terabits.service.BaseTest;
+import com.terabits.service.UserService;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.annotation.Rollback;
@@ -11,11 +13,10 @@ import org.springframework.transaction.annotation.Transactional;
 /**
  * Created by Administrator on 2017/6/29.
  */
-public class TokenTest extends BaseTest{
+public class TokenTest extends BaseTest {
     @Autowired(required = false)
-    private CredentialService CredentialService;
-    @Autowired(required = false)
-    private NotifyDataMapper notifyDataMapper;
+    private UserService userService;
+
     //private TerminalManager terminalManager;
     @Test   //标明是测试方法
     @Transactional(value="transactionManager")//标明此方法需使用事务
@@ -26,8 +27,8 @@ public class TokenTest extends BaseTest{
         terminalModel.setTime("1234325");
         terminalModel.setHour(8);
         //terminalManager.createNewTerminal(terminalModel);
-        //CredentialService.createTerminal(terminalModel);
-        String re = CredentialService.getTerminalTime("000001");
+        //redisTemplateTest.createTerminal(terminalModel);
+        String re = redisTemplateTest.getTerminalTime("000001");
         SimpleDateFormat dfs = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         long between = 0;
         try {
@@ -38,11 +39,11 @@ public class TokenTest extends BaseTest{
             ex.printStackTrace();
         }
         String formatre = TimeUtils.secToTime(between);
-        String lefttime = CredentialService.getLeftTime("000001");*/
-       /* String re = CredentialService.getTerminalTime("000001");
+        String lefttime = redisTemplateTest.getLeftTime("000001");*/
+       /* String re = redisTemplateTest.getTerminalTime("000001");
         System.out.println("lefttime:::::"+re);*/
-       NotifyDataPO notifyDataPO = new NotifyDataPO();
-       notifyDataPO.setContent("97 92 95");
-       notifyDataMapper.insertNotifyData(notifyDataPO);
+        String openid = "1234567";
+        double remain = 5.0;
+        userService.updateRemain(remain, openid);
     }
 }

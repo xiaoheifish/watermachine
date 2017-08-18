@@ -1,6 +1,6 @@
 package com.terabits.mapper;
 
-import com.terabits.meta.po.User;
+import com.terabits.meta.po.UserPO;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -10,6 +10,29 @@ import java.util.List;
  */
 public interface UserMapper
 {
-    public User getUser(@Param("id") int id);
-    public int insertUser(List<User> userList);
+    /**
+     * 新增用户数据
+     * @param userPO
+     * @return
+     * @throws Exception
+     */
+    public int insertUser(UserPO userPO) throws Exception;
+
+    /**
+     * 根据openId更新余额
+     * @param remain
+     * @param openId
+     * @return
+     * @throws Exception
+     */
+    public int updateRemain(@Param("remain")Double remain, @Param("openId")String openId) throws Exception;
+
+    /**
+     * 根据openId更新手机号
+     * @param phone
+     * @param openId
+     * @return
+     * @throws Exception
+     */
+    public int updatePhone(@Param("phone")String phone, @Param("openId")String openId) throws Exception;
 }

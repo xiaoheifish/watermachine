@@ -6,7 +6,8 @@
     <resultMap id="NotifyMap" type="com.terabits.meta.po.NotifyDataPO">
         <id property="id" column="id" javaType="java.lang.Integer"></id>
         <result property="content" column="content" javaType="java.lang.String"></result>
-        <result property="gmtCreate" column="gmtCreate" javaType="java.lang.String"></result>
+        <result property="gmtCreate" column="gmtcreate" javaType="java.lang.String"></result>
+        <result property="gmtModified" column="gmtmodified" javaType="java.lang.String"></result>
     </resultMap>
     <!-- 在各种标签中的id属性必须和接口中的方法名相同 ， id属性值必须是唯一的，不能够重复使用。parameterType属性指明查询时使用的参数类型，resultType属性指明查询返回的结果集类型-->
     <!-- useGeneratedKeys：（ 仅 对 insert 有 用 ） 这 会 告 诉 MyBatis 使 用 JDBC 的getGeneratedKeys
@@ -16,9 +17,8 @@
 
 
     <insert id="insertNotifyData" useGeneratedKeys="true" keyProperty="id">
-        insert into notifydata (content, gmtCreate) values (#{content}, now())
+        insert into notifydata (content, gmtcreate, gmtmodified) values (#{content}, now(), now())
     </insert>
-
 
 
 </mapper>

@@ -1,8 +1,8 @@
 package com.terabits.service.impl;
 
-import com.terabits.mapper.OrderMapper;
+import com.terabits.mapper.RechargeOrderMapper;
 import com.terabits.meta.bo.TimeSpanBO;
-import com.terabits.meta.po.OrderPO;
+import com.terabits.meta.po.RechargeOrderPO;
 import com.terabits.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,9 +18,9 @@ import java.util.List;
 public class OrderServiceImpl implements OrderService {
 
     @Autowired(required = false)
-    private OrderMapper orderMapper;
+    private RechargeOrderMapper orderMapper;
 
-    public int insertOrder(OrderPO orderPO) {
+    public int insertOrder(RechargeOrderPO orderPO) {
         int result = 0;
         try {
             result = orderMapper.insertOrder(orderPO);
@@ -50,8 +50,8 @@ public class OrderServiceImpl implements OrderService {
         return result;
     }
 
-    public List<OrderPO> selectAllPayment(TimeSpanBO timeSpanBO) {
-        List<OrderPO> orderPOS = new ArrayList<OrderPO>();
+    public List<RechargeOrderPO> selectAllPayment(TimeSpanBO timeSpanBO) {
+        List<RechargeOrderPO> orderPOS = new ArrayList<RechargeOrderPO>();
         try {
             orderPOS = orderMapper.selectAllPayment(timeSpanBO);
         } catch (Exception e) {
@@ -60,8 +60,8 @@ public class OrderServiceImpl implements OrderService {
         return orderPOS;
     }
 
-    public OrderPO selectPaymentByOrderId(String orderId){
-        OrderPO orderPO = new OrderPO();
+    public RechargeOrderPO selectPaymentByOrderId(String orderId){
+        RechargeOrderPO orderPO = new RechargeOrderPO();
         try {
             orderPO = orderMapper.selectPaymentByOrderId(orderId);
         }catch (Exception e){

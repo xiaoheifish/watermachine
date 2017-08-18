@@ -8,6 +8,7 @@ public class NotifyDataPO {
     private int id;
     private String content;
     private String gmtCreate;
+    private String gmtModified;
 
     public int getId() {
         return id;
@@ -33,12 +34,21 @@ public class NotifyDataPO {
         this.gmtCreate = gmtCreate;
     }
 
+    public String getGmtModified() {
+        return gmtModified;
+    }
+
+    public void setGmtModified(String gmtModified) {
+        this.gmtModified = gmtModified;
+    }
+
     @Override
     public String toString() {
         return "NotifyDataPO[" +
                 "id=" + id +
                 ", content='" + content + '\'' +
                 ", gmtCreate='" + gmtCreate + '\'' +
+                ", gmtModified='" + gmtModified + '\'' +
                 ']';
     }
 }
