@@ -1,37 +1,91 @@
-﻿var money;
-//1、2、3、5元按钮选择改变背景
+﻿var openid,language;
+function load(){
+	var openid = getCookie("openid");
+	var language = getCookie("language");
+	
+	if(language != "zh_CN"){
+		$("#recharge").val("Confirm");
+	}
+}
+
+/* 读取cookie */
+function getCookie(cname)
+{
+	var name = cname + "=";
+	var ca = parent.document.cookie.split(';');
+	for(var i=0; i<ca.length; i++) {
+		var c = ca[i].trim();
+		if (c.indexOf(name)==0) return c.substring(name.length,c.length);
+	}
+	return null;
+}
+
+
+var money,water;
+//容量选择按钮选中效果
 function money1(){
-    money = 1;
-    document.getElementById('money1image').innerHTML = ''
-    document.getElementById("money1image").innerHTML='<img src="/watermachine/static/pic/aselect.png" height="50%"/>';
-    document.getElementById('money2image').innerHTML = ''
-    document.getElementById("money2image").innerHTML='<img src="/watermachine/static/pic/bselect.png" height="50%"/>';
+	money = 0.1;
+	water = 0.2;
+	$("#money1image").attr("src", "/watermachine/static/pic/aselect.png");
+	$("#money2image").attr("src", "/watermachine/static/pic/bselect.png");
+	$("#money3image").attr("src", "/watermachine/static/pic/bselect.png");
+	$("#money4image").attr("src", "/watermachine/static/pic/bselect.png");
+	
 }
 
 function money2(){
-    money = 2;
-    document.getElementById('money1image').innerHTML = ''
-    document.getElementById("money1image").innerHTML='<img src="/watermachine/static/pic/bselect.png" height="50%"/>';
-    document.getElementById('money2image').innerHTML = ''
-    document.getElementById("money2image").innerHTML='<img src="/watermachine/static/pic/aselect.png" height="50%"/>';
+	money = 0.2;
+	water = 0.5;
+	$("#money1image").attr("src", "/watermachine/static/pic/bselect.png");
+	$("#money2image").attr("src", "/watermachine/static/pic/aselect.png");
+	$("#money3image").attr("src", "/watermachine/static/pic/bselect.png");
+	$("#money4image").attr("src", "/watermachine/static/pic/bselect.png");
 }
 
+function money3(){
+	money = 0.3;
+	water = 1;
+	$("#money1image").attr("src", "/watermachine/static/pic/bselect.png");
+	$("#money2image").attr("src", "/watermachine/static/pic/bselect.png");
+	$("#money3image").attr("src", "/watermachine/static/pic/aselect.png");
+	$("#money4image").attr("src", "/watermachine/static/pic/bselect.png");
+}
 
+function money4(){
+	money = 0.5;
+	water = 2;
+	$("#money1image").attr("src", "/watermachine/static/pic/bselect.png");
+	$("#money2image").attr("src", "/watermachine/static/pic/bselect.png");
+	$("#money3image").attr("src", "/watermachine/static/pic/bselect.png");
+	$("#money4image").attr("src", "/watermachine/static/pic/aselect.png");
+}
 
-//跳转充值确认页
+//跳转使用页
 function recharge() {
-    if(money == null){
-        alert("请选择充值金额！");//未选择金额不跳转
-    }
-    else{
-
-        var finalmoney = money;
-        var id = $("#id").html();
-        var primiurl = "http://www.terabits-wx.cn/watermachine/callback/"+id+"_"+finalmoney;
-        var encodeurl = encodeURIComponent(
-            primiurl
-        );
-        var url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx34690a5342af3858&redirect_uri="+encodeurl+"&response_type=code&scope=snsapi_base&state=1#wechat_redirect";
-        window.location.href=url;
-    }
+	var id = document.getElementById("id").innerText;
+	if(money == null){
+		alert("请选择充值金额！");
+	}
+	else{
+		//发起扣款查询及跳转
+		$.ajax({
+			type:'GET',
+			url:'/watermachine/information',
+			data:{
+				"openid":openid,
+				"cost":money,
+				"water":water
+			},
+			dataType:'json',
+			success:function(data){
+					 if (data["errno"] != 0){
+			            	alert("无相关数据！");
+			            }
+					 else{
+						 //跳转到using页
+						//window.location.href = "http://localhost:8080/info/"+id;
+					 }
+			}
+		});
+	}
 }
