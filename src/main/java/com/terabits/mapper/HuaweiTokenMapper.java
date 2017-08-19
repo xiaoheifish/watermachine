@@ -7,16 +7,28 @@ import com.terabits.meta.po.HuaweiTokenPO;
  */
 public interface HuaweiTokenMapper {
 
-    //huaweiToken///////////////////////////////////////////////////////////
-    /**
-     * 插入华为Token
-     * */
+    /**插入华为Token
+     *
+     * @param huaweiTokenPO
+     * @return
+     * @throws Exception
+     */
+
     public int insertToken(HuaweiTokenPO huaweiTokenPO) throws Exception;
 
-    /**更新华为Token*/
+    /**更新华为Token
+     *
+     * @param huaweiToken
+     * @return
+     * @throws Exception
+     */
     public int updateToken(HuaweiTokenPO huaweiToken) throws Exception;
 
-    /**取出华为Token*/
+    /**取出华为Token
+     *
+     * @return
+     * @throws Exception
+     */
     public HuaweiTokenPO selectToken() throws Exception;
 
 }

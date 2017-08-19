@@ -5,7 +5,6 @@
     <!-- 自定义返回结果集 -->
     <resultMap id="orderMap" type="com.terabits.meta.po.RechargeOrderPO">
         <id property="id" column="id" javaType="java.lang.Integer"></id>
-        <result property="displayId" column="displayid" javaType="java.lang.String"></result>
         <result property="orderId" column="orderid" javaType="java.lang.String"></result>
         <result property="tradeNo" column="tradeno" javaType="java.lang.String"></result>
         <result property="openId" column="openid" javaType="java.lang.String"></result>
@@ -21,12 +20,12 @@
     <!--#{}中的内容，为占位符，当参数为某个JavaBean时，表示放置该Bean对象的属性值  -->
 
     <insert id="insertOrder" parameterType="com.terabits.meta.po.RechargeOrderPO">
-        insert into socketorder (displayid, orderid, tradeno, openid, payment, gmtcreate, gmtmodified)
-        values (#{displayId}, #{orderId}, #{tradeNo}, #{openId}, #{payment}, now(), now())
+        insert into rechargerecord (orderid, tradeno, openid, payment, gmtcreate, gmtmodified)
+        values (#{orderId}, #{tradeNo}, #{openId}, #{payment}, now(), now())
     </insert>
 
     <select id="selectCountByTime" parameterType="com.terabits.meta.bo.TimeSpanBO" resultType="java.lang.Integer">
-        select count(*) from socketorder
+        select count(*) from rechargerecord
         <where>
             <if test="beginTime != null and beginTime != ''">
                 and gmtcreate >= #{beginTime}
@@ -38,7 +37,7 @@
     </select>
 
     <select id="selectAllPayment" parameterType="com.terabits.meta.bo.TimeSpanBO" resultMap="orderMap">
-        select * from socketorder
+        select * from rechargerecord
         <where>
             <if test="beginTime != null and beginTime != ''">
                 and gmtcreate >= #{beginTime}
@@ -50,11 +49,15 @@
     </select>
 
     <update id="updatePaymentStatus" parameterType="java.lang.String">
-        update socketorder set tradeno = #{tradeNo}, gmtmodified = now() where orderid = #{orderId}
+        update rechargerecord set tradeno = #{tradeNo}, gmtmodified = now() where orderid = #{orderId}
     </update>
 
     <select id="selectPaymentByOrderId" parameterType="String" resultMap="orderMap">
-        select * from socketorder where orderid = #{orderId}
+        select * from rechargerecord where orderid = #{orderId}
+    </select>
+
+    <select id="selectPaymentByOpenId" parameterType="String" resultMap="orderMap">
+        select * from rechargerecord where openid = #{openId}
     </select>
 
 </mapper>

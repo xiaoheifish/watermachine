@@ -32,7 +32,6 @@ public class TestController {
     @RequestMapping(value="/testuser",method= RequestMethod.GET)
     public String testuser(){
 
-
         HuaweiTokenPO huaweiTokenPO = new HuaweiTokenPO();
         //huaweiTokenPO.setHuaweiToken("1rwerwe3");
         AccessTokenPO accessTokenPO = new AccessTokenPO();

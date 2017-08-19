@@ -24,4 +24,9 @@ public interface UserService {
      * 根据openId更新手机号
      */
     public int updatePhone(String phone, String openId) throws Exception;
+
+    /**
+     * 根据openId查询某位用户的信息
+     */
+    public UserPO selectUser(String openId)throws Exception;
 }

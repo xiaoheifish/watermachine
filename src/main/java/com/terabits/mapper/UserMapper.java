@@ -35,4 +35,12 @@ public interface UserMapper
      * @throws Exception
      */
     public int updatePhone(@Param("phone")String phone, @Param("openId")String openId) throws Exception;
+
+    /**
+     * 根据openId查询某位用户的信息
+     * @param openId
+     * @return
+     * @throws Exception
+     */
+    public UserPO selectUser(@Param("openId")String openId)throws Exception;
 }

@@ -1,21 +1,21 @@
 package com.terabits.meta.po;
 
 /**
- * Created by Administrator on 2017/6/27.
- * 每笔交易都需要存入数据库，交易人的openid，该笔交易在微信端的订单号，在平台的订单号，交易金额。
- * 注意统一下单时，会先将不含微信订单号的订单插入数据库，在前端支付成功通知后端时，根据orderId更新该笔交易，填上空缺的tradeno字段。
- * 充值成功后，要更新用户的余额
+ * Created by Administrator on 2017/8/19.
+ * 用户每次接水，会产生一笔消费，从它的余额里减去当次消费的金额
  */
-public class RechargeOrderPO {
+public class ConsumeOrderPO {
     private int id;
-    //交易在平台端的订单号
-    private String orderId;
-    //交易在微信端的订单号
-    private String tradeNo;
-    //发生该笔交易的用户
+    //该笔消费订单编号
+    private String orderNo;
+    //产生该笔消费的用户
     private String openId;
-    //交易金额
+    //设备编号
+    private String displayId;
+    //消费金额
     private double payment;
+    //该笔消费的水量
+    private double flow;
     private String gmtCreate;
     private String gmtModified;
 
@@ -27,20 +27,12 @@ public class RechargeOrderPO {
         this.id = id;
     }
 
-    public String getOrderId() {
-        return orderId;
+    public String getOrderNo() {
+        return orderNo;
     }
 
-    public void setOrderId(String orderId) {
-        this.orderId = orderId;
-    }
-
-    public String getTradeNo() {
-        return tradeNo;
-    }
-
-    public void setTradeNo(String tradeNo) {
-        this.tradeNo = tradeNo;
+    public void setOrderNo(String orderNo) {
+        this.orderNo = orderNo;
     }
 
     public String getOpenId() {
@@ -51,12 +43,28 @@ public class RechargeOrderPO {
         this.openId = openId;
     }
 
+    public String getDisplayId() {
+        return displayId;
+    }
+
+    public void setDisplayId(String displayId) {
+        this.displayId = displayId;
+    }
+
     public double getPayment() {
         return payment;
     }
 
     public void setPayment(double payment) {
         this.payment = payment;
+    }
+
+    public double getFlow() {
+        return flow;
+    }
+
+    public void setFlow(double flow) {
+        this.flow = flow;
     }
 
     public String getGmtCreate() {
@@ -77,12 +85,13 @@ public class RechargeOrderPO {
 
     @Override
     public String toString() {
-        return "RechargeOrderPO[" +
+        return "ConsumeOrderPO[" +
                 "id=" + id +
-                ", orderId='" + orderId + '\'' +
-                ", tradeNo='" + tradeNo + '\'' +
+                ", orderNo='" + orderNo + '\'' +
                 ", openId='" + openId + '\'' +
+                ", displayId='" + displayId + '\'' +
                 ", payment=" + payment +
+                ", flow=" + flow +
                 ", gmtCreate='" + gmtCreate + '\'' +
                 ", gmtModified='" + gmtModified + '\'' +
                 ']';

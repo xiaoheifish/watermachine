@@ -119,7 +119,7 @@ public class WeixinUtil {
         return accessToken;
     }
 
-    public static String getOpenid(String code, String appId, String appSecret){
+    public static JSONObject getOpenid(String code, String appId, String appSecret){
         String o_auth_openid_url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=APPID&secret=SECRET&code=CODE&grant_type=authorization_code";
         String requestUrl = o_auth_openid_url.replace("APPID", appId).replace("SECRET", appSecret).replace("CODE", code);
         String data = httpRequest(requestUrl, "GET", null);
@@ -128,15 +128,9 @@ public class WeixinUtil {
         //oAuthInfo是作者自己把那几个属性参数写在一个类里面了。
         // 如果请求成功
         if (null != jsonObject) {
-            try {
-               openId = jsonObject.getString("openid");
-            } catch (JSONException e) {
-                // 获取token失败
-                log.error("网页授权获取openId失败 errcode:{} errmsg:{}", jsonObject
-                        .getInt("errcode"), jsonObject.getString("errmsg"));
-            }
+            return jsonObject;
         }
-        return openId;
+        return null;
     }
 
     private static String urlEncodeUTF8(String source) {
@@ -186,4 +180,12 @@ public class WeixinUtil {
         log.error(data);
     }*/
 
+    //获取用户信息
+    public static JSONObject getUserInfo(String accesstoken, String openid){
+        String get_usrinfo_url = "https://api.weixin.qq.com/sns/userinfo?access_token=ACCESS_TOKEN&openid=OPENID&lang=zh_CN";
+        String requestUrl = get_usrinfo_url.replace("ACCESS_TOKEN",accesstoken).replace("OPENID", openid);
+        String data = httpRequest(requestUrl,"GET", null);
+        JSONObject jsonObject = JSONObject.fromObject(data);
+        return jsonObject;
+    }
 }

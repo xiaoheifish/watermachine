@@ -1,10 +1,12 @@
 package com.terabits.controller;
 
+import com.terabits.config.WeixinGlobal;
 import com.terabits.service.CredentialService;
 
 import com.terabits.meta.po.TerminalPO;
 import com.terabits.service.TerminalService;
 import com.terabits.utils.SmsDemo;
+import com.terabits.utils.WeixinUtil;
 import net.sf.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -75,14 +77,16 @@ public class MainController
     }
 
     @RequestMapping(value="/mainpage",method=RequestMethod.GET)
-    public String main(){
+    public String mainpage(HttpServletRequest request){
 
-        String id = "123";
-        String symbol = "12233243faf";
-        logger.debug("Processing trade with id: {} and symbol : {} ", id, symbol);
+        String code = request.getParameter("code");
+        JSONObject jsonObject = WeixinUtil.getOpenid(code, WeixinGlobal.APP_ID, WeixinGlobal.APP_SECRET);
+        String openId = jsonObject.getString("openid");
+        String accesstoken = jsonObject.getString("access_token");
+        JSONObject jsonObject1 = WeixinUtil.getUserInfo(accesstoken, openId);
+        System.out.println("watermachineusrinfo:::::::::"+jsonObject1);
         return "main/login.jsp";
     }
-
 
     @RequestMapping(value="/register",method=RequestMethod.GET)
     public String register(HttpServletRequest request){

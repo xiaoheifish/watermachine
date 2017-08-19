@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class TestNotify{
 /*
     @Autowired
-    private OrderService orderService;
+    private RechargeOrderService orderService;
     @Autowired
     private TerminalManager terminalManager;
     @Autowired

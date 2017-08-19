@@ -33,4 +33,10 @@
         update user set phone = #{phone}, gmtmodified = now() where openid = #{openId}
     </update>
 
+
+    <select id="selectUser" parameterType="String" resultMap="userMap">
+        select * from user where openid = #{openId}
+    </select>
+
+
 </mapper>

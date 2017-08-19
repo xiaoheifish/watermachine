@@ -37,4 +37,12 @@ public class UserServiceImpl implements UserService {
     public int updatePhone(String phone, String openId) throws Exception{
         return userMapper.updatePhone(phone, openId);
     }
+
+    /**
+     * 根据openId查询某位用户的信息
+     */
+
+    public UserPO selectUser(String openId)throws Exception{
+        return userMapper.selectUser(openId);
+    }
 }

@@ -5,7 +5,7 @@ import com.terabits.config.MyConfig;
 import com.terabits.config.WeixinGlobal;
 import com.terabits.meta.bo.JsapiConfigBO;
 import com.terabits.meta.po.RechargeOrderPO;
-import com.terabits.service.OrderService;
+import com.terabits.service.RechargeOrderService;
 import com.terabits.service.UnifiedOrderService;
 import com.terabits.utils.*;
 import net.sf.json.JSONException;
@@ -30,7 +30,7 @@ import java.util.Map;
 @Controller
 public class WeixinPay {
     @Autowired
-    private OrderService orderService;
+    private RechargeOrderService orderService;
     @Autowired
     private UnifiedOrderService unifiedOrderService;
 
@@ -81,7 +81,6 @@ public class WeixinPay {
         orderPO.setOrderId(orderId);
         orderPO.setOpenId(openId);
         String displayId = id;
-        orderPO.setDisplayId(displayId);
         orderService.insertOrder(orderPO);
         try {
             response.getWriter().print(jsonConfig);

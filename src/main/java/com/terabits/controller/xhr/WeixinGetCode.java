@@ -7,6 +7,7 @@ import com.terabits.utils.GenerateOrderId;
 import com.terabits.utils.TimeSpanUtil;
 import com.terabits.utils.WeixinUtil;
 import net.sf.json.JSONException;
+import net.sf.json.JSONObject;
 import org.jdom.JDOMException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -32,7 +33,8 @@ public class WeixinGetCode {
     public String wxPay(@PathVariable("info") String info, HttpSession session, HttpServletRequest request, ModelMap modelMap) throws IOException, ParserConfigurationException, JDOMException,JSONException {
         System.out.println(info);
         String code = request.getParameter("code");
-        String openId = WeixinUtil.getOpenid(code, WeixinGlobal.APP_ID, WeixinGlobal.APP_SECRET);
+        JSONObject jsonObject = WeixinUtil.getOpenid(code, WeixinGlobal.APP_ID, WeixinGlobal.APP_SECRET);
+        String openId = jsonObject.getString("openid");
         System.out.println("openid:" + openId);
         session.setAttribute("openid",openId);
         String[] information = info.split("_");

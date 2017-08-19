@@ -10,7 +10,7 @@ import com.terabits.meta.model.TerminalModel;
 import com.terabits.meta.po.OperationPO;
 import com.terabits.meta.po.RechargeOrderPO;
 import com.terabits.service.OperationService;
-import com.terabits.service.OrderService;
+import com.terabits.service.RechargeOrderService;
 import com.terabits.service.TerminalService;
 import com.terabits.utils.PayCommonUtil;
 import com.terabits.utils.XMLUtil;
@@ -39,7 +39,7 @@ import java.util.Map;
 public class WeixinNotify{
 
     @Autowired
-    private OrderService orderService;
+    private RechargeOrderService orderService;
     @Autowired
     private CredentialService CredentialService;
     @Autowired
@@ -83,36 +83,7 @@ public class WeixinNotify{
                     int result = orderService.updatePaymentStatus(tradeNo, orderId);
                     System.out.println("result:"+result);
                     if (result == 1){
-                        //将当前插座的displayId，当前时间，过期时间存入redis
-                        SimpleDateFormat dfs = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                        Date now = new Date();
-                        String time = dfs.format(now);
-                        //在redis中新增插座的id，插入时间及过期时间
-                        Date date = new Date();
-                        System.out.println("insertdate:::::"+date.getTime());
-                        long displayId = Long.parseLong(orderPO.getDisplayId());
-                        TerminalModel terminalModel = new TerminalModel();
-                        terminalModel.setTerminalId(orderPO.getDisplayId());
-                        terminalModel.setTime(time);
-                        terminalModel.setHour(premoney * 2);
-                        CredentialService.createTerminal(terminalModel);
-                        //更新终端状态
-                        TerminalUpdateBO terminalUpdateBO = new TerminalUpdateBO();
-                        terminalUpdateBO.setDisplayId(orderPO.getDisplayId());
-                        terminalUpdateBO.setState(Constants.ON_STATE);
-                        terminalService.updateTerminal(terminalUpdateBO);
-                        CommunicationBO communicationBO = terminalService.getTerminalDeviceId(orderPO.getDisplayId());
-                        //在数据库中添加此次操作记录
-                        OperationPO operationPO = new OperationPO();
-                        operationPO.setStatus(Constants.OFF_TO_ON);
-                        operationPO.setImei(communicationBO.getImei());
-                        operationService.insertOperation(operationPO);
-                        //下发开启插座命令给终端
-                        byte[] openbytes = new byte[3];
-                        openbytes[0] = Constants.SEND_COMMAND_START;
-                        openbytes[1] = Constants.POWER_ON_COMMAND;
-                        openbytes[2] = Constants.SEND_COMMAND_END;
-                        PlatformGlobal.command(openbytes, communicationBO.getDeviceId());
+
                         //返回ok结果给微信
                         return PayCommonUtil.setXML(WeixinGlobal.SUCCESS, "OK");
                     } else {
