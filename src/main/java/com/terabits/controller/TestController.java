@@ -48,4 +48,9 @@ public class TestController {
        return "main/login.jsp";
     }
 
+    @RequestMapping(value="/register",method=RequestMethod.GET)
+    public String mainpage(){
+        return "main/register.jsp";
+    }
+
 }

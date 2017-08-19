@@ -1,4 +1,4 @@
-package com.terabits.utils;
+package com.terabits.service.impl;
 
 /**
  * Created by Administrator on 2017/8/16.
@@ -12,7 +12,11 @@ import com.aliyuncs.dysmsapi.model.v20170525.SendSmsResponse;
 import com.aliyuncs.exceptions.ClientException;
 import com.aliyuncs.profile.DefaultProfile;
 import com.aliyuncs.profile.IClientProfile;
+import com.terabits.config.SmsConstant;
+import com.terabits.meta.model.MsgModel;
+import com.terabits.service.SmsService;
 import net.sf.json.JSONObject;
+import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -28,37 +32,34 @@ import java.util.Date;
  * 备注:Demo工程编码采用UTF-8
  * 国际短信发送请勿参照此DEMO
  */
-public class SmsDemo {
+@Service("smsService")
+public class SmsServiceImpl implements SmsService {
 
     //产品名称:云通信短信API产品,开发者无需替换
     static final String product = "Dysmsapi";
     //产品域名,开发者无需替换
     static final String domain = "dysmsapi.aliyuncs.com";
 
-    // TODO 此处需要替换成开发者自己的AK(在阿里云访问控制台寻找)
-    static final String accessKeyId = "LTAIa5WMDZ6lPBsM";
-    static final String accessKeySecret = "1DLsQojiQAXAAeqP3bbVOQsX8DonvO";
-
-    public static SendSmsResponse sendSms(String number, String code) throws ClientException {
+    private static SendSmsResponse sendSms(MsgModel msgModel) throws ClientException {
 
         //可自助调整超时时间
         System.setProperty("sun.net.client.defaultConnectTimeout", "10000");
         System.setProperty("sun.net.client.defaultReadTimeout", "10000");
 
         //初始化acsClient,暂不支持region化
-        IClientProfile profile = DefaultProfile.getProfile("cn-hangzhou", accessKeyId, accessKeySecret);
+        IClientProfile profile = DefaultProfile.getProfile("cn-hangzhou", SmsConstant.accessKeyId, SmsConstant.accessKeySecret);
         DefaultProfile.addEndpoint("cn-hangzhou", "cn-hangzhou", product, domain);
         IAcsClient acsClient = new DefaultAcsClient(profile);
         JSONObject jsonObject =  new JSONObject();
-        jsonObject.put("code",code);
+        jsonObject.put("code", msgModel.getCode());
         //组装请求对象-具体描述见控制台-文档部分内容
         SendSmsRequest request = new SendSmsRequest();
         //必填:待发送手机号
-        request.setPhoneNumbers(number);
+        request.setPhoneNumbers(msgModel.getNumber());
         //必填:短信签名-可在短信控制台中找到
-        request.setSignName("钛比科技");
+        request.setSignName(msgModel.getSignature());
         //必填:短信模板-可在短信控制台中找到
-        request.setTemplateCode("SMS_85900087");
+        request.setTemplateCode(msgModel.getTemplate());
         //可选:模板中的变量替换JSON串,如模板内容为"亲爱的${name},您的验证码为${code}"时,此处的值为
         request.setTemplateParam(jsonObject.toString());
 
@@ -82,7 +83,7 @@ public class SmsDemo {
         System.setProperty("sun.net.client.defaultReadTimeout", "10000");
 
         //初始化acsClient,暂不支持region化
-        IClientProfile profile = DefaultProfile.getProfile("cn-hangzhou", accessKeyId, accessKeySecret);
+        IClientProfile profile = DefaultProfile.getProfile("cn-hangzhou", SmsConstant.accessKeyId, SmsConstant.accessKeySecret);
         DefaultProfile.addEndpoint("cn-hangzhou", "cn-hangzhou", product, domain);
         IAcsClient acsClient = new DefaultAcsClient(profile);
 
@@ -106,22 +107,32 @@ public class SmsDemo {
         return querySendDetailsResponse;
     }
 
-    public static String sendMessage(String number) throws ClientException, InterruptedException {
+    public String sendMessage(String number, String language) throws ClientException, InterruptedException {
 
         int intCode = (int)((Math.random()*9+1)*100000);
         String code = String.valueOf(intCode);
+        MsgModel msgModel = new MsgModel();
+        msgModel.setNumber(number);
+        msgModel.setCode(code);
+        if(language.equals("zh_CN")){
+            msgModel.setSignature(SmsConstant.CH_SIGNATURE);
+            msgModel.setTemplate(SmsConstant.CH_TEMPLATE);
+        }else{
+            msgModel.setSignature(SmsConstant.EN_SIGNATURE);
+            msgModel.setTemplate(SmsConstant.EN_TEMPLATE);
+        }
         //发短信
-        SendSmsResponse response = sendSms(number, code);
+        SendSmsResponse response = sendSms(msgModel);
         System.out.println("短信接口返回的数据----------------");
         System.out.println("Code=" + response.getCode());
         System.out.println("Message=" + response.getMessage());
         System.out.println("RequestId=" + response.getRequestId());
         System.out.println("BizId=" + response.getBizId());
 
-        Thread.sleep(3000L);
+        //Thread.sleep(3000L);
 
         //查明细
-        if(response.getCode() != null && response.getCode().equals("OK")) {
+/*        if(response.getCode() != null && response.getCode().equals("OK")) {
             QuerySendDetailsResponse querySendDetailsResponse = querySendDetails(response.getBizId());
             System.out.println("短信明细查询接口返回数据----------------");
             System.out.println("Code=" + querySendDetailsResponse.getCode());
@@ -141,7 +152,7 @@ public class SmsDemo {
             }
             System.out.println("TotalCount=" + querySendDetailsResponse.getTotalCount());
             System.out.println("RequestId=" + querySendDetailsResponse.getRequestId());
-        }
+        }*/
         return code;
     }
 }

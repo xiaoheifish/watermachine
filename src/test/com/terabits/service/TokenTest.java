@@ -2,6 +2,8 @@ package com.terabits.service;
 
 import com.terabits.config.Constants;
 
+import com.terabits.mapper.CommandMapper;
+import com.terabits.meta.po.CommandPO;
 import com.terabits.meta.po.UserPO;
 import com.terabits.service.BaseTest;
 import com.terabits.service.UserService;
@@ -15,7 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
  */
 public class TokenTest extends BaseTest {
     @Autowired(required = false)
-    private UserService userService;
+    private CommandMapper commandMapper;
 
     //private TerminalManager terminalManager;
     @Test   //标明是测试方法
@@ -42,8 +44,13 @@ public class TokenTest extends BaseTest {
         String lefttime = redisTemplateTest.getLeftTime("000001");*/
        /* String re = redisTemplateTest.getTerminalTime("000001");
         System.out.println("lefttime:::::"+re);*/
-        String openid = "1234567";
-        double remain = 5.0;
-        userService.updateRemain(remain, openid);
+        CommandPO commandPO = new CommandPO();
+        commandPO.setCommandNo(123);
+        commandPO.setImei("fgsg");
+        commandPO.setStatus(23);
+        String imei = "fgsg";
+        int commandNo = 123;
+        int state = 66;
+        //commandMapper.getStatusByImeiAndCommandNo(imei,commandNo,state);
     }
 }

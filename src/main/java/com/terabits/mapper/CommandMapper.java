@@ -22,7 +22,7 @@ public interface CommandMapper {
      * @return
      * @throws Exception
      */
-    public int updateStatusByImeiAndCommandNo(@Param("imei")String imei, @Param("commandNo")String commandNo, @Param("status") int status) throws Exception;
+    public int updateStatusByImeiAndCommandNo(@Param("imei")String imei, @Param("commandNo")int commandNo, @Param("status") int status) throws Exception;
 
     /** 根据imei号和指令编号查询status状态
      * @param imei
@@ -30,6 +30,5 @@ public interface CommandMapper {
      * @return
      * @throws Exception
      */
-
-    public int getStatusByImeiAndCommandNo(@Param("imei")String imei,@Param("commandNo")String commandNo) throws Exception;
+    public int getStatusByImeiAndCommandNo(@Param("imei")String imei,@Param("commandNo")int commandNo) throws Exception;
 }

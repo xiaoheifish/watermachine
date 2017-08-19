@@ -19,11 +19,20 @@
         <result property="gmtModified" column="gmtmodified" javaType="java.lang.String"></result>
     </resultMap>
 
+    <resultMap id="firstPageUserMap" type="com.terabits.meta.bo.WeixinUserBO">
+        <result property="phone" column="phone" javaType="java.lang.String"></result>
+        <result property="language" column="language" javaType="java.lang.String"></result>
+    </resultMap>
 
     <insert id="insertUser" parameterType="com.terabits.meta.po.UserPO" keyProperty="id">
-         insert into user (openid, nickname, phone, remain, sex, language, city, province, country, headimgurl, gmtcreate, gmtmodified) values
+        insert into user (openid, nickname, phone, remain, sex, language, city, province, country, headimgurl, gmtcreate, gmtmodified) values
         (#{openId}, #{nickname}, #{phone}, #{remain}, #{sex}, #{language}, #{city}, #{province}, #{country}, #{headImgUrl}, now(),now())
     </insert>
+
+    <update id="updateInfo" parameterType="com.terabits.meta.po.UserPO" keyProperty="id">
+        update user set nickname = #{nickname}, sex = #{sex}, language = #{language}, city = #{city}, province = #{province}, country = #{country},
+        headimgurl = #{headImgUrl}, gmtmodified = now() where openid = #{openId}
+    </update>
 
     <update id="updateRemain">
         update user set remain = #{remain}, gmtmodified = now() where openid = #{openId}
@@ -34,9 +43,12 @@
     </update>
 
 
-    <select id="selectUser" parameterType="String" resultMap="userMap">
+    <select id="selectUser" parameterType="java.lang.String" resultMap="userMap">
         select * from user where openid = #{openId}
     </select>
 
+    <select id="userRegistered" parameterType="java.lang.String" resultMap="firstPageUserMap">
+        select phone, language from user where openid = #{openId}
+    </select>
 
 </mapper>

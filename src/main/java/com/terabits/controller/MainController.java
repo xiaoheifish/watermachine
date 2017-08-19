@@ -1,11 +1,13 @@
 package com.terabits.controller;
 
 import com.terabits.config.WeixinGlobal;
+import com.terabits.meta.bo.WeixinUserBO;
+import com.terabits.meta.po.UserPO;
 import com.terabits.service.CredentialService;
 
 import com.terabits.meta.po.TerminalPO;
 import com.terabits.service.TerminalService;
-import com.terabits.utils.SmsDemo;
+import com.terabits.service.UserService;
 import com.terabits.utils.WeixinUtil;
 import net.sf.json.JSONObject;
 import org.slf4j.Logger;
@@ -18,11 +20,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.UUID;
 
 /**
  * Created by Administrator on 2017/6/21.
@@ -34,7 +34,8 @@ public class MainController
     private CredentialService CredentialService;
     @Autowired
     private TerminalService terminalService;
-
+    @Autowired
+    private UserService userService;
     private static Logger logger = LoggerFactory.getLogger(MainController.class);
 
     @RequestMapping(value="/info/{displayId}",method=RequestMethod.GET)
@@ -76,65 +77,76 @@ public class MainController
         }
     }
 
+    /**用户从微信对话框点击图文消息或者下方按钮进入此页，首先调用微信oauth2.0授权接口获取用户信息，得到openid
+     * 去数据库中查询此用户的phone字段是否为空，不为空则表明已注册过，更新其他信息，返回openId,language,nickname和headimgurl给前端，并跳转到首页(login.jsp)
+     * 若为空，则表明是未注册用户，则判断language是否为空，若为空，表明之前从未进入过，将该用户信息插入user表，若不为空，则
+     * 表明之前进入过，只是没有注册就退出了，则将user信息更新，返回openId和language给前端，跳转到注册页(register.jsp)
+     */
     @RequestMapping(value="/mainpage",method=RequestMethod.GET)
-    public String mainpage(HttpServletRequest request, HttpSession session){
+    public String mainpage(HttpServletRequest request, ModelMap model, HttpSession session){
+        //获取code和openid
         String code = request.getParameter("code");
         JSONObject jsonObject = WeixinUtil.getOpenid(code, WeixinGlobal.APP_ID, WeixinGlobal.APP_SECRET);
         String openId = jsonObject.getString("openid");
         String accesstoken = jsonObject.getString("access_token");
+        //获取用户信息
         JSONObject jsonObject1 = WeixinUtil.getUserInfo(accesstoken, openId);
+        //将用户信息存入userPO，备用
+        UserPO userPO = new UserPO();
+        userPO.setOpenId(openId);
+        userPO.setNickname(jsonObject1.getString("nickname"));
+        userPO.setSex(Integer.parseInt(jsonObject1.getString("sex")));
+        userPO.setLanguage(jsonObject1.getString("language"));
+        userPO.setCity(jsonObject1.getString("city"));
+        userPO.setProvince(jsonObject1.getString("province"));
+        userPO.setCountry(jsonObject1.getString("country"));
+        userPO.setHeadImgUrl(jsonObject1.getString("headimgurl"));
 
-        return "main/login.jsp";
-    }
-
-    @RequestMapping(value="/register",method=RequestMethod.GET)
-    public String register(HttpServletRequest request){
-        return "main/register.jsp";
-    }
-
-    @RequestMapping(value="/sendmessage",method=RequestMethod.GET)
-    public void sendmessage(HttpServletRequest request, HttpServletResponse response)throws Exception{
-        HttpSession session = request.getSession();
-        String id = request.getParameter("id");
-        System.out.println(id);
-        String code = SmsDemo.sendMessage(id);
-        String auth = UUID.randomUUID().toString();
-        JSONObject jsonObject = new JSONObject();
-        jsonObject.put("auth",auth);
-        session.setAttribute("auth", auth);
-        session.setAttribute("number", id);
-        session.setAttribute("code",code);
-        response.getWriter().print(jsonObject);
-    }
-
-    @RequestMapping(value="/testcode",method=RequestMethod.POST)
-    public void testcode(HttpServletRequest request, HttpServletResponse response)throws Exception{
-        HttpSession session = request.getSession();
-        String tempAuth = (String)session.getAttribute("auth");
-        String tempId = (String)session.getAttribute("number");
-        String tempCode = (String)session.getAttribute("code");
-        JSONObject jsonObject = new JSONObject();
-        String auth = request.getParameter("auth");
-        String id = request.getParameter("id");
-        String code = request.getParameter("watermachine");
-        System.out.println(tempAuth +auth+ tempId+id+tempCode+code);
-        if(!(tempAuth.equals(auth))){
-            jsonObject.put("testpass","no");
-            response.getWriter().print(jsonObject);
-            return;
+        WeixinUserBO weixinUserBO = new WeixinUserBO();
+        try {
+            //取回phone和language
+            weixinUserBO = userService.userRegistered(openId);
+        }catch (Exception e){
+            logger.error("userService.userRegistered error in mainpage!");
         }
-        if(!(tempId.equals(id))){
-            jsonObject.put("testpass","no");
-            response.getWriter().print(jsonObject);
-            return;
+        //phone不为null，表明已注册，则更新一下信息，返回首页
+        if(weixinUserBO.getPhone() != null){
+            try{
+                userService.updateInfo(userPO);
+            }catch (Exception e){
+                logger.error("userService.updateInfo error for registered user in mainpage!");
+            }
+            model.addAttribute("openId", openId);
+            model.addAttribute("language", jsonObject1.getString("language"));
+            model.addAttribute("nickname", jsonObject1.getString("nickname"));
+            model.addAttribute("headimgurl",jsonObject1.getString("headimgurl"));
+            return "main/login.jsp";
         }
-
-        if(tempCode.equals(code)){
-            jsonObject.put("testpass","yes");
-            response.getWriter().print(jsonObject);
-            return;
+        else{
+            //language不为null，表明之前点进来过，则更新一下信息，进入注册页
+            if(weixinUserBO.getLanguage() != null) {
+                try {
+                    userService.updateInfo(userPO);
+                } catch (Exception e) {
+                    logger.error("userService.updateInfo error for unregistered user in mainpage!");
+                }
+                model.addAttribute("openId", openId);
+                model.addAttribute("language", jsonObject1.getString("language"));
+                return "main/register.jsp";
+            //若language为null，则表明之前从未进来过，则插入该用户信息，进入注册页
+            }else{
+                try {
+                    userService.insertUser(userPO);
+                } catch (Exception e) {
+                    logger.error("userService.updateInfo error for never enter user in mainpage!");
+                }
+                model.addAttribute("openId", openId);
+                model.addAttribute("language", jsonObject1.getString("language"));
+                return "main/register.jsp";
+            }
         }
     }
+
 
 
 }
