@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.terabits.mapper.CommandMapper">
+
+    <insert id="insertCommand" useGeneratedKeys="true" parameterType="com.terabits.meta.po.CommandPO">
+        insert into command(imei,commandno,status,gmtcreate,gmtmodified) values (#{imei},#{commandNo},#{status},now(),now())
+    </insert>
+
+    <update id="updateStatusByImeiAndCommandNo" parameterType="java.lang.String">
+        update command set status=#{status} where imei=#{imei} and commandno=#{commandNo}
+    </update>
+
+    <select id="getStatusByImeiAndCommandNo" parameterType="java.lang.String">
+        select status from command where imei=#{imei} and commandno=#{commandNo}
+    </select>
+
+</mapper>

@@ -32,6 +32,12 @@ public class Constants {
     //数据库中字段，标记未被使用
     public static final int OFF_STATE = 10;
 
+    //数据库中字段，标记命令尚未收到回复,尚未执行
+    public static final int NO_RESPONSE = 23;
+
+    //数据库中字段，标记命令已经被执行，收到回复
+    public static final int HAVE_RESPONSE = 66;
+
     /**
      * 硬件通信命令
      */

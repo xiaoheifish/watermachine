@@ -77,14 +77,13 @@ public class MainController
     }
 
     @RequestMapping(value="/mainpage",method=RequestMethod.GET)
-    public String mainpage(HttpServletRequest request){
-
+    public String mainpage(HttpServletRequest request, HttpSession session){
         String code = request.getParameter("code");
         JSONObject jsonObject = WeixinUtil.getOpenid(code, WeixinGlobal.APP_ID, WeixinGlobal.APP_SECRET);
         String openId = jsonObject.getString("openid");
         String accesstoken = jsonObject.getString("access_token");
         JSONObject jsonObject1 = WeixinUtil.getUserInfo(accesstoken, openId);
-        System.out.println("watermachineusrinfo:::::::::"+jsonObject1);
+
         return "main/login.jsp";
     }
 
