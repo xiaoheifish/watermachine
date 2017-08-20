@@ -1,11 +1,15 @@
 package com.terabits.meta.po;
 
+import com.terabits.meta.enums.ConsumeState;
+
 /**
  * Created by Administrator on 2017/8/19.
  * 用户每次接水，会产生一笔消费，从它的余额里减去当次消费的金额
  */
 public class ConsumeOrderPO {
     private int id;
+    //该笔消费状态
+    private int state;
     //该笔消费订单编号
     private String orderNo;
     //产生该笔消费的用户
@@ -81,6 +85,14 @@ public class ConsumeOrderPO {
 
     public void setGmtModified(String gmtModified) {
         this.gmtModified = gmtModified;
+    }
+
+    public int getState() {
+        return state;
+    }
+
+    public void setState(int state) {
+        this.state = state;
     }
 
     @Override

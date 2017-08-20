@@ -60,10 +60,14 @@ public class Constants {
 
     public static final byte ONE_L_WATER = (byte)0x03;
 
-    public static final byte THREE_L_WATER = (byte)0x04;
+    public static final byte TWO_L_WATER = (byte)0x04;
 
     //指令编号
     public static final byte COMMAND_ONE = (byte)0x1f;
 
     public static final byte COMMAND_TWO = (byte)0x2f;
+
+    //消费编号
+    //项目标号
+    public static final String CONSUME_PRO_NUMBER = "3336";
 }

@@ -80,4 +80,13 @@ public interface TerminalMapper {
      * @throws Exception
      */
     public String getTerminalDisplayId(@Param("webId") String webId) throws Exception;
+
+    /**
+     * 根据imei号查displayId，用于接收硬件发来的消息时使用
+     * @param imei
+     * @return
+     * @throws Exception
+     */
+    public String getDisplayIdFromImei(@Param("imei") String imei) throws Exception;
+
 }

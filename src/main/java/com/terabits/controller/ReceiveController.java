@@ -1,7 +1,14 @@
 package com.terabits.controller;
 
+import com.terabits.config.Constants;
+import com.terabits.meta.bo.TerminalUpdateBO;
+import com.terabits.meta.po.ConsumeOrderPO;
 import com.terabits.meta.po.NotifyDataPO;
+import com.terabits.meta.po.OperationPO;
+import com.terabits.service.ConsumeOrderService;
 import com.terabits.service.NotifyDataService;
+import com.terabits.service.OperationService;
+import com.terabits.service.TerminalService;
 import net.sf.json.JSONObject;
 import org.apache.commons.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +28,13 @@ import java.util.Map;
 public class ReceiveController {
     @Autowired
     private NotifyDataService notifyDataService;
+    @Autowired
+    private TerminalService terminalService;
+    @Autowired
+    private ConsumeOrderService consumeOrderService;
+    @Autowired
+    private OperationService operationService;
+
     @RequestMapping(value = "/receive/data", method = RequestMethod.POST)
     public void data(HttpServletRequest request, HttpServletResponse response) throws Exception {
         BufferedReader br = request.getReader();
@@ -28,10 +42,9 @@ public class ReceiveController {
         while ((str = br.readLine()) != null) {
             wholeStr += str;
         }
-        System.out.println("watermachine:::::::::::"+wholeStr);
         JSONObject json = JSONObject.fromObject(wholeStr);
         Map<String, Object> map = (Map<String, Object>) json;
-        String terminalId = (String) map.get("deviceId");
+        //String terminalId = (String) map.get("deviceId");
         Map<String, Object> service = (Map<String, Object>) map.get("service");
         Map<String, Object> data = (Map<String, Object>) service.get("data");
         String info = (String)data.get("terminalState");
@@ -47,6 +60,34 @@ public class ReceiveController {
         NotifyDataPO notifyDataPO = new NotifyDataPO();
         notifyDataPO.setContent(content);
         notifyDataService.insertNotifyData(notifyDataPO);
-        System.out.println();
+        if(rawInfo[0] == (byte)0x1B){
+            String imei = "8";
+            for(int i = 5; i < 12; i++){
+                imei += Integer.toHexString(rawInfo[i]);
+            }
+            String displayId = terminalService.getDisplayIdFromImei(imei);
+            ConsumeOrderPO consumeOrderPO = consumeOrderService.selectLastConsumption(displayId);
+            try {
+                consumeOrderService.updateStateById(consumeOrderPO.getOrderNo());
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+        else if(rawInfo[0] == (byte)0x1C){
+            String imei = "8";
+            for(int i = 3; i < 10; i++){
+                imei += Integer.toHexString(rawInfo[i]);
+            }
+            //收到执行完成命令，更新设备表里的状态
+            TerminalUpdateBO terminalUpdateBO = new TerminalUpdateBO();
+            terminalUpdateBO.setState(Constants.OFF_STATE);
+            terminalUpdateBO.setImei(imei);
+            terminalService.updateTerminal(terminalUpdateBO);
+            //在操作记录中增加此次操作
+            OperationPO operationPO = new OperationPO();
+            operationPO.setStatus(Constants.ON_TO_OFF);
+            operationPO.setImei(imei);
+            operationService.insertOperation(operationPO);
+        }
     }
 }

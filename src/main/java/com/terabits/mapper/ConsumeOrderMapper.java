@@ -59,5 +59,12 @@ public interface ConsumeOrderMapper {
      */
     public List<ConsumeOrderPO> selectConsumptionByOpenId(@Param("openId")String openId)throws Exception;
 
+    /**
+     * 根据orderNo更新state,需要先通过displayId取出最后一笔消费
+     * @param orderNo
+     * @return
+     * @throws Exception
+     */
+    public int updateStateById(@Param("orderNo")String orderNo)throws Exception;
 
 }

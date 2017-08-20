@@ -3,6 +3,7 @@ package com.terabits.controller.xhr;
 import com.github.wxpay.sdk.WXPay;
 import com.terabits.config.MyConfig;
 import com.terabits.config.WeixinGlobal;
+import com.terabits.controller.MailController;
 import com.terabits.meta.bo.JsapiConfigBO;
 import com.terabits.meta.po.RechargeOrderPO;
 import com.terabits.service.RechargeOrderService;
@@ -11,6 +12,8 @@ import com.terabits.utils.*;
 import net.sf.json.JSONException;
 import net.sf.json.JSONObject;
 import org.jdom.JDOMException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,12 +37,14 @@ public class WeixinPay {
     @Autowired
     private UnifiedOrderService unifiedOrderService;
 
+    private static Logger logger = LoggerFactory.getLogger(WeixinPay.class);
     @RequestMapping(value="/wxpay",method= RequestMethod.POST)
-    public void wxPay(HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception, IOException, ParserConfigurationException, JDOMException,JSONException {
-        String id = request.getParameter("id");
+
+    public void wxPay(HttpSession session, HttpServletRequest request, HttpServletResponse response)throws Exception{
+        //获取发起该笔充值的用户id和充值金额
+        String requestopenId = request.getParameter("id");
         String money = request.getParameter("money");
-        System.out.println("id::::::::"+id);
-        System.out.println("money:::::::::::"+money);
+
         //微信支付金额，以分为单位
         int totalmoney = Integer.parseInt(money);
 
@@ -47,9 +52,12 @@ public class WeixinPay {
         int count = orderService.selectCountByTime(TimeSpanUtil.generateTimeSpan());
         String orderId = GenerateOrderId.generateOrderId(count);
 
-        //获取存在session中的openid
+        //获取存在session中的openid，和前端发来的比对，不同则支付存在问题，返回
         String openId = (String)session.getAttribute("openid");
-        System.out.println("openid:"+ openId);
+        if(!requestopenId.equals(openId)){
+            response.getWriter().print("error");
+            return;
+        }
 
         String prepaidId = null;
         MyConfig myConfig = new MyConfig();
@@ -62,7 +70,7 @@ public class WeixinPay {
         data.put("spbill_create_ip", request.getRemoteAddr());
         data.put("notify_url", WeixinGlobal.NOTIFY_URL);
         data.put("trade_type", "JSAPI");  // 此处指定为JSAPI支付
-        data.put("openid",(String)session.getAttribute("openid"));
+        data.put("openid",openId);
         try {
             Map<String, String> resp = wxpay.unifiedOrder(data);
             System.out.println("resp:::"+resp);
@@ -80,8 +88,11 @@ public class WeixinPay {
         orderPO.setPayment(totalmoney);
         orderPO.setOrderId(orderId);
         orderPO.setOpenId(openId);
-        String displayId = id;
-        orderService.insertOrder(orderPO);
+        try {
+            orderService.insertOrder(orderPO);
+        }catch (Exception e){
+            logger.error("orderService.insertOrder error in weixinPay" + orderPO);
+        }
         try {
             response.getWriter().print(jsonConfig);
         } catch (IOException e) {

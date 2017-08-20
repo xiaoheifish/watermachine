@@ -9,6 +9,7 @@ public class TerminalUpdateBO {
     private int state;
     private String deviceId;
     private String displayId;
+    private String imei;
 
     public String getSimId() {
         return simId;
@@ -50,6 +51,14 @@ public class TerminalUpdateBO {
         this.displayId = displayId;
     }
 
+    public String getImei() {
+        return imei;
+    }
+
+    public void setImei(String imei) {
+        this.imei = imei;
+    }
+
     @Override
     public String toString() {
         return "TerminalUpdateBO[" +
@@ -58,6 +67,7 @@ public class TerminalUpdateBO {
                 ", state=" + state +
                 ", deviceId='" + deviceId + '\'' +
                 ", displayId='" + displayId + '\'' +
+                ", imei='" + imei + '\'' +
                 ']';
     }
 }

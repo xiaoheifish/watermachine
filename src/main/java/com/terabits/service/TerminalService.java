@@ -31,4 +31,6 @@ public interface TerminalService {
     public String selectLocation(String displayId);
     //根据webId查询displayId，用于在微信应用内部扫码的场景
     public String getTerminalDisplayId(String webId);
+    //根据imei号查询displaId
+    public String getDisplayIdFromImei(String imei);
 }

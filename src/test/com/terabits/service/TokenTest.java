@@ -25,7 +25,7 @@ public class TokenTest extends BaseTest {
     @Transactional(value="transactionManager")//标明此方法需使用事务
     @Rollback(false)  //标明使用完此方法后事务不回滚,true时为回滚
     public void token() throws Exception{
-    /*    TerminalModel terminalModel = new TerminalModel();
+    /*    CommandNoModel terminalModel = new CommandNoModel();
         terminalModel.setTerminalId("0001");
         terminalModel.setTime("1234325");
         terminalModel.setHour(8);

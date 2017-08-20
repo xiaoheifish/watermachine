@@ -28,10 +28,14 @@ public class RechargeController {
     private static Logger logger = LoggerFactory.getLogger(RechargeController.class);
 
     //显示我的钱包页
-    @RequestMapping(value = "/recharge", method = RequestMethod.GET)
+    @RequestMapping(value = "/balance", method = RequestMethod.GET)
     public String showRecharge(){
-        return "main/recharge.jsp";
+        return "main/balance.jsp";
     }
+
+    //点击充值按钮跳转至此页面
+    @RequestMapping(value = "/recharge", method = RequestMethod.GET)
+    public String recharge(){return "main/recharge.jsp";}
 
     //获取余额
     @RequestMapping(value = "/menu/recharge", method = RequestMethod.POST)

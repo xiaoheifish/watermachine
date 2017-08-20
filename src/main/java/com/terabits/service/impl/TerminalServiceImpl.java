@@ -6,6 +6,7 @@ import com.terabits.meta.bo.NumberBO;
 import com.terabits.meta.bo.TerminalUpdateBO;
 import com.terabits.meta.po.TerminalPO;
 import com.terabits.service.TerminalService;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -113,6 +114,15 @@ public class TerminalServiceImpl implements TerminalService{
         return displayId;
     }
 
+    public String getDisplayIdFromImei(String imei){
+        String displayId = null;
+        try{
+            displayId = terminalMapper.getDisplayIdFromImei(imei);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return displayId;
+    }
 
 }
 

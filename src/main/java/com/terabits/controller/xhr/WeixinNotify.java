@@ -1,21 +1,16 @@
 package com.terabits.controller.xhr;
 
-
-import com.terabits.config.Constants;
 import com.terabits.config.WeixinGlobal;
-import com.terabits.service.CredentialService;
-import com.terabits.meta.bo.CommunicationBO;
-import com.terabits.meta.bo.TerminalUpdateBO;
-import com.terabits.meta.model.TerminalModel;
-import com.terabits.meta.po.OperationPO;
+import com.terabits.meta.po.AuxcalPO;
+import com.terabits.meta.po.TotalPO;
+import com.terabits.meta.po.UserPO;
+import com.terabits.service.*;
 import com.terabits.meta.po.RechargeOrderPO;
-import com.terabits.service.OperationService;
-import com.terabits.service.RechargeOrderService;
-import com.terabits.service.TerminalService;
 import com.terabits.utils.PayCommonUtil;
 import com.terabits.utils.XMLUtil;
-import com.terabits.utils.huawei.PlatformGlobal;
 import org.apache.commons.codec.Charsets;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -41,26 +36,25 @@ public class WeixinNotify{
     @Autowired
     private RechargeOrderService orderService;
     @Autowired
-    private CredentialService CredentialService;
+    private UserService userService;
     @Autowired
-    private TerminalService terminalService;
-    @Autowired
-    private OperationService operationService;
+    private StatisticService statisticService;
+
+    private static Logger logger = LoggerFactory.getLogger(WeixinNotify.class);
     @RequestMapping(value="/notify", method= RequestMethod.POST)
     public String callback(HttpSession session, HttpServletRequest request) {
 
-        System.out.println("又来确认了！！！！");
         try {
             String responseStr = parseWeixinCallback(request);
             Map<String, Object> map = XMLUtil.doXMLParse(responseStr);
             // 校验签名 防止数据泄漏导致出现“假通知”，造成资金损失
             if (!PayCommonUtil.checkIsSignValidFromResponseString(responseStr)) {
-                //logger.error("微信回调失败,签名可能被篡改");
+                logger.error("微信回调失败,签名可能被篡改");
                 return PayCommonUtil.setXML("FAIL", "invalid sign");
             }
             if (WeixinGlobal.FAIL.equalsIgnoreCase(map.get("result_code")
                     .toString())) {
-                //logger.error("微信回调失败");
+                logger.error("微信回调失败");
                 return PayCommonUtil.setXML("FAIL", "weixin pay fail");
             }
             if (WeixinGlobal.SUCCESS.equalsIgnoreCase(map.get("result_code")
@@ -70,6 +64,8 @@ public class WeixinNotify{
                 String orderId = (String)map.get("out_trade_no");
                 String tradeNo = (String)map.get("transaction_id");
                 String money = (String)map.get("total_fee");
+                //这里会返回用户的openid给后端，更新一下session中的，以防过期
+                session.setAttribute("openid", (String)map.get("openid"));
                 RechargeOrderPO orderPO = orderService.selectPaymentByOrderId(orderId);
                 //若数据库中tradeNo不为空，表明该笔订单已经过确认，则直接返回ok
                 if(orderPO.getTradeNo()!=null){
@@ -80,10 +76,32 @@ public class WeixinNotify{
                 int prepayment = (int)payment;
                 int premoney = Integer.parseInt(money);
                 if(prepayment == premoney){
+                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                    String currentDay = sdf.format(new Date());
                     int result = orderService.updatePaymentStatus(tradeNo, orderId);
-                    System.out.println("result:"+result);
                     if (result == 1){
-
+                        UserPO userPO = userService.selectUser((String)map.get("openid"));
+                        double remain = userPO.getRemain();
+                        remain = remain + payment;
+                        try{
+                            //更新用户余额
+                            userService.updateRemain(remain, (String)map.get("openid"));
+                        }catch (Exception e){
+                            logger.error("更新用户余额失败，订单号="+orderId);
+                        }
+                        try{
+                            //当日统计数据，更新总充值
+                            AuxcalPO auxcalPO = statisticService.selectTodayAuxcal(currentDay);
+                            auxcalPO.setRecharge(auxcalPO.getRecharge() + payment);
+                            statisticService.updateTodayAuxcal(auxcalPO);
+                            //历史统计数据，更新总充值和总余额
+                            TotalPO totalPO = statisticService.selectTotal();
+                            totalPO.setRecharge(totalPO.getRecharge() + payment);
+                            totalPO.setRemain(totalPO.getRemain() + payment);
+                            statisticService.updateTotal(totalPO);
+                        }catch (Exception e){
+                            logger.error("更新统计数据失败，订单号="+orderId);
+                        }
                         //返回ok结果给微信
                         return PayCommonUtil.setXML(WeixinGlobal.SUCCESS, "OK");
                     } else {

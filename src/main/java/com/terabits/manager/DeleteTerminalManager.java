@@ -25,7 +25,7 @@ import java.util.List;
 @Transactional
 public class DeleteTerminalManager {
 
-    @Autowired
+  /*  @Autowired
     private TerminalService terminalService;
     @Autowired
     private OperationService operationService;
@@ -60,7 +60,7 @@ public class DeleteTerminalManager {
                 operationService.insertOperation(operationPO);
             }
         }
-    }
+    }*/
 
    /* private static String getBeginTime(){
         SimpleDateFormat dfs = new SimpleDateFormat( "yyyy-MM-dd HH:mm:ss" );

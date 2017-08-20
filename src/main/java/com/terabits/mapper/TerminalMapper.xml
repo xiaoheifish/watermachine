@@ -83,4 +83,8 @@
     <select id="getTerminalDisplayId" parameterType="java.lang.String" resultType="java.lang.String">
         select displayid from terminal where webid = #{webId}
     </select>
+
+    <select id="getDisplayIdFromImei" parameterType="java.lang.String" resultType="java.lang.String">
+        select displayid from terminal where imei = #{imei}
+    </select>
 </mapper>

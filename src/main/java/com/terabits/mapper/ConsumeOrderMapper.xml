@@ -12,6 +12,7 @@
         <result property="flow" column="flow" javaType="java.lang.Double"></result>
         <result property="gmtCreate" column="gmtcreate" javaType="java.lang.String"></result>
         <result property="gmtModified" column="gmtmodified" javaType="java.lang.String"></result>
+        <result property="state" column="state" javaType="java.lang.Integer"></result>
     </resultMap>
 
     <!-- 在各种标签中的id属性必须和接口中的方法名相同 ， id属性值必须是唯一的，不能够重复使用。parameterType属性指明查询时使用的参数类型，resultType属性指明查询返回的结果集类型-->
@@ -21,8 +22,8 @@
     <!--#{}中的内容，为占位符，当参数为某个JavaBean时，表示放置该Bean对象的属性值  -->
 
     <insert id="insertOrder" parameterType="com.terabits.meta.po.ConsumeOrderPO">
-        insert into consumeorder (orderno, openid, displayid, payment, flow, gmtcreate, gmtmodified)
-        values (#{orderNo}, #{openId}, #{displayId}, #{payment}, #{flow}, now(), now())
+        insert into consumeorder (state, orderno, openid, displayid, payment, flow, gmtcreate, gmtmodified)
+        values (23, #{orderNo}, #{openId}, #{displayId}, #{payment}, #{flow}, now(), now())
     </insert>
 
     <select id="selectCountByTime" parameterType="com.terabits.meta.bo.TimeSpanBO" resultType="java.lang.Integer">
@@ -61,5 +62,8 @@
         select * from consumeorder where openid = #{openId}
     </select>
 
+    <update id="updateStateById" parameterType="String">
+        update consumeorder set state = 66 where orderno = #{orderNo}
+    </update>
 </mapper>
 

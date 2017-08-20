@@ -1,15 +1,11 @@
 package com.terabits.service.impl;
 
-import com.mysql.jdbc.TimeUtil;
+import com.terabits.meta.model.CommandNoModel;
 import com.terabits.service.CredentialService;
-import com.terabits.meta.model.TerminalModel;
-import com.terabits.utils.TimeUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Component;
-
-import java.util.concurrent.TimeUnit;
 
 /**
  * Created by Administrator on 2017/7/20.
@@ -20,29 +16,31 @@ public class CredentialServiceImpl implements CredentialService{
     @Autowired
     private RedisTemplate redisTemplate;
 
-    //插入编号，当前时间，有效使用时间
-    @SuppressWarnings("unchecked")
-    public void createTerminal(TerminalModel terminalModel) {
+    //插入指令编号，永久有效
+
+    public void createCommand(CommandNoModel commandNoModel) {
 
         ValueOperations<String, String> stringOperations = redisTemplate
                 .opsForValue();
         //String类型数据存储，设置过期时间，采用TimeUnit控制时间单位
-        stringOperations.set(terminalModel.getTerminalId(), terminalModel.getTime(), terminalModel.getHour(), TimeUnit.MINUTES);
-        String value = stringOperations.get(terminalModel.getTerminalId());
-        System.out.println(value);
+        stringOperations.set(commandNoModel.getCommandId(), commandNoModel.getNumber());
+
     }
-    //获取某个id对应插座的开始使用时间
-    public String getTerminalTime(String terminalId){
+    //获取某个编号数值
+    public String getCommandNo(String commandId){
         ValueOperations<String, String> stringOperations = redisTemplate
                 .opsForValue();
-        String value1 = stringOperations.get(terminalId);
-        return value1;
+        String number = stringOperations.get(commandId);
+        return number;
     }
+
+
     //获取某个id对应插座的剩余使用时间
-    public String getLeftTime(String terminalId){
+   /* public String getLeftTime(String terminalId){
         long lefttime = redisTemplate.getExpire(terminalId);
         return String.valueOf(lefttime);
-    }
+    }*/
+
     /*    // -----------------其他值类型数据操作 start--------------------
         Demo demo = new Demo();
         demo.setId("1");

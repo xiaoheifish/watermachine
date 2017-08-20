@@ -4,8 +4,7 @@ package com.terabits.controller;
 import com.terabits.config.Constants;
 import com.terabits.service.CredentialService;
 import com.terabits.meta.bo.CommunicationBO;
-import com.terabits.meta.bo.TerminalUpdateBO;
-import com.terabits.meta.model.TerminalModel;
+import com.terabits.meta.model.CommandNoModel;
 import com.terabits.meta.po.OperationPO;
 import com.terabits.service.OperationService;
 import com.terabits.service.TerminalService;
@@ -39,21 +38,20 @@ public class RedisController {
     @RequestMapping(value = {"/add", "/add.html" }, method = { RequestMethod.POST })
     public void addMember(HttpServletRequest request,
                           HttpServletResponse response,
-                          @ModelAttribute("terminalModel")TerminalModel terminalModel) throws IOException {
+                          @ModelAttribute("terminalModel")CommandNoModel commandNoModel) throws IOException {
         Map<String, Object> map = new HashMap<String, Object>();
-        System.out.println(terminalModel);
-        CredentialService.createTerminal(terminalModel);
+        System.out.println(commandNoModel);
+        CredentialService.createCommand(commandNoModel);
         System.out.println("插入成功");
     }
 
     @RequestMapping(value = {"/query", "/query.html" }, method = { RequestMethod.GET})
     public void queryMember(HttpServletRequest request,
                           HttpServletResponse response) throws Exception, IOException {
-       String id = request.getParameter("terminalId");
-       long termiid = Long.parseLong(id);
-       String time =  CredentialService.getTerminalTime(id);
-       System.out.println("取回成功");
-       response.getWriter().print(time);
+       String id = request.getParameter("commandId");
+       String no =  CredentialService.getCommandNo(id);
+       System.out.println("取回成功" + no);
+       response.getWriter().print(no);
     }
 
     @RequestMapping(value = {"/huawei"},method={RequestMethod.GET})
@@ -61,7 +59,7 @@ public class RedisController {
         String command = request.getParameter("command");
         SimpleDateFormat dfs = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
-        /*TerminalModel terminalModel = new TerminalModel();
+        /*CommandNoModel terminalModel = new CommandNoModel();
         terminalModel.setTerminalId("000002");
         terminalModel.setTime(time);
         terminalModel.setHour(1);

@@ -63,4 +63,12 @@ public class ConsumeOrderServiceImpl implements ConsumeOrderService {
         return consumeOrderMapper.selectConsumptionByOpenId(openId);
     }
 
+    /**
+     *根据orderNo更新订单状态，用于接收到硬件回复时更新订单状态
+     */
+    public int updateStateById(String orderNo)throws Exception{
+        return consumeOrderMapper.updateStateById(orderNo);
+    }
+
+
 }
