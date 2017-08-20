@@ -1,8 +1,11 @@
 package com.terabits.controller;
 
 import com.terabits.service.SmsService;
+import com.terabits.service.UserService;
 import com.terabits.service.impl.SmsServiceImpl;
 import net.sf.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,6 +23,10 @@ import java.util.UUID;
 public class RegisterController {
     @Autowired
     private SmsService smsService;
+    @Autowired
+    private UserService userService;
+
+    private static Logger logger = LoggerFactory.getLogger(RegisterController.class);
     @RequestMapping(value="/sendmessage",method= RequestMethod.GET)
     public void sendmessage(HttpServletRequest request, HttpServletResponse response)throws Exception{
         HttpSession session = request.getSession();
@@ -58,6 +65,16 @@ public class RegisterController {
         }
 
         if(tempCode.equals(code)){
+            String openId = (String)session.getAttribute("openid");
+            try{
+                userService.updatePhone(id, openId);
+                userService.updateRemain(10.0, openId);
+            }catch (Exception e){
+                logger.error("userService.update phone and remain error!");
+                jsonObject.put("testpass","no");
+                response.getWriter().print(jsonObject);
+                return;
+            }
             jsonObject.put("testpass","yes");
             response.getWriter().print(jsonObject);
             return;

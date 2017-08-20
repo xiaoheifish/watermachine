@@ -18,7 +18,8 @@ import org.springframework.transaction.annotation.Transactional;
 public class TokenTest extends BaseTest {
     @Autowired(required = false)
     private CommandMapper commandMapper;
-
+    @Autowired
+    private UserService userService;
     //private TerminalManager terminalManager;
     @Test   //标明是测试方法
     @Transactional(value="transactionManager")//标明此方法需使用事务
@@ -44,13 +45,15 @@ public class TokenTest extends BaseTest {
         String lefttime = redisTemplateTest.getLeftTime("000001");*/
        /* String re = redisTemplateTest.getTerminalTime("000001");
         System.out.println("lefttime:::::"+re);*/
-        CommandPO commandPO = new CommandPO();
+    /*    CommandPO commandPO = new CommandPO();
         commandPO.setCommandNo(123);
         commandPO.setImei("fgsg");
         commandPO.setStatus(23);
         String imei = "fgsg";
         int commandNo = 123;
         int state = 66;
-        //commandMapper.getStatusByImeiAndCommandNo(imei,commandNo,state);
+        //commandMapper.getStatusByImeiAndCommandNo(imei,commandNo,state);*/
+        UserPO userPO = userService.selectUser("o1S07wuDO9ivY_55p3OT4bEMNUL0");
+        System.out.println(userPO);
     }
 }

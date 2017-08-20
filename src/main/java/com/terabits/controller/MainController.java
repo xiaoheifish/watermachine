@@ -30,52 +30,11 @@ import java.util.Date;
 @Controller
 public class MainController
 {
-    @Autowired
-    private CredentialService CredentialService;
-    @Autowired
-    private TerminalService terminalService;
+
     @Autowired
     private UserService userService;
-    private static Logger logger = LoggerFactory.getLogger(MainController.class);
 
-    @RequestMapping(value="/info/{displayId}",method=RequestMethod.GET)
-    public String getProductInfo(@PathVariable("displayId") String displayId, HttpServletRequest request, ModelMap model) throws Exception {
-        System.out.println("displayId"+displayId);
-        Long display = Long.parseLong(displayId);
-        String time = CredentialService.getTerminalTime(displayId);
-        TerminalPO terminalPO = terminalService.selectOneTerminal(displayId);
-        if(time == null){
-            model.addAttribute("status","空闲");
-            model.addAttribute("id",displayId);
-            model.addAttribute("location",terminalPO.getLocation());
-            model.addAttribute("usingtime",null);
-            model.addAttribute("lefttime",null);
-            return "main/information.jsp";
-        }
-        else{
-            SimpleDateFormat dfs = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            long between = 0;
-            try {
-                Date begin =dfs.parse(time);
-                Date end = new Date();
-                between = (end.getTime() - begin.getTime())/1000;// 得到两者的秒数
-            } catch (Exception ex) {
-                ex.printStackTrace();
-            }
-            String leftTime = CredentialService.getLeftTime(displayId);
-            System.out.println("lefttime:::::::::" + leftTime);
-            long money = (between + Long.parseLong(leftTime)) / 40;
-            System.out.println("money::::::" + String.valueOf(money));
-            model.addAttribute("status","使用中");
-            model.addAttribute("id",displayId);
-            model.addAttribute("location",terminalPO.getLocation());
-            model.addAttribute("usingtime", String.valueOf(between));
-            model.addAttribute("lefttime", leftTime);
-            model.addAttribute("money",String.valueOf(money));
-            model.addAttribute("water",String.valueOf(money));
-            return "main/using.jsp";
-        }
-    }
+    private static Logger logger = LoggerFactory.getLogger(MainController.class);
 
     /**用户从微信对话框点击图文消息或者下方按钮进入此页，首先调用微信oauth2.0授权接口获取用户信息，得到openid
      * 去数据库中查询此用户的phone字段是否为空，不为空则表明已注册过，更新其他信息，返回openId,language,nickname和headimgurl给前端，并跳转到首页(login.jsp)
@@ -86,8 +45,13 @@ public class MainController
     public String mainpage(HttpServletRequest request, ModelMap model, HttpSession session){
         //获取code和openid
         String code = request.getParameter("code");
+        if(code == null){
+            return "main/login.jsp";
+        }
         JSONObject jsonObject = WeixinUtil.getOpenid(code, WeixinGlobal.APP_ID, WeixinGlobal.APP_SECRET);
         String openId = jsonObject.getString("openid");
+        //存入session中，以备后续使用
+        session.setAttribute("openid",openId);
         String accesstoken = jsonObject.getString("access_token");
         //获取用户信息
         JSONObject jsonObject1 = WeixinUtil.getUserInfo(accesstoken, openId);

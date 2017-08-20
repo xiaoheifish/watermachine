@@ -36,4 +36,19 @@ public class TimeUtils {
             retStr = "" + i;
         return retStr;
     }
+
+    //根据每笔交易水量，计算最长使用时间
+    public static long FlowToTime(double flow){
+        long time = 0;
+        if(flow == 0.2){
+            time = 30;
+        }else if(time == 0.5){
+            time = 60;
+        }else if(time == 1){
+            time = 90;
+        }else if(time == 3){
+            time =120;
+        }
+        return time;
+    }
 }

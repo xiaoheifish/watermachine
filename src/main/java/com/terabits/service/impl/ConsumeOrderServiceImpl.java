@@ -4,13 +4,16 @@ import com.terabits.mapper.ConsumeOrderMapper;
 import com.terabits.meta.bo.TimeSpanBO;
 import com.terabits.meta.po.ConsumeOrderPO;
 import com.terabits.service.ConsumeOrderService;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 /**
  * Created by Administrator on 2017/8/19.
  */
+@Service("consumeOrderService")
 public class ConsumeOrderServiceImpl implements ConsumeOrderService {
 
     @Autowired(required = false)
@@ -44,6 +47,13 @@ public class ConsumeOrderServiceImpl implements ConsumeOrderService {
      */
     public List<ConsumeOrderPO> selectConsumptionByDisplayId(String displayId)throws Exception{
         return consumeOrderMapper.selectConsumptionByDisplayId(displayId);
+    }
+
+    /**
+     * 查询某设备对应的最后一笔消费
+     */
+    public ConsumeOrderPO selectLastConsumption(String displayId)throws Exception{
+        return consumeOrderMapper.selectLastConsumption(displayId);
     }
 
     /**

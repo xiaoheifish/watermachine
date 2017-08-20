@@ -17,6 +17,7 @@ import java.util.Date;
  */
 @Service("jsapiTicketService")
 public class JsapiTicketServiceImpl implements JsapiTicketService {
+
     @Autowired(required = false)
     private JsapiTicketMapper jsapiTicketMapper;
     @Autowired

@@ -5,12 +5,14 @@ import com.terabits.meta.po.AuxcalPO;
 import com.terabits.meta.po.TotalPO;
 import com.terabits.service.StatisticService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 /**
  * Created by Administrator on 2017/8/19.
  */
+@Service("statisticService")
 public class StatisticServiceImpl implements StatisticService {
     @Autowired(required = false)
     private StatisticMapper statisticMapper;

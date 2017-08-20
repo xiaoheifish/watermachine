@@ -44,6 +44,14 @@ public interface ConsumeOrderMapper {
     public List<ConsumeOrderPO> selectConsumptionByDisplayId(@Param("displayId")String displayId)throws Exception;
 
     /**
+     * 查询某设备对应的最后一笔消费
+     * @param displayId
+     * @return
+     * @throws Exception
+     */
+    public ConsumeOrderPO selectLastConsumption(@Param("displayId")String displayId)throws Exception;
+
+    /**
      * 查询某用户对应的全部消费
      * @param openId
      * @return

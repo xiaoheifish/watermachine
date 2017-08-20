@@ -31,6 +31,11 @@ public interface ConsumeOrderService {
     public List<ConsumeOrderPO> selectConsumptionByDisplayId(String displayId)throws Exception;
 
     /**
+     * 查询某设备对应的最后一笔消费
+     */
+    public ConsumeOrderPO selectLastConsumption(String displayId)throws Exception;
+
+    /**
      * 查询某用户对应的全部消费
      */
     public List<ConsumeOrderPO> selectConsumptionByOpenId(String openId)throws Exception;

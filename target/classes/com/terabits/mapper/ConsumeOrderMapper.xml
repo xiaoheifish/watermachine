@@ -53,6 +53,10 @@
         select * from consumeorder where displayid = #{displayId}
     </select>
 
+    <select id="selectLastConsumption" parameterType="String" resultMap="consumeOrderMap">
+        select * from consumeorder where displayid = #{displayId} order by gmtcreate desc limit 1
+    </select>
+
     <select id="selectConsumptionByOpenId" parameterType="String" resultMap="consumeOrderMap">
         select * from consumeorder where openid = #{openId}
     </select>

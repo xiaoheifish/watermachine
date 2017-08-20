@@ -4,10 +4,12 @@ import com.terabits.mapper.CommandMapper;
 import com.terabits.meta.po.CommandPO;
 import com.terabits.service.CommandService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  * Created by Administrator on 2017/8/19.
  */
+@Service("commandService")
 public class CommandServiceImpl implements CommandService {
     @Autowired(required = false)
     private CommandMapper commandMapper;
