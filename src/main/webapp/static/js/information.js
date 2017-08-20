@@ -78,13 +78,10 @@ function recharge() {
 			},
 			dataType:'json',
 			success:function(data){
-					 if (data["errno"] != 0){
-			            	alert("无相关数据！");
-			            }
-					 else{
+					 
 						 //跳转到using页
 						//window.location.href = "http://localhost:8080/info/"+id;
-					 }
+					
 			}
 		});
 	}

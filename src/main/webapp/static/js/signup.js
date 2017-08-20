@@ -14,6 +14,7 @@ function load(){
 		$("#vcode").text("confirm");
 		$("#inputdiv2").remove();
 		$("#eninputdiv2").show();
+		$("title").html("sign up");
 	}
 }
 
@@ -29,7 +30,7 @@ function getCookie(cname)
 	return null;
 }
 
-var certificate;
+var certificate,countdown;
 function signup(){
     $("#signup").attr("disabled", true); 
     $("#signup").css("color", "rgb(200, 200, 200)");
@@ -42,7 +43,7 @@ function signup(){
 		url:'/watermachine/phone',
 		data:{
 			"openid":openid,
-			"tel":tel
+			"tel":$("#tel").val()
 		},
 		dataType:'json',
 		success:function(data){
@@ -51,11 +52,6 @@ function signup(){
 				//凭证
 				certificate = data["certificate"];
 		    }
-			else{
-				 if (data["errno"] != 0){
-		            	alert("无相关数据！");
-		            }
-			}
 		}
 	});
 }
@@ -67,19 +63,15 @@ function icode(){
 			url:'/watermachine/icode',
 			data:{
 				"openid":openid,
-				"tel":tel,
+				"tel":$("#tel").val(),
 				"certificate":certificate,
-				"icode":icode
+				"icode":$("#icode").val()
 			},
 			dataType:'json',
 			success:function(data){
 				open();
 				//跳转到首页
-				
-				
-					 if (data["errno"] != 0){
-			            	alert("无相关数据！");
-			            }
+					
 			}
 		});
 }

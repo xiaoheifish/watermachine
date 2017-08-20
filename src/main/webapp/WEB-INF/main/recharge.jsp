@@ -50,7 +50,7 @@ powered by Terabits
 </div>
 
 <!-- 支付成功等候10秒 -->
-<div id="wait" style="height:100%;width:100%;position:absolute;z-index:1;font-size:0.5rem;padding-top:30%;text-align: center;background-color: rgb(240, 240, 240);">
+<div id="wait" style="height:100%;width:100%;position:absolute;z-index:1;font-size:0.5rem;padding-top:30%;text-align: center;background-color: rgb(240, 240, 240);top:0;">
  <img src="/watermachine/static/pic/water.png" width="60%"/>
  <br>
  支付成功，<span id="waittime">10</span>秒后将自动跳转

@@ -49,6 +49,9 @@ function login() {
 		$.ajax({
 			type:'GET',
 			url:'/watermachine/existence/{'+id+'}',
+			data:{
+				"openid":openid
+			},
 			dataType:'json',
 			success:function(data){
 				if (existence == "yes"){
@@ -73,7 +76,7 @@ function load(){
 		setCookie("openid",openid);
 		setCookie("language",language);
 	}
-	else{
+	else{//cookie已存在，读取
 		language = getCookie("language");
 		avatar = getCookie("avatar");
 		nickname = getCookie("nickname");
@@ -83,7 +86,7 @@ function load(){
 				
 				//中英文切换
 				if(language != "zh_CN"){
-					$("title").text("Intelligent Water Fountain");
+					$("title").html("Intelligent Water Fountain");
 					$("#RQ").text("Scan to drinking");
 					$("#numbertext").text("Input the water fountain id");
 					$("#idinputtext").text("Input the water fountain id");
@@ -148,7 +151,11 @@ function RQ(){
             $.ajax({
                 type:'GET',
                 url:'/watermachine/weburl/' + webId,
+                data:{
+    				"openid":openid
+    			},
                 dataType:'json',
+                
                 success:function(data){
                     if (data["displayId"] !== null){
                         window.location.href = "http://www.terabits-wx.cn/smartsocket/info/" + data["displayId"];
@@ -190,11 +197,6 @@ function loadrecord(){
 		            	i--;
 		            }
 		    }
-			else{
-				 if (data["errno"] != 0){
-		            	alert("无相关数据！");
-		            }
-			}
 		}
 	});
 	
@@ -224,14 +226,12 @@ function loadservice(){
 		url:'/watermachine/menu/service',
 		data:{
 			"openid":openid,
-			"email":$("#email").text,
-			"suggestion":$("#suggestion").text
+			"email":$("#email").val(),
+			"suggestion":$("#suggestion").val()
 		},
 		dataType:'json',
 		success:function(data){
-			if (data["errno"] != 0){
-		       	alert("无相关数据！");
-		    }
+			
 		}
 	});
 }

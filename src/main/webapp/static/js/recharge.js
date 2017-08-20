@@ -10,6 +10,7 @@
 		$("#recharge").val("recharge");
 		$("#rechargewarntext").text("Click 'recharge' means you agree the above rules.");
 		$("#rechargepic").attr("src","/watermachine/static/pic/enrechargepic.png");
+		$("title").html("recharge");
 	}
 }
 
