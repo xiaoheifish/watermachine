@@ -103,37 +103,32 @@ function load(){
 	if (isWeiXin5() == false) {
         alert("您的微信版本低于5.0，无法使用微信支付功能，请先升级！");
       }
-	else{
-		$.ajax({
-			type:'POST',
-			url:'/watermachine/wxconfig',
-			dataType:'json',
-			success:function(data){
-				//扫一扫相关函数
-				wx.config({  
-				    debug: true,  
-				    appId: data["appid"],  
-				    timestamp: data["timestamp"],  
-				    nonceStr: data["nonceStr"],  
-				    signature: data["signature"],  
-				    jsApiList : [ 'checkJsApi', 'onMenuShareTimeline',
-		                            'onMenuShareAppMessage', 'onMenuShareQQ',
-		                            'onMenuShareWeibo', 'hideMenuItems',
-		                            'showMenuItems', 'hideAllNonBaseMenuItem',
-		                            'showAllNonBaseMenuItem', 'translateVoice',
-		                            'startRecord', 'stopRecord', 'onRecordEnd',
-		                            'playVoice', 'pauseVoice', 'stopVoice',
-		                            'uploadVoice', 'downloadVoice', 'chooseImage',
-		                            'previewImage', 'uploadImage', 'downloadImage',
-		                            'getNetworkType', 'openLocation', 'getLocation',
-		                            'hideOptionMenu', 'showOptionMenu', 'closeWindow',
-		                            'scanQRCode', 'chooseWXPay',
-		                            'openProductSpecificView', 'addCard', 'chooseCard',
-		                            'openCard' ]  
-				}); 
-			}
-		});
-	}
+    else{
+        $.ajax({
+            url : "/watermachine/wxconfig",
+            type : 'post',
+            dataType : 'json',
+            contentType : "application/x-www-form-urlencoded; charset=utf-8",
+            data : {
+                'url' : location.href.split('#')[0]
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown){
+                alert(XMLHttpRequest.status);
+            },
+            success:function(data){
+                //扫一扫相关函数
+                wx.config({
+                    debug: false,
+                    appId: data["appId"],
+                    timestamp: data["timestamp"],
+                    nonceStr: data["nonceStr"],
+                    signature: data["signature"],
+                    jsApiList : [ 'checkJsApi',
+                        'scanQRCode']
+                });
+            }
+        });
+    }
 }
 
 
@@ -158,7 +153,7 @@ function RQ(){
                 
                 success:function(data){
                     if (data["displayId"] !== null){
-                        window.location.href = "http://www.terabits-wx.cn/smartsocket/info/" + data["displayId"];
+                        window.location.href = "http://www.terabits-wx.cn/watermachine/info/" + data["displayId"];
                     }
                     else{
                         alert("扫码故障");
