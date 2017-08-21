@@ -127,7 +127,6 @@ function load(){
 
 //调用扫一扫接口
 function RQ(){
-	alert("clicke");
     //扫描二维码
     wx.scanQRCode({
         needResult : 1, // 默认为0，扫描结果由微信处理，1则直接返回扫描结果，
@@ -173,11 +172,13 @@ function loadrecord(){
 		            	$("#record"+i).find("#cost").text(data[i]["payment"]);
 		            	$("#record"+i).find("#idtext").text(data[i]["displayId"]);
 		            	$("#record"+i).find("#water").text(data[i]["flow"]);
-		            	if(i != 0){
+		            	if(i != (length-1)){
+		            		i++;
 							/*  增加div */
                             object = $("#record0").clone();
                             $(object).attr("id","record"+i);
                             $("body").append(object);
+                            i--;
 						}
 		            }
 		    }

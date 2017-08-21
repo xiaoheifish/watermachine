@@ -6,8 +6,6 @@ function load(){
 	setCookie("avatar",avatar);
 	setCookie("nickname",nickname);
 
-	alert(openid+language+avatar+nickname);
-
 	if(language != "zh_CN"){
 		$("#signuppic").attr("src","/watermachine/static/pic/ensignuppic.png");
 		$("#tel").val("input telephone number");

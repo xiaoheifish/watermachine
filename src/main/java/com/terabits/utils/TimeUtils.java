@@ -41,13 +41,13 @@ public class TimeUtils {
     public static long FlowToTime(double flow){
         long time = 0;
         if(flow == 0.2){
-            time = 30;
-        }else if(time == 0.5){
-            time = 60;
-        }else if(time == 1){
-            time = 90;
-        }else if(time == 3){
-            time =120;
+            time = 100;
+        }else if(flow == 0.5){
+            time = 120;
+        }else if(flow == 1){
+            time = 140;
+        }else if(flow == 2){
+            time =160;
         }
         return time;
     }

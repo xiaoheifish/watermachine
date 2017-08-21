@@ -1,7 +1,7 @@
 ﻿var openid,language;
 function load(){
-	var openid = getCookie("openid");
-	var language = getCookie("language");
+	openid = getCookie("openid");
+	language = getCookie("language");
 	
 	if(language != "zh_CN"){
 		$("#recharge").val("Confirm");
@@ -62,7 +62,7 @@ function money4(){
 
 //跳转使用页
 function recharge() {
-	var id = document.getElementById("id").innerText;
+	var displayid = document.getElementById("id").innerText;
 	if(money == null){
 		alert("请选择取水量！");
 	}
@@ -72,14 +72,19 @@ function recharge() {
 			type:'POST',
 			url:'/watermachine/consume/order',
 			data:{
-				"id":openid,
+				"openid":openid,
 				"cost":money,
-				"displayid":id
+				"displayid":displayid
 			},
 			dataType:'json',
 			success:function(data){
+				alert("succ");
 				//跳转到using页
-				window.location.href = "/watermachine/info/"+id;
+				if(data["result"] == "success") {
+                    window.location.href = "/watermachine/info/" + displayid;
+                }else{
+					alert("error");
+				}
 			}
 		});
 	}
