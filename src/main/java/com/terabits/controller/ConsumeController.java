@@ -101,15 +101,23 @@ public class ConsumeController {
         Date now = new Date();
         SimpleDateFormat dfs = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String time1 = dfs.format(now);
-        huaweiPostCommandService.command(openbytes, communicationBO.getDeviceId());
+        PlatformGlobal.command(openbytes, communicationBO.getDeviceId());
         now = new Date();
         String time2 = dfs.format(now);
         //response.getWriter().print("power on ok: " + time1 + " " + time2);
         //此处为调试方便先直接更新订单状态
-        consumeOrderService.updateStateById(consumeOrderPO.getOrderNo());
-        for (int i = 0; i < 1; i++) {
+        //consumeOrderService.updateStateById(consumeOrderPO.getOrderNo());
+        //标记是否更新过了
+        Boolean flag = false;
+        for (int i = 0; i < 4; i++) {
             //之后加一个根据消费订单编号查询的方法
             ConsumeOrderPO consumeOrderPO1 = consumeOrderService.selectLastConsumption(displayId);
+            if(i == 3){
+                JSONObject jsonObject = new JSONObject();
+                jsonObject.put("result", "fail");
+                response.getWriter().print(jsonObject);
+                return;
+            }
             if (consumeOrderPO1.getState() == Constants.NO_RESPONSE) {
                 //下发开启插座命令给终端
                 time1 = dfs.format(now);
@@ -118,34 +126,37 @@ public class ConsumeController {
                 time2 = dfs.format(now);
                 response.getWriter().print("power on ok: " + time1 + " " + time2);
             } else{
-                //更新设备表中的设备状态
-                TerminalUpdateBO terminalUpdateBO = new TerminalUpdateBO();
-                terminalUpdateBO.setState(Constants.ON_STATE);
-                terminalUpdateBO.setDisplayId(displayId);
-                terminalService.updateTerminal(terminalUpdateBO);
-                //在数据库中添加此次操作记录,operationPO里可以记录下指令编号，用于调试！！
-                OperationPO operationPO = new OperationPO();
-                operationPO.setStatus(Constants.OFF_TO_ON);
-                operationPO.setImei(communicationBO.getImei());
-                operationService.insertOperation(operationPO);
-                //更新用户余额
-                UserPO userPO = userService.selectUser(openId);
-                userService.updateRemain(userPO.getRemain() - actualCost, openId);
-                //更新统计余额及流量
-                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-                AuxcalPO auxcalPO = statisticService.selectTodayAuxcal(sdf.format(new Date()));
-                auxcalPO.setPayment(auxcalPO.getPayment() + actualCost);
-                auxcalPO.setFlow(auxcalPO.getFlow() + flow);
-                statisticService.updateTodayAuxcal(auxcalPO);
-                //更新历史总余额及流量
-                TotalPO totalPO = statisticService.selectTotal();
-                totalPO.setFlow(totalPO.getFlow() + flow);
-                totalPO.setPayment(totalPO.getPayment() + actualCost);
-                totalPO.setRemain(totalPO.getRemain() - actualCost);
-                statisticService.updateTotal(totalPO);
-                JSONObject jsonObject = new JSONObject();
-                jsonObject.put("result", "success");
-                response.getWriter().print(jsonObject);
+                if(flag == false) {
+                    flag = true;
+                    //更新设备表中的设备状态
+                    TerminalUpdateBO terminalUpdateBO = new TerminalUpdateBO();
+                    terminalUpdateBO.setState(Constants.ON_STATE);
+                    terminalUpdateBO.setDisplayId(displayId);
+                    terminalService.updateTerminal(terminalUpdateBO);
+                    //在数据库中添加此次操作记录,operationPO里可以记录下指令编号，用于调试！！
+                    OperationPO operationPO = new OperationPO();
+                    operationPO.setStatus(Constants.OFF_TO_ON);
+                    operationPO.setImei(communicationBO.getImei());
+                    operationService.insertOperation(operationPO);
+                    //更新用户余额
+                    UserPO userPO = userService.selectUser(openId);
+                    userService.updateRemain(userPO.getRemain() - actualCost, openId);
+                    //更新统计余额及流量
+                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                    AuxcalPO auxcalPO = statisticService.selectTodayAuxcal(sdf.format(new Date()));
+                    auxcalPO.setPayment(auxcalPO.getPayment() + actualCost);
+                    auxcalPO.setFlow(auxcalPO.getFlow() + flow);
+                    statisticService.updateTodayAuxcal(auxcalPO);
+                    //更新历史总余额及流量
+                    TotalPO totalPO = statisticService.selectTotal();
+                    totalPO.setFlow(totalPO.getFlow() + flow);
+                    totalPO.setPayment(totalPO.getPayment() + actualCost);
+                    totalPO.setRemain(totalPO.getRemain() - actualCost);
+                    statisticService.updateTotal(totalPO);
+                    JSONObject jsonObject = new JSONObject();
+                    jsonObject.put("result", "success");
+                    response.getWriter().print(jsonObject);
+                }
             }
         }
     }
