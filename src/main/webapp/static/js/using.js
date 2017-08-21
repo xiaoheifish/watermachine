@@ -11,6 +11,7 @@ function load(){
             status = "usable";
         }
         else{status = "using";}
+        $("title").text("Using Information");
 	}
 }
 

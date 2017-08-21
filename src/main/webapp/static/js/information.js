@@ -9,6 +9,7 @@ function load(){
 			status = "usable";
 		}
 		else{status = "using";}
+		$("title").text("Information");
 	}
 }
 
