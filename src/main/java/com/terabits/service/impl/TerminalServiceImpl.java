@@ -124,6 +124,16 @@ public class TerminalServiceImpl implements TerminalService{
         return displayId;
     }
 
+    public String selectImeiFromDeviceId(String deviceId){
+        String imei = null;
+        try{
+            imei = terminalMapper.selectImeiFromDeviceId(deviceId);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return imei;
+    }
+
 }
 
 

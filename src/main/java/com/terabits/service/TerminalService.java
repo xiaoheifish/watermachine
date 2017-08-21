@@ -33,4 +33,6 @@ public interface TerminalService {
     public String getTerminalDisplayId(String webId);
     //根据imei号查询displaId
     public String getDisplayIdFromImei(String imei);
+    //根据deviceId查询imei号
+    public String selectImeiFromDeviceId(String deviceId);
 }

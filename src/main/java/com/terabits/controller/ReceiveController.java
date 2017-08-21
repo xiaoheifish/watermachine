@@ -44,7 +44,7 @@ public class ReceiveController {
         }
         JSONObject json = JSONObject.fromObject(wholeStr);
         Map<String, Object> map = (Map<String, Object>) json;
-        //String terminalId = (String) map.get("deviceId");
+        String deviceId = (String) map.get("deviceId");
         Map<String, Object> service = (Map<String, Object>) map.get("service");
         Map<String, Object> data = (Map<String, Object>) service.get("data");
         String info = (String)data.get("terminalState");
@@ -61,10 +61,7 @@ public class ReceiveController {
         notifyDataPO.setContent(content);
         notifyDataService.insertNotifyData(notifyDataPO);
         if(rawInfo[0] == (byte)0x1B){
-            String imei = "8";
-            for(int i = 5; i < 12; i++){
-                imei += Integer.toHexString(rawInfo[i]);
-            }
+            String imei = terminalService.selectImeiFromDeviceId(deviceId);
             String displayId = terminalService.getDisplayIdFromImei(imei);
             ConsumeOrderPO consumeOrderPO = consumeOrderService.selectLastConsumption(displayId);
             try {
@@ -84,10 +81,7 @@ public class ReceiveController {
             operationService.insertOperation(operationPO);
         }
         else if(rawInfo[0] == (byte)0x1C){
-            String imei = "8";
-            for(int i = 3; i < 10; i++){
-                imei += Integer.toHexString(rawInfo[i]);
-            }
+            String imei = terminalService.selectImeiFromDeviceId(deviceId);
             System.out.println("doneimei:::::"+imei);
             //收到执行完成命令，更新设备表里的状态
             TerminalUpdateBO terminalUpdateBO = new TerminalUpdateBO();

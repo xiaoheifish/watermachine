@@ -90,4 +90,8 @@
     <select id="getDisplayIdFromImei" parameterType="java.lang.String" resultType="java.lang.String">
         select displayid from terminal where imei = #{imei}
     </select>
+
+    <select id="selectImeiFromDeviceId" parameterType="java.lang.String" resultType="java.lang.String">
+        select imei from terminal where deviceid = #{deviceId}
+    </select>
 </mapper>

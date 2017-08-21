@@ -89,4 +89,12 @@ public interface TerminalMapper {
      */
     public String getDisplayIdFromImei(@Param("imei") String imei) throws Exception;
 
+    /**
+     * 根据deviceId查询imei号
+     * @param deviceId
+     * @return
+     * @throws Exception
+     */
+    public String selectImeiFromDeviceId(@Param("deviceId")String deviceId)throws Exception;
+
 }
