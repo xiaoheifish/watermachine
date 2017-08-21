@@ -55,6 +55,7 @@ public class ConsumeController {
     public void consume(HttpServletRequest request, HttpServletResponse response, HttpSession session) throws Exception {
         String requestOpenId = request.getParameter("openid");
         String openId = (String) session.getAttribute("openid");
+        openId = "o1S07wuDO9ivY_55p3OT4bEMNUL0";
         String displayId = request.getParameter("displayid");
         String cost = request.getParameter("cost");
         double actualCost = Double.parseDouble(cost);
@@ -93,11 +94,8 @@ public class ConsumeController {
         openbytes[0] = Constants.SEND_COMMAND_START;
         openbytes[1] = Constants.POWER_ON_COMMAND;
         openbytes[2] = FlowUtil.flowToCommand(flow);
-        System.out.println("openbytes::::::"+openbytes[2]);
         openbytes[3] = (byte) cmdOne;
-        System.out.println(openbytes[3]);
         openbytes[4] = (byte) cmdTwo;
-        System.out.println(openbytes[4]);
         openbytes[5] = Constants.SEND_COMMAND_END;
         Date now = new Date();
         SimpleDateFormat dfs = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -116,7 +114,7 @@ public class ConsumeController {
             ConsumeOrderPO consumeOrderPO1 = consumeOrderService.selectLastConsumption(displayId);
             if(i == 3){
                 JSONObject jsonObject = new JSONObject();
-                jsonObject.put("result", "fail");
+                jsonObject.put("error", "errorresult");
                 response.getWriter().print(jsonObject);
                 return;
             }
@@ -149,7 +147,7 @@ public class ConsumeController {
                     totalPO.setPayment(totalPO.getPayment() + actualCost);
                     totalPO.setRemain(totalPO.getRemain() - actualCost);
                     statisticService.updateTotal(totalPO);
-
+                    return;
                 }
             }
         }

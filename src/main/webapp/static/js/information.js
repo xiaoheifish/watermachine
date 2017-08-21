@@ -85,7 +85,6 @@ function recharge() {
 			},
 			dataType:'json',
 			success:function(data){
-				alert("succ");
 				//跳转到using页
 				if(data["result"] == "success") {
                     window.location.href = "/watermachine/info/" + displayid;
