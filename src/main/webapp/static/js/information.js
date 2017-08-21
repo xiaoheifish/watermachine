@@ -62,6 +62,7 @@ function money4(){
 
 //跳转使用页
 function recharge() {
+	$("#recharge").attr("disabled", true);
 	var displayid = document.getElementById("id").innerText;
 	if(money == null){
 		alert("请选择取水量！");

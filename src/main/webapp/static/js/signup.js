@@ -10,11 +10,11 @@ function load(){
 		$("#signuppic").attr("src","/watermachine/static/pic/ensignuppic.png");
 		$("#tel").val("input telephone number");
 		$("#icode").val("input verification code");
-		$("#signup").text("sign up now");
+		$("#signup").text("register now");
 		$("#vcode").text("confirm");
 		$("#inputdiv2").remove();
 		$("#eninputdiv2").show();
-		$("title").html("sign up");
+		$("title").html("register");
 	}
 }
 
@@ -76,8 +76,6 @@ function icode(){
 				}else{
 					alert("error");
 				}
-				//跳转到首页
-					
 			}
 		});
 }
@@ -86,7 +84,8 @@ function icode(){
 function open(){
     $("#inputdiv1").remove();
     $("#inputdiv2").remove();
-    $("#sucdiv").show();
+    if(language != "zh_CN"){$("#ensucdiv").show();}	
+    else{$("#sucdiv").show();}
 }
 
 function positionhide(){

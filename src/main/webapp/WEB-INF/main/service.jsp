@@ -21,8 +21,8 @@
 <p style="position: absolute;padding: 0.3rem;margin-top: 0.2rem;" id="emailtext">您的邮箱</p><input type="email" id="email" class="inputdiv"></input></div>
 <button class="RQ" onclick="suggestion();" id="suggestionbutton">提交</button>
 
-<p id="text" style="font-size: 0.3rem;margin-top: 0.3rem;text-align: center;">感谢您的宝贵意见<br>联系我们：sales@terabits.cn</p>
-<p id="entext" style="display:none;font-size: 0.3rem;margin-top: 0.3rem;text-align: center;">Thanks for your advice<br>contact us：sales@terabits.cn</p>
+<p id="text" style="font-size: 0.3rem;margin-top: 0.3rem;text-align: center;">感谢您的宝贵意见，<span style="color: rgb(230, 67,64);">我们将选取有价值的意见及建议进行奖励</span>。<br>联系我们：sales@terabits.cn</p>
+<p id="entext" style="display:none;font-size: 0.3rem;margin-top: 0.3rem;text-align: center;">Thanks for your advice.<span style="color: rgb(230, 67,64);">We will pick valuable comments and suggestions and reward.</span><br>contact us：sales@terabits.cn</p>
 
 </body>
 </html>

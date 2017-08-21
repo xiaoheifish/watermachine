@@ -28,6 +28,9 @@ function settime() {
     if (lefttime != -1){
         setTimeout(function() { settime() },1000);
     }
+    else{
+    	window.location.href="http://www.terabits-wx.cn/watermachine/mainpage";
+    }
 }
 
 //时间显示处理函数

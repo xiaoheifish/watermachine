@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+﻿<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -118,8 +118,7 @@
 <div id="menu">
     <div style="margin-bottom: 1rem;width: 100%; text-align: right;margin-top: -0.5rem;">
         <button onclick="closemenu();" id="closemenu" class="closemenu"><img style="width: 0.4rem"
-                                                                             src="/watermachine/static/pic/back.png">&nbsp;<span
-                id="closemenutext">关闭</span></button>
+                                                                             src="/watermachine/static/pic/back.png"></button>
     </div>
 
     <img src="/watermachine/static/pic/avatar.png" style="width: 1.4rem;" id="avatar"/><br>
@@ -133,13 +132,15 @@
                                                                        src="/watermachine/static/pic/wallet.png"/>&nbsp;&nbsp;&nbsp;&nbsp;我的钱包
     </button>
 
-    <button id="invite" onclick="openinvitationbox();" class="menu_1"><img style="width: 0.7rem"
+<!--    <button id="invite" onclick="openinvitationbox();" class="menu_1"><img style="width: 0.7rem"
                                                                            src="/watermachine/static/pic/invite.png"/>&nbsp;&nbsp;&nbsp;&nbsp;邀请好友
-    </button>
+    </button>-->
 
     <button id="service" onclick="openservicebox();" class="menu_1"><img style="width: 0.7rem"
                                                                          src="/watermachine/static/pic/service.png"/>&nbsp;&nbsp;&nbsp;&nbsp;我的客服
     </button>
+
+<a href="/watermachine/rules" id="enrule" style="margin-top: 0.5rem;font-size: 0.3rem;">详细活动规则</a>
 
 </div>
 
