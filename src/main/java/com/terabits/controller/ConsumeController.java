@@ -41,6 +41,8 @@ public class ConsumeController {
     private TerminalService terminalService;
     @Autowired
     private OperationService operationService;
+    @Autowired
+    private HuaweiPostCommandService huaweiPostCommandService;
 
     private static Logger logger = LoggerFactory.getLogger(ConsumeController.class);
 
@@ -59,7 +61,6 @@ public class ConsumeController {
         String cost = request.getParameter("cost");
         double actualCost = Double.parseDouble(cost);
         double flow = FlowUtil.costToFlow(actualCost);
-        System.out.println("openid:::::" + requestOpenId + openId);
         if (!requestOpenId.equals(openId)) {
             response.getWriter().print("error");
         }
@@ -77,18 +78,18 @@ public class ConsumeController {
         } catch (Exception e) {
             logger.error("consumeOrderService.insertOrder error in 生成消费订单");
         }
-        //查询指令编号
+        //查询指令编号并更新
         String commandOne = credentialService.getCommandNo("commandOne");
         String commandTwo = credentialService.getCommandNo("commandTwo");
         CommandNoModel commandNoModel = new CommandNoModel();
         commandNoModel.setCommandId("commandTwo");
         int tempCommandTwo = Integer.parseInt(commandTwo) + 1;
         commandNoModel.setNumber(String.valueOf(tempCommandTwo));
+        credentialService.createCommand(commandNoModel);
+        //下发指令
         int cmdOne = Integer.parseInt(commandOne);
         int cmdTwo = Integer.parseInt(commandTwo);
-
         CommunicationBO communicationBO = terminalService.getTerminalDeviceId(displayId);
-        System.out.println("插入终端变化");
         //下发开启插座命令给终端
         byte[] openbytes = new byte[6];
         openbytes[0] = Constants.SEND_COMMAND_START;
@@ -100,7 +101,7 @@ public class ConsumeController {
         Date now = new Date();
         SimpleDateFormat dfs = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String time1 = dfs.format(now);
-        PlatformGlobal.command(openbytes, communicationBO.getDeviceId());
+        huaweiPostCommandService.command(openbytes, communicationBO.getDeviceId());
         now = new Date();
         String time2 = dfs.format(now);
         //response.getWriter().print("power on ok: " + time1 + " " + time2);
@@ -130,13 +131,13 @@ public class ConsumeController {
                 //更新用户余额
                 UserPO userPO = userService.selectUser(openId);
                 userService.updateRemain(userPO.getRemain() - actualCost, openId);
-                //更新统计余额
+                //更新统计余额及流量
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
                 AuxcalPO auxcalPO = statisticService.selectTodayAuxcal(sdf.format(new Date()));
                 auxcalPO.setPayment(auxcalPO.getPayment() + actualCost);
                 auxcalPO.setFlow(auxcalPO.getFlow() + flow);
                 statisticService.updateTodayAuxcal(auxcalPO);
-                //更新历史总余额
+                //更新历史总余额及流量
                 TotalPO totalPO = statisticService.selectTotal();
                 totalPO.setFlow(totalPO.getFlow() + flow);
                 totalPO.setPayment(totalPO.getPayment() + actualCost);
