@@ -64,24 +64,22 @@ function money4(){
 function recharge() {
 	var id = document.getElementById("id").innerText;
 	if(money == null){
-		alert("请选择充值金额！");
+		alert("请选择取水量！");
 	}
 	else{
 		//发起扣款查询及跳转
 		$.ajax({
-			type:'GET',
-			url:'/watermachine/information',
+			type:'POST',
+			url:'/watermachine/consume/order',
 			data:{
-				"openid":openid,
+				"id":openid,
 				"cost":money,
-				"water":water
+				"displayid":id
 			},
 			dataType:'json',
 			success:function(data){
-					 
-						 //跳转到using页
-						//window.location.href = "http://localhost:8080/info/"+id;
-					
+				//跳转到using页
+				window.location.href = "/watermachine/info/"+id;
 			}
 		});
 	}

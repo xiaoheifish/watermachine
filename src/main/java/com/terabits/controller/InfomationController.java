@@ -60,7 +60,7 @@ public class InfomationController {
             model.addAttribute("status","使用中");
             model.addAttribute("id",displayId);
             model.addAttribute("location",terminalPO.getLocation());
-            model.addAttribute("usingtime", String.valueOf(between));
+            model.addAttribute("water", String.valueOf(consumeOrderPO.getFlow()));
             model.addAttribute("lefttime", String.valueOf(leftTime));
             return "main/using.jsp";
         }

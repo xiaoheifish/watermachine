@@ -96,7 +96,7 @@ function recharge() {
                         $("#waittime").html(countdown);
                         countdown--;
                         if (countdown == 0){
-                            window.location.href="http://www.terabits-wx.cn/watermachine/info/" + id;
+                            window.location.href="/watermachine/callback";
                         }
                         else{
                             setTimeout(function() { settime() },1000);

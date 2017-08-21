@@ -1,7 +1,7 @@
 var openid,language;
 function load(){
-	var openid = getCookie("openid");
-	var language = getCookie("language");
+	openid = getCookie("openid");
+	language = getCookie("language");
 	
 	if(language != "zh_CN"){
 		$("#chwarnningtext").remove();

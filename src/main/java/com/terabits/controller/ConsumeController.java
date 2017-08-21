@@ -43,13 +43,9 @@ public class ConsumeController {
 
     private static Logger logger = LoggerFactory.getLogger(ConsumeController.class);
 
-    @RequestMapping(value = "/consume", method = RequestMethod.GET)
-    public String showConsumePage(){
-        return "main/consume.jsp";
-    }
 
     /**
-     *用户消费订单，需要生成消费订单，state为未收到回复，即23；
+     *用户消费订单，需要生成消费订单，state为未收到回复，即23；`
      * 查询当前指令编号，然后下发开启命令
      * 查询订单状态是否被更新，若被更新，表明收到硬件回复，开启成功
      * 则更新设备状态，插入终端变化的操作，用户余额，以及统计余额
@@ -104,8 +100,9 @@ public class ConsumeController {
         PlatformGlobal.command(openbytes, communicationBO.getDeviceId());
         now = new Date();
         String time2 = dfs.format(now);
-        response.getWriter().print("power on ok: " + time1 + " " + time2);
-
+        //response.getWriter().print("power on ok: " + time1 + " " + time2);
+        //此处为调试方便先直接更新订单状态
+        consumeOrderService.updateStateById(consumeOrderPO.getOrderNo());
         for(int i = 0; i < 3; i++){
             //之后加一个根据消费订单编号查询的方法
             ConsumeOrderPO consumeOrderPO1 = consumeOrderService.selectLastConsumption(displayId);

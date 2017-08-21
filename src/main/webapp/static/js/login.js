@@ -173,12 +173,12 @@ function loadrecord(){
 		            	$("#record"+i).find("#cost").text(data[i]["payment"]);
 		            	$("#record"+i).find("#idtext").text(data[i]["displayId"]);
 		            	$("#record"+i).find("#water").text(data[i]["flow"]);
-		            	i++;
-		                /*  增加div */
-		            	object = $("#record0").clone();
-		            	$(object).attr("id","record"+i);
-		            	$("body").append(object);
-		            	i--;
+		            	if(i != 0){
+							/*  增加div */
+                            object = $("#record0").clone();
+                            $(object).attr("id","record"+i);
+                            $("body").append(object);
+						}
 		            }
 		    }
 		}
