@@ -5,6 +5,10 @@ function load(){
 	
 	if(language != "zh_CN"){
 		$("#recharge").val("Confirm");
+		if(status == "空闲"){
+			status = "usable";
+		}
+		else{status = "using";}
 	}
 }
 

@@ -199,7 +199,7 @@ function loadservice(){
 		$("#emailtext").text("Email");
 		$("#suggestionbutton").val("submit");
 		$("#text").remove();
-		$("#text").show();
+		$("#entext").show();
 		$("title").html("Customer Service");
 	}
 }
