@@ -53,6 +53,9 @@
             <if test="displayId != null and displayId!=''">
                 and displayid = #{displayId}
             </if>
+            <if test="imei != null and imei!=''">
+                and imei = #{imei}
+            </if>
         </where>
     </update>
 

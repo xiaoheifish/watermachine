@@ -78,6 +78,7 @@ public class ReceiveController {
             for(int i = 3; i < 10; i++){
                 imei += Integer.toHexString(rawInfo[i]);
             }
+            System.out.println("doneimei:::::"+imei);
             //收到执行完成命令，更新设备表里的状态
             TerminalUpdateBO terminalUpdateBO = new TerminalUpdateBO();
             terminalUpdateBO.setState(Constants.OFF_STATE);

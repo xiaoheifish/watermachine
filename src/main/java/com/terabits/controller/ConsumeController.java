@@ -53,7 +53,7 @@ public class ConsumeController {
      * 查询订单状态是否被更新，若被更新，表明收到硬件回复，开启成功
      * 则更新设备状态，插入终端变化的操作，用户余额，以及统计余额
      */
-    @RequestMapping(value = "/consume/order", method = RequestMethod.POST)
+    @RequestMapping(value = "/consumeorder", method = RequestMethod.POST)
     public void consume(HttpServletRequest request, HttpServletResponse response, HttpSession session) throws Exception {
         String requestOpenId = request.getParameter("openid");
         String openId = (String) session.getAttribute("openid");
@@ -95,8 +95,11 @@ public class ConsumeController {
         openbytes[0] = Constants.SEND_COMMAND_START;
         openbytes[1] = Constants.POWER_ON_COMMAND;
         openbytes[2] = FlowUtil.flowToCommand(flow);
+        System.out.println("openbytes::::::"+openbytes[2]);
         openbytes[3] = (byte) cmdOne;
+        System.out.println(openbytes[3]);
         openbytes[4] = (byte) cmdTwo;
+        System.out.println(openbytes[4]);
         openbytes[5] = Constants.SEND_COMMAND_END;
         Date now = new Date();
         SimpleDateFormat dfs = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -127,6 +130,9 @@ public class ConsumeController {
                 response.getWriter().print("power on ok: " + time1 + " " + time2);
             } else{
                 if(flag == false) {
+                    JSONObject jsonObject = new JSONObject();
+                    jsonObject.put("result", "success");
+                    response.getWriter().print(jsonObject);
                     flag = true;
                     //更新设备表中的设备状态
                     TerminalUpdateBO terminalUpdateBO = new TerminalUpdateBO();
@@ -153,9 +159,7 @@ public class ConsumeController {
                     totalPO.setPayment(totalPO.getPayment() + actualCost);
                     totalPO.setRemain(totalPO.getRemain() - actualCost);
                     statisticService.updateTotal(totalPO);
-                    JSONObject jsonObject = new JSONObject();
-                    jsonObject.put("result", "success");
-                    response.getWriter().print(jsonObject);
+
                 }
             }
         }

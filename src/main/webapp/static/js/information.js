@@ -71,7 +71,8 @@ function recharge() {
 		//发起扣款查询及跳转
 		$.ajax({
 			type:'POST',
-			url:'/watermachine/consume/order',
+			url:'/watermachine/consumeorder',
+			timeout: 30000,
 			data:{
 				"openid":openid,
 				"cost":money,
