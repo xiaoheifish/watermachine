@@ -7,6 +7,10 @@ function load(){
 		$("#chwarnningtext").remove();
 		$("#enwarnningtext").show();
 		$("#L").text("L");
+        if(status == "空闲"){
+            status = "usable";
+        }
+        else{status = "using";}
 	}
 }
 
