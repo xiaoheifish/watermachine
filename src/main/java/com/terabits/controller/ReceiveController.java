@@ -72,6 +72,16 @@ public class ReceiveController {
             }catch (Exception e){
                 e.printStackTrace();
             }
+            //更新设备表中的设备状态
+            TerminalUpdateBO terminalUpdateBO = new TerminalUpdateBO();
+            terminalUpdateBO.setState(Constants.ON_STATE);
+            terminalUpdateBO.setDisplayId(displayId);
+            terminalService.updateTerminal(terminalUpdateBO);
+            //在数据库中添加此次操作记录,operationPO里可以记录下指令编号，用于调试！！
+            OperationPO operationPO = new OperationPO();
+            operationPO.setStatus(Constants.OFF_TO_ON);
+            operationPO.setImei(imei);
+            operationService.insertOperation(operationPO);
         }
         else if(rawInfo[0] == (byte)0x1C){
             String imei = "8";

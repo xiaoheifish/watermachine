@@ -40,8 +40,6 @@ public class ConsumeController {
     @Autowired
     private TerminalService terminalService;
     @Autowired
-    private OperationService operationService;
-    @Autowired
     private HuaweiPostCommandService huaweiPostCommandService;
 
     private static Logger logger = LoggerFactory.getLogger(ConsumeController.class);
@@ -107,6 +105,7 @@ public class ConsumeController {
         PlatformGlobal.command(openbytes, communicationBO.getDeviceId());
         now = new Date();
         String time2 = dfs.format(now);
+        Thread.sleep(10000L);
         //response.getWriter().print("power on ok: " + time1 + " " + time2);
         //此处为调试方便先直接更新订单状态
         //consumeOrderService.updateStateById(consumeOrderPO.getOrderNo());
@@ -128,22 +127,13 @@ public class ConsumeController {
                 now = new Date();
                 time2 = dfs.format(now);
                 response.getWriter().print("power on ok: " + time1 + " " + time2);
+                Thread.sleep(10000L);
             } else{
                 if(flag == false) {
                     JSONObject jsonObject = new JSONObject();
                     jsonObject.put("result", "success");
                     response.getWriter().print(jsonObject);
                     flag = true;
-                    //更新设备表中的设备状态
-                    TerminalUpdateBO terminalUpdateBO = new TerminalUpdateBO();
-                    terminalUpdateBO.setState(Constants.ON_STATE);
-                    terminalUpdateBO.setDisplayId(displayId);
-                    terminalService.updateTerminal(terminalUpdateBO);
-                    //在数据库中添加此次操作记录,operationPO里可以记录下指令编号，用于调试！！
-                    OperationPO operationPO = new OperationPO();
-                    operationPO.setStatus(Constants.OFF_TO_ON);
-                    operationPO.setImei(communicationBO.getImei());
-                    operationService.insertOperation(operationPO);
                     //更新用户余额
                     UserPO userPO = userService.selectUser(openId);
                     userService.updateRemain(userPO.getRemain() - actualCost, openId);
