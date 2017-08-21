@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="/watermachine/static/css/bootstrap.css">
 <link rel="stylesheet" href="/watermachine/static/css/login.css">
 
-<title>用户反馈</title>
+<title>意见反馈</title>
 </head>
 
 <body onload="loadservice()" style="font-family: 'Microsoft YaHei' 'Cambria Math';background-color: rgb(240, 240, 240);display: flex;flex-direction: column;align-items: center;font-size: 0.4rem;">
