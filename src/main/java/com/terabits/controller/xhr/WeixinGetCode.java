@@ -27,7 +27,7 @@ import java.io.IOException;
  */
 @Controller
 public class WeixinGetCode {
-    @Autowired
+   /* @Autowired
     private TerminalService terminalService;
     @RequestMapping(value="/callback/{info}",method= RequestMethod.GET)
     public String wxPay(@PathVariable("info") String info, HttpSession session, HttpServletRequest request, ModelMap modelMap) throws IOException, ParserConfigurationException, JDOMException,JSONException {
@@ -47,5 +47,5 @@ public class WeixinGetCode {
         modelMap.addAttribute("money",finalmoney);
         modelMap.addAttribute("water", finalmoney * 3);
         return "main/confirm.jsp";
-    }
+    }*/
 }

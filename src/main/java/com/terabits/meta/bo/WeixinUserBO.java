@@ -7,7 +7,7 @@ package com.terabits.meta.bo;
  */
 public class WeixinUserBO {
     //用户手机号
-    private String phone;
+    private String phone = null;
     //用户所用语言
     private String language;
 

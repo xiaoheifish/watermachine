@@ -21,12 +21,12 @@
 <div id="walletbox">
 <!-- 二级菜单-我的钱包 -->
 <div id="balance">
-<p>20.05</p>
+<p>${balance}</p>
 <p style="font-size: 0.3rem;" id="balancetext">余额(元)</p>
 </div>
 
 
-<button class="RQ" id="recharge">充值</button><br>
+<button class="RQ" onclick="jumprecharge()" id="jumprecharge">充值</button><br>
 
 <div class="col-sm-12 col-xs-12" id="bottombar">
 天风物业<br>

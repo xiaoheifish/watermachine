@@ -6,6 +6,8 @@ function load(){
 	setCookie("avatar",avatar);
 	setCookie("nickname",nickname);
 
+	alert(openid+language+avatar+nickname);
+
 	if(language != "zh_CN"){
 		$("#signuppic").attr("src","/watermachine/static/pic/ensignuppic.png");
 		$("#tel").val("input telephone number");
@@ -40,7 +42,7 @@ function signup(){
     //发送手机号，回收凭证
     $.ajax({
 		type:'GET',
-		url:'/watermachine/phone',
+		url:'/watermachine/sendmessage',
 		data:{
 			"openid":openid,
 			"tel":$("#tel").val()
@@ -50,7 +52,7 @@ function signup(){
 			var length = getJsonObjLength(data);
 			if(length != 0){
 				//凭证
-				certificate = data["certificate"];
+				certificate = data["auth"];
 		    }
 		}
 	});
@@ -59,17 +61,23 @@ function signup(){
 function icode(){
     //验证验证码
 	   $.ajax({
-			type:'GET',
-			url:'/watermachine/icode',
+			type:'POST',
+			url:'/watermachine/testcode',
 			data:{
 				"openid":openid,
 				"tel":$("#tel").val(),
-				"certificate":certificate,
-				"icode":$("#icode").val()
+				"auth":certificate,
+				"code":$("#icode").val()
 			},
 			dataType:'json',
 			success:function(data){
-				open();
+				if(data["testpass"]=="yes"){
+                    open();
+                    setTimeout(function() { window.location.href="http://www.terabits-wx.cn/watermachine/mainpage"; },3000);
+
+				}else{
+					alert("error");
+				}
 				//跳转到首页
 					
 			}

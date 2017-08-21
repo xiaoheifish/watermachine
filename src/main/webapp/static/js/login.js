@@ -9,19 +9,19 @@ function closemenu(){
 }
 
 function openrecordbox(){
-	$("#record").css("background-color","#f0f0f4");
-	//跳转record.html
+	//$("#record").css("background-color","#f0f0f4");
+	window.location.href = "/watermachine/record";
 }
 
 function openwalletbox(){
-	$("#wallet").css("background-color","#f0f0f4");
-	//跳转wallet.html +?openid
+	//$("#wallet").css("background-color","#f0f0f4");
+	window.location.href = "/watermachine/wallet?openid=" + openid;
 
 }
 
 function openservicebox(){
-	$("#service").css("background-color","#f0f0f4");
-	//跳转service.html
+	//$("#service").css("background-color","#f0f0f4");
+	window.location.href = "/watermachine/mail";
 }
 
 //打开手动输入窗口
@@ -45,44 +45,36 @@ function login() {
 	id = $("#id").val();
 	if(id == ""){
 		alert("请输入编号！");}
-	else{
-		$.ajax({
-			type:'GET',
-			url:'/watermachine/existence/{'+id+'}',
-			data:{
-				"openid":openid
-			},
-			dataType:'json',
-			success:function(data){
-				if (existence == "yes"){
-					window.location.href = "http://localhost:8080/info/"+id;
-				}
-	            else{
-	            	alert("编号不存在，请重新输入。");
-	            }
-			}
-		});
-	}
+    else{
+        $.ajax({
+            type:'GET',
+            url:'/watermachine/existence/' + id,
+            dataType:'json',
+            success:function(data){
+                if (data["existence"] === "yes"){
+                    window.location.href = "http://www.terabits-wx.cn/watermachine/info/" + id;
+                }
+                else{
+                    alert("编号不存在，请重新输入");
+                }
+            }
+        });
+
+    }
 }
 
 
 //微信接口认证
 function load(){
-	var openid = getCookie("openid");
-	if(openid = null){
+
+
 		//查询语言并保存cookie,查询昵称及头像
 		$("#nickname").append(nickname);
 		$("#avatar").attr("src", avatar);
 		setCookie("openid",openid);
 		setCookie("language",language);
-	}
-	else{//cookie已存在，读取
-		language = getCookie("language");
-		avatar = getCookie("avatar");
-		nickname = getCookie("nickname");
-		$("#nickname").append(nickname);
-		$("#avatar").attr("src", avatar);
-	}
+
+
 				
 				//中英文切换
 				if(language != "zh_CN"){
@@ -135,6 +127,7 @@ function load(){
 
 //调用扫一扫接口
 function RQ(){
+	alert("clicke");
     //扫描二维码
     wx.scanQRCode({
         needResult : 1, // 默认为0，扫描结果由微信处理，1则直接返回扫描结果，
@@ -146,11 +139,7 @@ function RQ(){
             $.ajax({
                 type:'GET',
                 url:'/watermachine/weburl/' + webId,
-                data:{
-    				"openid":openid
-    			},
                 dataType:'json',
-                
                 success:function(data){
                     if (data["displayId"] !== null){
                         window.location.href = "http://www.terabits-wx.cn/watermachine/info/" + data["displayId"];
@@ -168,11 +157,11 @@ function RQ(){
 function loadrecord(){
 	loadid();
 	$.ajax({
-		type:'GET',
+		type:'POST',
 		url:'/watermachine/menu/record',
 		data:{
 			"openid":openid
-		},
+        },
 		dataType:'json',
 		success:function(data){
 			var length = getJsonObjLength(data);
@@ -180,10 +169,10 @@ function loadrecord(){
 			if(length != 0){
 				$("#record0").show();
 		            for(i=0; i<length; i++){
-		            	$("#record"+i).find("#time").text(data[i]["time"]);
-		            	$("#record"+i).find("#cost").text(data[i]["cost"]);
-		            	$("#record"+i).find("#idtext").text(data[i]["id"]);
-		            	$("#record"+i).find("#water").text(data[i]["water"]);            	
+		            	$("#record"+i).find("#time").text(data[i]["gmtCreate"]);
+		            	$("#record"+i).find("#cost").text(data[i]["payment"]);
+		            	$("#record"+i).find("#idtext").text(data[i]["displayId"]);
+		            	$("#record"+i).find("#water").text(data[i]["flow"]);
 		            	i++;
 		                /*  增加div */
 		            	object = $("#record0").clone();
@@ -215,20 +204,24 @@ function loadservice(){
 		$("#text").show();
 		$("title").html("Customer Service");
 	}
-	
-	$.ajax({
-		type:'GET',
-		url:'/watermachine/menu/service',
-		data:{
-			"openid":openid,
-			"email":$("#email").val(),
-			"suggestion":$("#suggestion").val()
-		},
-		dataType:'json',
-		success:function(data){
-			
-		}
-	});
+}
+
+function suggestion(){
+    $.ajax({
+        type:'POST',
+        url:'/watermachine/mail/feedback',
+        data:{
+            "openid":openid,
+            "email":$("#email").val(),
+            "suggestion":$("#suggestion").val()
+        },
+        dataType:'json',
+        success:function(data){
+			if(data["result"] == "ok"){
+				alert("您的建议已成功提交！");
+			}
+        }
+    });
 }
 
 //我的钱包
@@ -236,13 +229,15 @@ function loadwallet(){
 	loadid();
 	if(language != "zh_CN"){
 		$("#balancetext").text("Balance(¥)");
-		$("#recharge").text("Recharge");
+		$("#jumprecharge").text("Recharge");
 		$("title").html("My Wallet");
 	}
 }
 
+function jumprecharge(){
+	window.location.href = "/watermachine/callback";
+}
 
-var openid,language;
 //加载cookie，语言和用户id
 function loadid(){
 	openid = getCookie("openid");

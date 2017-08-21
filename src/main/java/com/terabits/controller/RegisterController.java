@@ -30,14 +30,14 @@ public class RegisterController {
     @RequestMapping(value="/sendmessage",method= RequestMethod.GET)
     public void sendmessage(HttpServletRequest request, HttpServletResponse response)throws Exception{
         HttpSession session = request.getSession();
-        String id = request.getParameter("id");
-        System.out.println(id);
-        String code = smsService.sendMessage(id, "zh_CN");
+        String tel = request.getParameter("tel");
+        System.out.println(tel);
+        String code = smsService.sendMessage(tel, "zh_CN");
         String auth = UUID.randomUUID().toString();
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("auth",auth);
         session.setAttribute("auth", auth);
-        session.setAttribute("number", id);
+        session.setAttribute("tel", tel);
         session.setAttribute("code",code);
         response.getWriter().print(jsonObject);
     }
@@ -46,12 +46,12 @@ public class RegisterController {
     public void testcode(HttpServletRequest request, HttpServletResponse response)throws Exception{
         HttpSession session = request.getSession();
         String tempAuth = (String)session.getAttribute("auth");
-        String tempId = (String)session.getAttribute("number");
+        String tempId = (String)session.getAttribute("tel");
         String tempCode = (String)session.getAttribute("code");
         JSONObject jsonObject = new JSONObject();
         String auth = request.getParameter("auth");
-        String id = request.getParameter("id");
-        String code = request.getParameter("watermachine");
+        String id = request.getParameter("tel");
+        String code = request.getParameter("code");
         System.out.println(tempAuth +auth+ tempId+id+tempCode+code);
         if(!(tempAuth.equals(auth))){
             jsonObject.put("testpass","no");

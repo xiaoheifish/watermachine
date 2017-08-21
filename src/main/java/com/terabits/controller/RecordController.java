@@ -2,6 +2,7 @@ package com.terabits.controller;
 
 import com.terabits.meta.po.ConsumeOrderPO;
 import com.terabits.service.ConsumeOrderService;
+import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -37,8 +38,9 @@ public class RecordController {
         String openId = request.getParameter("openid");
         List<ConsumeOrderPO> consumeOrderPOmeOList = new ArrayList<ConsumeOrderPO>();
         try{
-            consumeOrderPOmeOList = consumeOrderService.selectConsumptionByDisplayId(openId);
-            JSONObject jsonObject = JSONObject.fromObject(consumeOrderPOmeOList);
+            consumeOrderPOmeOList = consumeOrderService.selectConsumptionByOpenId(openId);
+            JSONArray jsonObject = JSONArray.fromObject(consumeOrderPOmeOList);
+            System.out.println("jsonarray"+jsonObject);
             response.getWriter().print(jsonObject);
         }catch (Exception e){
             logger.error("consumeOrderService.selectConsumptionByDisplayId error in recordcontroller");

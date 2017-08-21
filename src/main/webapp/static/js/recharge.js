@@ -1,6 +1,9 @@
-﻿function load(){
-	var openid = getCookie("openid");
-	var language = getCookie("language");
+﻿var openid,language;
+function load(){
+	openid = getCookie("openid");
+	language = getCookie("language");
+
+
 	
 	if(language != "zh_CN"){
 		document.getElementById('50').innerHTML ="¥ 50\n<br/>Gift ¥30";
@@ -64,11 +67,12 @@ function money4(){
 
 //充值
 function recharge() {
+
 	$.ajax({
         type:'POST',
         url:'/watermachine/wxpay',
         data: {
-            "id":id,
+            "id":openid,
             "money" : money
         },
         dataType: 'json',

@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -27,17 +28,25 @@ public class RechargeController {
 
     private static Logger logger = LoggerFactory.getLogger(RechargeController.class);
 
-    //显示我的钱包页
-    @RequestMapping(value = "/balance", method = RequestMethod.GET)
-    public String showRecharge(){
-        return "main/balance.jsp";
+    //显示我的钱包页,同时显示余额
+    @RequestMapping(value = "/wallet", method = RequestMethod.GET)
+    public String showRecharge(HttpServletRequest request, ModelMap model){
+        String openId = request.getParameter("openid");
+        try{
+            UserPO userPO = userService.selectUser(openId);
+            double balance = userPO.getRemain();
+            model.addAttribute("balance", String.valueOf(balance));
+        }catch (Exception e){
+            logger.error("consumeOrderService.selectConsumptionByDisplayId error in recordcontroller");
+        }
+        return "main/wallet.jsp";
     }
 
     //点击充值按钮跳转至此页面
-    @RequestMapping(value = "/recharge", method = RequestMethod.GET)
+    @RequestMapping(value = "/callback", method = RequestMethod.GET)
     public String recharge(){return "main/recharge.jsp";}
 
-    //获取余额
+   /* //获取余额
     @RequestMapping(value = "/menu/recharge", method = RequestMethod.POST)
     public void getRecord(HttpServletRequest request, HttpServletResponse response){
         String openId = request.getParameter("openid");
@@ -51,5 +60,5 @@ public class RechargeController {
             logger.error("consumeOrderService.selectConsumptionByDisplayId error in recordcontroller");
         }
 
-    }
+    }*/
 }

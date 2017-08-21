@@ -14,9 +14,9 @@
 
 <body onload="load()" style="font-family: 'Microsoft YaHei' 'Cambria Math';background-color: rgb(240, 240, 240);display: flex;flex-direction: column;align-items: center;">
 <script>
-	var openid = "${openid}";
+	var openid = "${openId}";
 	var language = "${language}";
-	var avatar = "${avatar}";
+	var avatar = "${headimgurl}";
 	var nickname = "${nickname}";
 </script>
 

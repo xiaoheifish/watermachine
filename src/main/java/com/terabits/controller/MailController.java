@@ -3,6 +3,7 @@ package com.terabits.controller;
 import com.terabits.meta.po.UserPO;
 import com.terabits.service.MailService;
 import com.terabits.service.UserService;
+import net.sf.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,10 +25,10 @@ public class MailController {
     private UserService userService;
     private static Logger logger = LoggerFactory.getLogger(MailController.class);
 
-    //显示消费记录页
+    //显示邮件页
     @RequestMapping(value = "/mail", method = RequestMethod.GET)
     public String showRecord(){
-        return "main/mail.jsp";
+        return "main/service.jsp";
     }
 
     //发送邮件接口
@@ -45,6 +46,8 @@ public class MailController {
                 ", email =" + email + '\n' +
                 ", feedback =" + feedback + '\n';
         mailService.userFeedback(content);
-        response.getWriter().print("ok");
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("result","ok");
+        response.getWriter().print(jsonObject);
     }
 }
