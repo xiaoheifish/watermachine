@@ -49,9 +49,9 @@ public class HttpsUtil extends DefaultHttpClient
 
 
     // please replace the SELFCERTPATH/SELFCERTPWD/TRUSTCAPATH according to the actual situation when you use the demo.
-	public static String SELFCERTPATH = "E://cert//outgoing.CertwithKey.pkcs12";
+	public static String SELFCERTPATH = "/home/ubuntu/cert/outgoing.CertwithKey.pkcs12";
 	public static String SELFCERTPWD = "IoM@1234";
-	public static String TRUSTCAPATH = "E://cert//ca.jks";
+	public static String TRUSTCAPATH = "/home/ubuntu/cert/ca.jks";
 
 	// Where the TRUSTCAPWD is not the password for the CA certificate, but the password for the jks certificate repository 
 	// the CA certificate itself does not contain a private key and therefore no password
