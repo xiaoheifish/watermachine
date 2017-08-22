@@ -175,6 +175,7 @@ body{}
 
 /* 一级菜单按钮样式 */
 .menu_1{
+	width: 100%；
 	border: none; 
 	outline: none; 
 	height: 10%;
