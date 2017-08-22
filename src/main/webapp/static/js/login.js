@@ -76,7 +76,7 @@ function load(){
 		//中英文切换
 		if(language != "zh_CN"){
 			$("title").html("Intelligent Water Fountain");
-			$("#RQ").text("Scan to drinking");
+			$("#RQ").text("Scan to Drink");
 			$("#numbertext").text("Input the water fountain id");
 			$("#idinputtext").text("Input the water fountain id");
 			$("#cancle").val("cancle");
