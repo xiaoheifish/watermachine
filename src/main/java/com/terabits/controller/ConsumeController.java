@@ -88,6 +88,7 @@ public class ConsumeController {
         int cmdOne = Integer.parseInt(commandOne);
         int cmdTwo = Integer.parseInt(commandTwo);
         CommunicationBO communicationBO = terminalService.getTerminalDeviceId(displayId);
+        System.out.println("communicationBO::::::"+communicationBO);
         //下发开启插座命令给终端
         byte[] openbytes = new byte[6];
         openbytes[0] = Constants.SEND_COMMAND_START;

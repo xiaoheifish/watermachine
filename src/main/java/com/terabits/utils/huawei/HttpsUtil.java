@@ -82,7 +82,7 @@ public class HttpsUtil extends DefaultHttpClient
 		TrustManagerFactory tmf = TrustManagerFactory.getInstance("sunx509");
 		tmf.init(caCert);
 
-		SSLContext sc = SSLContext.getInstance("TLSV1.2");
+		SSLContext sc = SSLContext.getInstance("TLS");
 		sc.init(kmf.getKeyManagers(), tmf.getTrustManagers(), null);
 
 		// 3 Set the domain name to not verify

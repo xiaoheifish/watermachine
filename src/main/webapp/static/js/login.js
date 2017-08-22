@@ -43,8 +43,10 @@ function closenumber(){
 //输入编码-登录数据交互
 function login() {
 	id = $("#id").val();
+	id = "10000"+id;
 	if(id == ""){
-		alert("请输入编号！");}
+		alert("请输入编号！");
+	}
     else{
         $.ajax({
             type:'GET',

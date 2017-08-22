@@ -65,5 +65,8 @@
 powered by Terabits
 </div>
 
+<!-- 等待div -->
+<div id="wait" style="display:none;;height:100%; width:100%; background-color: rgb(240, 240, 240); vertical-align: center; text-align:center;font-size:0.5rem;">正在为您准备，请稍候</div>
+
 </body>
 </html>
