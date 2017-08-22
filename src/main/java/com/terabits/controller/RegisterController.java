@@ -68,7 +68,7 @@ public class RegisterController {
             String openId = (String)session.getAttribute("openid");
             try{
                 userService.updatePhone(id, openId);
-                userService.updateRemain(10.0, openId);
+                userService.updateRemain(5.0, openId);
             }catch (Exception e){
                 logger.error("userService.update phone and remain error!");
                 jsonObject.put("testpass","no");
