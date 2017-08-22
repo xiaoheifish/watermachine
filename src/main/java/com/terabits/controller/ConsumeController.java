@@ -102,7 +102,7 @@ public class ConsumeController {
         PlatformGlobal.command(openbytes, communicationBO.getDeviceId());
         now = new Date();
         String time2 = dfs.format(now);
-        //response.getWriter().print("power on ok: " + time1 + " " + time2);
+        logger.error("to huaweiplatform power on ok: " + time1 + " " + time2);
         //此处为调试方便先直接更新订单状态
         //consumeOrderService.updateStateById(consumeOrderPO.getOrderNo());
         //标记是否更新过了，确保只会更新一次
@@ -146,7 +146,7 @@ public class ConsumeController {
                 PlatformGlobal.command(openbytes, communicationBO.getDeviceId());
                 now = new Date();
                 time2 = dfs.format(now);
-                //response.getWriter().print("power on ok: " + time1 + " " + time2);
+                logger.error("to huaweiplatform power on ok: " + time1 + " " + time2);
             } else{
                 //隔一秒取一次数据库中记录
                 Thread.sleep(1000L);
