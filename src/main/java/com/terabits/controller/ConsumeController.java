@@ -55,7 +55,6 @@ public class ConsumeController {
     public void consume(HttpServletRequest request, HttpServletResponse response, HttpSession session) throws Exception {
         String requestOpenId = request.getParameter("openid");
         String openId = (String) session.getAttribute("openid");
-        openId = "o1S07wuDO9ivY_55p3OT4bEMNUL0";
         String displayId = request.getParameter("displayid");
         String cost = request.getParameter("cost");
         double actualCost = Double.parseDouble(cost);
@@ -103,30 +102,21 @@ public class ConsumeController {
         PlatformGlobal.command(openbytes, communicationBO.getDeviceId());
         now = new Date();
         String time2 = dfs.format(now);
-        Thread.sleep(10000L);
         //response.getWriter().print("power on ok: " + time1 + " " + time2);
         //此处为调试方便先直接更新订单状态
         //consumeOrderService.updateStateById(consumeOrderPO.getOrderNo());
-        //标记是否更新过了
+        //标记是否更新过了，确保只会更新一次
         Boolean flag = false;
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 21; i++) {
             //之后加一个根据消费订单编号查询的方法
             ConsumeOrderPO consumeOrderPO1 = consumeOrderService.selectLastConsumption(displayId);
-            if(i == 3){
+            if(i == 20){
                 JSONObject jsonObject = new JSONObject();
                 jsonObject.put("error", "errorresult");
                 response.getWriter().print(jsonObject);
                 return;
             }
-            if (consumeOrderPO1.getState() == Constants.NO_RESPONSE) {
-                //下发开启插座命令给终端
-                time1 = dfs.format(now);
-                PlatformGlobal.command(openbytes, communicationBO.getDeviceId());
-                now = new Date();
-                time2 = dfs.format(now);
-                response.getWriter().print("power on ok: " + time1 + " " + time2);
-                Thread.sleep(10000L);
-            } else{
+            if(consumeOrderPO1.getState() == Constants.HAVE_RESPONSE){
                 if(flag == false) {
                     JSONObject jsonObject = new JSONObject();
                     jsonObject.put("result", "success");
@@ -149,6 +139,17 @@ public class ConsumeController {
                     statisticService.updateTotal(totalPO);
                     return;
                 }
+            }
+            if ((consumeOrderPO1.getState() == Constants.NO_RESPONSE)&&(i % 8 == 0)){
+                //每隔8秒，重新下发开启插座命令给终端
+                time1 = dfs.format(now);
+                PlatformGlobal.command(openbytes, communicationBO.getDeviceId());
+                now = new Date();
+                time2 = dfs.format(now);
+                //response.getWriter().print("power on ok: " + time1 + " " + time2);
+            } else{
+                //隔一秒取一次数据库中记录
+                Thread.sleep(1000L);
             }
         }
     }

@@ -39,7 +39,7 @@
     </update>
 
     <update id="updatePhone" parameterType="java.lang.String">
-        update user set phone = #{phone}, gmtmodified = now() where openid = #{openId}
+        update user set phone = #{phone}, gmtcreate = now(), gmtmodified = now() where openid = #{openId}
     </update>
 
 

@@ -30,7 +30,6 @@
 
 <script>
 
-
     /* 读取cookie */
     function getCookie(cname) {
         var name = cname + "=";
@@ -53,6 +52,9 @@
             {
                 content: "/watermachine/static/pic/toppicture2.png",
             },
+            {
+                content: "/watermachine/static/pic/guidlines.png",
+            },
         ];
     }
     else {
@@ -65,6 +67,9 @@
             },
             {
                 content: "/watermachine/static/pic/entoppicture2.png",
+            },
+            {
+                content: "/watermachine/static/pic/enguidlines.png",
             },
         ];
     }
@@ -125,19 +130,19 @@
     &nbsp;<span style="font-size: 0.6rem; color: black;" id="nickname"></span>
 
     <button id="record" onclick="openrecordbox();" class="menu_1"><img style="width: 0.7rem"
-                                                                       src="/watermachine/static/pic/record.png"/>&nbsp;&nbsp;&nbsp;&nbsp;取水记录
+                                                                       src="/watermachine/static/pic/record.png"/>&nbsp;&nbsp;取水记录
     </button>
 
     <button id="wallet" onclick="openwalletbox();" class="menu_1"><img style="width: 0.7rem"
-                                                                       src="/watermachine/static/pic/wallet.png"/>&nbsp;&nbsp;&nbsp;&nbsp;我的钱包
+                                                                       src="/watermachine/static/pic/wallet.png"/>&nbsp;&nbsp;我的钱包
     </button>
 
 <!--    <button id="invite" onclick="openinvitationbox();" class="menu_1"><img style="width: 0.7rem"
-                                                                           src="/watermachine/static/pic/invite.png"/>&nbsp;&nbsp;&nbsp;&nbsp;邀请好友
+                                                                           src="/watermachine/static/pic/invite.png"/>&nbsp;&nbsp;邀请好友
     </button>-->
 
     <button id="service" onclick="openservicebox();" class="menu_1"><img style="width: 0.7rem"
-                                                                         src="/watermachine/static/pic/service.png"/>&nbsp;&nbsp;&nbsp;&nbsp;我的客服
+                                                                         src="/watermachine/static/pic/service.png"/>&nbsp;&nbsp;意见反馈
     </button>
 
 <a href="/watermachine/rules" id="enrule" style="margin-top: 0.5rem;font-size: 0.3rem;">详细活动规则</a>

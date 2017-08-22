@@ -76,7 +76,7 @@ function load(){
 		//中英文切换
 		if(language != "zh_CN"){
 			$("title").html("Intelligent Water Fountain");
-			$("#RQ").text("Scan to drinking");
+			$("#RQ").text("Scan to Drink");
 			$("#numbertext").text("Input the water fountain id");
 			$("#idinputtext").text("Input the water fountain id");
 			$("#cancle").val("cancle");
@@ -84,7 +84,7 @@ function load(){
 			$("#record").text("My record");
 			$("#wallet").text("My wallet");
 			$("#invite").text("Invite friends");
-			$("#service").text("Customer service");
+			$("#service").text("Customer Feedback");
 			$("#enrule").text("Detail Rules");
 		}
 			
@@ -200,7 +200,7 @@ function loadservice(){
 		$("#suggestionbutton").val("submit");
 		$("#text").remove();
 		$("#entext").show();
-		$("title").html("Customer Service");
+		$("title").html("Customer Feedback");
 	}
 }
 

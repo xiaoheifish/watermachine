@@ -38,8 +38,8 @@
 
 <div style="font-size:0.3rem;color: rgb(97, 97, 97);text-align: center;margin-top: 0.5rem;">
 <img style="height: 0.8rem" src="/watermachine/static/pic/lefttime.png"><br><br>
-<span id="chwarnningtext">取水阀门将在<span style="color: rgb(230, 67, 64);">取水结束</span>或<span id="lefttime" style="color: rgb(230, 67, 64);">${lefttime}</span>秒后关闭，<br>请您尽快取水，使用过程中请注意节约用水！</span>
-<span id="enwarnningtext" style="display:none;">The water-tap will be closed after<span style="color: rgb(230, 67, 64);"> you finishing taking water</span> or <span id="lefttime" style="color: rgb(230, 67, 64);">${lefttime}</span>s.<br>Please take water soon.</span>
+<span id="chwarnningtext">取水阀门将在<span style="color: rgb(230, 67, 64);">取水结束</span>或<span  style="color: rgb(230, 67, 64);">1分钟</span>后关闭，<br>请您尽快取水，使用过程中请注意节约用水！</span>
+<span id="enwarnningtext" style="display:none;">The water-tap will be closed after<span style="color: rgb(230, 67, 64);"> you finishing taking water</span> or <span style="color: rgb(230, 67, 64);">60</span>s.<br>Please take water soon.</span>
 </div>
 
 
