@@ -60,4 +60,9 @@ public class AuxcalPO {
                 ", payment=" + payment +
                 ']';
     }
+    public AuxcalPO(){
+        setFlow(0);
+        setPayment(0);
+        setRecharge(0);
+    }
 }

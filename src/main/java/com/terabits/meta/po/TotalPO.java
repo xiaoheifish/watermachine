@@ -61,4 +61,10 @@ public class TotalPO {
                 ", remain=" + remain +
                 ']';
     }
+    public TotalPO(){
+        setFlow(0);
+        setPayment(0);
+        setRecharge(0);
+        setRemain(0);
+    }
 }
