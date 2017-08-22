@@ -141,9 +141,9 @@
                                                                            src="/watermachine/static/pic/invite.png"/>&nbsp;&nbsp;邀请好友
     </button>-->
 
-    <div id="service" onclick="openservicebox();" class="menu_1"><img style="width: 0.7rem"
+    <button id="service" onclick="openservicebox();" class="menu_1"><img style="width: 0.7rem"
                                                                          src="/watermachine/static/pic/service.png"/>&nbsp;&nbsp;意见反馈
-    </div>
+    </button>
 
 <a href="/watermachine/rules" id="enrule" style="margin-top: 0.5rem;font-size: 0.3rem;">详细活动规则</a>
 

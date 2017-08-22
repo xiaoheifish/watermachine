@@ -84,7 +84,7 @@ function load(){
 			$("#record").text("My record");
 			$("#wallet").text("My wallet");
 			$("#invite").text("Invite friends");
-			$("#service").text("Customer service");
+			$("#service").text("Customer Feedback");
 			$("#enrule").text("Detail Rules");
 		}
 			
@@ -200,7 +200,7 @@ function loadservice(){
 		$("#suggestionbutton").val("submit");
 		$("#text").remove();
 		$("#entext").show();
-		$("title").html("Customer Service");
+		$("title").html("Customer Feedback");
 	}
 }
 

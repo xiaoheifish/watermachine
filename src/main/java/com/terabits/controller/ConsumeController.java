@@ -55,7 +55,6 @@ public class ConsumeController {
     public void consume(HttpServletRequest request, HttpServletResponse response, HttpSession session) throws Exception {
         String requestOpenId = request.getParameter("openid");
         String openId = (String) session.getAttribute("openid");
-        openId = "o1S07wuDO9ivY_55p3OT4bEMNUL0";
         String displayId = request.getParameter("displayid");
         String cost = request.getParameter("cost");
         double actualCost = Double.parseDouble(cost);

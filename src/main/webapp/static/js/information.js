@@ -77,7 +77,6 @@ function recharge() {
 		$.ajax({
 			type:'POST',
 			url:'/watermachine/consumeorder',
-			timeout: 30000,
 			data:{
 				"openid":openid,
 				"cost":money,
