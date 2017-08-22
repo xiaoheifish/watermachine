@@ -28,13 +28,14 @@ public interface StatisticMapper {
     //total/////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     /**
-     * 更新历史的统计值,加上对象中的对应值
+     * 更新历史的统计值,加上对象中的对应值,用于充值情况
      */
-    public int updateTotalAdd(TotalPO totalPO) throws Exception;
+    public int updateTotalRecharge(TotalPO totalPO) throws Exception;
+
     /**
-     * 更新历史的统计值,减去对象中的对应值
+     * 更新历史的统计值,减去对象中的对应值,用于消费情况
      */
-    public int updateTotalAdd(TotalPO totalPO) throws Exception;
+    public int updateTotalConsume(TotalPO totalPO) throws Exception;
 
     /**
      * 获取历史的统计值

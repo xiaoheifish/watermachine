@@ -44,10 +44,18 @@ public class StatisticServiceImpl implements StatisticService {
     //total/////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     /**
-     * 更新历史的统计值
+     * 更新历史的统计值,加上对象中的对应值,用于充值情况
      */
-    public int updateTotal(TotalPO totalPO) throws Exception{
-        return statisticMapper.updateTotal(totalPO);
+    public int updateTotalRecharge(TotalPO totalPO) throws Exception{
+        return statisticMapper.updateTotalRecharge(totalPO);
+    }
+
+
+    /**
+     * 更新历史的统计值,减去对象中的对应值,用于消费情况
+     */
+    public int updateTotalConsume(TotalPO totalPO) throws Exception{
+        return statisticMapper.updateTotalConsume(totalPO);
     }
 
     /**

@@ -91,14 +91,15 @@ public class WeixinNotify{
                         }
                         try{
                             //当日统计数据，更新总充值
-                            AuxcalPO auxcalPO = statisticService.selectTodayAuxcal(currentDay);
-                            auxcalPO.setRecharge(auxcalPO.getRecharge() + payment);
+                            AuxcalPO auxcalPO = new AuxcalPO();
+                            auxcalPO.setRecharge(payment);
+                            auxcalPO.setGmtCreate(currentDay);
                             statisticService.updateTodayAuxcal(auxcalPO);
                             //历史统计数据，更新总充值和总余额
-                            TotalPO totalPO = statisticService.selectTotal();
-                            totalPO.setRecharge(totalPO.getRecharge() + payment);
-                            totalPO.setRemain(totalPO.getRemain() + payment);
-                            statisticService.updateTotal(totalPO);
+                            TotalPO totalPO = new TotalPO();
+                            totalPO.setRecharge(payment);
+                            totalPO.setRemain(payment);
+                            statisticService.updateTotalRecharge(totalPO);
                         }catch (Exception e){
                             logger.error("更新统计数据失败，订单号="+orderId);
                         }

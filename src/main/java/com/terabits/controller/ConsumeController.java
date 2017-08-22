@@ -2,7 +2,6 @@ package com.terabits.controller;
 
 import com.terabits.config.Constants;
 import com.terabits.meta.bo.CommunicationBO;
-import com.terabits.meta.bo.TerminalUpdateBO;
 import com.terabits.meta.model.CommandNoModel;
 import com.terabits.meta.po.*;
 import com.terabits.service.*;
@@ -128,16 +127,17 @@ public class ConsumeController {
                     userService.updateRemain(userPO.getRemain() - actualCost, openId);
                     //更新统计余额及流量
                     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-                    AuxcalPO auxcalPO = statisticService.selectTodayAuxcal(sdf.format(new Date()));
-                    auxcalPO.setPayment(auxcalPO.getPayment() + actualCost);
-                    auxcalPO.setFlow(auxcalPO.getFlow() + flow);
+                    AuxcalPO auxcalPO = new AuxcalPO();
+                    auxcalPO.setGmtCreate(sdf.format(new Date()));
+                    auxcalPO.setPayment(actualCost);
+                    auxcalPO.setFlow(flow);
                     statisticService.updateTodayAuxcal(auxcalPO);
                     //更新历史总余额及流量
                     TotalPO totalPO = statisticService.selectTotal();
-                    totalPO.setFlow(totalPO.getFlow() + flow);
-                    totalPO.setPayment(totalPO.getPayment() + actualCost);
-                    totalPO.setRemain(totalPO.getRemain() - actualCost);
-                    statisticService.updateTotal(totalPO);
+                    totalPO.setFlow(flow);
+                    totalPO.setPayment(actualCost);
+                    totalPO.setRemain(actualCost);
+                    statisticService.updateTotalConsume(totalPO);
                     return;
                 }
             }

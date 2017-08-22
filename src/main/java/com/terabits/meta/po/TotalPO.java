@@ -62,9 +62,9 @@ public class TotalPO {
                 ']';
     }
     public TotalPO(){
-        setFlow(0);
-        setPayment(0);
-        setRecharge(0);
-        setRemain(0);
+        this.flow = 0.0;
+        this.recharge = 0.0;
+        this.payment = 0.0;
+        this.remain = 0.0;
     }
 }

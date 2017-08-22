@@ -39,11 +39,11 @@
         update auxcal set flow=flow+#{flow}, recharge=recharge+#{recharge}, payment=payment+#{payment} where gmtcreate=#{gmtCreate}
     </update>
 
-    <update id="updateTotalAdd" parameterType="com.terabits.meta.po.TotalPO">
-        update total set flow=flow+#{flow}, recharge=recharge+#{recharge}, payment=payment+#{payment}, remain=remain+#{remain}
+    <update id="updateTotalRecharge" parameterType="com.terabits.meta.po.TotalPO">
+        update total set flow=flow + #{flow}, recharge=recharge + #{recharge}, payment=payment + #{payment}, remain=remain + #{remain}
     </update>
-    <update id="updateTotalSub" parameterType="com.terabits.meta.po.TotalPO">
-        update total set flow=flow-#{flow}, recharge=recharge-#{recharge}, payment=payment-#{payment}, remain=remain-#{remain}
+    <update id="updateTotalConsume" parameterType="com.terabits.meta.po.TotalPO">
+        update total set flow=flow + #{flow}, recharge=recharge + #{recharge}, payment=payment + #{payment}, remain=remain-#{remain}
     </update>
 
     <select id="selectTotal" resultType="com.terabits.meta.po.TotalPO">
