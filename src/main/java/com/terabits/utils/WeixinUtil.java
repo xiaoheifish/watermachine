@@ -3,7 +3,6 @@ package com.terabits.utils;
 
 import com.terabits.config.WeixinGlobal;
 import com.terabits.meta.bo.AccessTokenBO;
-;
 import net.sf.json.JSONException;
 import net.sf.json.JSONObject;
 import org.slf4j.Logger;
