@@ -134,8 +134,8 @@ public class TerminalServiceImpl implements TerminalService{
         return imei;
     }
 
-    public int updataStatusWhenOrder(String displayId)throws Exception{
-        return terminalMapper.updataStatusWhenOrder(displayId);
+    public int updateStatusWhenOrder(String displayId)throws Exception{
+        return terminalMapper.updateStatusWhenOrder(displayId);
     }
 }
 

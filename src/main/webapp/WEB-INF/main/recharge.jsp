@@ -50,8 +50,23 @@ powered by Terabits
 </div>
 
 <!-- 支付成功等候10秒 -->
-<div id="wait" class="wait" style="display: none;">
-<div class="waitbox">
+<div id="wait" class="wait" style="display: none;height:100%;
+	width:100%;
+	position:absolute;
+	z-index:1;
+	font-size:0.5rem;
+	padding-top:30%;
+	text-align: center;
+	background-color: rgba(136 ,136, 136, 0.5);
+	top: 0;">
+<div class="waitbox" style="position: absolute;
+	top: 20%;left: 50%;-webkit-transform: translate(-50%, -20%);-moz-transform: translate(-50%, -20%);-ms-transform: translate(-50%, -20%);-o-transform: translate(-50%, -20%);transform: translate(-50%, -20%);
+	height: 8rem;
+	width: 8rem;
+	background-color: white;
+	font-size: 0.4rem;
+	padding-top: 0.5rem;
+	text-align: center;">
  <p>智能饮水机充值</p>
  <p style="font-size: 1rem; color: rgb(233, 125, 123);">¥<span id="waitmoney">10</span>
  <p style="font-size: 0.25rem;">微信支付</p>
@@ -63,8 +78,23 @@ powered by Terabits
  </div>
  </div>
 
-<div id="enwait" class="wait"  style="display: none;">
-<div class="waitbox">
+<div id="enwait" class="wait"  style="display: none;height:100%;
+	width:100%;
+	position:absolute;
+	z-index:1;
+	font-size:0.5rem;
+	padding-top:30%;
+	text-align: center;
+	background-color: rgba(136 ,136, 136, 0.5);
+	top: 0;">
+<div class="waitbox" style="position: absolute;
+	top: 20%;left: 50%;-webkit-transform: translate(-50%, -20%);-moz-transform: translate(-50%, -20%);-ms-transform: translate(-50%, -20%);-o-transform: translate(-50%, -20%);transform: translate(-50%, -20%);
+	height: 8rem;
+	width: 8rem;
+	background-color: white;
+	font-size: 0.4rem;
+	padding-top: 0.5rem;
+	text-align: center;">
  <p>Recharge</p>
  <p style="font-size: 1rem; color: rgb(233, 125, 123);">¥<span id="waitmoney">10</span></p>
  <p style="font-size: 0.25rem;">WeChat Pay</p>

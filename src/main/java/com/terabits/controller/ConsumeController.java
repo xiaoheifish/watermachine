@@ -53,13 +53,25 @@ public class ConsumeController {
                         HttpServletResponse response, HttpSession session) throws Exception {
         String requestOpenId = request.getParameter("openid");
         String openId = (String) session.getAttribute("openid");
-        openId = requestOpenId;
         String displayId = request.getParameter("displayid");
         String cost = request.getParameter("cost");
         double actualCost = Double.parseDouble(cost);
         double flow = FlowUtil.costToFlow(actualCost);
         if (!requestOpenId.equals(openId)) {
-            response.getWriter().print("error");
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("result", "openid not match");
+            response.getWriter().print(jsonObject);
+            return;
+        }
+        try{
+            terminalService.updateStatusWhenOrder(displayId);
+        }catch (Exception e){
+            e.printStackTrace();
+            logger.error("updateStatusWhenOrder error in consumeorController" );
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("result", "in order service");
+            response.getWriter().print(jsonObject);
+            return;
         }
         // 生成交易订单号
         int count = consumeOrderService.selectCountByTime(TimeSpanUtil
@@ -147,7 +159,7 @@ public class ConsumeController {
                 }
             }
             if ((consumeOrderPO1.getState() == Constants.NO_RESPONSE)
-                    && (i % 8 == 0)) {
+                    && (i % 8 == 0)&&(i != 0)) {
                 // 每隔8秒，重新下发开启插座命令给终端
                 time1 = dfs.format(now);
                 PlatformGlobal.command(openbytes, communicationBO.getDeviceId());

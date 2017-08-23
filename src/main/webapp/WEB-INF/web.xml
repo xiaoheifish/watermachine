@@ -57,9 +57,12 @@
     <load-on-startup>1</load-on-startup>
   </servlet>
 
-  <servlet-mapping>
+<servlet-mapping>
     <servlet-name>watermachine</servlet-name>
     <!-- restful风格url -->
     <url-pattern>/</url-pattern>
   </servlet-mapping>
+
+
+
 </web-app>

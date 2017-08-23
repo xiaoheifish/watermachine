@@ -97,7 +97,7 @@ function recharge() {
                         $("#waittime").html(countdown);
                         countdown--;
                         if (countdown == 0){
-                            window.location.href="/watermachine/callback";
+                            window.location.href="/watermachine/mainpage";
                         }
                         else{
                             setTimeout(function() { settime() },1000);

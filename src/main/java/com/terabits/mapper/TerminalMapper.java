@@ -103,6 +103,6 @@ public interface TerminalMapper {
      * @return
      * @throws Exception
      */
-    public int updataStatusWhenOrder(@Param("displayId")String displayId)throws Exception;
+    public int updateStatusWhenOrder(@Param("displayId")String displayId)throws Exception;
 
 }
