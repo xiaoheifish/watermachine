@@ -143,7 +143,7 @@
 
     <button id="service" onclick="openservicebox();" class="menu_1"><img style="width: 0.7rem"
                                                                          src="/watermachine/static/pic/service.png"/>&nbsp;&nbsp;意见反馈
-    <img src="/static/pic/award.png" style="width: 0.35rem;vertical-align: top;"></button>
+    <img src="/watermachine/static/pic/award.png" style="width: 0.35rem;vertical-align: top;"></button>
 
 <a href="/watermachine/rules" id="enrule" style="margin-top: 0.5rem;font-size: 0.3rem;">详细活动规则</a>
 
