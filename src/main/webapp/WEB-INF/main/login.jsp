@@ -131,19 +131,19 @@
 
     <button id="record" onclick="openrecordbox();" class="menu_1"><img style="width: 0.7rem"
                                                                        src="/watermachine/static/pic/record.png"/>&nbsp;&nbsp;取水记录
-    <img style="width: 0.35rem;"></button>
+    <img style="width: 0.5rem;"></button>
 
     <button id="wallet" onclick="openwalletbox();" class="menu_1"><img style="width: 0.7rem"
                                                                        src="/watermachine/static/pic/wallet.png"/>&nbsp;&nbsp;我的钱包
-    <img style="width: 0.35rem;"></button>
+    <img style="width: 0.5rem;"></button>
 
 <!--    <button id="invite" onclick="openinvitationbox();" class="menu_1"><img style="width: 0.7rem"
                                                                            src="/watermachine/static/pic/invite.png"/>&nbsp;&nbsp;邀请好友
-    <img style="width: 0.35rem;"></button>-->
+    <img style="width: 0.5rem;"></button>-->
 
     <button id="service" onclick="openservicebox();" class="menu_1"><img style="width: 0.7rem"
                                                                          src="/watermachine/static/pic/service.png"/>&nbsp;&nbsp;意见反馈
-    <img src="/watermachine/static/pic/award.png" style="width: 0.35rem;vertical-align: top;"></button>
+    <img src="/watermachine/static/pic/award.png" style="width: 0.5rem;vertical-align: top;"></button>
 
 <a href="/watermachine/rules" id="enrule" style="margin-top: 0.5rem;font-size: 0.3rem;">详细活动规则</a>
 

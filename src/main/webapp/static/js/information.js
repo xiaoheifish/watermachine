@@ -68,7 +68,10 @@ function money4(){
 //跳转使用页
 function recharge() {
 	$("#recharge").attr("disabled", true);
-	$("#wait").show();
+	if(language != "zh_CN"){$("#enwait").show();}
+    else{$("#wait").show();}
+    $("#waitmoney").text(money);
+    $("#waitwater").text(water);
 	var displayid = document.getElementById("id").innerText;
 	if(money == null){
 		alert("请选择取水量！");
@@ -88,9 +91,16 @@ function recharge() {
 				//跳转到using页
 				if(data["result"] == "success") {
                     window.location.href = "/watermachine/info/" + displayid;
-                }else{
-					alert("error");
-				}
+                }
+                if(data["result"] == "in order service"){
+                    alert("下单失败，请稍后重试！");
+                }
+                if(data["result"] == "openid not match"){
+                    alert("下单失败，请稍后重试！");
+                }
+                if(data["result"] == "error"){
+                    alert("下单失败，请稍后重试！");
+                }
 			}
 		});
 	}

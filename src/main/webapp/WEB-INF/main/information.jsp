@@ -65,8 +65,31 @@
 powered by Terabits
 </div>
 
-<!-- 等待div -->
-<div id="wait" style="display:none;;height:100%; width:100%; background-color: rgb(240, 240, 240); vertical-align: center; text-align:center;font-size:0.5rem;">正在为您准备，请稍候</div>
+<!-- 订单生成功，跳转等待 -->
+<div class="wait" id="wait" style="display: none;">
+<div class="waitbox">
+ <p>花费/¥</p>
+ <p style="font-size: 1rem; color: rgb(233, 125, 123);" id="waitmoney">10</p>
+ <p>取水量/L</p>
+ <p style="font-size: 1rem; color: rgb(37, 109, 243);" id="waitwater">10</p>
+ <img style="width: 3.5rem"  src="/watermachine/static/pic/loading.gif"/>
+ <p style="font-size: 0.3rem; color: rgb(136,136,136);">正在为您准备，请稍候</p>
+</div>
+</div>
+
+<!-- 订单生成功，跳转等待 -->
+<div class="wait" id="enwait" style="display: none;">
+<div class="waitbox">
+ <p>COST/¥</p>
+ <p style="font-size: 1rem; color: rgb(233, 125, 123);" id="waitmoney">10</p>
+ <p>WATER/L</p>
+ <p style="font-size: 1rem; color: rgb(37, 109, 243);" id="waitwater">10</p>
+ <img style="width: 3.5rem"  src="/watermachine/static/pic/loading.gif"/>
+ <p style="font-size: 0.3rem; color: rgb(136,136,136);">We are preparing for you.
+Please wait a moment.
+</p>
+</div>
+</div>
 
 </body>
 </html>

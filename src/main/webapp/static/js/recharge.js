@@ -67,7 +67,6 @@ function money4(){
 
 //充值
 function recharge() {
-
 	$.ajax({
         type:'POST',
         url:'/watermachine/wxpay',
@@ -89,7 +88,9 @@ function recharge() {
                 "paySign" : response.signature           //微信签名
             },function(res){
                 if(res.err_msg == "get_brand_wcpay_request:ok" ) {
-                    $("#wait").show();
+                	if(language != "zh_CN"){$("#enwait").show();}
+                    else{$("#wait").show();}
+                    $("#waitmoney").text(money);
                     var countdown = 10;
                     settime();
                     function settime() {

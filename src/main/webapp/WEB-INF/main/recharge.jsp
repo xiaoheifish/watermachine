@@ -50,16 +50,31 @@ powered by Terabits
 </div>
 
 <!-- 支付成功等候10秒 -->
-<div id="wait" style="display:none;height:100%;width:100%;position:absolute;z-index:1;font-size:0.5rem;padding-top:30%;text-align: center;background-color: rgb(240, 240, 240);top:0;">
- <img src="/watermachine/static/pic/water.png" width="60%"/>
+<div id="wait" class="wait" style="display: none;">
+<div class="waitbox">
+ <p>智能饮水机充值</p>
+ <p style="font-size: 1rem; color: rgb(233, 125, 123);">¥<span id="waitmoney">10</span>
+ <p style="font-size: 0.25rem;">微信支付</p>
  <br>
- 支付成功，<span id="waittime">10</span>秒后将自动跳转
+ <p>将在
+ <p style="font-size: 0.7rem; color: rgb(37, 109, 243);"><span id="waittime">8</span></p>
+ <p>秒后自动跳转至首页</p>
+ <p style="font-size: 0.3rem; color: rgb(136,136,136);margin-top: 1rem;">充值成功后，请到我的账户→钱包中查看余额</p>
+ </div>
+ </div>
 
-<div class="col-sm-12 col-xs-12" id="bottombar">
-天风物业<br>
-powered by Terabits
-</div>
-</div>
+<div id="enwait" class="wait"  style="display: none;">
+<div class="waitbox">
+ <p>Recharge</p>
+ <p style="font-size: 1rem; color: rgb(233, 125, 123);">¥<span id="waitmoney">10</span></p>
+ <p style="font-size: 0.25rem;">WeChat Pay</p>
+ <br>
+ <p>Will jump to the home page in
+ <p><span id="waittime" style="font-size: 0.7rem; color: rgb(37, 109, 243);">8</span> s</p>
+ 
+ <p style="font-size: 0.3rem; color: rgb(136,136,136);margin-top: 1rem;">Check your balance in "Account" → "My wallet"</p>
+ </div>
+ </div>
 
 </body>
 </html>
