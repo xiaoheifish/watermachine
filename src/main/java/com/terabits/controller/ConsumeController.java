@@ -1,6 +1,7 @@
 package com.terabits.controller;
 
 import com.terabits.config.Constants;
+import com.terabits.manager.PostCommandManager;
 import com.terabits.meta.bo.CommunicationBO;
 import com.terabits.meta.model.CommandNoModel;
 import com.terabits.meta.po.*;
@@ -40,6 +41,8 @@ public class ConsumeController {
     private TerminalService terminalService;
     @Autowired
     private HuaweiPostCommandService huaweiPostCommandService;
+    @Autowired
+    private PostCommandManager postCommandManager;
 
     private static Logger logger = LoggerFactory
             .getLogger(ConsumeController.class);
@@ -53,6 +56,7 @@ public class ConsumeController {
                         HttpServletResponse response, HttpSession session) throws Exception {
         String requestOpenId = request.getParameter("openid");
         String openId = (String) session.getAttribute("openid");
+        openId = requestOpenId;
         String displayId = request.getParameter("displayid");
         String cost = request.getParameter("cost");
         double actualCost = Double.parseDouble(cost);
@@ -64,7 +68,13 @@ public class ConsumeController {
             return;
         }
         try{
-            terminalService.updateStatusWhenOrder(displayId);
+            int result = terminalService.updateStatusWhenOrder(displayId);
+            if(result == 0){
+                JSONObject jsonObject = new JSONObject();
+                jsonObject.put("result", "in order service");
+                response.getWriter().print(jsonObject);
+                return;
+            }
         }catch (Exception e){
             e.printStackTrace();
             logger.error("updateStatusWhenOrder error in consumeorController" );
@@ -114,6 +124,7 @@ public class ConsumeController {
         SimpleDateFormat dfs = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String time1 = dfs.format(now);
         //PlatformGlobal.command(openbytes, communicationBO.getDeviceId());
+        postCommandManager.postCommand(openbytes,displayId,communicationBO.getDeviceId());
         now = new Date();
         String time2 = dfs.format(now);
         logger.error("to huaweiplatform power on ok: " + time1 + " " + time2);
@@ -161,12 +172,12 @@ public class ConsumeController {
             if ((consumeOrderPO1.getState() == Constants.NO_RESPONSE)
                     && (i % 8 == 0)&&(i != 0)) {
                 // 每隔8秒，重新下发开启插座命令给终端
-                time1 = dfs.format(now);
+             /*   time1 = dfs.format(now);
                 //PlatformGlobal.command(openbytes, communicationBO.getDeviceId());
                 now = new Date();
                 time2 = dfs.format(now);
                 logger.error("to huaweiplatform power on ok: " + time1 + " "
-                        + time2);
+                        + time2);*/
             } else {
                 // 隔一秒取一次数据库中记录
                 Thread.sleep(1000L);

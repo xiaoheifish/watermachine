@@ -5,6 +5,8 @@ import com.terabits.mapper.ConsumeOrderMapper;
 import com.terabits.meta.po.ConsumeOrderPO;
 import com.terabits.service.ConsumeOrderService;
 import com.terabits.service.impl.ConsumeOrderServiceImpl;
+import com.terabits.utils.FlowUtil;
+import com.terabits.utils.huawei.PlatformGlobal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
@@ -58,11 +60,11 @@ public class PostCommandManager {
         System.out.println("thread:::"+consumeOrderPO + sdf.format(new Date()));
     }*/
     // 固定大小为2的线程池
-    public Executor executor = Executors.newFixedThreadPool(5);
+    public Executor executor = Executors.newFixedThreadPool(1);
 
 
     // 单元测试方法
-    public void postCommand(final String displayId) {
+    public void postCommand(final byte[] openbytes2234, final String displayId, final String deviceId) {
         final Runnable task = new Runnable() {
 
             public void run(){
@@ -78,8 +80,40 @@ public class PostCommandManager {
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                 Date date = new Date();
                 System.out.println(tid + "时间前："+sdf.format(date) +consumeOrderPO);
+              byte[] openbytes = new byte[6];
+                openbytes[0] = Constants.SEND_COMMAND_START;
+                openbytes[1] = Constants.POWER_ON_COMMAND;
+                openbytes[2] = Constants.TWO_M_WATER;
+                openbytes[3] = Constants.COMMAND_ONE;
+                openbytes[4] = Constants.COMMAND_TWO;
+                openbytes[5] = Constants.SEND_COMMAND_END;
                 try {
-                    Thread.sleep(5000L);
+                    PlatformGlobal.command(openbytes, deviceId);
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+                try {
+                    Thread.sleep(8000L);
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+                try {
+                    PlatformGlobal.command(openbytes, deviceId);
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+                try {
+                    Thread.sleep(8000L);
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+                try {
+                    PlatformGlobal.command(openbytes, deviceId);
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+                try {
+                    Thread.sleep(8000L);
                 }catch (Exception e){
                     e.printStackTrace();
                 }
@@ -91,13 +125,6 @@ public class PostCommandManager {
 
         executor.execute(task);
         System.out.println("+1");
-        executor.execute(task);
-        System.out.println("+2");
-        executor.execute(task);
-        System.out.println("+3");
-        executor.execute(task);
-        System.out.println("+4");
-        executor.execute(task);
-        System.out.println("+5");
+
     }
 }
