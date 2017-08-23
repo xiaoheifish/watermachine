@@ -1,6 +1,7 @@
 package com.terabits.controller;
 
 import com.terabits.config.Constants;
+import com.terabits.manager.PostCommandManager;
 import com.terabits.meta.bo.CommunicationBO;
 import com.terabits.meta.model.CommandNoModel;
 import com.terabits.meta.po.*;
@@ -8,7 +9,6 @@ import com.terabits.service.*;
 import com.terabits.utils.FlowUtil;
 import com.terabits.utils.GenerateOrderId;
 import com.terabits.utils.TimeSpanUtil;
-import com.terabits.utils.huawei.PlatformGlobal;
 import net.sf.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -40,6 +40,8 @@ public class ConsumeController {
     private TerminalService terminalService;
     @Autowired
     private HuaweiPostCommandService huaweiPostCommandService;
+    @Autowired
+    private PostCommandManager postCommandManager;
 
     private static Logger logger = LoggerFactory.getLogger(ConsumeController.class);
 
@@ -59,7 +61,18 @@ public class ConsumeController {
         double actualCost = Double.parseDouble(cost);
         double flow = FlowUtil.costToFlow(actualCost);
         if (!requestOpenId.equals(openId)) {
-            response.getWriter().print("error");
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("result","openid not match");
+            response.getWriter().print(jsonObject);
+            return;
+        }
+        try{
+            terminalService.updataStatusWhenOrder(displayId);
+        }catch (Exception e){
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("result", "in order service");
+            response.getWriter().print(jsonObject);
+            return;
         }
         //生成交易订单号
         int count = consumeOrderService.selectCountByTime(TimeSpanUtil.generateTimeSpan());
@@ -87,6 +100,7 @@ public class ConsumeController {
         int cmdOne = Integer.parseInt(commandOne);
         int cmdTwo = Integer.parseInt(commandTwo);
         CommunicationBO communicationBO = terminalService.getTerminalDeviceId(displayId);
+        logger.error("communication:::"+communicationBO.getDeviceId());
         System.out.println("communicationBO::::::"+communicationBO);
         //下发开启插座命令给终端
         byte[] openbytes = new byte[6];
@@ -99,7 +113,8 @@ public class ConsumeController {
         Date now = new Date();
         SimpleDateFormat dfs = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String time1 = dfs.format(now);
-        PlatformGlobal.command(openbytes, communicationBO.getDeviceId());
+        //PlatformGlobal.command(openbytes, communicationBO.getDeviceId());
+        postCommandManager.postCommand(displayId);
         now = new Date();
         String time2 = dfs.format(now);
         logger.error("to huaweiplatform power on ok: " + time1 + " " + time2);
@@ -112,7 +127,7 @@ public class ConsumeController {
             ConsumeOrderPO consumeOrderPO1 = consumeOrderService.selectLastConsumption(displayId);
             if(i == 20){
                 JSONObject jsonObject = new JSONObject();
-                jsonObject.put("error", "errorresult");
+                jsonObject.put("result", "error");
                 response.getWriter().print(jsonObject);
                 return;
             }
@@ -133,10 +148,11 @@ public class ConsumeController {
                     auxcalPO.setFlow(flow);
                     statisticService.updateTodayAuxcal(auxcalPO);
                     //更新历史总余额及流量
-                    TotalPO totalPO = statisticService.selectTotal();
+                    TotalPO totalPO = new TotalPO();
                     totalPO.setFlow(flow);
                     totalPO.setPayment(actualCost);
                     totalPO.setRemain(actualCost);
+                    totalPO.setRecharge(0.0);
                     statisticService.updateTotalConsume(totalPO);
                     return;
                 }
@@ -144,7 +160,7 @@ public class ConsumeController {
             if ((consumeOrderPO1.getState() == Constants.NO_RESPONSE)&&(i % 8 == 0)){
                 //每隔8秒，重新下发开启插座命令给终端
                 time1 = dfs.format(now);
-                PlatformGlobal.command(openbytes, communicationBO.getDeviceId());
+                //PlatformGlobal.command(openbytes, communicationBO.getDeviceId());
                 now = new Date();
                 time2 = dfs.format(now);
                 logger.error("to huaweiplatform power on ok: " + time1 + " " + time2);

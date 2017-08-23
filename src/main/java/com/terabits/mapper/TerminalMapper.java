@@ -97,4 +97,12 @@ public interface TerminalMapper {
      */
     public String selectImeiFromDeviceId(@Param("deviceId")String deviceId)throws Exception;
 
+    /**
+     * 生成消费订单时，修改设备状态，如果state不为10，表明已被别人下单，则更新失败
+     * @param displayId
+     * @return
+     * @throws Exception
+     */
+    public int updataStatusWhenOrder(@Param("displayId")String displayId)throws Exception;
+
 }

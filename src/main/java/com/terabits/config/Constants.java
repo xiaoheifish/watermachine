@@ -32,6 +32,9 @@ public class Constants {
     //数据库中字段，标记未被使用
     public static final int OFF_STATE = 10;
 
+    //数据库中字段，标记正在下单
+    public static final int ORDER_STATE = 12;
+
     //数据库中字段，标记命令尚未收到回复,尚未执行
     public static final int NO_RESPONSE = 23;
 

@@ -15,4 +15,5 @@
 		http://www.springframework.org/schema/tx/spring-tx-3.2.xsd ">
     <!-- 扫描标注@Service注解的service -->
     <context:component-scan base-package="com.terabits.service"/>
+    <context:component-scan base-package="com.terabits.manager" />
 </beans>

@@ -8,7 +8,7 @@ public class HuaweiPlatformGlobal {
   /*
     华为平台：
     https:112.17.33.74:8843
-    用户名Terabits密码Terabits12#$*/
+    用户名Terabits密码Terabits12#$    */
 
 
     public final static String APP_ID = "2xLAn4welcYSPopKa4W1dYPvHRYa";

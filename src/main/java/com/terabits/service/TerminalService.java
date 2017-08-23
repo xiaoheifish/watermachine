@@ -35,4 +35,6 @@ public interface TerminalService {
     public String getDisplayIdFromImei(String imei);
     //根据deviceId查询imei号
     public String selectImeiFromDeviceId(String deviceId);
+    //生成订单前，先修改状态为12，标记设备处在正在下单状态
+    public int updataStatusWhenOrder(String displayId)throws Exception;
 }

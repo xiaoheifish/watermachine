@@ -94,4 +94,8 @@
     <select id="selectImeiFromDeviceId" parameterType="java.lang.String" resultType="java.lang.String">
         select imei from terminal where deviceid = #{deviceId}
     </select>
+
+    <update id="updateStatusWhenOrder" parameterType="java.lang.String">
+        update terminal set state = 12 where displayid = #{displayId} and state = 10
+    </update>
 </mapper>
