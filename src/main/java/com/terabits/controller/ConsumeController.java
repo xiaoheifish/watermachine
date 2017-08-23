@@ -113,7 +113,7 @@ public class ConsumeController {
         Date now = new Date();
         SimpleDateFormat dfs = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String time1 = dfs.format(now);
-        PlatformGlobal.command(openbytes, communicationBO.getDeviceId());
+        //PlatformGlobal.command(openbytes, communicationBO.getDeviceId());
         now = new Date();
         String time2 = dfs.format(now);
         logger.error("to huaweiplatform power on ok: " + time1 + " " + time2);
@@ -162,7 +162,7 @@ public class ConsumeController {
                     && (i % 8 == 0)&&(i != 0)) {
                 // 每隔8秒，重新下发开启插座命令给终端
                 time1 = dfs.format(now);
-                PlatformGlobal.command(openbytes, communicationBO.getDeviceId());
+                //PlatformGlobal.command(openbytes, communicationBO.getDeviceId());
                 now = new Date();
                 time2 = dfs.format(now);
                 logger.error("to huaweiplatform power on ok: " + time1 + " "
