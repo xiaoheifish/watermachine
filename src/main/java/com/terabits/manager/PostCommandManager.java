@@ -1,12 +1,16 @@
 package com.terabits.manager;
 
 import com.terabits.config.Constants;
+import com.terabits.controller.ConsumeController;
 import com.terabits.mapper.ConsumeOrderMapper;
 import com.terabits.meta.po.ConsumeOrderPO;
 import com.terabits.service.ConsumeOrderService;
 import com.terabits.service.impl.ConsumeOrderServiceImpl;
 import com.terabits.utils.FlowUtil;
 import com.terabits.utils.huawei.PlatformGlobal;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
@@ -25,6 +29,9 @@ public class PostCommandManager {
 
     @Autowired
     private ConsumeOrderService consumeOrderService;
+    
+    private static Logger logger = LoggerFactory
+            .getLogger(PostCommandManager.class);
 
   /*  public void getPO(String displayId){
         ConsumeOrderPO consumeOrderPO = new ConsumeOrderPO();
@@ -76,10 +83,10 @@ public class PostCommandManager {
                     consumeOrderPO = consumeOrderService.selectLastConsumption(displayId);
                 }catch (Exception e){
                     e.printStackTrace();
-                }
-                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                Date date = new Date();
-                System.out.println(tid + "时间前："+sdf.format(date) +consumeOrderPO);
+                } Date now = new Date();
+                SimpleDateFormat dfs = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                String time1 = dfs.format(now);  
+             
            /*   byte[] openbytes = new byte[6];
                 openbytes[0] = Constants.SEND_COMMAND_START;
                 openbytes[1] = Constants.POWER_ON_COMMAND;
@@ -97,28 +104,9 @@ public class PostCommandManager {
                 }catch (Exception e){
                     e.printStackTrace();
                 }
-                try {
-                    PlatformGlobal.command(openbytes, deviceId);
-                }catch (Exception e){
-                    e.printStackTrace();
-                }
-                try {
-                    Thread.sleep(8000L);
-                }catch (Exception e){
-                    e.printStackTrace();
-                }
-                try {
-                    PlatformGlobal.command(openbytes, deviceId);
-                }catch (Exception e){
-                    e.printStackTrace();
-                }
-                try {
-                    Thread.sleep(8000L);
-                }catch (Exception e){
-                    e.printStackTrace();
-                }
-                date = new Date();
-                System.out.println(tid + "时间后："+sdf.format(date) + consumeOrderPO);
+                now = new Date();
+                String time2 = dfs.format(now);
+                logger.error("to huaweiplatform power on ok: " + time1 + " " + time2);
             }
         };
 

@@ -94,12 +94,15 @@ function recharge() {
                 }
                 if(data["result"] == "in order service"){
                     alert("下单失败，请稍后重试！");
+                    window.location.href = "/watermachine/mainpage";
                 }
                 if(data["result"] == "openid not match"){
                     alert("下单失败，请稍后重试！");
+                    window.location.href = "/watermachine/mainpage";
                 }
                 if(data["result"] == "error"){
                     alert("连接超时，请稍后重试！");
+                    window.location.href = "/watermachine/mainpage";
                 }
 			}
 		});

@@ -11,6 +11,7 @@ import com.terabits.utils.GenerateOrderId;
 import com.terabits.utils.TimeSpanUtil;
 import com.terabits.utils.huawei.PlatformGlobal;
 import net.sf.json.JSONObject;
+import org.apache.http.impl.client.SystemDefaultCredentialsProvider;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,6 +60,7 @@ public class ConsumeController {
         openId = requestOpenId;
         String displayId = request.getParameter("displayid");
         String cost = request.getParameter("cost");
+        System.out.println("cost----------------------------------"+cost);
         double actualCost = Double.parseDouble(cost);
         double flow = FlowUtil.costToFlow(actualCost);
         if (!requestOpenId.equals(openId)) {
@@ -109,9 +111,9 @@ public class ConsumeController {
         // 下发指令
         int cmdOne = Integer.parseInt(commandOne);
         int cmdTwo = Integer.parseInt(commandTwo);
-        CommunicationBO communicationBO = terminalService
-                .getTerminalDeviceId(displayId);
-        logger.error("communicationBO::::::" + communicationBO.getDeviceId());
+        CommunicationBO communicationBO = terminalService.getTerminalDeviceId(displayId);
+        String deviceId = communicationBO.getDeviceId();
+        logger.error("communicationBO::::::" + deviceId);
         // 下发开启插座命令给终端
         byte[] openbytes = new byte[6];
         openbytes[0] = Constants.SEND_COMMAND_START;
@@ -127,7 +129,7 @@ public class ConsumeController {
         postCommandManager.postCommand(openbytes,displayId,communicationBO.getDeviceId());
         now = new Date();
         String time2 = dfs.format(now);
-        logger.error("to huaweiplatform power on ok: " + time1 + " " + time2);
+        //logger.error("to huaweiplatform power on ok: " + time1 + " " + time2);
         // 此处为调试方便先直接更新订单状态
         // consumeOrderService.updateStateById(consumeOrderPO.getOrderNo());
         // 标记是否更新过了，确保只会更新一次

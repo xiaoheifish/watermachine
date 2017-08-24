@@ -22,7 +22,7 @@ public class PlatformGlobal {
     public static String urlReg = HuaweiPlatformGlobal.APP_URL + "/iocm/app/reg/v1.2.0/devices";
     public static String urlSetDeviceInfo = HuaweiPlatformGlobal.APP_URL + "/iocm/app/dm/v1.2.0/devices/";
     public static String urlDelete = HuaweiPlatformGlobal.APP_URL + "/iocm/app/dm/v1.1.0/devices/";
-    public static String urlPostAsynCmd = HuaweiPlatformGlobal.APP_URL + "/iocm/app/cmd/v1.2.0/devices/%s/commands";
+    //public String urlPostAsynCmd = HuaweiPlatformGlobal.APP_URL;
 
     public static String manufacturerId= "terabits";
     public static String manufacturerName = "terabits";
@@ -54,13 +54,16 @@ public class PlatformGlobal {
 
     //模拟透传的模式，下发命令用这个方法
     public static String command(byte[] data, String terminalId) throws Exception{
+        System.out.println("----------------------------------------------");
+        System.out.println("terminalId::::::"+terminalId);
+        System.out.println("----------------------------------------------");
         String command = Base64.encodeBase64String(data);
 
         HttpsUtil httpsUtil = new HttpsUtil();
         httpsUtil.initSSLConfigForTwoWay();
 
         String accessToken = login(httpsUtil);
-        urlPostAsynCmd = String.format(urlPostAsynCmd, terminalId);
+        String urlPostAsynCmd = HuaweiPlatformGlobal.APP_URL+ "/iocm/app/cmd/v1.2.0/devices/" + terminalId + "/commands";
 
         String method = "START";
         ObjectNode paras = JsonUtil.convertObject2ObjectNode("{\"rawData\":\"" + command +"\"}");
@@ -78,7 +81,7 @@ public class PlatformGlobal {
         String jsonRequest = JsonUtil.jsonObj2Sting(paramPostAsynCmd);
 
         Map<String, String> header = new HashMap<String, String>();
-        header.put("app_key", appId);
+        header.put("app_key", HuaweiPlatformGlobal.APP_ID);
         header.put("Authorization", "Bearer " + accessToken);
 
         HttpResponse httpResponse = httpsUtil.doPostJson(urlPostAsynCmd, header, jsonRequest);
@@ -94,7 +97,7 @@ public class PlatformGlobal {
         httpsUtil.initSSLConfigForTwoWay();
 
         String accessToken = login(httpsUtil);
-        urlPostAsynCmd = String.format(urlPostAsynCmd, terminalId);
+        String urlPostAsynCmd = HuaweiPlatformGlobal.APP_URL+ "/iocm/app/cmd/v1.2.0/devices/" + terminalId + "/commands";
 
         Map<String, Object> paramCommand = new HashMap<String, Object>();
         paramCommand.put("serviceId", serviceId);

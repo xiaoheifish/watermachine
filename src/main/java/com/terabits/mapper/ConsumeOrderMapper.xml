@@ -59,7 +59,7 @@
     </select>
 
     <select id="selectConsumptionByOpenId" parameterType="String" resultMap="consumeOrderMap">
-        select * from consumeorder where openid = #{openId}
+        select * from consumeorder where openid = #{openId} and state = 66
     </select>
 
     <update id="updateStateById" parameterType="String">
