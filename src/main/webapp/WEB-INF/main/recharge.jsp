@@ -65,7 +65,6 @@ powered by Terabits
 </div>
 <div style="margin-top: 90%; font-size: 0.4rem;">
  即将跳转至首页，请稍候
- <p style="font-size: 0.3rem; color: rgb(136,136,136);">充值成功后，请到我的账户→钱包中查看余额</p>
  </div>
  </div>
 
@@ -83,7 +82,6 @@ powered by Terabits
 </div>
 <div style="margin-top: 90%; font-size: 0.4rem;">
  Will jump to the home page. Please wait.
- <p style="font-size: 0.3rem; color: rgb(136,136,136);">Check your balance in "Account" → "My wallet"</p>
  </div>
  </div>
 

@@ -77,24 +77,23 @@ body{}
 
 /* 等待框 */
 .wait{
-	height:100%;
-	width:100%;
-	position:absolute;
-	z-index:1;
-	font-size: 0.5rem;
-	text-align: center;
-	background-color: rgb(240, 240, 240);
-	top: 0;
+    height:100%;
+    width:100%;
+    position:absolute;
+    z-index:1;
+    font-size: 0.5rem;
+    text-align: center;
+    background-color: rgba(230 ,230, 230, 0.92);
+    top: 0;
 }
 
 .waitbox{
-	position: absolute;
-	bottom: 40%;
-	background-color: transparent;
-	font-size: 0.3rem;
-	width: 100%;
+    position: absolute;
+    bottom: 40%;
+    background-color: transparent;
+    font-size: 0.4rem;
+    width: 100%;
 }
-
 
 .loadEffect{
             width: 2rem;

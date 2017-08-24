@@ -67,7 +67,7 @@ powered by Terabits
 
 
 <!-- 订单生成功，跳转等待 -->
-<div class="wait" id="wait" style="display: none;">
+<div class="wait" id="wait"  style="display: none;">
 <div class="loadEffect">
         <span></span>
         <span></span>
@@ -78,7 +78,7 @@ powered by Terabits
         <span></span>
         <span></span>
 </div>
-<div class="waitbox">正在为您准备，请稍候。<br>蜂鸣器响起后您即可开始取水，取水时间约为40秒。</div>
+<div class="waitbox">正在为您准备，请稍候</div>
 </div>
 
 <!-- 订单生成功，跳转等待 -->
@@ -93,7 +93,7 @@ powered by Terabits
         <span></span>
         <span></span>
 </div>
-<div class="waitbox">We are preparing for you.Please wait a moment.<br>After the buzzer sounds, you can take water in about 40s.</div>
+<div class="waitbox">We are preparing for you.Please wait a moment.</div>
 </div>
 
 </body>
