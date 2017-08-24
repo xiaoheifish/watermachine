@@ -11,9 +11,9 @@ public class HuaweiPlatformGlobal {
     用户名Terabits密码Terabits12#$    */
 
 
-    public final static String APP_ID = "2xLAn4welcYSPopKa4W1dYPvHRYa";
+    public final static String APP_ID = "7DRyeqfit4eNEulzi9o3Jv1ZoLYa";
 
-    public final static String APP_PASSWORD = "XHAtU7LL9JUA94EfkCoXSpBrNLYa";
+    public final static String APP_PASSWORD = "vgZ3v2w8VZr4WCP67SfnwcCee_wa";
 
     public final static String APP_URL = "https://112.17.33.73:8743";
 

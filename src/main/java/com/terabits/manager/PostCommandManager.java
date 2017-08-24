@@ -20,7 +20,7 @@ import java.util.concurrent.Executors;
 /**
  * Created by Administrator on 2017/8/22.
  */
-@Service
+@Service("postCommandManager")
 public class PostCommandManager {
 
     @Autowired
@@ -64,7 +64,7 @@ public class PostCommandManager {
 
 
     // 单元测试方法
-    public void postCommand(final byte[] openbytes2234, final String displayId, final String deviceId) {
+    public void postCommand(final byte[] openbytes, final String displayId, final String deviceId) {
         final Runnable task = new Runnable() {
 
             public void run(){
@@ -80,13 +80,13 @@ public class PostCommandManager {
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                 Date date = new Date();
                 System.out.println(tid + "时间前："+sdf.format(date) +consumeOrderPO);
-              byte[] openbytes = new byte[6];
+           /*   byte[] openbytes = new byte[6];
                 openbytes[0] = Constants.SEND_COMMAND_START;
                 openbytes[1] = Constants.POWER_ON_COMMAND;
                 openbytes[2] = Constants.TWO_M_WATER;
                 openbytes[3] = Constants.COMMAND_ONE;
                 openbytes[4] = Constants.COMMAND_TWO;
-                openbytes[5] = Constants.SEND_COMMAND_END;
+                openbytes[5] = Constants.SEND_COMMAND_END;*/
                 try {
                     PlatformGlobal.command(openbytes, deviceId);
                 }catch (Exception e){

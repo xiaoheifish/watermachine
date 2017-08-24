@@ -99,7 +99,7 @@ function recharge() {
                     alert("下单失败，请稍后重试！");
                 }
                 if(data["result"] == "error"){
-                    alert("下单失败，请稍后重试！");
+                    alert("连接超时，请稍后重试！");
                 }
 			}
 		});

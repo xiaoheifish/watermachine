@@ -138,7 +138,7 @@ public class ConsumeController {
                     .selectLastConsumption(displayId);
             if (i == 20) {
                 JSONObject jsonObject = new JSONObject();
-                jsonObject.put("error", "errorresult");
+                jsonObject.put("result", "error");
                 response.getWriter().print(jsonObject);
                 return;
             }
