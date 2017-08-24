@@ -90,19 +90,20 @@ function recharge() {
 			success:function(data){
 				//跳转到using页
 				if(data["result"] == "success") {
-                    window.location.href = "/watermachine/info/" + displayid;
+                    window.location.href = "/watermachine/mainpage";
                 }
                 if(data["result"] == "in order service"){
                     alert("下单失败，请稍后重试！");
-                    window.location.href = "/watermachine/mainpage";
+
+					window.location.href = "/watermachine/mainpage";
                 }
                 if(data["result"] == "openid not match"){
                     alert("下单失败，请稍后重试！");
-                    window.location.href = "/watermachine/mainpage";
+					window.location.href = "/watermachine/mainpage";
                 }
                 if(data["result"] == "error"){
                     alert("连接超时，请稍后重试！");
-                    window.location.href = "/watermachine/mainpage";
+					window.location.href = "/watermachine/mainpage";
                 }
 			}
 		});

@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+﻿<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -65,60 +65,35 @@
 powered by Terabits
 </div>
 
+
 <!-- 订单生成功，跳转等待 -->
-<div class="wait" id="wait" style="display: none;height:100%;
-	width:100%;
-	position:absolute;
-	z-index:1;
-	font-size:0.5rem;
-	padding-top:30%;
-	text-align: center;
-	background-color: rgba(136 ,136, 136, 0.5);
-	top: 0;">
-<div class="waitbox" style="position: absolute;
-	top: 20%;left: 50%;-webkit-transform: translate(-50%, -20%);-moz-transform: translate(-50%, -20%);-ms-transform: translate(-50%, -20%);-o-transform: translate(-50%, -20%);transform: translate(-50%, -20%);
-	height: 8rem;
-	width: 8rem;
-	background-color: white;
-	font-size: 0.4rem;
-	padding-top: 0.5rem;
-	text-align: center;">
- <p>花费/¥</p>
- <p style="font-size: 1rem; color: rgb(233, 125, 123);" id="waitmoney">10</p>
- <p>取水量/L</p>
- <p style="font-size: 1rem; color: rgb(37, 109, 243);" id="waitwater">10</p>
- <img style="width: 2.5rem"  src="/watermachine/static/pic/loading.gif"/>
- <p style="font-size: 0.3rem; color: rgb(136,136,136);">正在为您准备，请稍候</p>
+<div class="wait" id="wait"  style="display: none;">
+<div class="loadEffect">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
 </div>
+<div class="waitbox">正在为您准备，请稍候</div>
 </div>
 
 <!-- 订单生成功，跳转等待 -->
-<div class="wait" id="enwait" style="display: none;height:100%;
-	width:100%;
-	position:absolute;
-	z-index:1;
-	font-size:0.5rem;
-	padding-top:30%;
-	text-align: center;
-	background-color: rgba(136 ,136, 136, 0.5);
-	top: 0;">
-<div class="waitbox" style="position: absolute;
-	top: 20%;left: 50%;-webkit-transform: translate(-50%, -20%);-moz-transform: translate(-50%, -20%);-ms-transform: translate(-50%, -20%);-o-transform: translate(-50%, -20%);transform: translate(-50%, -20%);
-	height: 8rem;
-	width: 8rem;
-	background-color: white;
-	font-size: 0.4rem;
-	padding-top: 0.5rem;
-	text-align: center;">
- <p>COST/¥</p>
- <p style="font-size: 1rem; color: rgb(233, 125, 123);" id="waitmoney">10</p>
- <p>WATER/L</p>
- <p style="font-size: 1rem; color: rgb(37, 109, 243);" id="waitwater">10</p>
- <img style="width: 2.5rem"  src="/watermachine/static/pic/loading.gif"/>
- <p style="font-size: 0.3rem; color: rgb(136,136,136);">We are preparing for you.
-Please wait a moment.
-</p>
+<div class="wait" id="enwait" style="display: none;">
+<div class="loadEffect">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
 </div>
+<div class="waitbox">We are preparing for you.Please wait a moment.</div>
 </div>
 
 </body>

@@ -77,25 +77,96 @@ body{}
 
 /* 等待框 */
 .wait{
-	height:100%;
-	width:100%;
-	position:absolute;
-	z-index:1;
-	font-size:0.5rem;
-	padding-top:30%;
-	text-align: center;
-	background-color: rgba(136 ,136, 136, 0.5);
-	top: 0;
+    height:100%;
+    width:100%;
+    position:absolute;
+    z-index:1;
+    font-size: 0.5rem;
+    text-align: center;
+    background-color: rgba(230 ,230, 230, 0.92);
+    top: 0;
 }
 
 .waitbox{
-	position: absolute;
-	top: 20%;left: 50%;-webkit-transform: translate(-50%, -20%);-moz-transform: translate(-50%, -20%);-ms-transform: translate(-50%, -20%);-o-transform: translate(-50%, -20%);transform: translate(-50%, -20%);
-	height: 8rem;
-	width: 8rem;
-	background-color: white;
-	font-size: 0.4rem;
-	padding-top: 0.5rem;
-	text-align: center;
+    position: absolute;
+    bottom: 40%;
+    background-color: transparent;
+    font-size: 0.4rem;
+    width: 100%;
 }
+
+.loadEffect{
+            width: 2rem;
+            height: 2rem;
+            position: absolute;
+            top: 40%;left: 50%;-webkit-transform: translate(-40%, -50%);-moz-transform: translate(-40%, -50%);-ms-transform: translate(-40%, -50%);-o-transform: translate(-40%, -50%);transform: translate(-40%, -50%);
+        }
+
+        .loadEffect span{
+            display: inline-block;
+            width: 0.23rem;
+            height: 0.23rem;
+            border-radius: 50%;
+            background: rgb(37, 109, 243);
+            position: absolute;
+            -webkit-animation: load 1.04s ease infinite;
+        }
+        @-webkit-keyframes load{
+            0%{
+                opacity: 1;
+            }
+            100%{
+                opacity: 0.2;
+            }
+        }
+        .loadEffect span:nth-child(1){
+            left: 0;
+            top: 50%;
+            margin-top:-0.16rem;
+            -webkit-animation-delay:0.13s;
+        }
+        .loadEffect span:nth-child(2){
+            left: 0.28rem;
+            top: 0.28rem;
+            -webkit-animation-delay:0.26s;
+        }
+        .loadEffect span:nth-child(3){
+            left: 50%;
+            top: 0;
+            margin-left: -0.16rem;
+            -webkit-animation-delay:0.39s;
+        }
+        .loadEffect span:nth-child(4){
+            top: 0.28rem;
+            right: 0.28rem;
+            -webkit-animation-delay:0.52s;
+        }
+        .loadEffect span:nth-child(5){
+            right: 0;
+            top: 50%;
+            margin-top:-0.16rem;
+            -webkit-animation-delay:0.65s;
+        }
+        .loadEffect span:nth-child(6){
+            right: 0.28rem;
+            bottom: 0.28rem;
+            -webkit-animation-delay:0.78s;
+        }
+        .loadEffect span:nth-child(7){
+            bottom: 0;
+            left: 50%;
+            margin-left: -0.16rem;
+            -webkit-animation-delay:0.91s;
+        }
+        .loadEffect span:nth-child(8){
+            bottom: 0.28rem;
+            left: 0.28rem;
+            -webkit-animation-delay:1.04s;
+        }
+        .loadEffect div{
+        	width: 2rem;
+        	height: 2rem;
+        	margin-top: 0.6rem;
+    		margin-left: -0.04rem;
+        }
 </style>
