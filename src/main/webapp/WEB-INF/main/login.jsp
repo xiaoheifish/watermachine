@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="/watermachine/static/css/bootstrap.css">
     <link rel="stylesheet" href="/watermachine/static/css/login.css">
 
-    <title>欢迎使用智能饮水机</title>
+    <title>欢迎使用智能直饮水机</title>
     <script>
         var openid = "${openId}";
         var language = "${language}";
@@ -99,14 +99,14 @@
 
 <div class="col-sm-12 col-xs-12" id="bottombar">
     天风物业<br>
-    powered by Terabits
+    Powered by Terabits
 </div>
 
 <!-- 输入编号弹出部分 -->
 <div id="numberbox" style="display: none;">
     <div id="number">
         <p id="idinputtext">请输入设备编号</p>
-        <input type="tel" maxlength="6" id="id"><br>
+        <input type="tel" maxlength="4" id="id"><br>
 
         <input type="submit" value="取消" class="idbutton" id="cancle" onclick="closenumber()"
                style="left: 0;border-right: 0.5px solid rgb(136, 136, 136);color: rgb(136, 136, 136);z-index: -1;">
@@ -129,21 +129,25 @@
     <img src="/watermachine/static/pic/avatar.png" style="width: 1.4rem;" id="avatar"/><br>
     &nbsp;<span style="font-size: 0.6rem; color: black;" id="nickname"></span>
 
-    <button id="record" onclick="openrecordbox();" class="menu_1"><img style="width: 0.7rem"
-                                                                       src="/watermachine/static/pic/record.png"/>&nbsp;&nbsp;取水记录
+    <button id="record" onclick="openrecordbox();" class="menu_1">
+	<img style="width: 0.7rem" src="/watermachine/static/pic/record.png"/>&nbsp;&nbsp;交易记录
     <img style="width: 0.7rem;"></button>
 
-    <button id="wallet" onclick="openwalletbox();" class="menu_1"><img style="width: 0.7rem"
-                                                                       src="/watermachine/static/pic/wallet.png"/>&nbsp;&nbsp;我的钱包
+    <button id="wallet" onclick="openwalletbox();" class="menu_1">
+	<img style="width: 0.7rem" src="/watermachine/static/pic/wallet.png"/>&nbsp;&nbsp;我的钱包
+    <img style="width: 0.7rem;"></button>
+	
+	<button id="rechargerec" onclick="openrechargerecbox();" class="menu_1">
+	<img style="width: 0.7rem" src="/watermachine/static/pic/rechargerec.png"/>&nbsp;&nbsp;充值记录
     <img style="width: 0.7rem;"></button>
 
-<!--    <button id="invite" onclick="openinvitationbox();" class="menu_1"><img style="width: 0.7rem"
-                                                                           src="/watermachine/static/pic/invite.png"/>&nbsp;&nbsp;邀请好友
+<!--    <button id="invite" onclick="openinvitationbox();" class="menu_1">
+	<img style="width: 0.7rem" src="/watermachine/static/pic/invite.png"/>&nbsp;&nbsp;邀请好友
     <img style="width: 0.7rem;"></button>-->
 
-    <button id="service" onclick="openservicebox();" class="menu_1"><img style="width: 0.7rem"
-                                                                         src="/watermachine/static/pic/service.png"/>&nbsp;&nbsp;意见反馈
-    <img src="/watermachine/static/pic/award.png" style="width: 0.7rem;vertical-align: top;"></button>
+    <button id="service" onclick="openservicebox();" class="menu_1">
+	<img style="width: 0.7rem" src="/watermachine/static/pic/service.png"/>&nbsp;&nbsp;意见反馈
+    <img src="/watermachine/static/pic/award.png" style="width: 0.7rem;vertical-align: top;margin-left: -0.2rem;"></button>
 
 <a href="/watermachine/rules" id="enrule" style="margin-top: 0.5rem;font-size: 0.3rem;">详细活动规则</a>
 

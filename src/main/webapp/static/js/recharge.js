@@ -3,13 +3,11 @@ function load(){
 	openid = getCookie("openid");
 	language = getCookie("language");
 
-
-	
 	if(language != "zh_CN"){
-		document.getElementById('50').innerHTML ="¥ 50\n<br/>Gift ¥30";
-		document.getElementById('20').innerHTML ="¥ 20\n<br/>Gift ¥12";
-		document.getElementById('10').innerHTML ="¥ 10\n<br/>Gift ¥5";
-		document.getElementById('5').innerHTML ="¥ 5\n<br/>Gift ¥2";
+		document.getElementById('50').innerHTML ="¥ 50\n<br/>Gift ¥50";
+		document.getElementById('20').innerHTML ="¥ 20\n<br/>Gift ¥20";
+		document.getElementById('10').innerHTML ="¥ 10\n<br/>Gift ¥10";
+		document.getElementById('5').innerHTML ="¥ 5\n<br/>Gift ¥5";
 		$("#recharge").val("recharge");
 		$("#rechargewarntext").text("Click 'recharge' means you agree the above rules.");
 		$("#rechargepic").attr("src","/watermachine/static/pic/enrechargepic.png");
@@ -65,6 +63,7 @@ function money4(){
 	$("#money4image").attr("src", "/watermachine/static/pic/aselect.png");
 }
 
+var countdown;
 //充值
 function recharge() {
 	$.ajax({
@@ -90,7 +89,7 @@ function recharge() {
                 if(res.err_msg == "get_brand_wcpay_request:ok" ) {
                 	if(language != "zh_CN"){$("#enwait").show();}
                     else{$("#wait").show();}
-                    var countdown = 10;
+                    countdown = 5;
                     settime();
                     function settime() {
                         $("#waittime").text(countdown);

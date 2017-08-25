@@ -194,13 +194,13 @@ public class ConsumeController {
                 }
             }
             if ((consumeOrderPO1.getState() == Constants.NO_RESPONSE)
-                    && (i % 8 == 0)&&(i != 0)) {
+                    && (i % 12 == 0)&&(i != 0)) {
                 // 每隔8秒，重新下发开启插座命令给终端
-                time1 = dfs.format(now);
+                time1 = dfs.format(new Date());
                 postCommandManager.command(openbytes, communicationBO.getDeviceId());
                 now = new Date();
                 time2 = dfs.format(now);
-                logger.error("to huaweiplatform power on ok: " + time1 + " "
+                logger.error("platform global ok:::::" + time1 + " "
                         + time2);
             } else {
                 // 隔一秒取一次数据库中记录

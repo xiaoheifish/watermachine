@@ -31,7 +31,7 @@
 <span id="status">${status}</span>
 </div>
 
-
+<p style="font-size:0.4rem;">很抱歉！该设备暂时无法使用。</p>
 
 
 

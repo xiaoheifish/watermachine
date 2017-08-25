@@ -10,29 +10,21 @@
 <link rel="stylesheet" href="/watermachine/static/css/bootstrap.css">
 <link rel="stylesheet" href="/watermachine/static/css/login.css">
 
-<title>我的钱包</title>
+<title>充值记录</title>
 </head>
 
-<body onload="loadwallet()" style="font-family: 'Microsoft YaHei' 'Cambria Math';background-color: rgb(240, 240, 240);display: flex;flex-direction: column;align-items: center;">
-<script>
-    var balance = "${balance}";
-</script>
+<body onload="loadrechargerecord()" style="font-family: 'Microsoft YaHei' 'Cambria Math';background-color: rgb(240, 240, 240);display: flex;flex-direction: column;align-items: center;padding-top: 0.1rem;">
 
-<div id="walletbox">
-<!-- 二级菜单-我的钱包 -->
-<div id="balance">
-<p>${balance}</p>
-<p style="font-size: 0.3rem;" id="balancetext">余额(元)</p>
+
+<!-- 二级菜单-取水记录 -->
+
+<div class="recordcontent" id="record0" style="display:none;">
+	<img style="width: 0.4rem" src="/watermachine/static/pic/clock.png">&nbsp;<span id="time"></span><br>
+	<span class="cost">充值金额:</span>&nbsp;<span style="color: #e9ca33;">¥<span style="font-size: 1.5em" id="amount"></span></span>&nbsp;&nbsp;&nbsp;<span class="id">&nbsp;&nbsp;
+	交易单号:</span><span id="idtext"></span>
 </div>
 
 
-<button class="RQ" onclick="jumprecharge()" id="jumprecharge">充值</button><br>
-
-<div class="col-sm-12 col-xs-12" id="bottombar">
-天风物业<br>
-Powered by Terabits
-</div>
-</div>
 
 </body>
 </html>

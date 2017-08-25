@@ -57,7 +57,7 @@
     </select>
 
     <select id="selectPaymentByOpenId" parameterType="String" resultMap="orderMap">
-        select * from rechargerecord where openid = #{openId}
+        select * from rechargerecord where openid = #{openId} and tradeno is not null order by gmtcreate desc
     </select>
 
 </mapper>

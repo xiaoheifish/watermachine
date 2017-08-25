@@ -1,8 +1,10 @@
 package com.terabits.controller;
 
+import com.terabits.meta.po.RechargeOrderPO;
 import com.terabits.meta.po.UserPO;
 import com.terabits.service.RechargeOrderService;
 import com.terabits.service.UserService;
+import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Administrator on 2017/8/19.
@@ -46,19 +50,22 @@ public class RechargeController {
     @RequestMapping(value = "/callback", method = RequestMethod.GET)
     public String recharge(){return "main/recharge.jsp";}
 
-   /* //获取余额
+    //显示充值记录页面
+    @RequestMapping(value = "/rechargerec", method = RequestMethod.GET)
+    public String rechargerec(){return "main/rechargerec.jsp";}
+
+    //获取充值
     @RequestMapping(value = "/menu/recharge", method = RequestMethod.POST)
-    public void getRecord(HttpServletRequest request, HttpServletResponse response){
+    public void getRechargeRecord(HttpServletRequest request, HttpServletResponse response){
         String openId = request.getParameter("openid");
+        List<RechargeOrderPO> rechargeOrderPOArrayList = new ArrayList<RechargeOrderPO>();
         try{
-            UserPO userPO = userService.selectUser(openId);
-            double balance = userPO.getRemain();
-            JSONObject jsonObject = new JSONObject();
-            jsonObject.put("balance", String.valueOf(balance));
+            rechargeOrderPOArrayList = rechargeOrderService.selectPaymentByOpenId(openId);
+            JSONArray jsonObject = JSONArray.fromObject(rechargeOrderPOArrayList);
             response.getWriter().print(jsonObject);
         }catch (Exception e){
-            logger.error("consumeOrderService.selectConsumptionByDisplayId error in recordcontroller");
+            logger.error("rechargeOrderService.selectPaymentByOpenId error in rechargeController");
         }
 
-    }*/
+    }
 }

@@ -29,8 +29,8 @@ function getCookie(cname)
 var money,water;
 //容量选择按钮选中效果
 function money1(){
-	money = 0.1;
-	water = 0.2;
+	money = 0.2;
+	water = 0.3;
 	$("#money1image").attr("src", "/watermachine/static/pic/aselect.png");
 	$("#money2image").attr("src", "/watermachine/static/pic/bselect.png");
 	$("#money3image").attr("src", "/watermachine/static/pic/bselect.png");
@@ -39,7 +39,7 @@ function money1(){
 }
 
 function money2(){
-	money = 0.2;
+	money = 0.3;
 	water = 0.5;
 	$("#money1image").attr("src", "/watermachine/static/pic/bselect.png");
 	$("#money2image").attr("src", "/watermachine/static/pic/aselect.png");
@@ -48,7 +48,7 @@ function money2(){
 }
 
 function money3(){
-	money = 0.3;
+	money = 0.5;
 	water = 1;
 	$("#money1image").attr("src", "/watermachine/static/pic/bselect.png");
 	$("#money2image").attr("src", "/watermachine/static/pic/bselect.png");
@@ -57,7 +57,7 @@ function money3(){
 }
 
 function money4(){
-	money = 0.5;
+	money = 0.9;
 	water = 2;
 	$("#money1image").attr("src", "/watermachine/static/pic/bselect.png");
 	$("#money2image").attr("src", "/watermachine/static/pic/bselect.png");
@@ -93,16 +93,19 @@ function recharge() {
                     window.location.href = "/watermachine/info/" + displayid;
                 }
                 if(data["result"] == "in order service"){
-                    alert("下单失败，请稍后重试！");
+					if(language != "zh_CN"){alert("Failure to place order");}
+					else{alert("下单失败，请稍后重试！");}
 
 					window.location.href = "/watermachine/mainpage";
                 }
                 if(data["result"] == "openid not match"){
-                    alert("下单失败，请稍后重试！");
+                    if(language != "zh_CN"){alert("Failure to place order");}
+					else{alert("下单失败，请稍后重试！");}
 					window.location.href = "/watermachine/mainpage";
                 }
                 if(data["result"] == "error"){
-                    alert("连接超时，请稍后重试！");
+                    if(language != "zh_CN"){alert("Failure to place order");}
+					else{alert("下单失败，请稍后重试！");}
 					window.location.href = "/watermachine/mainpage";
                 }
 			}

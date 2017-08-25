@@ -10,15 +10,16 @@
 <link rel="stylesheet" href="/watermachine/static/css/bootstrap.css">
 <link rel="stylesheet" href="/watermachine/static/css/signup.css">
 <title>注册</title>
-</head>
-
-<body onload="load()" style="font-family: 'Microsoft YaHei' 'Cambria Math';background-color: rgb(240, 240, 240);display: flex;flex-direction: column;align-items: center;">
 <script>
 	var openid = "${openId}";
 	var language = "${language}";
 	var avatar = "${headimgurl}";
 	var nickname = "${nickname}";
 </script>
+</head>
+
+<body onload="load()" style="font-family: 'Microsoft YaHei' 'Cambria Math';background-color: rgb(240, 240, 240);display: flex;flex-direction: column;align-items: center;">
+
 
 <!-- 广告图片 -->
 <img src="/watermachine/static/pic/signuppic.png" style="width: 101.5%;" id="signuppic"/>
@@ -48,20 +49,18 @@
 <div id="sucdiv" style="font-size: 0.45rem;padding-left: 6%;width: 100%;margin-top: 0.5rem; display: none;">
 注册成功，<br>
 <span style="color: rgb(230, 67,64);">5</span>元体验额已发放至您的钱包！
-<p style="font-size: 0.25rem">首页点击左下角账户图标，在菜单中选择“我的钱包”查看。</p>
-<a style="margin-top: 1rem;">将在3s后跳转至首页，立享健康水></a>
+<a style="margin-top: 1rem;text-align: center;">将在3秒后跳转至首页，立享健康水</a>
 </div>
 
 <div id="ensucdiv" style="font-size: 0.45rem;padding-left: 6%;width: 100%;margin-top: 0.5rem; display: none;">
 Registration succeeds!<br>
 You already have <span style="color: rgb(230, 67,64);">¥5</span> in your wallet.
-<p style="font-size: 0.25rem">Click the account icon on the home page to view your balance.</p>
-<a style="margin-top: 1rem;">This page will jump to the home page in 3seconds. Enjoy the water NOW!</a>
+<a style="margin-top: 1rem;text-align: center;">This page will jump to the home page in 3seconds. Enjoy the water NOW!</a>
 </div>
 
 <div class="col-sm-12 col-xs-12" id="bottombar">
 天风物业<br>
-powered by Terabits
+Powered by Terabits
 </div>
 
 </body>

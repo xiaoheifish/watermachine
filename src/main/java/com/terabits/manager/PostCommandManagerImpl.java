@@ -77,7 +77,6 @@ public class PostCommandManagerImpl implements PostCommandManager {
         HttpResponse httpResponse = httpsUtil.doPostJson(urlPostAsynCmd, header, jsonRequest);
 
         String responseBody = httpsUtil.getHttpResponseBody(httpResponse);
-
         return responseBody;
     }
 }

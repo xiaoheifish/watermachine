@@ -19,6 +19,11 @@ function openwalletbox(){
 
 }
 
+function openrechargerecbox(){
+	//$("#service").css("background-color","#f0f0f4");
+	window.location.href = "/watermachine/rechargerec";
+}
+
 function openservicebox(){
 	//$("#service").css("background-color","#f0f0f4");
 	window.location.href = "/watermachine/mail";
@@ -218,7 +223,9 @@ function suggestion(){
         dataType:'json',
         success:function(data){
 			if(data["result"] == "ok"){
-				alert("您的建议已成功提交！");
+				if(language != "zh_CN"){alert("Your suggestions and comments have been submited.");}
+				else{alert("您的建议已成功提交！");}
+				
 			}
         }
     });
@@ -236,6 +243,44 @@ function loadwallet(){
 
 function jumprecharge(){
 	window.location.href = "/watermachine/callback";
+}
+
+//充值记录
+function loadrechargerecord(){
+	loadid();
+	$.ajax({
+		type:'POST',
+		url:'/watermachine/menu/rechargerecord',
+		data:{
+			"openid":openid
+        },
+		dataType:'json',
+		success:function(data){
+			var length = getJsonObjLength(data);
+			if(length != 0){
+				$("#record0").show();
+		            for(i=0; i<length; i++){
+		            	$("#record"+i).find("#time").text(data[i]["gmtCreate"]);
+		            	$("#record"+i).find("#amount").text(data[i]["payment"]);
+		            	$("#record"+i).find("#idtext").text(data[i]["orderId"]);
+		            	if(i != (length-1)){
+		            		i++;
+							/*  增加div */
+                            object = $("#record0").clone();
+                            $(object).attr("id","record"+i);
+                            $("body").append(object);
+                            i--;
+						}
+		            }
+		    }
+		}
+	});
+	
+	if(language != "zh_CN"){
+		$(".cost").text("recharge amount: ");
+		$(".id").text("  transaction number: ");
+		$("title").html("Recharge Record");
+	}
 }
 
 //加载cookie，语言和用户id

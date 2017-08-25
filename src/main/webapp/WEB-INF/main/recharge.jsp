@@ -20,23 +20,23 @@
 <div class="moneybuttonbox">
 <div onclick="money1();" id="money1" class="moneybutton">
 <img id="money1image" src="/watermachine/static/pic/bselect.png" style="height: 0.65rem;"/>
-<div id="50" style="margin-left: 15%;">¥ 50<br>送30元</div></div>	
+<div id="50" style="margin-left: 15%;">¥ 50<br>送50元</div></div>	
 
 <div onclick="money2();" id="money2" class="moneybutton" style="margin-left: 5%;">
 <img id="money2image" src="/watermachine/static/pic/bselect.png" style="height: 0.65rem;"/>
-<div id="20" style="margin-left: 15%;">¥ 20<br>送12元</div>
+<div id="20" style="margin-left: 15%;">¥ 20<br>送20元</div>
 </div>
 </div>
 
 <div class="moneybuttonbox">
 <div onclick="money3();" id="money3" class="moneybutton">
 <img id="money3image" src="/watermachine/static/pic/bselect.png" style="height: 0.65rem;"/>
-<div id="10" style="margin-left: 15%;">¥ 10<br>送 5 元</div>	
+<div id="10" style="margin-left: 15%;">¥ 10<br>送10元</div>	
 </div>
 
 <div onclick="money4();" id="money4" class="moneybutton" style="margin-left: 5%;">
 <img id="money4image" src="/watermachine/static/pic/bselect.png" style="height: 0.65rem;"/>
-<div id="5" style="margin-left: 15%;">¥ 5<br>送 2 元</div>
+<div id="5" style="margin-left: 15%;">¥ 5<br>送 5 元</div>
 </div>
 </div>
 
@@ -46,7 +46,7 @@
 
 <div class="col-sm-12 col-xs-12" id="bottombar">
 天风物业<br>
-powered by Terabits
+Powered by Terabits
 </div>
 
 

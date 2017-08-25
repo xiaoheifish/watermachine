@@ -10,14 +10,15 @@
 <link rel="stylesheet" href="/watermachine/static/css/bootstrap.css">
 <link rel="stylesheet" href="/watermachine/static/css/information.css">
 <title>使用信息</title>
-</head>
-
-<body onload="settime(),load()" style="font-family: 'Microsoft YaHei' 'Cambria Math';background-color: rgb(240, 240, 240);display: flex;flex-direction: column;align-items: center;padding-top: 0.15rem;">
 <script>
     var lefttime = "${lefttime}";
 	var water = "${water}";
 	var status = "${status}";
 </script>
+</head>
+
+<body onload="settime(),load()" style="font-family: 'Microsoft YaHei' 'Cambria Math';background-color: rgb(240, 240, 240);display: flex;flex-direction: column;align-items: center;padding-top: 0.15rem;">
+
 
 <!-- 信息显示部分 -->
 <div class = "infor">
@@ -40,24 +41,23 @@
 
 <div style="font-size:0.3rem;color: rgb(97, 97, 97);text-align: center;margin-top: 0.5rem;">
 <img style="height: 0.8rem" src="/watermachine/static/pic/lefttime.png"><br><br>
-<span id="chwarnningtext">取水阀门将在<span style="color: rgb(230, 67, 64);">取水结束</span>或<span  style="color: rgb(230, 67, 64);">40秒</span>后关闭，<br>请您尽快取水，使用过程中请注意节约用水！</span>
-<span id="enwarnningtext" style="display:none;">The water-tap will be closed after<span style="color: rgb(230, 67, 64);"> you finishing taking water</span> or <span style="color: rgb(230, 67, 64);">40</span>s.<br>Please take water soon.</span>
+<span id="chwarnningtext">取水阀门将在<span style="color: rgb(230, 67, 64);">取水结束</span>或<span  style="color: rgb(230, 67, 64);">1分钟</span>后关闭，<br>请您尽快取水，使用过程中请注意节约用水！</span>
+<span id="enwarnningtext" style="display:none;">The water-tap will be closed after<span style="color: rgb(230, 67, 64);"> you finishing taking water</span> or <span style="color: rgb(230, 67, 64);">60</span>s.<br>Please take water soon.</span>
 </div>
 
-<img style="width: 95%;margin-top: 1rem;" src="/watermachine/static/pic/line.png">
-<div id="savebox" style="margin-top: 0.5rem;font-size: 0.35rem;text-align: center;color: rgb(97, 97, 97); ">
+<div id="savebox" style="margin-top: 1rem;font-size: 0.35rem;text-align: center;color: rgb(97, 97, 97); border: 3px solid black; padding: 5%; width: 80%;">
 	恭喜您向今日饮水目标更进一步！<br>
-	此次饮水您又节省了<span id="save" style="color:rgb(230, 67, 64);">1/4</span>个塑料瓶！
+	此次饮水您又节省了<span id="save">1/4</span>个饮料瓶！
 </div>
 
-<div id="ensavebox" style="margin-top: 0.5rem;font-size: 0.35rem;text-align: center;color: rgb(97, 97, 97);display: none; ">
+<div id="ensavebox" style="margin-top: 1rem;font-size: 0.35rem;text-align: center;color: rgb(97, 97, 97); border: 3px solid black; padding: 5%; width: 80%;display: none;">
 	Go further on your drinking goal.<br>
 	You saved <span id="save">1/4</span> plastic bottle(s) this time！
 </div>
 
 <div class="col-sm-12 col-xs-12" id="bottombar">
 天风物业<br>
-powered by Terabits
+Powered by Terabits
 </div>
 
 </body>
