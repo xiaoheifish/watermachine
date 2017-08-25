@@ -57,7 +57,7 @@ public class Constants {
     public static final byte SEND_COMMAND_END = (byte)0xFA;
 
     //流量值标记
-    public static final byte TWO_M_WATER = (byte)0x01;
+    public static final byte THREE_M_WATER = (byte)0x01;
 
     public static final byte FIVE_M_WATER = (byte)0x02;
 
