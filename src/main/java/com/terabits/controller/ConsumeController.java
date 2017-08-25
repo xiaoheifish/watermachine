@@ -106,7 +106,7 @@ public class ConsumeController {
         }
 
         // 下发开启插座命令给终端
-        String url = "http://localhost/watermachine/postcommand/" + cost + "/" + displayId;
+        String url = "http://localhost/watermachine/postcommand/" + String.valueOf(flow) + "/" + displayId;
         HttpClient httpClient = new DefaultHttpClient();
         // get method
         HttpPost httpPost = new HttpPost(url);
