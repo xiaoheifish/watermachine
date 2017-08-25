@@ -24,11 +24,11 @@ import java.util.concurrent.Executors;
 /**
  * Created by Administrator on 2017/8/22.
  */
-@Service("postCommandManager")
+/*@Service("postCommandManager")*/
 public class PostCommandManager {
 
-    @Autowired
-    private ConsumeOrderService consumeOrderService;
+  /*  @Autowired
+    private ConsumeOrderService consumeOrderService;*/
     
     private static Logger logger = LoggerFactory
             .getLogger(PostCommandManager.class);
@@ -78,12 +78,13 @@ public class PostCommandManager {
                 // 线程id
                 long tid = Thread.currentThread().getId();
                 ConsumeOrderPO consumeOrderPO = new ConsumeOrderPO();
-                try {
+              /*  try {
                     System.out.println("displayId:::" + displayId);
                     consumeOrderPO = consumeOrderService.selectLastConsumption(displayId);
                 }catch (Exception e){
                     e.printStackTrace();
-                } Date now = new Date();
+                }*/
+                Date now = new Date();
                 SimpleDateFormat dfs = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                 String time1 = dfs.format(now);  
              

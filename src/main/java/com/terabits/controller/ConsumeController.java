@@ -11,6 +11,10 @@ import com.terabits.utils.GenerateOrderId;
 import com.terabits.utils.TimeSpanUtil;
 import com.terabits.utils.huawei.PlatformGlobal;
 import net.sf.json.JSONObject;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.impl.client.SystemDefaultCredentialsProvider;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -42,8 +46,8 @@ public class ConsumeController {
     private TerminalService terminalService;
     @Autowired
     private HuaweiPostCommandService huaweiPostCommandService;
-    @Autowired
-    private PostCommandManager postCommandManager;
+   /* @Autowired
+    private PostCommandManager postCommandManager;*/
 
     private static Logger logger = LoggerFactory
             .getLogger(ConsumeController.class);
@@ -100,35 +104,18 @@ public class ConsumeController {
         } catch (Exception e) {
             logger.error("consumeOrderService.insertOrder error in 生成消费订单");
         }
-        // 查询指令编号并更新
-        String commandOne = credentialService.getCommandNo("commandOne");
-        String commandTwo = credentialService.getCommandNo("commandTwo");
-        CommandNoModel commandNoModel = new CommandNoModel();
-        commandNoModel.setCommandId("commandTwo");
-        int tempCommandTwo = Integer.parseInt(commandTwo) + 1;
-        commandNoModel.setNumber(String.valueOf(tempCommandTwo));
-        credentialService.createCommand(commandNoModel);
-        // 下发指令
-        int cmdOne = Integer.parseInt(commandOne);
-        int cmdTwo = Integer.parseInt(commandTwo);
-        CommunicationBO communicationBO = terminalService.getTerminalDeviceId(displayId);
-        String deviceId = communicationBO.getDeviceId();
-        logger.error("communicationBO::::::" + deviceId);
+
         // 下发开启插座命令给终端
-        byte[] openbytes = new byte[6];
-        openbytes[0] = Constants.SEND_COMMAND_START;
-        openbytes[1] = Constants.POWER_ON_COMMAND;
-        openbytes[2] = FlowUtil.flowToCommand(flow);
-        openbytes[3] = (byte) cmdOne;
-        openbytes[4] = (byte) cmdTwo;
-        openbytes[5] = Constants.SEND_COMMAND_END;
-        Date now = new Date();
-        SimpleDateFormat dfs = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String time1 = dfs.format(now);
-        //PlatformGlobal.command(openbytes, communicationBO.getDeviceId());
-        postCommandManager.postCommand(openbytes,displayId,communicationBO.getDeviceId());
-        now = new Date();
-        String time2 = dfs.format(now);
+        String url = "http://localhost/watermachine/postcommand/" + cost + "/" + displayId;
+        HttpClient httpClient = new DefaultHttpClient();
+        // get method
+        HttpPost httpPost = new HttpPost(url);
+        //response
+        HttpResponse httpresponse = null;
+        try{
+            httpresponse = httpClient.execute(httpPost);
+        }catch (Exception e) {
+        }
         //logger.error("to huaweiplatform power on ok: " + time1 + " " + time2);
         // 此处为调试方便先直接更新订单状态
         // consumeOrderService.updateStateById(consumeOrderPO.getOrderNo());

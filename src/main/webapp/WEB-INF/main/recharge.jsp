@@ -61,7 +61,7 @@ powered by Terabits
         <span></span>
         <span></span>
         <span></span>
-        <div id="waitmoney">10</div>
+        <div id="waittime">10</div>
 </div>
 <div style="margin-top: 90%; font-size: 0.4rem;">
  即将跳转至首页，请稍候
@@ -78,7 +78,7 @@ powered by Terabits
         <span></span>
         <span></span>
         <span></span>
-        <div id="waitmoney">10</div>
+        <div id="waittime">10</div>
 </div>
 <div style="margin-top: 90%; font-size: 0.4rem;">
  Will jump to the home page. Please wait.

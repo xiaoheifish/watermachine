@@ -6,6 +6,12 @@ import java.security.MessageDigest;
  * Created by Administrator on 2017/6/11.
  */
 public class MD5Util {
+
+   /* public static void main(String[] args){
+        String openid1 = "o1S07wuDO9ivY_55p3OT4bEMNUL0";
+        String openid2 = "o1S07wotESY-e5nUxo1GZQL9LZKo";
+        String fo1 = MD5Util.MD5Encode(openid1);
+    }*/
     private static String byteArrayToHexString(byte b[]) {
 
         StringBuffer resultSb = new StringBuffer();

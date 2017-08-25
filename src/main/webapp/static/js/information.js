@@ -90,7 +90,7 @@ function recharge() {
 			success:function(data){
 				//跳转到using页
 				if(data["result"] == "success") {
-                    window.location.href = "/watermachine/mainpage";
+                    window.location.href = "/watermachine/info/" + displayid;
                 }
                 if(data["result"] == "in order service"){
                     alert("下单失败，请稍后重试！");

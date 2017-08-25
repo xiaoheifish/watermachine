@@ -90,11 +90,10 @@ function recharge() {
                 if(res.err_msg == "get_brand_wcpay_request:ok" ) {
                 	if(language != "zh_CN"){$("#enwait").show();}
                     else{$("#wait").show();}
-                    $("#waitmoney").text(money);
                     var countdown = 10;
                     settime();
                     function settime() {
-                        $("#waittime").html(countdown);
+                        $("#waittime").text(countdown);
                         countdown--;
                         if (countdown == 0){
                             window.location.href="/watermachine/mainpage";
