@@ -18,6 +18,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -50,6 +51,8 @@ public class ConsumeController {
     private HuaweiPostCommandService huaweiPostCommandService;
     @Autowired
     private PostCommandManager postCommandManager;
+    @Autowired
+    private AccessTokenService accessTokenService;
 
     private static Logger logger = LoggerFactory
             .getLogger(ConsumeController.class);
