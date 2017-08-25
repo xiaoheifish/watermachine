@@ -3,10 +3,10 @@ function load(){
 	openid = getCookie("openid");
 	language = getCookie("language");
 	
-	if(water == "0.2"){$("#save").text("1/2");}
-    if(water == "0.5"){$("#save").text("1");}
-    if(water == "1"){$("#save").text("2");}
-    if(water == "2"){$("#save").text("4");}
+	if(water == 0.2){$("#save").text("1/2");}
+    if(water == 0.5){$("#save").text("1");}
+    if(water == 1){$("#save").text("2");}
+    if(water == 2){$("#save").text("4");}
 	
 	if(language != "zh_CN"){
 		$("#chwarnningtext").remove();

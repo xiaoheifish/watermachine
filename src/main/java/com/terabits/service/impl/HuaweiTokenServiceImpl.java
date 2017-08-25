@@ -42,7 +42,7 @@ public class HuaweiTokenServiceImpl implements HuaweiTokenService {
         SimpleDateFormat dfs = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         long between = 0;
         try {
-            Date begin =dfs.parse(huaweiTokenPO.getGmtCreate());
+            Date begin =dfs.parse(huaweiTokenPO.getGmtModified());
             Date end = new Date();
             between = (end.getTime() - begin.getTime())/1000;// 得到两者的秒数
         } catch (Exception ex) {
