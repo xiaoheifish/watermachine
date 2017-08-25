@@ -1,4 +1,4 @@
-package com.terabits.controller;
+﻿package com.terabits.controller;
 
 
 import com.google.gson.Gson;
@@ -50,6 +50,9 @@ public class ConsumeController {
     private HuaweiPostCommandService huaweiPostCommandService;
     @Autowired
     private PostCommandManager postCommandManager;
+   @Autowired
+    private PostCommandManager postCommandManager;
+
 
     private static Logger logger = LoggerFactory
             .getLogger(ConsumeController.class);
