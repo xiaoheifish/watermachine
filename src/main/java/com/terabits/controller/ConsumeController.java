@@ -1,9 +1,11 @@
 package com.terabits.controller;
 
 
+import com.google.gson.Gson;
 import com.terabits.config.Constants;
 import com.terabits.manager.PostCommandManager;
 import com.terabits.meta.bo.CommunicationBO;
+import com.terabits.meta.bo.TerminalUpdateBO;
 import com.terabits.meta.model.CommandNoModel;
 import com.terabits.meta.po.*;
 import com.terabits.service.*;
@@ -26,6 +28,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by Administrator on 2017/8/20.
@@ -105,17 +109,29 @@ public class ConsumeController {
         // 查询指令编号并更新
         String commandOne = credentialService.getCommandNo("commandOne");
         String commandTwo = credentialService.getCommandNo("commandTwo");
-        CommandNoModel commandNoModel = new CommandNoModel();
-        commandNoModel.setCommandId("commandTwo");
+        CommandNoModel commandNoModel1 = new CommandNoModel();
+        CommandNoModel commandNoModel2 = new CommandNoModel();
+        commandNoModel1.setCommandId("commandOne");
+        commandNoModel2.setCommandId("commandTwo");
+        int tempCommandOne = Integer.parseInt(commandOne);
         int tempCommandTwo = Integer.parseInt(commandTwo) + 1;
-        commandNoModel.setNumber(String.valueOf(tempCommandTwo));
-        credentialService.createCommand(commandNoModel);
+        //若编号2到127了，则回退到1，同时编号1加1；若编号1到127了，则编号1和2一同回退到1
+        if(tempCommandTwo == 127) {
+            tempCommandTwo = 1;
+            tempCommandOne += 1;
+            if (tempCommandOne == 127) {
+                tempCommandOne = 1;
+                tempCommandTwo = 1;
+            }
+            commandNoModel1.setNumber(String.valueOf(tempCommandOne));
+            credentialService.createCommand(commandNoModel1);
+        }
+        commandNoModel2.setNumber(String.valueOf(tempCommandTwo));
+        credentialService.createCommand(commandNoModel2);
         // 下发指令
         int cmdOne = Integer.parseInt(commandOne);
         int cmdTwo = Integer.parseInt(commandTwo);
         CommunicationBO communicationBO = terminalService.getTerminalDeviceId(displayId);
-        String deviceId = communicationBO.getDeviceId();
-        logger.error("communicationBO::::::" + deviceId);
         byte[] openbytes = new byte[6];
         openbytes[0] = Constants.SEND_COMMAND_START;
         openbytes[1] = Constants.POWER_ON_COMMAND;
@@ -126,25 +142,15 @@ public class ConsumeController {
         Date now = new Date();
         SimpleDateFormat dfs = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String time1 = dfs.format(now);
-        postCommandManager.command(openbytes, communicationBO.getDeviceId());
+        String result = postCommandManager.command(openbytes, communicationBO.getDeviceId());
+        Gson gson = new Gson();
+        Map<String, Object> map = new HashMap<String, Object>();
+        map = gson.fromJson(result, map.getClass());
+        System.out.println(map.get("commandId"));
         now = new Date();
         String time2 = dfs.format(now);
         logger.error("platform global ok:::::"+ time1 +"-------"+ time2);
-      /*  // 下发开启插座命令给终端
-        String url = "http://localhost/watermachine/postcommand/" + String.valueOf(flow) + "/" + displayId;
-        HttpClient httpClient = new DefaultHttpClient();
-        // get method
-        HttpPost httpPost = new HttpPost(url);
-        //response
-        HttpResponse httpresponse = null;
-        try{
-            httpresponse = httpClient.execute(httpPost);
-        }catch (Exception e) {
-        }*/
-        //logger.error("to huaweiplatform power on ok: " + time1 + " " + time2);
-        // 此处为调试方便先直接更新订单状态
-        // consumeOrderService.updateStateById(consumeOrderPO.getOrderNo());
-        // 标记是否更新过了，确保只会更新一次
+
         Boolean flag = false;
         for (int i = 0; i < 21; i++) {
             // 之后加一个根据消费订单编号查询的方法
@@ -154,6 +160,10 @@ public class ConsumeController {
                 JSONObject jsonObject = new JSONObject();
                 jsonObject.put("result", "error");
                 response.getWriter().print(jsonObject);
+                TerminalUpdateBO terminalUpdateBO = new TerminalUpdateBO();
+                terminalUpdateBO.setState(Constants.OFF_STATE);
+                terminalUpdateBO.setDisplayId(displayId);
+                terminalService.updateTerminal(terminalUpdateBO);
                 return;
             }
             if (consumeOrderPO1.getState() == Constants.HAVE_RESPONSE) {
@@ -186,12 +196,12 @@ public class ConsumeController {
             if ((consumeOrderPO1.getState() == Constants.NO_RESPONSE)
                     && (i % 8 == 0)&&(i != 0)) {
                 // 每隔8秒，重新下发开启插座命令给终端
-             /*   time1 = dfs.format(now);
-                //PlatformGlobal.command(openbytes, communicationBO.getDeviceId());
+                time1 = dfs.format(now);
+                postCommandManager.command(openbytes, communicationBO.getDeviceId());
                 now = new Date();
                 time2 = dfs.format(now);
                 logger.error("to huaweiplatform power on ok: " + time1 + " "
-                        + time2);*/
+                        + time2);
             } else {
                 // 隔一秒取一次数据库中记录
                 Thread.sleep(1000L);

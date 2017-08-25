@@ -48,16 +48,16 @@ public class WeixinPay {
         //微信支付金额，以分为单位
         int totalmoney = Integer.parseInt(money);
 
-        //查询当日交易量，生成新的orderId
-        int count = orderService.selectCountByTime(TimeSpanUtil.generateTimeSpan());
-        String orderId = GenerateOrderId.generateOrderId(count);
-
         //获取存在session中的openid，和前端发来的比对，不同则支付存在问题，返回
         String openId = (String)session.getAttribute("openid");
         if(!requestopenId.equals(openId)){
             response.getWriter().print("error");
             return;
         }
+
+        //查询当日交易量，生成新的orderId
+        int count = orderService.selectCountByTime(TimeSpanUtil.generateTimeSpan());
+        String orderId = GenerateOrderId.generateOrderId(count, openId);
 
         String prepaidId = null;
         MyConfig myConfig = new MyConfig();
