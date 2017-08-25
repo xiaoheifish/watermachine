@@ -103,6 +103,7 @@ function recharge() {
                         }
                     }
                 }
+				else{alert("支付失败！");}
             });
         }
     });

@@ -15,6 +15,8 @@
 <body onload="settime(),load()" style="font-family: 'Microsoft YaHei' 'Cambria Math';background-color: rgb(240, 240, 240);display: flex;flex-direction: column;align-items: center;padding-top: 0.15rem;">
 <script>
     var lefttime = "${lefttime}";
+	var water = "${water}";
+	var status = "${status}";
 </script>
 
 <!-- 信息显示部分 -->
@@ -42,7 +44,16 @@
 <span id="enwarnningtext" style="display:none;">The water-tap will be closed after<span style="color: rgb(230, 67, 64);"> you finishing taking water</span> or <span style="color: rgb(230, 67, 64);">40</span>s.<br>Please take water soon.</span>
 </div>
 
+<img style="width: 100%;margin-top: 1rem;" src="/watermachine/static/pic/line.png">
+<div id="savebox" style="margin-top: 0.5rem;font-size: 0.35rem;text-align: center;color: rgb(97, 97, 97); ">
+	恭喜您向今日饮水目标更进一步！<br>
+	此次饮水您又节省了<span id="save">1/4</span>个饮料瓶！
+</div>
 
+<div id="ensavebox" style="margin-top: 0.5rem;font-size: 0.35rem;text-align: center;color: rgb(97, 97, 97);display: none; ">
+	Go further on your drinking goal.<br>
+	You saved <span id="save">1/4</span> plastic bottle(s) this time！
+</div>
 
 <div class="col-sm-12 col-xs-12" id="bottombar">
 天风物业<br>
