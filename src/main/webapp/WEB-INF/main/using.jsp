@@ -44,10 +44,10 @@
 <span id="enwarnningtext" style="display:none;">The water-tap will be closed after<span style="color: rgb(230, 67, 64);"> you finishing taking water</span> or <span style="color: rgb(230, 67, 64);">40</span>s.<br>Please take water soon.</span>
 </div>
 
-<img style="width: 100%;margin-top: 1rem;" src="/watermachine/static/pic/line.png">
+<img style="width: 95%;margin-top: 1rem;" src="/watermachine/static/pic/line.png">
 <div id="savebox" style="margin-top: 0.5rem;font-size: 0.35rem;text-align: center;color: rgb(97, 97, 97); ">
 	恭喜您向今日饮水目标更进一步！<br>
-	此次饮水您又节省了<span id="save">1/4</span>个饮料瓶！
+	此次饮水您又节省了<span id="save" style="color:rgb(230, 67, 64);">1/4</span>个塑料瓶！
 </div>
 
 <div id="ensavebox" style="margin-top: 0.5rem;font-size: 0.35rem;text-align: center;color: rgb(97, 97, 97);display: none; ">
