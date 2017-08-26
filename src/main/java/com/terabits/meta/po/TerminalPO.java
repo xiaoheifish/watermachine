@@ -16,6 +16,8 @@ public class TerminalPO {
     private String webId;
     //设备的状态，断开用10表示，闭合用11表示
     private int state;
+    //NB信号强度，设备在第一次上电时上传
+    private int strength;
     //设备放置的位置
     private String location;
     //设备所插sim卡id
@@ -73,6 +75,14 @@ public class TerminalPO {
         this.state = state;
     }
 
+    public int getStrength() {
+        return strength;
+    }
+
+    public void setStrength(int strength) {
+        this.strength = strength;
+    }
+
     public String getLocation() {
         return location;
     }
@@ -122,6 +132,7 @@ public class TerminalPO {
                 ", displayId='" + displayId + '\'' +
                 ", webId='" + webId + '\'' +
                 ", state=" + state +
+                ", strength=" + strength +
                 ", location='" + location + '\'' +
                 ", simId='" + simId + '\'' +
                 ", simRemain=" + simRemain +

@@ -20,8 +20,8 @@
 
 <div class="recordcontent" id="record0" style="display:none;">
 	<img style="width: 0.4rem" src="/watermachine/static/pic/clock.png">&nbsp;<span id="time"></span><br>
-	<span class="cost">充值金额:</span>&nbsp;<span style="color: #e9ca33;">¥<span style="font-size: 1.5em" id="amount"></span></span>&nbsp;&nbsp;&nbsp;<span class="id">&nbsp;&nbsp;
-	交易单号:</span><span id="idtext"></span>
+	<span class="cost">金额:</span>&nbsp;<span style="color: #e9ca33;">¥<span style="font-size: 1.5em" id="amount"></span></span>&nbsp;&nbsp;&nbsp;<span class="id">&nbsp;&nbsp;
+	单号:</span><span id="idtext"></span>
 </div>
 
 

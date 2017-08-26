@@ -40,6 +40,13 @@ public class InfomationController {
             model.addAttribute("usingtime",null);
             model.addAttribute("lefttime",null);
             return "main/information.jsp";
+        }else if(terminalPO.getState() == Constants.ORDER_STATE){
+            model.addAttribute("status","XIA DAN ZHONG");
+            model.addAttribute("id",displayId);
+            model.addAttribute("location",terminalPO.getLocation());
+            model.addAttribute("usingtime",null);
+            model.addAttribute("lefttime",null);
+            return "main/offline.jsp";
         }
         else{
             //如果state是使用中的话，则去consumeOrder中查询此设备对应的最后一笔交易，取出该记录产生的时间，用以算使用时间，取出该记录的水量，用以算剩余时间

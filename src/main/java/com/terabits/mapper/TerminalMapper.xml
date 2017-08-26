@@ -10,6 +10,7 @@
         <result property="displayId" column="displayid"  javaType="java.lang.String"></result>
         <result property="webId" column="webid" javaType="java.lang.String"></result>
         <result property="state" column="state" javaType="java.lang.Integer"></result>
+        <result property="strength" column="strength" javaType="java.lang.Integer"></result>
         <result property="simId" column="simid" javaType="java.lang.String"></result>
         <result property="simRemain" column="simremain" javaType="java.lang.Double"></result>
         <result property="gmtCreate" column="gmtcreate" javaType="java.lang.String"></result>
@@ -97,5 +98,9 @@
 
     <update id="updateStatusWhenOrder" parameterType="java.lang.String">
         update terminal set state = 12 where displayid = #{displayId} and state = 10
+    </update>
+
+    <update id="updateStrength">
+        update terminal set strength = #{strength} where deviceid = #{deviceId}
     </update>
 </mapper>

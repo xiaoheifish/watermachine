@@ -46,6 +46,7 @@ public class MainController {
         //获取code和openid
         String code = request.getParameter("code");
         if (code == null) {
+        	//jia shang ti shi ye, cong shouji duan jin ru
         	System.out.println("code null");
             String sessionOpenId = (String)session.getAttribute("openid");
             UserPO userPO = userService.selectUser(sessionOpenId);
@@ -97,7 +98,7 @@ public class MainController {
         }
         //phone不为null，表明已注册，则更新一下信息，返回首页
         if ((weixinUserBO == null)==false) {
-            if (phone.equals("123")||(phone.equals(null))||phone.equals("")) {
+            if ((phone == null)||phone.equals("")) {
                 //phone为null，表明之前点进来过，则更新一下信息，进入注册页
                 try {
                     userService.updateInfo(userPO);

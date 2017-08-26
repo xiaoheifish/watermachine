@@ -48,13 +48,13 @@
 <!-- 注册成功div -->
 <div id="sucdiv" style="font-size: 0.45rem;padding-left: 6%;width: 100%;margin-top: 0.5rem; display: none;">
 注册成功，<br>
-<span style="color: rgb(230, 67,64);">5</span>元体验额已发放至您的钱包！
+<span style="color: rgb(230, 67,64);">5</span>元体验额已发放至您的钱包！<br>
 <a style="margin-top: 1rem;text-align: center;">将在3秒后跳转至首页，立享健康水</a>
 </div>
 
 <div id="ensucdiv" style="font-size: 0.45rem;padding-left: 6%;width: 100%;margin-top: 0.5rem; display: none;">
 Registration succeeds!<br>
-You already have <span style="color: rgb(230, 67,64);">¥5</span> in your wallet.
+You already have <span style="color: rgb(230, 67,64);">¥5</span> in your wallet.<br>
 <a style="margin-top: 1rem;text-align: center;">This page will jump to the home page in 3seconds. Enjoy the water NOW!</a>
 </div>
 

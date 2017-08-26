@@ -11,6 +11,14 @@ import com.terabits.service.OperationService;
 import com.terabits.service.TerminalService;
 import net.sf.json.JSONObject;
 import org.apache.commons.codec.binary.Base64;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.ContentType;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.impl.client.HttpClients;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -47,26 +55,26 @@ public class ReceiveController {
         String deviceId = (String) map.get("deviceId");
         Map<String, Object> service = (Map<String, Object>) map.get("service");
         Map<String, Object> data = (Map<String, Object>) service.get("data");
-        String info = (String)data.get("terminalState");
-        byte [] rawInfo = new byte[info.length()];
+        String info = (String) data.get("terminalState");
+        byte[] rawInfo = new byte[info.length()];
         String content = "";
         System.out.print("rawdata:::::::::::");
         for (int i = 0; i < info.length(); i++) {
             rawInfo[i] = (byte) info.charAt(i);
-            System.out.print(rawInfo[i]+" ");
+            System.out.print(rawInfo[i] + " ");
             content += rawInfo[i];
             content += " ";
         }
         NotifyDataPO notifyDataPO = new NotifyDataPO();
         notifyDataPO.setContent(content);
         notifyDataService.insertNotifyData(notifyDataPO);
-        if(rawInfo[0] == (byte)0x1B){
+        if (rawInfo[0] == (byte) 0x1B) {
             String imei = terminalService.selectImeiFromDeviceId(deviceId);
             String displayId = terminalService.getDisplayIdFromImei(imei);
             ConsumeOrderPO consumeOrderPO = consumeOrderService.selectLastConsumption(displayId);
             try {
                 consumeOrderService.updateStateById(consumeOrderPO.getOrderNo());
-            }catch (Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
             //更新设备表中的设备状态
@@ -79,10 +87,9 @@ public class ReceiveController {
             operationPO.setStatus(Constants.OFF_TO_ON);
             operationPO.setImei(imei);
             operationService.insertOperation(operationPO);
-        }
-        else if(rawInfo[0] == (byte)0x1C){
+        } else if (rawInfo[0] == (byte) 0x1C) {
             String imei = terminalService.selectImeiFromDeviceId(deviceId);
-            System.out.println("doneimei:::::"+imei);
+            System.out.println("doneimei:::::" + imei);
             //收到执行完成命令，更新设备表里的状态
             TerminalUpdateBO terminalUpdateBO = new TerminalUpdateBO();
             terminalUpdateBO.setState(Constants.OFF_STATE);
@@ -93,6 +100,22 @@ public class ReceiveController {
             operationPO.setStatus(Constants.ON_TO_OFF);
             operationPO.setImei(imei);
             operationService.insertOperation(operationPO);
+        } else if (rawInfo[0] == (byte) 0x19) {
+            terminalService.updateStrength(rawInfo[1], deviceId);
+        }
+        String url = "http://119.23.210.52/waterplatform/data" ;
+        HttpClient httpClient = new DefaultHttpClient();
+        // get method
+        HttpPost httpPost = new HttpPost(url);
+        StringEntity stringentity = new StringEntity(json.toString(),
+                ContentType.create("text/json", "UTF-8"));
+        httpPost.setEntity(stringentity);
+        HttpResponse dataResponse = null;
+        try{
+            //之后可加上对dataRespons的处理
+            dataResponse = httpClient.execute(httpPost);
+        }catch (Exception e) {
         }
     }
+
 }

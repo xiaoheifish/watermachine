@@ -105,4 +105,13 @@ public interface TerminalMapper {
      */
     public int updateStatusWhenOrder(@Param("displayId")String displayId)throws Exception;
 
+    /**
+     * 根据deviceId更新NB信号强度
+     * @param strength
+     * @param deviceId
+     * @return
+     * @throws Exception
+     */
+    public int updateStrength(@Param("strength")int strength, @Param("deviceId")String deviceId)throws Exception;
+
 }

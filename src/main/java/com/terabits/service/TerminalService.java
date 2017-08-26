@@ -37,4 +37,6 @@ public interface TerminalService {
     public String selectImeiFromDeviceId(String deviceId);
     //生成订单前，先修改状态为12，标记设备处在正在下单状态
     public int updateStatusWhenOrder(String displayId)throws Exception;
+    //根据设备编号更新NB信号强度，用于收集设备初次上电时的信号强度数据
+    public int updateStrength(int strength, String deviceId)throws Exception;
 }

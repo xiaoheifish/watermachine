@@ -30,8 +30,8 @@
 <img style="height:0.6rem;width:0.522rem;" src="/watermachine/static/pic/status.png">&nbsp;&nbsp;
 <span id="status">${status}</span>
 </div>
-
-<p style="font-size:0.4rem;">很抱歉！该设备暂时无法使用。</p>
+<br>
+<p style="font-size:0.4rem;" id="soorytext">很抱歉！该设备暂时无法使用。</p>
 
 
 

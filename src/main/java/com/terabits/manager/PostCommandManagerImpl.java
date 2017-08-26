@@ -42,6 +42,9 @@ public class PostCommandManagerImpl implements PostCommandManager {
     @Autowired
     private HuaweiTokenService huaweiTokenService;
 
+    private static Logger logger = LoggerFactory
+            .getLogger(PostCommandManagerImpl.class);
+
     //模拟透传的模式，下发命令用这个方法
     public String command(byte[] data, String terminalId) throws Exception{
         System.out.println("----------------------------------------------");

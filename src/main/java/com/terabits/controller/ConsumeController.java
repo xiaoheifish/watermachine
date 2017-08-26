@@ -18,7 +18,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -48,11 +47,7 @@ public class ConsumeController {
     @Autowired
     private TerminalService terminalService;
     @Autowired
-    private HuaweiPostCommandService huaweiPostCommandService;
-    @Autowired
     private PostCommandManager postCommandManager;
-    @Autowired
-    private AccessTokenService accessTokenService;
 
     private static Logger logger = LoggerFactory
             .getLogger(ConsumeController.class);
@@ -69,7 +64,6 @@ public class ConsumeController {
         openId = requestOpenId;
         String displayId = request.getParameter("displayid");
         String cost = request.getParameter("cost");
-        System.out.println("cost----------------------------------"+cost);
         double actualCost = Double.parseDouble(cost);
         double flow = FlowUtil.costToFlow(actualCost);
         if (!requestOpenId.equals(openId)) {
@@ -97,7 +91,7 @@ public class ConsumeController {
         // 生成交易订单号
         int count = consumeOrderService.selectCountByTime(TimeSpanUtil
                 .generateTimeSpan());
-        String consumeOrder = GenerateOrderId.generateConsumeId(count);
+        String consumeOrder = GenerateOrderId.generateConsumeId(count, openId);
         ConsumeOrderPO consumeOrderPO = new ConsumeOrderPO();
         consumeOrderPO.setDisplayId(displayId);
         consumeOrderPO.setOpenId(openId);
@@ -142,18 +136,11 @@ public class ConsumeController {
         openbytes[3] = (byte) cmdOne;
         openbytes[4] = (byte) cmdTwo;
         openbytes[5] = Constants.SEND_COMMAND_END;
-        Date now = new Date();
-        SimpleDateFormat dfs = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String time1 = dfs.format(now);
         String result = postCommandManager.command(openbytes, communicationBO.getDeviceId());
         Gson gson = new Gson();
         Map<String, Object> map = new HashMap<String, Object>();
         map = gson.fromJson(result, map.getClass());
-        System.out.println(map.get("commandId"));
-        now = new Date();
-        String time2 = dfs.format(now);
-        logger.error("platform global ok:::::"+ time1 +"-------"+ time2);
-
+        logger.error("result:::" + result);
         Boolean flag = false;
         for (int i = 0; i < 21; i++) {
             // 之后加一个根据消费订单编号查询的方法
@@ -198,13 +185,9 @@ public class ConsumeController {
             }
             if ((consumeOrderPO1.getState() == Constants.NO_RESPONSE)
                     && (i % 12 == 0)&&(i != 0)) {
-                // 每隔8秒，重新下发开启插座命令给终端
-                time1 = dfs.format(new Date());
-                postCommandManager.command(openbytes, communicationBO.getDeviceId());
-                now = new Date();
-                time2 = dfs.format(now);
-                logger.error("platform global ok:::::" + time1 + " "
-                        + time2);
+                // 每隔12秒，重新下发开启插座命令给终端       
+                result = postCommandManager.command(openbytes, communicationBO.getDeviceId());  
+                logger.error("result:::"+ result);
             } else {
                 // 隔一秒取一次数据库中记录
                 Thread.sleep(1000L);

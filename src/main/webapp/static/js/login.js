@@ -48,7 +48,7 @@ function closenumber(){
 //输入编码-登录数据交互
 function login() {
 	id = $("#id").val();
-	id = "10000"+id;
+	id = id;
 	if(id == ""){
 		alert("请输入编号！");
 	}
@@ -93,6 +93,7 @@ function load(){
 			$("#invite").text("Invite friends");
 			$("#service").text("Customer Feedback");
 			$("#enrule").text("Detail Rules");
+			$("#rechargerec").text("Recharge record");
 		}
 			
 	
@@ -186,6 +187,7 @@ function loadrecord(){
 						}
 		            }
 		    }
+			 else{alert("暂无数据！");}
 		}
 	});
 	
@@ -273,12 +275,13 @@ function loadrechargerecord(){
 						}
 		            }
 		    }
+			 else{alert("�������ݣ�");}
 		}
 	});
 	
 	if(language != "zh_CN"){
-		$(".cost").text("recharge amount: ");
-		$(".id").text("  transaction number: ");
+		$(".cost").text("amount: ");
+		$(".id").text(" number: ");
 		$("title").html("Recharge Record");
 	}
 }

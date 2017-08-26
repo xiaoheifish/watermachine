@@ -137,6 +137,10 @@ public class TerminalServiceImpl implements TerminalService{
     public int updateStatusWhenOrder(String displayId)throws Exception{
         return terminalMapper.updateStatusWhenOrder(displayId);
     }
+
+    public int updateStrength(int strength, String deviceId)throws Exception{
+        return terminalMapper.updateStrength(strength, deviceId);
+    }
 }
 
 

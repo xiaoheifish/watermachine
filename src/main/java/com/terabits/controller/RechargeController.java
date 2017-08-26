@@ -55,7 +55,7 @@ public class RechargeController {
     public String rechargerec(){return "main/rechargerec.jsp";}
 
     //获取充值
-    @RequestMapping(value = "/menu/recharge", method = RequestMethod.POST)
+    @RequestMapping(value = "/menu/rechargerecord", method = RequestMethod.POST)
     public void getRechargeRecord(HttpServletRequest request, HttpServletResponse response){
         String openId = request.getParameter("openid");
         List<RechargeOrderPO> rechargeOrderPOArrayList = new ArrayList<RechargeOrderPO>();

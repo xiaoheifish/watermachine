@@ -10,7 +10,7 @@ public class SmsConstant {
 
     public static final String accessKeySecret = "1DLsQojiQAXAAeqP3bbVOQsX8DonvO";
 
-    public static final String CH_SIGNATURE = "钛比科技";
+    public static final String CH_SIGNATURE = "智慧直饮水";
 
     public static final String CH_TEMPLATE = "SMS_85900087";
 

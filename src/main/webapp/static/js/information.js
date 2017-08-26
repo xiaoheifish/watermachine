@@ -5,6 +5,7 @@ function load(){
 	
 	if(language != "zh_CN"){
 		$("#recharge").val("Confirm");
+		$("#soorytext").text("Sorry, this water fountain is unusable.");
 		if(status == "空闲"){
 			status = "usable";
 		}
@@ -68,7 +69,7 @@ function money4(){
 //跳转使用页
 function recharge() {
 	$("#recharge").attr("disabled", true);
-	if(language != "zh_CN"){$("#enwait").show();}
+	if(language != "zh_CN"){$("#enwait").show();$("#wait").remove();}
     else{$("#wait").show();}
     $("#waitmoney").text(money);
     $("#waitwater").text(water);
