@@ -28,7 +28,7 @@
     </update>
 
     <select id="getUndoneDevice" parameterType="com.terabits.meta.bo.TimeSpanBO">
-        select deviceid from command where state in (10, 16) and
+        select deviceid from command
         <where>
             <if test = "beginTime != null and beginTime != ''">
                 and gmtcreate >= #{beginTime}
@@ -37,6 +37,7 @@
                 and gmtcreate &lt; #{endTime}
             </if>
         </where>
+        and state in (10, 16)
     </select>
 
 </mapper>

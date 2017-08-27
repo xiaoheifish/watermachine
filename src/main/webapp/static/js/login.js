@@ -275,7 +275,7 @@ function loadrechargerecord(){
 						}
 		            }
 		    }
-			 else{alert("�������ݣ�");}
+			 else{alert("暂无数据！");}
 		}
 	});
 	

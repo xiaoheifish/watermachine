@@ -12,7 +12,9 @@ import com.terabits.service.HeartBeatService;
 import com.terabits.service.NotifyDataService;
 import com.terabits.service.OperationService;
 import com.terabits.service.TerminalService;
+
 import net.sf.json.JSONObject;
+
 import org.apache.commons.codec.binary.Base64;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -22,6 +24,8 @@ import org.apache.http.entity.ContentType;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.impl.client.HttpClients;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,6 +33,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import java.io.BufferedReader;
 import java.util.Map;
 
@@ -49,6 +54,8 @@ public class ReceiveController {
     private CommandService commandService;
     @Autowired
     private HeartBeatService heartBeatService;
+
+    private static Logger logger = LoggerFactory.getLogger(ReceiveController.class);
 
     @RequestMapping(value = "/receive/data", method = RequestMethod.POST)
     public void data(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -75,6 +82,7 @@ public class ReceiveController {
         NotifyDataPO notifyDataPO = new NotifyDataPO();
         notifyDataPO.setContent(content);
         notifyDataService.insertNotifyData(notifyDataPO);
+        
         if (rawInfo[0] == (byte) 0x1B) {
             String imei = terminalService.selectImeiFromDeviceId(deviceId);
             String displayId = terminalService.getDisplayIdFromImei(imei);
@@ -116,6 +124,7 @@ public class ReceiveController {
         } else if (rawInfo[0] == (byte) 0x1A){
             HeartBeatPO heartBeatPO = heartBeatService.selectHeartBeat(deviceId);
             if(heartBeatPO == null){
+            	heartBeatPO = new HeartBeatPO();
                 heartBeatPO.setDeviceId(deviceId);
                 heartBeatService.insertHeartBeat(heartBeatPO);
             }else {

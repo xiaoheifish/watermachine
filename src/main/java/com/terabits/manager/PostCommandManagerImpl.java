@@ -1,20 +1,35 @@
 package com.terabits.manager;
 
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import com.google.gson.Gson;
+import com.terabits.config.Constants;
 import com.terabits.config.HuaweiPlatformGlobal;
+import com.terabits.controller.ConsumeController;
+import com.terabits.mapper.ConsumeOrderMapper;
+import com.terabits.meta.po.ConsumeOrderPO;
+import com.terabits.service.ConsumeOrderService;
 import com.terabits.service.HuaweiTokenService;
+import com.terabits.service.impl.ConsumeOrderServiceImpl;
+import com.terabits.utils.FlowUtil;
 import com.terabits.utils.huawei.HttpsUtil;
 import com.terabits.utils.huawei.JsonUtil;
+import com.terabits.utils.huawei.PlatformGlobal;
 
 import org.apache.commons.codec.binary.Base64;
 import org.apache.http.HttpResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
 
 import static com.terabits.utils.huawei.PlatformGlobal.callbackUrl;
 import static com.terabits.utils.huawei.PlatformGlobal.expireTime;
@@ -33,9 +48,9 @@ public class PostCommandManagerImpl implements PostCommandManager {
 
     //模拟透传的模式，下发命令用这个方法
     public String command(byte[] data, String terminalId) throws Exception{
-        System.out.println("----------------------------------------------");
-        System.out.println("terminalId::::::"+terminalId);
-        System.out.println("----------------------------------------------");
+    	Date now = new Date();
+        SimpleDateFormat dfs = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String time1 = dfs.format(now);
         String command = Base64.encodeBase64String(data);
 
         HttpsUtil httpsUtil = new HttpsUtil();
@@ -66,6 +81,12 @@ public class PostCommandManagerImpl implements PostCommandManager {
         HttpResponse httpResponse = httpsUtil.doPostJson(urlPostAsynCmd, header, jsonRequest);
 
         String responseBody = httpsUtil.getHttpResponseBody(httpResponse);
+        Gson gson = new Gson();
+        Map<String, Object> map = new HashMap<String, Object>();
+        map = gson.fromJson(responseBody, map.getClass());
+        now = new Date();
+        String time2 = dfs.format(now);
+        logger.error("platform global ok:::::"+ time1 +"-------"+ time2 + "commandId:" + map.get("commandId"));
         return responseBody;
     }
 }
