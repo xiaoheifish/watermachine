@@ -1,5 +1,11 @@
 package com.terabits.utils;
 
+import com.terabits.meta.bo.TimeSpanBO;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 /**
  * Created by Administrator on 2017/7/14.
  */
@@ -35,6 +41,21 @@ public class TimeUtils {
         else
             retStr = "" + i;
         return retStr;
+    }
+
+    public static TimeSpanBO getTimeSpan(){
+        SimpleDateFormat dfs = new SimpleDateFormat( "yyyy-MM-dd HH:mm:ss");
+        Calendar calendar = Calendar.getInstance();
+        Date now = new Date();
+        calendar.setTime(now);
+        calendar.add(calendar.MINUTE, -3);
+        Date end = calendar.getTime();
+        calendar.add(calendar.MINUTE, -7);
+        Date begin = calendar.getTime();
+        TimeSpanBO timeSpanBO = new TimeSpanBO();
+        timeSpanBO.setBeginTime(dfs.format(begin));
+        timeSpanBO.setEndTime(dfs.format(end));
+        return timeSpanBO;
     }
 
     //根据每笔交易水量，计算最长使用时间

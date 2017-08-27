@@ -64,6 +64,16 @@ public class TerminalServiceImpl implements TerminalService{
         return terminalPO;
     }
 
+    public TerminalPO selectTerminalByDeviceId(String deviceId){
+        TerminalPO terminalPO = new TerminalPO();
+        try{
+            terminalPO = terminalMapper.selectTerminalByDeviceId(deviceId);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return terminalPO;
+    }
+
     public CommunicationBO getTerminalDeviceId(String displayId){
         CommunicationBO communicationBO = new CommunicationBO();
         try {

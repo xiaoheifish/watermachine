@@ -97,10 +97,14 @@
     </select>
 
     <update id="updateStatusWhenOrder" parameterType="java.lang.String">
-        update terminal set state = 12 where displayid = #{displayId} and state = 10
+        update terminal set state = 12 and gmtmodified = now() where displayid = #{displayId} and state = 10
     </update>
 
     <update id="updateStrength">
-        update terminal set strength = #{strength} where deviceid = #{deviceId}
+        update terminal set strength = #{strength} and gmtmodified = now() where deviceid = #{deviceId}
     </update>
+
+    <select id="selectTerminalByDeviceId" parameterType="java.lang.String" resultMap="terminalMap">
+        select * from terminal where deviceid = #{deviceId}
+    </select>
 </mapper>

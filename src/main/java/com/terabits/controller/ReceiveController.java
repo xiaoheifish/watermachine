@@ -3,9 +3,12 @@ package com.terabits.controller;
 import com.terabits.config.Constants;
 import com.terabits.meta.bo.TerminalUpdateBO;
 import com.terabits.meta.po.ConsumeOrderPO;
+import com.terabits.meta.po.HeartBeatPO;
 import com.terabits.meta.po.NotifyDataPO;
 import com.terabits.meta.po.OperationPO;
+import com.terabits.service.CommandService;
 import com.terabits.service.ConsumeOrderService;
+import com.terabits.service.HeartBeatService;
 import com.terabits.service.NotifyDataService;
 import com.terabits.service.OperationService;
 import com.terabits.service.TerminalService;
@@ -42,6 +45,10 @@ public class ReceiveController {
     private ConsumeOrderService consumeOrderService;
     @Autowired
     private OperationService operationService;
+    @Autowired
+    private CommandService commandService;
+    @Autowired
+    private HeartBeatService heartBeatService;
 
     @RequestMapping(value = "/receive/data", method = RequestMethod.POST)
     public void data(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -87,6 +94,8 @@ public class ReceiveController {
             operationPO.setStatus(Constants.OFF_TO_ON);
             operationPO.setImei(imei);
             operationService.insertOperation(operationPO);
+            //更新命令表中此条命令的状态
+            commandService.updateState(Constants.HALF_STATE, deviceId);
         } else if (rawInfo[0] == (byte) 0x1C) {
             String imei = terminalService.selectImeiFromDeviceId(deviceId);
             System.out.println("doneimei:::::" + imei);
@@ -100,8 +109,18 @@ public class ReceiveController {
             operationPO.setStatus(Constants.ON_TO_OFF);
             operationPO.setImei(imei);
             operationService.insertOperation(operationPO);
+            //更新命令表中此条命令的状态
+            commandService.updateState(Constants.END_STATE, deviceId);
         } else if (rawInfo[0] == (byte) 0x19) {
             terminalService.updateStrength(rawInfo[1], deviceId);
+        } else if (rawInfo[0] == (byte) 0x1A){
+            HeartBeatPO heartBeatPO = heartBeatService.selectHeartBeat(deviceId);
+            if(heartBeatPO == null){
+                heartBeatPO.setDeviceId(deviceId);
+                heartBeatService.insertHeartBeat(heartBeatPO);
+            }else {
+                heartBeatService.updateHeartBeat(deviceId);
+            }
         }
         String url = "http://119.23.210.52/waterplatform/data" ;
         HttpClient httpClient = new DefaultHttpClient();

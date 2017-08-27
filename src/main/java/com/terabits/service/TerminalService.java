@@ -21,6 +21,8 @@ public interface TerminalService {
     public int deleteTerminal(String displayId);
     //根据displayId查询某个终端
     public TerminalPO selectOneTerminal(String displayId);
+    //根据deviceId查询某个终端
+    public TerminalPO selectTerminalByDeviceId(String deviceId);
     //根据displayId查询imei号和deviceId
     public CommunicationBO getTerminalDeviceId(String displayId);
     //查询全部终端

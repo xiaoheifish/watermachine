@@ -73,4 +73,11 @@ public class Constants {
     //消费编号
     //项目标号
     public static final String CONSUME_PRO_NUMBER = "3336";
+
+    //下发命令执行状态
+    public static final int BEFIN_STATE = 10;
+
+    public static final int HALF_STATE = 16;
+
+    public static final int END_STATE = 26;
 }

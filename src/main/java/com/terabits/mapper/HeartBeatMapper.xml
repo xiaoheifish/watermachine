@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.terabits.mapper.HeartBeatMapper">
+
+    <!-- 自定义返回结果集 -->
+    <resultMap id="heartBeatMap" type="com.terabits.meta.po.HeartBeatPO">
+        <id property="id" column="id" javaType="java.lang.Integer"></id>
+        <result property="deviceId" column="deviceid" javaType="java.lang.String"></result>
+        <result property="gmtCreate" column="gmtcreate" javaType="java.lang.String"></result>
+        <result property="gmtModified" column="gmtmodified" javaType="java.lang.String"></result>
+    </resultMap>
+
+    <insert id="insertHeartBeat" parameterType="com.terabits.meta.po.HeartBeatPO">
+        insert into heartbeat (deviceid, gmtcreate, gmtmodified)
+        values (#{deviceId}, now(), now())
+    </insert>
+
+    <update id="updateHeartBeat" parameterType="String">
+        update heartbeat set gmtmodified = now() where deviceid = #{deviceId}
+    </update>
+
+    <select id="selectHeartBeat" parameterType="String" resultMap="heartBeatMap">
+        select * from heartbeat where deviceid = #{deviceId}
+    </select>
+
+
+</mapper>
+

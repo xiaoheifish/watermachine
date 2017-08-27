@@ -5,9 +5,16 @@ package com.terabits.meta.po;
  */
 public class CommandPO {
     private int id;
-    private String imei;
-    private int commandNo;
-    private int status;
+    //待下发命令的设备编号
+    private String deviceId;
+    //命令编号
+    private String commandIdOne;
+    //重发一次的命令编号
+    private String commandIdTwo;
+    //流量，方便核对
+    private double flow;
+    //本次命令下发的状态，刚创建是BEGIN_STATE(10)，收到回复确认是HALF_STATE(16)，收到执行完成是END_STATE(26)
+    private int state;
     private String gmtCreate;
     private String gmtModified;
 
@@ -19,28 +26,44 @@ public class CommandPO {
         this.id = id;
     }
 
-    public String getImei() {
-        return imei;
+    public String getDeviceId() {
+        return deviceId;
     }
 
-    public void setImei(String imei) {
-        this.imei = imei;
+    public void setDeviceId(String deviceId) {
+        this.deviceId = deviceId;
     }
 
-    public int getCommandNo() {
-        return commandNo;
+    public String getCommandIdOne() {
+        return commandIdOne;
     }
 
-    public void setCommandNo(int commandNo) {
-        this.commandNo = commandNo;
+    public void setCommandIdOne(String commandIdOne) {
+        this.commandIdOne = commandIdOne;
     }
 
-    public int getStatus() {
-        return status;
+    public String getCommandIdTwo() {
+        return commandIdTwo;
     }
 
-    public void setStatus(int status) {
-        this.status = status;
+    public void setCommandIdTwo(String commandIdTwo) {
+        this.commandIdTwo = commandIdTwo;
+    }
+
+    public double getFlow() {
+        return flow;
+    }
+
+    public void setFlow(double flow) {
+        this.flow = flow;
+    }
+
+    public int getState() {
+        return state;
+    }
+
+    public void setState(int state) {
+        this.state = state;
     }
 
     public String getGmtCreate() {
@@ -63,9 +86,11 @@ public class CommandPO {
     public String toString() {
         return "CommandPO[" +
                 "id=" + id +
-                ", imei='" + imei + '\'' +
-                ", commandNo=" + commandNo +
-                ", status=" + status +
+                ", deviceId='" + deviceId + '\'' +
+                ", commandIdOne='" + commandIdOne + '\'' +
+                ", commandIdTwo='" + commandIdTwo + '\'' +
+                ", flow=" + flow +
+                ", state=" + state +
                 ", gmtCreate='" + gmtCreate + '\'' +
                 ", gmtModified='" + gmtModified + '\'' +
                 ']';

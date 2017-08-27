@@ -1,5 +1,4 @@
-﻿package com.terabits.controller;
-
+package com.terabits.controller;
 
 import com.google.gson.Gson;
 import com.terabits.config.Constants;
@@ -16,9 +15,6 @@ import net.sf.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -48,6 +44,8 @@ public class ConsumeController {
     private TerminalService terminalService;
     @Autowired
     private PostCommandManager postCommandManager;
+    @Autowired
+    private CommandService commandService;
 
     private static Logger logger = LoggerFactory
             .getLogger(ConsumeController.class);
@@ -125,6 +123,7 @@ public class ConsumeController {
         }
         commandNoModel2.setNumber(String.valueOf(tempCommandTwo));
         credentialService.createCommand(commandNoModel2);
+
         // 下发指令
         int cmdOne = Integer.parseInt(commandOne);
         int cmdTwo = Integer.parseInt(commandTwo);
@@ -141,6 +140,16 @@ public class ConsumeController {
         Map<String, Object> map = new HashMap<String, Object>();
         map = gson.fromJson(result, map.getClass());
         logger.error("result:::" + result);
+
+        //将这条命令插入command表
+        CommandPO commandPO = new CommandPO();
+        commandPO.setDeviceId(communicationBO.getDeviceId());
+        commandPO.setCommandIdOne((String)map.get("commandId"));
+        commandPO.setFlow(flow);
+        commandPO.setState(Constants.BEFIN_STATE);
+        commandService.insertCommand(commandPO);
+
+
         Boolean flag = false;
         for (int i = 0; i < 21; i++) {
             // 之后加一个根据消费订单编号查询的方法
@@ -185,8 +194,11 @@ public class ConsumeController {
             }
             if ((consumeOrderPO1.getState() == Constants.NO_RESPONSE)
                     && (i % 12 == 0)&&(i != 0)) {
-                // 每隔12秒，重新下发开启插座命令给终端       
-                result = postCommandManager.command(openbytes, communicationBO.getDeviceId());  
+                // 每隔12秒，重新下发开启插座命令给终端
+                result = postCommandManager.command(openbytes, communicationBO.getDeviceId());
+                map = gson.fromJson(result, map.getClass());
+                //记录第二次下发的commandId，方便去华为平台上做查询比对
+                commandService.updateCommandId((String)map.get("commandId"), communicationBO.getDeviceId());
                 logger.error("result:::"+ result);
             } else {
                 // 隔一秒取一次数据库中记录

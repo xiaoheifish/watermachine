@@ -16,9 +16,8 @@
        http://www.springframework.org/schema/task
        http://www.springframework.org/schema/task/spring-task-3.0.xsd
        ">
- <!--   <context:component-scan base-package="com.terabits.manager" />
-
-    <task:annotation-driven/>
-
-    <task:executor id="executor" pool-size="5-10" queue-capacity="100" rejection-policy="CALLER_RUNS"/>-->
+       <mvc:annotation-driven/>
+       <context:component-scan base-package="com.terabits.task"/>
+       <!--启动定时器-->
+       <task:annotation-driven/>
 </beans>

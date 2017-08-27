@@ -46,6 +46,14 @@ public interface TerminalMapper {
     public TerminalPO selectOneTerminal(@Param("displayId") String displayId) throws Exception;
 
     /**
+     * 根据deviceId查询终端状态
+     * @param deviceId
+     * @return
+     * @throws Exception
+     */
+    public TerminalPO selectTerminalByDeviceId(@Param("deviceId")String deviceId)throws Exception;
+
+    /**
      * 根据displayid返回imei号deviceid
      * @param displayId
      * @return

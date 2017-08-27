@@ -2,16 +2,41 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.terabits.mapper.CommandMapper">
 
+    <!-- 自定义返回结果集 -->
+    <resultMap id="commandMap" type="com.terabits.meta.po.CommandPO">
+        <id property="id" column="id" javaType="java.lang.Integer"></id>
+        <result property="deviceId" column="deviceid" javaType="java.lang.String"></result>
+        <result property="commandIdOne" column="commandidone" javaType="java.lang.String"></result>
+        <result property="commandIdTwo" column="commandidtwo" javaType="java.lang.String"></result>
+        <result property="flow" column="flow" javaType="java.lang.Double"></result>
+        <result property="state" column="state" javaType="java.lang.Integer"></result>
+        <result property="gmtCreate" column="gmtcreate" javaType="java.lang.String"></result>
+        <result property="gmtModified" column="gmtmodified" javaType="java.lang.String"></result>
+    </resultMap>
+
     <insert id="insertCommand" useGeneratedKeys="true" parameterType="com.terabits.meta.po.CommandPO">
-        insert into command(imei,commandno,status,gmtcreate,gmtmodified) values (#{imei},#{commandNo},#{status},now(),now())
+        insert into command(deviceid, commandidonw, commandidtwo, flow, state, gmtcreate, gmtmodified)
+        values (#{deviceId}, #{commandIdOne}, #{commandIdTwo}, #{flow}, #{state}, now(), now())
     </insert>
 
-    <update id="updateStatusByImeiAndCommandNo">
-        update command set status=#{status} where imei=#{imei} and commandno=#{commandNo}
+    <update id="updateState">
+        update command set state=#{state} and gmtmodified = now() where deviceid = #{deviceId} order by gmtcreate desc limit 1
     </update>
 
-    <select id="getStatusByImeiAndCommandNo">
-        select status from command where imei=#{imei} and commandno=#{commandNo}
+    <update id="updateCommandId">
+        update command set commandidtwo = #{commandIdTwo} and gmtmodified = now() where deviceid = #{deviceId} order by gmtcreate desc limit 1
+    </update>
+
+    <select id="getUndoneDevice" parameterType="com.terabits.meta.bo.TimeSpanBO">
+        select deviceid from command where state in (10, 16) and
+        <where>
+            <if test = "beginTime != null and beginTime != ''">
+                and gmtcreate >= #{beginTime}
+            </if>
+            <if test = "endTime != null and endTime != ''">
+                and gmtcreate &lt; #{endTime}
+            </if>
+        </where>
     </select>
 
 </mapper>

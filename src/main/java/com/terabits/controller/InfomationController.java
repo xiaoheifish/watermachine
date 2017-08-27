@@ -2,9 +2,11 @@ package com.terabits.controller;
 
 import com.terabits.config.Constants;
 import com.terabits.meta.po.ConsumeOrderPO;
+import com.terabits.meta.po.HeartBeatPO;
 import com.terabits.meta.po.TerminalPO;
 import com.terabits.service.ConsumeOrderService;
 import com.terabits.service.CredentialService;
+import com.terabits.service.HeartBeatService;
 import com.terabits.service.TerminalService;
 import com.terabits.utils.TimeUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,24 +30,47 @@ public class InfomationController {
     private ConsumeOrderService consumeOrderService;
     @Autowired
     private TerminalService terminalService;
+    @Autowired
+    private HeartBeatService heartBeatService;
 
     @RequestMapping(value="/info/{displayId}",method= RequestMethod.GET)
     public String getProductInfo(@PathVariable("displayId") String displayId, ModelMap model) throws Exception {
-        //根据终端的displayId取出终端数据，如果state是未使用的话，则返回空闲状态
+        SimpleDateFormat dfs = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+        //根据终端的displayId取出终端数据
         TerminalPO terminalPO = terminalService.selectOneTerminal(displayId);
+        
+        //先查询心跳包，判断是否离线,数据为空和gmtModified在两分钟以前都判读为离线
+        HeartBeatPO heartBeatPO = heartBeatService.selectHeartBeat(terminalPO.getDeviceId());
+        if(heartBeatPO == null){
+            model.addAttribute("status","不可使用");
+            model.addAttribute("id",displayId);
+            model.addAttribute("location",terminalPO.getLocation());
+            return "main/offline.jsp";
+        }else{
+            String gmtModified = heartBeatPO.getGmtModified();
+            Date now = new Date();
+            Date bein = dfs.parse(gmtModified);
+            long timeSpan = (now.getTime() - bein.getTime()) / 1000;
+            if(timeSpan > 120){
+                model.addAttribute("status","不可使用");
+                model.addAttribute("id",displayId);
+                model.addAttribute("location",terminalPO.getLocation());
+                return "main/offline.jsp";
+            }
+        }
+
+        //如果state是未使用的话，则返回空闲状态;如果state是下单中，则返回下单中；如果是使用中，则计算剩余时间，后续可能用到
+
         if(terminalPO.getState() == Constants.OFF_STATE){
             model.addAttribute("status","空闲");
             model.addAttribute("id",displayId);
             model.addAttribute("location",terminalPO.getLocation());
-            model.addAttribute("usingtime",null);
-            model.addAttribute("lefttime",null);
             return "main/information.jsp";
         }else if(terminalPO.getState() == Constants.ORDER_STATE){
-            model.addAttribute("status","XIA DAN ZHONG");
+            model.addAttribute("status","下单中");
             model.addAttribute("id",displayId);
             model.addAttribute("location",terminalPO.getLocation());
-            model.addAttribute("usingtime",null);
-            model.addAttribute("lefttime",null);
             return "main/offline.jsp";
         }
         else{
@@ -53,7 +78,6 @@ public class InfomationController {
             ConsumeOrderPO consumeOrderPO = consumeOrderService.selectLastConsumption(displayId);
             String time = consumeOrderPO.getGmtCreate();
             double flow = consumeOrderPO.getFlow();
-            SimpleDateFormat dfs = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             long between = 0;
             try {
                 Date begin =dfs.parse(time);
