@@ -22,7 +22,7 @@ import java.util.List;
 @Transactional
 public class ResetTerminalState {
 
-
+/*
     @Autowired
     private CommandService commandService;
 
@@ -46,5 +46,5 @@ public class ResetTerminalState {
                 terminalService.updateTerminal(terminalUpdateBO);
             }
         }
-    }
+    }*/
 }

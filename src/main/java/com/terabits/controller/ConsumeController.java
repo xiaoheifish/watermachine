@@ -146,15 +146,17 @@ public class ConsumeController {
         commandPO.setDeviceId(communicationBO.getDeviceId());
         commandPO.setCommandIdOne((String)map.get("commandId"));
         commandPO.setFlow(flow);
-        commandPO.setState(Constants.BEFIN_STATE);
+        commandPO.setState(Constants.BEGIN_STATE);
         commandService.insertCommand(commandPO);
 
 
         Boolean flag = false;
         for (int i = 0; i < 21; i++) {
             // 之后加一个根据消费订单编号查询的方法
-            ConsumeOrderPO consumeOrderPO1 = consumeOrderService
-                    .selectLastConsumption(displayId);
+        /*    ConsumeOrderPO consumeOrderPO1 = consumeOrderService
+                    .selectLastConsumption(displayId);*/
+        ConsumeOrderPO consumeOrderPO1 = new ConsumeOrderPO();
+        consumeOrderPO1.setState(Constants.HAVE_RESPONSE);
             if (i == 20) {
                 JSONObject jsonObject = new JSONObject();
                 jsonObject.put("result", "error");

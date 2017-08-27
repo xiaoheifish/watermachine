@@ -29,25 +29,23 @@ public class TestController {
     private ConsumeOrderService consumeOrderService;
     @Autowired
     private OperationService operationService;
+    @Autowired
+    private CommandService commandService;
 
     private static Logger logger = LoggerFactory.getLogger(TestController.class);
     @RequestMapping(value="/testuser",method= RequestMethod.GET)
     public String testuser(){
-
-        HuaweiTokenPO huaweiTokenPO = new HuaweiTokenPO();
-        //huaweiTokenPO.setHuaweiToken("1rwerwe3");
-        AccessTokenPO accessTokenPO = new AccessTokenPO();
-        JsapiTicketPO jsapiTicketPO = new JsapiTicketPO();
-
-        //accessTokenPO.setAccessToken("2343423");
-       try {
-           jsapiTicketPO = jsapiTicketService.getLatestJsapi();
-       }catch (Exception e){
-           e.printStackTrace();
-           logger.error("error!");
-       }
-       System.out.println(jsapiTicketPO);
-       return "main/login.jsp";
+        CommandPO commandPO = new CommandPO();
+        commandPO.setDeviceId("123");
+        commandPO.setFlow(0.3);
+        commandPO.setCommandIdOne("1232423");
+        //commandPO.setState(10);
+        try {
+            commandService.insertCommand(commandPO);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return "main/login.jsp";
     }
 
     @RequestMapping(value="/register",method=RequestMethod.GET)

@@ -20,7 +20,7 @@ public interface CommandService {
     /**
      * 根据deviceId更新state，用于收到回复确认和执行完成命令时使用
      */
-    public int updateState(int state, String deviceId) throws Exception;
+    public int updateState(String state, String deviceId) throws Exception;
 
     /**
      * 根据deviceId更新commandIdTwo，目前只重发一次，所以一共只有两个commandId

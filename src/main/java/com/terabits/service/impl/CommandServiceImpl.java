@@ -33,7 +33,7 @@ public class CommandServiceImpl implements CommandService {
     /**
      * 根据deviceId更新state，用于收到回复确认和执行完成命令时使用
      */
-    public int updateState(int state, String deviceId) throws Exception{
+    public int updateState(String state, String deviceId) throws Exception{
         return  commandMapper.updateState(state, deviceId);
     }
 

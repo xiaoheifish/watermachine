@@ -14,7 +14,7 @@ public class CommandPO {
     //流量，方便核对
     private double flow;
     //本次命令下发的状态，刚创建是BEGIN_STATE(10)，收到回复确认是HALF_STATE(16)，收到执行完成是END_STATE(26)
-    private int state;
+    private String  state;
     private String gmtCreate;
     private String gmtModified;
 
@@ -58,11 +58,11 @@ public class CommandPO {
         this.flow = flow;
     }
 
-    public int getState() {
+    public String getState() {
         return state;
     }
 
-    public void setState(int state) {
+    public void setState(String state) {
         this.state = state;
     }
 

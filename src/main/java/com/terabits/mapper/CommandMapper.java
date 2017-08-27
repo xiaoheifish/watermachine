@@ -26,7 +26,7 @@ public interface CommandMapper {
      * @return
      * @throws Exception
      */
-    public int updateState(@Param("state")int state, @Param("deviceId")String deviceId) throws Exception;
+    public int updateState(@Param("state")String state, @Param("deviceId")String deviceId) throws Exception;
 
 
     /**

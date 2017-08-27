@@ -48,7 +48,7 @@ public class HuaweiTokenServiceImpl implements HuaweiTokenService {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-        if(between < 7000){
+        if(between < 60){
             return huaweiTokenPO;
         }
         else {
