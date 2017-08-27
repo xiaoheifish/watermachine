@@ -11,6 +11,7 @@
         <result property="flow" column="flow" javaType="java.lang.Double"></result>
         <result property="recharge" column="recharge" javaType="java.lang.Double"></result>
         <result property="payment" column="payment" javaType="java.lang.Double"></result>
+        <result property="present" column="present" javaType="java.lang.Double"></result>
     </resultMap>
 
     <resultMap id="totalMap" type="com.terabits.meta.po.TotalPO">
@@ -36,7 +37,7 @@
     </select>
 
     <update id="updateTodayAuxcal" parameterType="com.terabits.meta.po.AuxcalPO">
-        update auxcal set flow=flow+#{flow}, recharge=recharge+#{recharge}, payment=payment+#{payment} where gmtcreate=#{gmtCreate}
+        update auxcal set flow=flow+#{flow}, recharge=recharge+#{recharge}, payment=payment+#{payment}, present=present+#{present} where gmtcreate=#{gmtCreate}
     </update>
 
     <update id="updateTotalRecharge" parameterType="com.terabits.meta.po.TotalPO">

@@ -85,7 +85,7 @@ public class WeixinPay {
 
         //将该条交易记录插入数据库
         RechargeOrderPO orderPO = new RechargeOrderPO();
-        orderPO.setPayment(totalmoney);
+        orderPO.setPayment(totalmoney * 2);
         orderPO.setOrderId(orderId);
         orderPO.setOpenId(openId);
         try {

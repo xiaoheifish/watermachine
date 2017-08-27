@@ -5,8 +5,10 @@ public class AuxcalPO {
     private String gmtCreate;
     //每一笔消费对应的流量
     private Double flow;
-    //每一笔消费充值对应的金额
+    //每一笔充值对应的金额
     private Double recharge;
+    //每一笔充值对应的赠送金额
+    private Double present;
     //每一笔消费对应的金额
     private Double payment;
 
@@ -42,6 +44,14 @@ public class AuxcalPO {
         this.recharge = recharge;
     }
 
+    public Double getPresent() {
+        return present;
+    }
+
+    public void setPresent(Double present) {
+        this.present = present;
+    }
+
     public Double getPayment() {
         return payment;
     }
@@ -57,6 +67,7 @@ public class AuxcalPO {
                 ", gmtCreate='" + gmtCreate + '\'' +
                 ", flow=" + flow +
                 ", recharge=" + recharge +
+                ", present=" + present +
                 ", payment=" + payment +
                 ']';
     }
@@ -65,5 +76,6 @@ public class AuxcalPO {
         this.flow = 0.0;
         this.recharge = 0.0;
         this.payment = 0.0;
+        this.present = 0.0;
     }
 }

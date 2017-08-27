@@ -71,11 +71,11 @@ public class WeixinNotify{
                 if(orderPO.getTradeNo()!=null){
                     return PayCommonUtil.setXML(WeixinGlobal.SUCCESS, "OK");
                 }
-                //比对金额是否相等，注意实际使用中money的单位是分
+                //比对金额是否相等，注意实际使用中money的单位是分，目前是充多少送多少，所以将微信发回来的值乘2，与数据库中的值比较
                 double payment = orderPO.getPayment();
                 int prepayment = (int)payment;
                 int premoney = Integer.parseInt(money);
-                if(prepayment == premoney){
+                if(prepayment == premoney * 2){
                     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
                     String currentDay = sdf.format(new Date());
                     int result = orderService.updatePaymentStatus(tradeNo, orderId);
@@ -94,6 +94,7 @@ public class WeixinNotify{
                             AuxcalPO auxcalPO = new AuxcalPO();
                             auxcalPO.setRecharge(payment);
                             auxcalPO.setGmtCreate(currentDay);
+                            auxcalPO.setPresent(payment);
                             statisticService.updateTodayAuxcal(auxcalPO);
                             //历史统计数据，更新总充值和总余额
                             TotalPO totalPO = new TotalPO();
