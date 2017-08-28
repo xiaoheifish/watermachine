@@ -39,7 +39,7 @@ public class TestController {
         commandPO.setDeviceId("123");
         commandPO.setFlow(0.3);
         commandPO.setCommandIdOne("1232423");
-        //commandPO.setState(10);
+        commandPO.setState("10");
         try {
             commandService.insertCommand(commandPO);
         }catch (Exception e){

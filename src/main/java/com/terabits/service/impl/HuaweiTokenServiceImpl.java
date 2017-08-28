@@ -21,7 +21,7 @@ import java.util.Date;
 public class HuaweiTokenServiceImpl implements HuaweiTokenService {
     @Autowired(required = false)
     private HuaweiTokenMapper huaweiTokenMapper;
-    private static Logger logger = LoggerFactory.getLogger(TestController.class);
+    private static Logger logger = LoggerFactory.getLogger(HuaweiTokenServiceImpl.class);
 
     public int insertToken(HuaweiTokenPO huaweiTokenPO) throws Exception{
         return huaweiTokenMapper.insertToken(huaweiTokenPO);
@@ -48,7 +48,7 @@ public class HuaweiTokenServiceImpl implements HuaweiTokenService {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-        if(between < 60){
+        if(between < 3000){
             return huaweiTokenPO;
         }
         else {

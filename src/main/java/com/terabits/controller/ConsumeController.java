@@ -139,8 +139,8 @@ public class ConsumeController {
         Gson gson = new Gson();
         Map<String, Object> map = new HashMap<String, Object>();
         map = gson.fromJson(result, map.getClass());
-        logger.error("result:::" + result);
-
+       /* logger.error("result:::" + result);
+*/
         //将这条命令插入command表
         CommandPO commandPO = new CommandPO();
         commandPO.setDeviceId(communicationBO.getDeviceId());
