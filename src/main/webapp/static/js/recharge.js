@@ -87,7 +87,10 @@ function recharge() {
                 "paySign" : response.signature           //微信签名
             },function(res){
                 if(res.err_msg == "get_brand_wcpay_request:ok" ) {
-                	if(language != "zh_CN"){$("#enwait").show();}
+                	if(language != "zh_CN"){
+                		$("#wait").remove();
+                		$("#enwait").show();
+                	}
                     else{$("#wait").show();}
                     countdown = 5;
                     settime();
