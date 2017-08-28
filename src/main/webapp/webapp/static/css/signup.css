@@ -1,0 +1,63 @@
+﻿@charset "utf-8"
+<style>
+body{}
+
+/* 输入框样式 */
+.inputbox{
+	width:90%;
+	border: none;
+	background-color: white;
+	text-align: left;
+	font-size: 0.45rem;
+	margin-top: 0.25rem;
+	color: rgb(97, 97, 97);
+	padding: 0.35rem;
+	overflow: hidden;
+	white-space: nowrap;
+	border-radius: 0.3rem;
+}
+
+/* 按钮样式 */
+.inputbutton{
+	width:35%;
+	border: none;
+	outline: none;
+	background-color: rgb(78, 135, 242);
+	font-size: 0.45rem;
+	margin-top: 0.25rem;
+	color: white;
+	padding: 0.35rem;
+	overflow: hidden;
+	white-space: nowrap;
+	border-radius: 0.3rem;
+	position: absolute; 
+	right: 5%;
+}
+
+.shadow{
+	width:90%;
+	border: none;
+	outline: none;
+	background-color: transparent;
+	font-size: 0.45rem;
+	margin-top: 0.25rem;
+	color: transparent;
+	padding: 0.35rem;
+	overflow: hidden;
+	white-space: nowrap;
+	box-shadow: 0.1rem 0.1rem 0.1rem #999999;
+	border-radius: 0.3rem;
+	position: absolute; 
+	left: 5%;
+	z-index: -1;
+}
+
+/* 底部文字样式 */
+#bottombar{
+	text-align:center; 
+	position:absolute;
+	bottom:0.2rem;
+	color: rgb(136,136,136);
+	font-size: 0.25rem;
+}
+</style>
