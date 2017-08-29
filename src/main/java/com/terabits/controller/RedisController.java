@@ -45,7 +45,7 @@ public class RedisController {
         System.out.println("插入成功");
     }
 
-    @RequestMapping(value = {"/query", "/query.html" }, method = { RequestMethod.GET})
+    @RequestMapping(value = {"/query", "/query.html" }, method = { RequestMethod.GET, RequestMethod.POST})
     public void queryMember(HttpServletRequest request,
                           HttpServletResponse response) throws Exception, IOException {
        String id = request.getParameter("commandId");
@@ -59,7 +59,7 @@ public class RedisController {
         String command = request.getParameter("command");
         SimpleDateFormat dfs = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
-        /*CommandNoModel terminalModel = new CommandNoModel();
+        /*CommandNoModel tenrminalModel = new CommandNoModel();
         terminalModel.setTerminalId("000002");
         terminalModel.setTime(time);
         terminalModel.setHour(1);
