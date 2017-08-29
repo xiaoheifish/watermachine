@@ -3,11 +3,6 @@ function load(){
 	openid = getCookie("openid");
 	language = getCookie("language");
 	
-	if(water == "0.3"){$("#save").text("1/2");}
-    if(water == "0.5"){$("#save").text("1");}
-    if(water == "1"){$("#save").text("2");}
-    if(water == "2"){$("#save").text("4");}
-	
 	if(language != "zh_CN"){
 		$("#chwarnningtext").remove();
 		$("#enwarnningtext").show();
@@ -20,6 +15,12 @@ function load(){
 		$("#savebox").remove();
         $("#ensavebox").show();
 	}
+
+    if(water == "0.3"){$("#save").text("1/2");}
+    if(water == "0.5"){$("#save").text("1");}
+    if(water == "1"){$("#save").text("2");}
+    if(water == "2"){$("#save").text("4");}
+    
 }
 
 /* 读取cookie */
