@@ -90,21 +90,7 @@ public class ConsumeController {
             response.getWriter().print(jsonObject);
             return;
         }
-        // 生成交易订单号
-        int count = consumeOrderService.selectCountByTime(TimeSpanUtil
-                .generateTimeSpan());
-        String consumeOrder = GenerateOrderId.generateConsumeId(count, openId);
-        ConsumeOrderPO consumeOrderPO = new ConsumeOrderPO();
-        consumeOrderPO.setDisplayId(displayId);
-        consumeOrderPO.setOpenId(openId);
-        consumeOrderPO.setFlow(flow);
-        consumeOrderPO.setOrderNo(consumeOrder);
-        consumeOrderPO.setPayment(actualCost);
-        try {
-            consumeOrderService.insertOrder(consumeOrderPO);
-        } catch (Exception e) {
-            logger.error("consumeOrderService.insertOrder error in 生成消费订单");
-        }
+
         // 查询指令编号并更新
         String commandOne = credentialService.getCommandNo("commandOne");
         String commandTwo = credentialService.getCommandNo("commandTwo");
@@ -142,6 +128,20 @@ public class ConsumeController {
         //String result = postCommandManager.command(openbytes, communicationBO.getDeviceId());
         String huaweiToken = huaweiTokenService.getLatestToken().getHuaweiToken();
         String result = PlatformGlobal.command(openbytes, huaweiToken, communicationBO.getDeviceId());
+
+        //判断是否下发成功，如果不成功则直接返回给前端，提醒用户重试，同时将termianl的状态更新回可使用
+        if(result == null){
+            TerminalUpdateBO terminalUpdateBO = new TerminalUpdateBO();
+            terminalUpdateBO.setDisplayId(displayId);
+            terminalUpdateBO.setState(Constants.OFF_STATE);
+            terminalService.updateTerminal(terminalUpdateBO);
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("result", "order later");
+            response.getWriter().print(jsonObject);
+            return;
+        }
+
+        //若下发成功，则取出返回里面的commandId,在自己的平台上做出记录，
         Gson gson = new Gson();
         Map<String, Object> map = new HashMap<String, Object>();
         map = gson.fromJson(result, map.getClass());
@@ -153,6 +153,22 @@ public class ConsumeController {
         commandPO.setFlow(flow);
         commandPO.setState(Constants.BEGIN_STATE);
         commandService.insertCommand(commandPO);
+
+        // 生成交易订单号
+        int count = consumeOrderService.selectCountByTime(TimeSpanUtil
+                .generateTimeSpan());
+        String consumeOrder = GenerateOrderId.generateConsumeId(count, openId);
+        ConsumeOrderPO consumeOrderPO = new ConsumeOrderPO();
+        consumeOrderPO.setDisplayId(displayId);
+        consumeOrderPO.setOpenId(openId);
+        consumeOrderPO.setFlow(flow);
+        consumeOrderPO.setOrderNo(consumeOrder);
+        consumeOrderPO.setPayment(actualCost);
+        try {
+            consumeOrderService.insertOrder(consumeOrderPO);
+        } catch (Exception e) {
+            logger.error("consumeOrderService.insertOrder error in 生成消费订单");
+        }
 
         Boolean flag = false;
         for (int i = 0; i < 21; i++) {

@@ -33,17 +33,18 @@ public class StreamClosedHttpResponse implements HttpResponse
             throws UnsupportedOperationException, IOException
     {
         this.original = original;
-        HttpEntity entity = original.getEntity();
-        if (entity != null && entity.isStreaming())
-        {
-            String encoding = entity.getContentEncoding() != null
-                    ? entity.getContentEncoding().getValue() : null;
-            content = StreamUtil.inputStream2String(entity.getContent(),
-                    encoding);
-        }
-        else
-        {
+        if(original == null){
             content = null;
+        }else {
+            HttpEntity entity = original.getEntity();
+            if (entity != null && entity.isStreaming()) {
+                String encoding = entity.getContentEncoding() != null
+                        ? entity.getContentEncoding().getValue() : null;
+                content = StreamUtil.inputStream2String(entity.getContent(),
+                        encoding);
+            } else {
+                content = null;
+            }
         }
     }
 
