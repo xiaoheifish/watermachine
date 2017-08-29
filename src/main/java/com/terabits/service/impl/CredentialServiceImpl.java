@@ -1,11 +1,18 @@
 package com.terabits.service.impl;
 
 import com.terabits.meta.model.CommandNoModel;
+import com.terabits.meta.model.Demo;
 import com.terabits.service.CredentialService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.HashOperations;
+import org.springframework.data.redis.core.ListOperations;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Component;
+
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by Administrator on 2017/7/20.
@@ -35,6 +42,38 @@ public class CredentialServiceImpl implements CredentialService{
     }
 
 
+    public void createList(String deviceId){
+        ListOperations<String, Object> listOperations = redisTemplate
+                .opsForList();
+        Date now = new Date();
+        HashOperations<String, Object, Object> hashOperations = redisTemplate
+                .opsForHash();
+        Map<String, Long> map = new HashMap<String, Long>();
+        now = new Date();
+        map.put(deviceId, now.getTime());
+       /* now = new Date();
+        map.put("map2", now.getTime());
+        now = new Date();
+        map.put("map1", now.getTime());*/
+        hashOperations.putAll("hash", map);
+        System.out.println(hashOperations.entries("hash"));
+     /*   for (int i = 0; i < 5; i++) {
+            Demo listDemo = new Demo();
+            now = new Date();
+            listDemo.setCommandId("\"" + i + "\"");
+            listDemo.setBeginTime(now.getTime());
+            listOperations.leftPush("list1", listDemo);
+            listOperations.rightPush("list2", listDemo);
+        }
+        // 可给数据排序
+        for(int i = 0; i<2;i++) {
+            Demo demo2 = (Demo) listOperations.leftPop("list1");
+
+            Demo demo3 = (Demo) listOperations.rightPop("list2");
+            System.out.println(demo2.toString());
+            System.out.println(demo3.toString());
+        }*/
+    }
     //获取某个id对应插座的剩余使用时间
    /* public String getLeftTime(String terminalId){
         long lefttime = redisTemplate.getExpire(terminalId);

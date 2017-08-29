@@ -12,4 +12,6 @@ public interface CredentialService {
     //获取某个编号数值
     public String getCommandNo(String commandId);
 
+    public void createList(String deviceId);
+
 }

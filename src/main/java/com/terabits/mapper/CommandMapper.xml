@@ -16,7 +16,7 @@
 
     <insert id="insertCommand" useGeneratedKeys="true" parameterType="com.terabits.meta.po.CommandPO">
         insert into command(deviceid, commandidone, commandidtwo, flow, cmdstate, gmtcreate, gmtmodified)
-        values (#{deviceId}, #{commandIdOne}, #{commandIdTwo}, #{flow}, '10', now(), now())
+        values (#{deviceId}, #{commandIdOne}, #{commandIdTwo}, #{flow}, #{state}, now(), now())
     </insert>
 
     <update id="updateState">

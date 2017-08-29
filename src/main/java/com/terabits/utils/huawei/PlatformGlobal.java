@@ -53,7 +53,7 @@ public class PlatformGlobal {
     }
 
     //模拟透传的模式，下发命令用这个方法
-    public static String command(byte[] data, String terminalId) throws Exception{
+    public static String command(byte[] data, String accessToken, String terminalId) throws Exception{
         System.out.println("----------------------------------------------");
         System.out.println("terminalId::::::"+terminalId);
         System.out.println("----------------------------------------------");
@@ -62,7 +62,6 @@ public class PlatformGlobal {
         HttpsUtil httpsUtil = new HttpsUtil();
         httpsUtil.initSSLConfigForTwoWay();
 
-        String accessToken = login(httpsUtil);
         String urlPostAsynCmd = HuaweiPlatformGlobal.APP_URL+ "/iocm/app/cmd/v1.2.0/devices/" + terminalId + "/commands";
 
         String method = "START";

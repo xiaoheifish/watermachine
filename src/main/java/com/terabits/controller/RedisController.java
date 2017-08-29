@@ -90,7 +90,7 @@ public class RedisController {
             openbytes[5] = Constants.SEND_COMMAND_END;
             Date now = new Date();
             String time1 = dfs.format(now);
-            PlatformGlobal.command(openbytes, communicationBO.getDeviceId());
+            //PlatformGlobal.command(openbytes, communicationBO.getDeviceId());
             now = new Date();
             String time2 = dfs.format(now);
             response.getWriter().print("power on ok: " + time1 + " " + time2);
@@ -110,7 +110,7 @@ public class RedisController {
             openbytes[2] = Constants.SEND_COMMAND_END;
             Date now = new Date();
             String time1 = dfs.format(now);
-            PlatformGlobal.command(openbytes, communicationBO.getDeviceId());
+            //PlatformGlobal.command(openbytes, communicationBO.getDeviceId());
             now = new Date();
             String time2 = dfs.format(now);
             response.getWriter().print("cut off ok: " + time1 + " "+ time2);

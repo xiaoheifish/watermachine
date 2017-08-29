@@ -2,6 +2,7 @@ package com.terabits.controller;
 
 import com.google.gson.Gson;
 import com.terabits.config.Constants;
+import com.terabits.config.HuaweiPlatformGlobal;
 import com.terabits.manager.PostCommandManager;
 import com.terabits.meta.bo.CommunicationBO;
 import com.terabits.meta.bo.TerminalUpdateBO;
@@ -11,6 +12,7 @@ import com.terabits.service.*;
 import com.terabits.utils.FlowUtil;
 import com.terabits.utils.GenerateOrderId;
 import com.terabits.utils.TimeSpanUtil;
+import com.terabits.utils.huawei.PlatformGlobal;
 import net.sf.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,9 +28,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-
 /**
- * Created by Administrator on 2017/8/20.
+ * Created by Administrator on 2017/8/28.
  */
 @Controller
 public class ConsumeController {
@@ -46,6 +47,8 @@ public class ConsumeController {
     private PostCommandManager postCommandManager;
     @Autowired
     private CommandService commandService;
+    @Autowired
+    private HuaweiTokenService huaweiTokenService;
 
     private static Logger logger = LoggerFactory
             .getLogger(ConsumeController.class);
@@ -57,6 +60,7 @@ public class ConsumeController {
     @RequestMapping(value = "/consumeorder", method = RequestMethod.POST)
     public void consume(HttpServletRequest request,
                         HttpServletResponse response, HttpSession session) throws Exception {
+
         String requestOpenId = request.getParameter("openid");
         String openId = (String) session.getAttribute("openid");
         openId = requestOpenId;
@@ -135,12 +139,13 @@ public class ConsumeController {
         openbytes[3] = (byte) cmdOne;
         openbytes[4] = (byte) cmdTwo;
         openbytes[5] = Constants.SEND_COMMAND_END;
-        String result = postCommandManager.command(openbytes, communicationBO.getDeviceId());
+        //String result = postCommandManager.command(openbytes, communicationBO.getDeviceId());
+        String huaweiToken = huaweiTokenService.getLatestToken().getHuaweiToken();
+        String result = PlatformGlobal.command(openbytes, huaweiToken, communicationBO.getDeviceId());
         Gson gson = new Gson();
         Map<String, Object> map = new HashMap<String, Object>();
         map = gson.fromJson(result, map.getClass());
-       /* logger.error("result:::" + result);
-*/
+
         //将这条命令插入command表
         CommandPO commandPO = new CommandPO();
         commandPO.setDeviceId(communicationBO.getDeviceId());
@@ -149,14 +154,13 @@ public class ConsumeController {
         commandPO.setState(Constants.BEGIN_STATE);
         commandService.insertCommand(commandPO);
 
-
         Boolean flag = false;
         for (int i = 0; i < 21; i++) {
             // 之后加一个根据消费订单编号查询的方法
         /*    ConsumeOrderPO consumeOrderPO1 = consumeOrderService
                     .selectLastConsumption(displayId);*/
-        ConsumeOrderPO consumeOrderPO1 = new ConsumeOrderPO();
-        consumeOrderPO1.setState(Constants.HAVE_RESPONSE);
+            ConsumeOrderPO consumeOrderPO1 = new ConsumeOrderPO();
+            consumeOrderPO1.setState(Constants.HAVE_RESPONSE);
             if (i == 20) {
                 JSONObject jsonObject = new JSONObject();
                 jsonObject.put("result", "error");

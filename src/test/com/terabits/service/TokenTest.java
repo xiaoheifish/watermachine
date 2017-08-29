@@ -3,6 +3,8 @@ package com.terabits.service;
 import com.terabits.config.Constants;
 
 import com.terabits.mapper.CommandMapper;
+import com.terabits.meta.bo.CommunicationBO;
+import com.terabits.meta.bo.TerminalUpdateBO;
 import com.terabits.meta.po.CommandPO;
 import com.terabits.meta.po.UserPO;
 import com.terabits.service.BaseTest;
@@ -20,6 +22,10 @@ public class TokenTest extends BaseTest {
     private CommandMapper commandMapper;
     @Autowired
     private CommandService commandService;
+    @Autowired
+    private CredentialService credentialService;
+    @Autowired
+    private TerminalService terminalService;
     //private TerminalManager terminalManager;
     @Test   //标明是测试方法
     @Transactional(value="transactionManager")//标明此方法需使用事务
@@ -29,7 +35,9 @@ public class TokenTest extends BaseTest {
         commandPO.setDeviceId("123");
         commandPO.setFlow(0.3);
         commandPO.setCommandIdOne("1232423");
-        //commandPO.setState(10);
+        commandPO.setState(Constants.BEGIN_STATE);
         commandService.insertCommand(commandPO);
+        CommunicationBO communicationBO = terminalService.getTerminalDeviceId("1002");
+        credentialService.createList(communicationBO.getDeviceId());
     }
 }
