@@ -6,27 +6,31 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script language="javascript" src="/watermachine/static/js/jquery-3.2.1.min.js"></script>
 <script language="javascript" src="/watermachine/static/js/flexible.js"></script>
-<script language="javascript" src="/watermachine/static/js/using.js"></script>
+<script language="javascript" src="/watermachine/static/js/information.js"></script>
 <link rel="stylesheet" href="/watermachine/static/css/bootstrap.css">
-<title>请重新进入</title>
+
+<title>会话过期</title>
 </head>
 
-<body onload="load()" style="font-family: 'Microsoft YaHei' 'Cambria Math';background-color: rgb(240, 240, 240);display: flex;flex-direction: column;align-items: center;padding-top: 0.15rem;font-size:0.4rem;">
+<body style="font-family: 'Microsoft YaHei' 'Cambria Math';background-color: rgb(240, 240, 240);display: flex;flex-direction: column;align-items: center;font-size:0.3rem;padding-top: 20%;">
 
-
-<!-- 信息显示部分 -->
-<div id="warn">
-请求超时，请您从公众号“智慧饮水”处重新进入。
+<div id="timeoutinfor">
+会话已过期，请您从公众号“智慧饮水”入口重新进入。
 </div>
 
-<div id="enwarn" style="dispaly:none;">
-Request timed out. Please re-enter from the Official Accounts.
+<div id="entimeoutinfor" style="display:none;">
+The session has expired, please re-enter from the official accounts.
 </div>
+
+
 
 <div class="col-sm-12 col-xs-12" id="bottombar">
 天风物业<br>
-Powered by Terabits
+powered by Terabits
 </div>
+
+
+
 
 </body>
 </html>

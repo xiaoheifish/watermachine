@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+﻿<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -45,12 +45,12 @@
 <span id="enwarnningtext" style="display:none;">The water-tap will be closed after<span style="color: rgb(230, 67, 64);"> you finishing taking water</span> or <span style="color: rgb(230, 67, 64);">60</span>s.<br>Please take water soon.</span>
 </div>
 
-<div id="savebox" style="margin-top: 1rem;font-size: 0.35rem;text-align: center;color: rgb(97, 97, 97); border: 3px solid black; padding: 5%; width: 80%;">
+<div id="savebox" style="margin-top: 1rem;font-size: 0.35rem;text-align: center;color: rgb(97, 97, 97); border: 3px solid rgb(97, 97, 97); padding: 5%; width: 80%;">
 	恭喜您向今日饮水目标更进一步！<br>
 	此次饮水您又节省了<span id="save">1/4</span>个饮料瓶！
 </div>
 
-<div id="ensavebox" style="margin-top: 1rem;font-size: 0.35rem;text-align: center;color: rgb(97, 97, 97); border: 3px solid black; padding: 5%; width: 80%;display: none;">
+<div id="ensavebox" style="margin-top: 1rem;font-size: 0.35rem;text-align: center;color: rgb(97, 97, 97); border: 3px solid rgb(97, 97, 97); padding: 5%; width: 80%;display: none;">
 	Go further on your drinking goal.<br>
 	You saved <span id="save">1/4</span> plastic bottle(s) this time！
 </div>
