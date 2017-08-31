@@ -73,29 +73,28 @@ function login() {
 
 //微信接口认证
 function load(){
+//中英文切换
+    if(language != "zh_CN"){
+        $("title").html("Intelligent Water Fountain");
+        $("#RQ").text("Scan to Drink");
+        $("#numbertext").text("Input the water fountain id");
+        $("#idinputtext").text("Input the water fountain id");
+        $("#cancle").val("cancle");
+        $("#login").val("confirm");
+        $("#record").text("My record");
+        $("#wallet").text("My wallet");
+        $("#invite").text("Invite friends");
+        $("#service").text("Customer Feedback");
+        $("#enrule").text("Detail Rules");
+        $("#rechargerec").text("Recharge record");
+    }
 
-		//查询语言并保存cookie,查询昵称及头像
+
+    //查询语言并保存cookie,查询昵称及头像
 		$("#nickname").append(nickname);
 		$("#avatar").attr("src", avatar);
 		setCookie("openid",openid);
 		setCookie("language",language);
-				
-		//中英文切换
-		if(language != "zh_CN"){
-			$("title").html("Intelligent Water Fountain");
-			$("#RQ").text("Scan to Drink");
-			$("#numbertext").text("Input the water fountain id");
-			$("#idinputtext").text("Input the water fountain id");
-			$("#cancle").val("cancle");
-			$("#login").val("confirm");
-			$("#record").text("My record");
-			$("#wallet").text("My wallet");
-			$("#invite").text("Invite friends");
-			$("#service").text("Customer Feedback");
-			$("#enrule").text("Detail Rules");
-			$("#rechargerec").text("Recharge record");
-		}
-			
 	
 	if (isWeiXin5() == false) {
         alert("您的微信版本低于5.0，无法使用微信支付功能，请先升级！");

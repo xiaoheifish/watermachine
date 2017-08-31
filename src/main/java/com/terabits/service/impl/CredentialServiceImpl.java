@@ -41,22 +41,30 @@ public class CredentialServiceImpl implements CredentialService{
         return number;
     }
 
+    //将最新收到回复的设备插入device hash表中，key为deviceId, value为当前时间
+    public void updateDeviceTime(String deviceId){
 
-    public void createList(String deviceId){
-        ListOperations<String, Object> listOperations = redisTemplate
-                .opsForList();
-        Date now = new Date();
         HashOperations<String, Object, Object> hashOperations = redisTemplate
                 .opsForHash();
         Map<String, Long> map = new HashMap<String, Long>();
-        now = new Date();
+        Date now = new Date();
         map.put(deviceId, now.getTime());
-       /* now = new Date();
-        map.put("map2", now.getTime());
-        now = new Date();
-        map.put("map1", now.getTime());*/
-        hashOperations.putAll("hash", map);
-        System.out.println(hashOperations.entries("hash"));
+        hashOperations.putAll("device", map);
+    }
+
+    public Map<Object, Object> getCurentDevice(){
+        HashOperations<String, Object, Object> hashOperations = redisTemplate
+                .opsForHash();
+        return hashOperations.entries("device");
+    }
+
+    public void deleteExpireDevice(String deviceId){
+        HashOperations<String, Object, Object> hashOperations = redisTemplate
+                .opsForHash();
+        hashOperations.delete("hash",deviceId);
+    }
+/*        hashOperations.delete("hash", "map1");
+        System.out.println(hashOperations.entries("hash"));*/
      /*   for (int i = 0; i < 5; i++) {
             Demo listDemo = new Demo();
             now = new Date();
@@ -73,7 +81,7 @@ public class CredentialServiceImpl implements CredentialService{
             System.out.println(demo2.toString());
             System.out.println(demo3.toString());
         }*/
-    }
+
     //获取某个id对应插座的剩余使用时间
    /* public String getLeftTime(String terminalId){
         long lefttime = redisTemplate.getExpire(terminalId);

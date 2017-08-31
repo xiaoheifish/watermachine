@@ -8,6 +8,7 @@ import com.terabits.meta.po.NotifyDataPO;
 import com.terabits.meta.po.OperationPO;
 import com.terabits.service.CommandService;
 import com.terabits.service.ConsumeOrderService;
+import com.terabits.service.CredentialService;
 import com.terabits.service.HeartBeatService;
 import com.terabits.service.NotifyDataService;
 import com.terabits.service.OperationService;
@@ -54,6 +55,8 @@ public class ReceiveController {
     private CommandService commandService;
     @Autowired
     private HeartBeatService heartBeatService;
+    @Autowired
+    private CredentialService credentialService;
 
     private static Logger logger = LoggerFactory.getLogger(ReceiveController.class);
 
@@ -72,7 +75,7 @@ public class ReceiveController {
         String info = (String) data.get("terminalState");
         byte[] rawInfo = new byte[info.length()];
         String content = "";
-        System.out.print("rawdata:::::::::::");
+        //System.out.print("rawdata:::::::::::");
         for (int i = 0; i < info.length(); i++) {
             rawInfo[i] = (byte) info.charAt(i);
             System.out.print(rawInfo[i] + " ");
@@ -117,6 +120,8 @@ public class ReceiveController {
             operationPO.setStatus(Constants.ON_TO_OFF);
             operationPO.setImei(imei);
             operationService.insertOperation(operationPO);
+            //删除redis缓存中的该设备
+            credentialService.deleteExpireDevice(deviceId);
             //更新命令表中此条命令的状态
             commandService.updateState(Constants.END_STATE, deviceId);
         } else if (rawInfo[0] == (byte) 0x19) {

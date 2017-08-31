@@ -75,6 +75,7 @@ public class WeixinNotify{
                 double payment = orderPO.getPayment();
                 int prepayment = (int)payment;
                 int premoney = Integer.parseInt(money);
+                double auxPayment = payment / 2.0;
                 if(prepayment == premoney * 2){
                     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
                     String currentDay = sdf.format(new Date());
@@ -92,9 +93,9 @@ public class WeixinNotify{
                         try{
                             //当日统计数据，更新总充值
                             AuxcalPO auxcalPO = new AuxcalPO();
-                            auxcalPO.setRecharge(payment);
+                            auxcalPO.setRecharge(auxPayment);
                             auxcalPO.setGmtCreate(currentDay);
-                            auxcalPO.setPresent(payment);
+                            auxcalPO.setPresent(auxPayment);
                             statisticService.updateTodayAuxcal(auxcalPO);
                             //历史统计数据，更新总充值和总余额
                             TotalPO totalPO = new TotalPO();

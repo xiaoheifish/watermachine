@@ -127,8 +127,13 @@ public class ConsumeController {
         openbytes[5] = Constants.SEND_COMMAND_END;
         //String result = postCommandManager.command(openbytes, communicationBO.getDeviceId());
         String huaweiToken = huaweiTokenService.getLatestToken().getHuaweiToken();
+        Date now = new Date();
+        SimpleDateFormat dfs = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String time1 = dfs.format(now);
         String result = PlatformGlobal.command(openbytes, huaweiToken, communicationBO.getDeviceId());
-
+        now = new Date();
+        String time2 = dfs.format(now);
+        logger.error("platform global ok:::::"+ time1 +"-------"+ time2);
         //判断是否下发成功，如果不成功则直接返回给前端，提醒用户重试，同时将termianl的状态更新回可使用
         if(result == null){
             TerminalUpdateBO terminalUpdateBO = new TerminalUpdateBO();
@@ -169,6 +174,10 @@ public class ConsumeController {
         } catch (Exception e) {
             logger.error("consumeOrderService.insertOrder error in 生成消费订单");
         }
+
+      
+        //更新redis缓存中该设备的开始时间
+        credentialService.updateDeviceTime(communicationBO.getDeviceId());
 
         Boolean flag = false;
         for (int i = 0; i < 21; i++) {

@@ -14,6 +14,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
+import java.util.Map;
+
 /**
  * Created by Administrator on 2017/6/29.
  */
@@ -31,14 +34,14 @@ public class TokenTest extends BaseTest {
     @Transactional(value="transactionManager")//标明此方法需使用事务
     @Rollback(false)  //标明使用完此方法后事务不回滚,true时为回滚
     public void token() throws Exception {
-  /*      CommandPO commandPO = new CommandPO();
-        commandPO.setDeviceId("123");
-        commandPO.setFlow(0.3);
-        commandPO.setCommandIdOne("1232423");
-        commandPO.setState(Constants.BEGIN_STATE);
-        commandService.insertCommand(commandPO);
-        CommunicationBO communicationBO = terminalService.getTerminalDeviceId("1002");
-        credentialService.createList(communicationBO.getDeviceId());*/
-        terminalService.updateStrength(33, "572c3408-85cd-4cb5-aafe-a1518407f17f");
+        //credentialService.updateDeviceTime("132342421");
+        credentialService.updateDeviceTime("123");
+        Map<Object, Object> map = credentialService.getCurentDevice();
+        for(Object key : map.keySet()){
+            Date now = new Date();
+            Long beginTime = (Long)map.get(key);
+            Long timeSpan = now.getTime() - beginTime;
+            System.out.println(timeSpan);
+        }
     }
 }
