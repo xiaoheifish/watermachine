@@ -1,6 +1,9 @@
 package com.terabits.controller;
 
+import com.terabits.config.Constants;
+import com.terabits.meta.po.FeedbackPO;
 import com.terabits.meta.po.UserPO;
+import com.terabits.service.FeedbackService;
 import com.terabits.service.MailService;
 import com.terabits.service.UserService;
 import net.sf.json.JSONObject;
@@ -23,6 +26,8 @@ public class MailController {
     private MailService mailService;
     @Autowired
     private UserService userService;
+    @Autowired
+    private FeedbackService feedbackService;
     private static Logger logger = LoggerFactory.getLogger(MailController.class);
 
     //显示邮件页
@@ -46,6 +51,16 @@ public class MailController {
                 ", email =" + email + '\n' +
                 ", feedback =" + feedback + '\n';
         mailService.userFeedback(content);
+
+        //将此条记录插入数据库
+        FeedbackPO feedbackPO = new FeedbackPO();
+        feedbackPO.setNickname(userPO.getNickname());
+        feedbackPO.setStatus(Constants.FEEDBACK_UNRESOLVED);
+        feedbackPO.setEmail(email);
+        feedbackPO.setFeedback(feedback);
+        feedbackPO.setPhone(userPO.getPhone());
+        feedbackService.insertFeedback(feedbackPO);
+
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("result","ok");
         response.getWriter().print(jsonObject);

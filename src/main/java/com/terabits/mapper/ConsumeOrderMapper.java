@@ -12,12 +12,21 @@ import java.util.List;
 public interface ConsumeOrderMapper {
 
     /**
-     * 新增消费数据
+     * 新增消费数据,最初插入的时候不带orderno，根据返回的id去生成orderno，再更新一下
      * @param consumeOrderPO
      * @return
      * @throws Exception
      */
     public int insertOrder(ConsumeOrderPO consumeOrderPO)throws Exception;
+
+    /**
+     * 根据insertOrder返回的id，生成orderNo，更新这笔订单的orderNo，比计算当日总消费笔数要好一些
+     * @param orderNo
+     * @param id
+     * @return
+     * @throws Exception
+     */
+    public int updateOrderNoById(@Param("orderNo")String orderNo, @Param("id")int id)  throws Exception;
 
 
     /**查询当日全部消费数量，计算消费单号

@@ -55,9 +55,25 @@ public class WeixinPay {
             return;
         }
 
-        //查询当日交易量，生成新的orderId
-        int count = orderService.selectCountByTime(TimeSpanUtil.generateTimeSpan());
-        String orderId = GenerateOrderId.generateOrderId(count, openId);
+
+        //将该条交易记录插入数据库
+        RechargeOrderPO orderPO = new RechargeOrderPO();
+        orderPO.setPayment(totalmoney * 2);
+        orderPO.setOpenId(openId);
+        try {
+            orderService.insertOrder(orderPO);
+        }catch (Exception e){
+            logger.error("orderService.insertOrder error in weixinPay" + orderPO);
+        }
+
+        //根据主键id，生成新的orderId
+        int count = orderPO.getId();
+        String orderId = GenerateOrderId.generateOrderId(count);
+        try{
+            orderService.updateOrderIdById(orderId, orderPO.getId());
+        }catch (Exception e){
+            logger.error("orderService.updateOrderIdBy error in weixinPay" + orderId);
+        }
 
         String prepaidId = null;
         MyConfig myConfig = new MyConfig();
@@ -83,16 +99,7 @@ public class WeixinPay {
         JsapiConfigBO config = unifiedOrderService.createPayConfig(prepaidId);
         JSONObject jsonConfig = JSONObject.fromObject(config);
 
-        //将该条交易记录插入数据库
-        RechargeOrderPO orderPO = new RechargeOrderPO();
-        orderPO.setPayment(totalmoney * 2);
-        orderPO.setOrderId(orderId);
-        orderPO.setOpenId(openId);
-        try {
-            orderService.insertOrder(orderPO);
-        }catch (Exception e){
-            logger.error("orderService.insertOrder error in weixinPay" + orderPO);
-        }
+
         try {
             response.getWriter().print(jsonConfig);
         } catch (IOException e) {

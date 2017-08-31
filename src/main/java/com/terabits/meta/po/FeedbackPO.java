@@ -3,7 +3,7 @@ package com.terabits.meta.po;
 /**
  * Created by Administrator on 2017/8/31.
  */
-public class FeedBackPO {
+public class FeedbackPO {
 
     private int id;
     private String nickname;

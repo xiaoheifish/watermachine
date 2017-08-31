@@ -28,7 +28,7 @@
         <result property="deviceId" column="deviceid" javaType="java.lang.String"></result>
     </resultMap>
 
-    <insert id="insertTerminal" keyProperty="id">
+    <insert id="insertTerminal" useGeneratedKeys="true" keyProperty="id">
         insert into terminal (imei, deviceid, displayid, webid, state, simid, simremain, gmtcreate, gmtmodified) values
         (#{imei}, #{deviceId}, #{displayId}, #{webId}, #{state}, #{simId}, #{simRemain}, now(),now())
     </insert>

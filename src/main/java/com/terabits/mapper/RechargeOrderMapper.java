@@ -20,6 +20,15 @@ public interface RechargeOrderMapper {
      */
     public int insertOrder(RechargeOrderPO orderPO) throws Exception;
 
+    /**
+     * 根据id更新orderId
+     * @param orderId
+     * @param id
+     * @return
+     * @throws Exception
+     */
+    public int updateOrderIdById(@Param("orderId")String orderId, @Param("id")int id) throws Exception;
+
     /**查询当日全部充值数量，计算交易单号
      *
      * @param timeSpanBO

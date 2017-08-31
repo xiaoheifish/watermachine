@@ -72,7 +72,7 @@ public class Constants {
 
     //消费编号
     //项目标号
-    public static final String CONSUME_PRO_NUMBER = "3336";
+    public static final String CONSUME_PRO_NUMBER = "4003336";
 
     //下发命令执行状态
     public static final String BEGIN_STATE = "10";
@@ -80,4 +80,9 @@ public class Constants {
     public static final String HALF_STATE = "16";
 
     public static final String END_STATE = "26";
+
+    //反馈处理状态
+    public static final int FEEDBACK_UNRESOLVED = 23;
+
+    public static final int FEEDBACK_SOLVED = 66;
 }

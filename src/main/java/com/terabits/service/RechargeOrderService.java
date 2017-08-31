@@ -14,6 +14,9 @@ public interface RechargeOrderService {
     //插入充值订单数据
     public int insertOrder(RechargeOrderPO orderPO)throws Exception;
 
+    //根据id更新orderId，不再使用统计今日总订单数的方法
+    public int updateOrderIdById(String orderId, int id) throws Exception;
+
     //查询今日总充值订单数
     public int selectCountByTime(TimeSpanBO timeSpanBO)throws Exception;
 

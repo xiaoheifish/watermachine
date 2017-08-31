@@ -21,7 +21,7 @@
     <!--keyProperty： （仅对 insert有用）标记一个属性， MyBatis 会通过 getGeneratedKeys或者通过 insert 语句的 selectKey 子元素设置它的值。默认：不设置。 -->
     <!--#{}中的内容，为占位符，当参数为某个JavaBean时，表示放置该Bean对象的属性值  -->
 
-    <insert id="insertOrder" parameterType="com.terabits.meta.po.ConsumeOrderPO">
+    <insert id="insertOrder" useGeneratedKeys="true" keyProperty="id" parameterType="com.terabits.meta.po.ConsumeOrderPO">
         insert into consumeorder (state, orderno, openid, displayid, payment, flow, gmtcreate, gmtmodified)
         values (23, #{orderNo}, #{openId}, #{displayId}, #{payment}, #{flow}, now(), now())
     </insert>
@@ -64,6 +64,10 @@
 
     <update id="updateStateById" parameterType="String">
         update consumeorder set state = 66 where orderno = #{orderNo}
+    </update>
+
+    <update id = "updateOrderNoById">
+        update consumeorder set orderno = #{orderNo} where id = #{id}
     </update>
 </mapper>
 

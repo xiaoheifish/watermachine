@@ -25,6 +25,10 @@ public class RechargeOrderServiceImpl implements RechargeOrderService {
         return orderMapper.insertOrder(orderPO);
     }
 
+    public int updateOrderIdById(String orderId, int id) throws Exception{
+        return orderMapper.updateOrderIdById(orderId, id);
+    }
+
     public int selectCountByTime(TimeSpanBO timeSpanBO) throws Exception {
         int result = 0;
         result = orderMapper.selectCountByTime(timeSpanBO);

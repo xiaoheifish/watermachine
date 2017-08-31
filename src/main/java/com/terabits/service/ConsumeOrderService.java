@@ -16,6 +16,11 @@ public interface ConsumeOrderService {
     public int insertOrder(ConsumeOrderPO consumeOrderPO)throws Exception;
 
     /**
+     *根据主键更新orderNo
+     */
+    public int updateOrderNoById(String orderNo, int id)  throws Exception;
+    
+    /**
      *查询当日全部消费笔数，用于生成消费订单号
      */
     public int selectCountByTime(TimeSpanBO timeSpanBO) throws Exception;

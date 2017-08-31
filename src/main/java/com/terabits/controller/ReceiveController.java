@@ -148,6 +148,7 @@ public class ReceiveController {
             //之后可加上对dataRespons的处理
             dataResponse = httpClient.execute(httpPost);
         }catch (Exception e) {
+
         }
     }
 

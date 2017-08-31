@@ -27,6 +27,13 @@ public class ConsumeOrderServiceImpl implements ConsumeOrderService {
     }
 
     /**
+     *根据主键更新orderNo
+     */
+    public int updateOrderNoById(String orderNo, int id)  throws Exception{
+        return  consumeOrderMapper.updateOrderNoById(orderNo, id);
+    }
+
+    /**
      *查询当日全部消费笔数，用于生成消费订单号
      */
     public int selectCountByTime(TimeSpanBO timeSpanBO) throws Exception{

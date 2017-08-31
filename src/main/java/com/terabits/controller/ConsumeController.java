@@ -159,15 +159,11 @@ public class ConsumeController {
         commandPO.setState(Constants.BEGIN_STATE);
         commandService.insertCommand(commandPO);
 
-        // 生成交易订单号
-        int count = consumeOrderService.selectCountByTime(TimeSpanUtil
-                .generateTimeSpan());
-        String consumeOrder = GenerateOrderId.generateConsumeId(count, openId);
+        // 生成交易订单，并插入数据库
         ConsumeOrderPO consumeOrderPO = new ConsumeOrderPO();
         consumeOrderPO.setDisplayId(displayId);
         consumeOrderPO.setOpenId(openId);
         consumeOrderPO.setFlow(flow);
-        consumeOrderPO.setOrderNo(consumeOrder);
         consumeOrderPO.setPayment(actualCost);
         try {
             consumeOrderService.insertOrder(consumeOrderPO);
@@ -175,7 +171,15 @@ public class ConsumeController {
             logger.error("consumeOrderService.insertOrder error in 生成消费订单");
         }
 
-      
+        //根据id生成交易单号
+        int count = consumeOrderPO.getId();
+        String consumeOrder = GenerateOrderId.generateConsumeId(count);
+        try{
+            consumeOrderService.updateOrderNoById(consumeOrder, consumeOrderPO.getId());
+        }catch (Exception e){
+            logger.error("consumeOrderService.updateOrderNoById error in 生成消费订单");
+        }
+
         //更新redis缓存中该设备的开始时间
         credentialService.updateDeviceTime(communicationBO.getDeviceId());
 
