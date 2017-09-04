@@ -77,6 +77,7 @@ function load(){
     if(language != "zh_CN"){
         $("title").html("Smart Water Fountain");
         $("#RQ").text("Scan QR Code");
+        $("#RQ").css("color","white");
         $("#numbertext").text("Input the device serial number");
         $("#idinputtext").text("Input the device serial number");
         $("#cancle").val("cancel");
@@ -86,13 +87,15 @@ function load(){
         $("#invite").text("Invite Friends");
         $("#service").text("Feedback");
         $("#enrule").text("Detail Rules");
+        $("#enrule").css("text-align","left");
+        $("#enrule").css("padding-left","13%");
         $("#rechargerec").text("Deposit Record");
         $(".menu_1").css("text-align","left");
         $(".menu_1").css("padding-left","13%");
     }
 	else{
         $("title").html("欢迎使用智能直饮水机");
-        $("#RQ").text("扫码取水");
+         $("#RQ").css("color","white");
         $("#numbertext").text("输入编号取水:");
 	}
 
@@ -217,7 +220,7 @@ function loadservice(){
 		$("#entext").show();
 		$("title").html("Feedback");
 	}
-	else(language != "zh_CN"){
+	else{
 		$("#suggestion").text("欢迎您提出对智能饮水机的感受和意见，期待您的声音。");
 		$("#emailtext").text("您的邮箱");
 		$("#suggestionbutton").val("提交");

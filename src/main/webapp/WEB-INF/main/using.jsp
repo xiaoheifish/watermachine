@@ -47,8 +47,6 @@
 
 <br>
 <br>
-<br>
-<br>
 <img style="width: 1rem" src="/watermachine/static/pic/reward.png">
 
 <div id="savebox" style="margin-top: 0rem;font-size: 0.35rem;text-align: center;color: rgb(97, 97, 97); border: none; padding: 5%; width: 80%;display: none;font-style: italic;background-image: url(/watermachine/static/pic/lineback.png); background-size: 100% 100%;">

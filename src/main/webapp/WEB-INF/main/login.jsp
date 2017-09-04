@@ -91,7 +91,7 @@
 
 <!-- 二维码扫描按钮 -->
 
-<button id="RQ" onclick="RQ();" class="RQ"> </button>
+<button id="RQ" onclick="RQ();" class="RQ" style="color: rgb(37, 109, 243)">扫码取水</button>
 
 <!-- 手动输入编号提示部分 -->
 <p id="numbertext" style="margin-top: 0.7rem; font-size: 0.35rem; color: rgb(136, 136, 136);"> </p>
@@ -149,7 +149,7 @@
 	<img style="width: 0.7rem" src="/watermachine/static/pic/service.png"/>&nbsp;&nbsp;意见反馈
     <img src="/watermachine/static/pic/award.png" style="width: 0.7rem;vertical-align: top;margin-left: -0.2rem;"></button>
 
-<a href="/watermachine/rules" id="enrule" style="margin-top: 0.5rem;font-size: 0.3rem;">详细活动规则</a>
+<a href="/watermachine/rules" id="enrule" style="margin-top: 0.5rem;font-size: 0.3rem;width: 100%;text-align: center;">详细活动规则</a>
 
 </div>
 
