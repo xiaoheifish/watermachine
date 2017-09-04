@@ -97,7 +97,7 @@ Powered by Terabits
         <span></span>
         <span></span>
 </div>
-<div class="waitbox">We are preparing for you.Please wait a moment.</div>
+<div class="waitbox">We are preparing for you.<br>Please wait a moment.</div>
 </div>
 
 </body>

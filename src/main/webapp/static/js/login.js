@@ -88,7 +88,7 @@ function load(){
         $("#enrule").text("Detail Rules");
         $("#rechargerec").text("Deposit Record");
         $(".menu_1").css("text-align","left");
-        $(".menu_1").css("padding-left","2%");
+        $(".menu_1").css("padding-left","5%");
     }
 
 
