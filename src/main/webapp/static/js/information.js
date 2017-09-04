@@ -5,7 +5,7 @@ function load(){
 	
 	if(language != "zh_CN"){
 		$("#recharge").val("Confirm");
-		$("#soorytext").text("Sorry, this water fountain is unusable.");
+		$("#soorytext").text("Sorry, this water fountain is unavailable.");
 		if(status == "空闲"){
 			status = "usable";
 		}
@@ -13,6 +13,7 @@ function load(){
 		$("title").text("Information");
 		$("#timeoutinfor").remove();
 		$("#entimeoutinfor").show();
+		$("#tippicture").attr("src", "/watermachine/static/pic/entip.png");
 	}
 }
 

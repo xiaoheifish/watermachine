@@ -122,8 +122,8 @@
 <!-- 菜单-我的账户 -->
 <div id="menu">
     <div style="margin-bottom: 1rem;width: 100%; text-align: right;margin-top: -0.5rem;">
-        <button onclick="closemenu();" id="closemenu" class="closemenu"><img style="width: 0.4rem"
-                                                                             src="/watermachine/static/pic/back.png"></button>
+        <button onclick="closemenu();" id="closemenu" class="closemenu">
+        <img style="width: 0.4rem" src="/watermachine/static/pic/back.png"></button>
     </div>
 
     <img src="/watermachine/static/pic/avatar.png" style="width: 1.4rem;" id="avatar"/><br>

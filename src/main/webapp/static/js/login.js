@@ -75,18 +75,20 @@ function login() {
 function load(){
 //中英文切换
     if(language != "zh_CN"){
-        $("title").html("Intelligent Water Fountain");
-        $("#RQ").text("Scan to Drink");
-        $("#numbertext").text("Input the water fountain id");
-        $("#idinputtext").text("Input the water fountain id");
-        $("#cancle").val("cancle");
+        $("title").html("Smart Water Fountain");
+        $("#RQ").text("Scan QR Code");
+        $("#numbertext").text("Input the device serial number");
+        $("#idinputtext").text("Input the device serial number");
+        $("#cancle").val("cancel");
         $("#login").val("confirm");
-        $("#record").text("My record");
-        $("#wallet").text("My wallet");
-        $("#invite").text("Invite friends");
-        $("#service").text("Customer Feedback");
+        $("#record").text("Transaction List");
+        $("#wallet").text("My Wallet");
+        $("#invite").text("Invite Friends");
+        $("#service").text("Feedback");
         $("#enrule").text("Detail Rules");
-        $("#rechargerec").text("Recharge record");
+        $("#rechargerec").text("Deposit Record");
+        $(".menu_1").css("text-align","left");
+        $(".menu_1").css("padding-left","2%");
     }
 
 
@@ -195,7 +197,7 @@ function loadrecord(){
 		$(".id").text("id: ");
 		$(".water").text("water: ");
 		$(".L").text("L");
-		$("title").html("My Record");
+		$("title").html("Transaction List");
 	}
 }
 
@@ -208,7 +210,7 @@ function loadservice(){
 		$("#suggestionbutton").val("submit");
 		$("#text").remove();
 		$("#entext").show();
-		$("title").html("Customer Feedback");
+		$("title").html("Feedback");
 	}
 }
 
@@ -281,7 +283,7 @@ function loadrechargerecord(){
 	if(language != "zh_CN"){
 		$(".cost").text("amount: ");
 		$(".id").text(" number: ");
-		$("title").html("Recharge Record");
+		$("title").html("Deposit Record");
 	}
 }
 

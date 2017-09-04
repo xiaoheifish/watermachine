@@ -62,7 +62,7 @@
 <!-- 确认按钮 -->
 <input type="submit" value="确认" id="recharge" onclick="recharge()">
 
-<img src="/watermachine/static/pic/tip.png" style="height: 2rem;margin-top: 0.5rem" />
+<img src="/watermachine/static/pic/tip.png" style="height: 2rem;margin-top: 0.5rem" id="tippicture"/>
 
 <div class="col-sm-12 col-xs-12" id="bottombar">
 天风物业<br>

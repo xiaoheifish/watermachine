@@ -14,7 +14,7 @@ function load(){
 		$("#vcode").text("confirm");
 		$("#inputdiv2").remove();
 		$("#eninputdiv2").show();
-		$("title").html("register");
+		$("title").html("Register");
 	}
 }
 

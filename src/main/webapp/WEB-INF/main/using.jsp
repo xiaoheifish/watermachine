@@ -45,14 +45,20 @@
 <span id="enwarnningtext" style="display:none;">The water-tap will be closed after<span style="color: rgb(230, 67, 64);"> you finishing taking water</span> or <span style="color: rgb(230, 67, 64);">60</span>s.<br>Please take water soon.</span>
 </div>
 
-<div id="savebox" style="margin-top: 1rem;font-size: 0.35rem;text-align: center;color: rgb(97, 97, 97); border: 3px solid rgb(97, 97, 97); padding: 5%; width: 80%;">
-	恭喜您向今日饮水目标更进一步！<br>
-	此次饮水您又节省了<span id="save">1/4</span>个饮料瓶！
+<br>
+<br>
+<br>
+<br>
+<img style="width: 1rem" src="/watermachine/static/pic/reward.png">
+
+<div id="savebox" style="margin-top: 0rem;font-size: 0.35rem;text-align: center;color: rgb(97, 97, 97); border: none; padding: 5%; width: 80%;font-style: italic;background-image: url(/watermachine/static/pic/lineback.png); background-size: 100% 100%;">
+	向今日饮水目标更进一步！<br>
+	此次饮水您又节省了 <span id="save" style="color: rgb(230, 67, 64);">1/4</span> 个饮料瓶！
 </div>
 
-<div id="ensavebox" style="margin-top: 1rem;font-size: 0.35rem;text-align: center;color: rgb(97, 97, 97); border: 3px solid rgb(97, 97, 97); padding: 5%; width: 80%;display: none;">
+<div id="ensavebox" style="margin-top: 0rem;font-size: 0.35rem;text-align: center;color: rgb(97, 97, 97); border: none; padding: 5%; width: 80%;display: none; font-style: italic;background-image: url(/watermachine/static/pic/lineback.png); background-size: 100% 100%;">
 	Go further on your drinking goal.<br>
-	You saved <span id="save">1/4</span> plastic bottle(s) this time！
+	You saved <span id="save" style="color: rgb(230, 67, 64);">1/4</span> plastic bottle(s) this time！
 </div>
 
 <div class="col-sm-12 col-xs-12" id="bottombar">
