@@ -15,6 +15,9 @@ function load(){
 		$("#entimeoutinfor").show();
 		$("#tippicture").attr("src", "/watermachine/static/pic/entip.png");
 	}
+	else{
+		$("#recharge").val("确认");
+	}
 }
 
 /* 读取cookie */

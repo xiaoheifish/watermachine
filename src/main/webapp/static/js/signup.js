@@ -16,6 +16,12 @@ function load(){
 		$("#eninputdiv2").show();
 		$("title").html("Register");
 	}
+	else{
+		$("#tel").val("请输入手机号");
+		$("#icode").val("请输入验证码");
+		$("#signup").text("立即注册");
+		$("#vcode").text("确认");
+	}
 }
 
 /* 读取cookie */

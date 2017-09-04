@@ -88,8 +88,13 @@ function load(){
         $("#enrule").text("Detail Rules");
         $("#rechargerec").text("Deposit Record");
         $(".menu_1").css("text-align","left");
-        $(".menu_1").css("padding-left","5%");
+        $(".menu_1").css("padding-left","13%");
     }
+	else{
+        $("title").html("欢迎使用智能直饮水机");
+        $("#RQ").text("扫码取水");
+        $("#numbertext").text("输入编号取水:");
+	}
 
 
     //查询语言并保存cookie,查询昵称及头像
@@ -212,6 +217,13 @@ function loadservice(){
 		$("#entext").show();
 		$("title").html("Feedback");
 	}
+	else(language != "zh_CN"){
+		$("#suggestion").text("欢迎您提出对智能饮水机的感受和意见，期待您的声音。");
+		$("#emailtext").text("您的邮箱");
+		$("#suggestionbutton").val("提交");
+		$("#text").show();
+		$("#entext").remove();
+	}
 }
 
 function suggestion(){
@@ -241,6 +253,10 @@ function loadwallet(){
 		$("#balancetext").text("Balance(¥)");
 		$("#jumprecharge").text("Recharge");
 		$("title").html("My Wallet");
+	}
+	else{
+		$("#balancetext").text("余额(元)");
+		$("#jumprecharge").text("充值");
 	}
 }
 

@@ -60,7 +60,7 @@
 </div>
 
 <!-- 确认按钮 -->
-<input type="submit" value="确认" id="recharge" onclick="recharge()">
+<input type="submit" value=" " id="recharge" onclick="recharge()">
 
 <img src="/watermachine/static/pic/tip.png" style="height: 2rem;margin-top: 0.5rem" id="tippicture"/>
 

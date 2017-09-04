@@ -91,10 +91,10 @@
 
 <!-- 二维码扫描按钮 -->
 
-<button id="RQ" onclick="RQ();" class="RQ">扫码取水</button>
+<button id="RQ" onclick="RQ();" class="RQ"> </button>
 
 <!-- 手动输入编号提示部分 -->
-<p id="numbertext" style="margin-top: 0.7rem; font-size: 0.35rem; color: rgb(136, 136, 136);">输入编号取水:</p>
+<p id="numbertext" style="margin-top: 0.7rem; font-size: 0.35rem; color: rgb(136, 136, 136);"> </p>
 <button id="opennumber" onclick="opennumber()"></button>
 
 <div class="col-sm-12 col-xs-12" id="bottombar">

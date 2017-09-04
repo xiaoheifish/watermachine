@@ -16,12 +16,12 @@
 <body onload="loadservice()" style="font-family: 'Microsoft YaHei' 'Cambria Math';background-color: rgb(240, 240, 240);display: flex;flex-direction: column;align-items: center;font-size: 0.4rem;">
 
 <!-- 二级菜单-我的客服 -->
-<textarea id="suggestion" onfocus="this.value = ''">欢迎您提出对智能饮水机的感受和意见，期待您的声音。</textarea>
+<textarea id="suggestion" onfocus="this.value = ''"> </textarea>
 <div>
-<p style="position: absolute;padding: 0.3rem;margin-top: 0.2rem;" id="emailtext">您的邮箱</p><input type="email" id="email" class="inputdiv"></input></div>
-<button class="RQ" onclick="suggestion();" id="suggestionbutton">提交</button>
+<p style="position: absolute;padding: 0.3rem;margin-top: 0.2rem;" id="emailtext"> </p><input type="email" id="email" class="inputdiv"></input></div>
+<button class="RQ" onclick="suggestion();" id="suggestionbutton"> </button>
 
-<p id="text" style="font-size: 0.3rem;margin-top: 0.3rem;text-align: center;"><span style="color: rgb(230, 67,64);">我们将选取有价值的意见及建议进行奖励</span>,谢谢！</p>
+<p id="text" style="display:none;font-size: 0.3rem;margin-top: 0.3rem;text-align: center;"><span style="color: rgb(230, 67,64);">我们将选取有价值的意见及建议进行奖励</span>,谢谢！</p>
 <p id="entext" style="display:none;font-size: 0.3rem;margin-top: 0.3rem;text-align: center;">Thanks for your advice.<br><span style="color: rgb(230, 67,64);">We will pick valuable comments and suggestions and reward.</span></p>
 
 </body>

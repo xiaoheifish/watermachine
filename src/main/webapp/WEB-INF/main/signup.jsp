@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+﻿<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -26,12 +26,12 @@
 
 <!-- 输入部分 -->
 <div id="inputdiv1" style="text-align: center;width: 100%;">
-<input type="tel" class="inputbox" id="tel" maxlength="11" value="请输入手机号" onfocus="this.value = '', positionhide()" onblur="positionshow()" >
-<button class="inputbutton" onclick="signup()" id="signup">立即注册</button>
+<input type="tel" class="inputbox" id="tel" maxlength="11" value=" " onfocus="this.value = '', positionhide()" onblur="positionshow()" >
+<button class="inputbutton" onclick="signup()" id="signup"> </button>
 <button class="shadow">&nbsp;</button>
 
-<input type="tel" class="inputbox" id="icode" maxlength="6" value="请输入验证码" onfocus="this.value = '', positionhide()" onblur="positionshow()" >
-<button class="inputbutton" onclick="icode()" id="vcode">确认</button>
+<input type="tel" class="inputbox" id="icode" maxlength="6" value=" " onfocus="this.value = '', positionhide()" onblur="positionshow()" >
+<button class="inputbutton" onclick="icode()" id="vcode"> </button>
 <button class="shadow">&nbsp;</button>
 </div>
 
@@ -55,7 +55,7 @@
 <div id="ensucdiv" style="font-size: 0.45rem;padding-left: 6%;width: 100%;margin-top: 0.5rem; display: none;">
 Registration succeeds!<br>
 You already have <span style="color: rgb(230, 67,64);">¥5</span> in your wallet.<br>
-<a style="margin-top: 1rem;text-align: center;">This page will jump to the home page in 3seconds. Enjoy the water NOW!</a>
+<a style="margin-top: 1rem;text-align: center;">Going to the home page in 3seconds. Enjoy the water NOW!</a>
 </div>
 
 <div class="col-sm-12 col-xs-12" id="bottombar">

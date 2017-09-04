@@ -37,11 +37,11 @@
 
 <div class="infor">
 <img style="height:0.6rem;width:0.522rem;" src="/watermachine/static/pic/usingwater.png">&nbsp;&nbsp;
-<span id="water">${water}</span><span id="L">升取水量</span></div>
+<span id="water">${water}</span><span id="L"> </span></div>
 
 <div style="font-size:0.3rem;color: rgb(97, 97, 97);text-align: center;margin-top: 0.5rem;">
 <img style="height: 0.8rem" src="/watermachine/static/pic/lefttime.png"><br><br>
-<span id="chwarnningtext">取水阀门将在<span style="color: rgb(230, 67, 64);">取水结束</span>或<span  style="color: rgb(230, 67, 64);">1分钟</span>后关闭，<br>请您尽快取水，使用过程中请注意节约用水！</span>
+<span id="chwarnningtext" style="display:none;">取水阀门将在<span style="color: rgb(230, 67, 64);">取水结束</span>或<span  style="color: rgb(230, 67, 64);">1分钟</span>后关闭，<br>请您尽快取水，使用过程中请注意节约用水！</span>
 <span id="enwarnningtext" style="display:none;">The water-tap will be closed after<span style="color: rgb(230, 67, 64);"> you finishing taking water</span> or <span style="color: rgb(230, 67, 64);">60</span>s.<br>Please take water soon.</span>
 </div>
 
@@ -51,7 +51,7 @@
 <br>
 <img style="width: 1rem" src="/watermachine/static/pic/reward.png">
 
-<div id="savebox" style="margin-top: 0rem;font-size: 0.35rem;text-align: center;color: rgb(97, 97, 97); border: none; padding: 5%; width: 80%;font-style: italic;background-image: url(/watermachine/static/pic/lineback.png); background-size: 100% 100%;">
+<div id="savebox" style="margin-top: 0rem;font-size: 0.35rem;text-align: center;color: rgb(97, 97, 97); border: none; padding: 5%; width: 80%;display: none;font-style: italic;background-image: url(/watermachine/static/pic/lineback.png); background-size: 100% 100%;">
 	向今日饮水目标更进一步！<br>
 	此次饮水您又节省了 <span id="save" style="color: rgb(230, 67, 64);">1/4</span> 个饮料瓶！
 </div>

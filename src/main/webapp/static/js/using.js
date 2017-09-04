@@ -15,6 +15,13 @@ function load(){
 		$("#savebox").remove();
         $("#ensavebox").show();
 	}
+    else{
+        $("#chwarnningtext").show();
+        $("#enwarnningtext").remove();
+        $("#L").text("升取水量");
+        $("#savebox").show();
+        $("#ensavebox").remove();
+    }
 
     if(water == "0.3"){$("#save").text("1/2");}
     if(water == "0.5"){$("#save").text("1");}
