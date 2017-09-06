@@ -60,7 +60,7 @@ function icode(){
 			success:function(data){
 				if(data["testpass"]=="yes"){
                     open();
-                    setTimeout(function() { window.location.href="http://www.terabits-wx.cn/watermachine/mainpage?code=123"; },3000);
+                    setTimeout(function() { window.location.href="http://www.terabits-wx.cn/watermachine/mainpage?code=tera123bits"; },3000);
 
 				}else{
 					alert("error");

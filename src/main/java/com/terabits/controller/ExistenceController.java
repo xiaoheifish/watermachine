@@ -21,6 +21,7 @@ public class ExistenceController {
     //输入编号判断该编号是否存在,用于首页用户输好编号后，跳转前判断，防止用户乱输编号
     @RequestMapping(value="/existence/{displayId}",method= {RequestMethod.GET, RequestMethod.POST})
     public void existence(@PathVariable("displayId") String displayId, HttpServletResponse response) throws Exception{
+
         TerminalPO terminalPO = terminalService.selectOneTerminal(displayId);
         JSONObject jsonObject = new JSONObject();
         if(terminalPO == null){

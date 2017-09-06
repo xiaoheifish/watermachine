@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,7 +29,10 @@ public class RecordController {
 
     //显示消费记录页
     @RequestMapping(value = "/record", method = RequestMethod.GET)
-    public String showRecord(){
+    public String showRecord(HttpSession session){
+        if(session.getAttribute("openid") == null){
+            return "main/timeout.jsp";
+        }
         return "main/record.jsp";
     }
 

@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -34,7 +35,10 @@ public class InfomationController {
     private HeartBeatService heartBeatService;
 
     @RequestMapping(value="/info/{displayId}",method= RequestMethod.GET)
-    public String getProductInfo(@PathVariable("displayId") String displayId, ModelMap model) throws Exception {
+    public String getProductInfo(@PathVariable("displayId") String displayId, ModelMap model, HttpSession session) throws Exception {
+        if(session.getAttribute("openid") == null){
+            return "main/timeout.jsp";
+        }
         SimpleDateFormat dfs = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
         //根据终端的displayId取出终端数据

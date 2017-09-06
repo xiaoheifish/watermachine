@@ -49,18 +49,21 @@ public class MainController {
         	//进入方式不对，从手机端重新进入
             return "main/timeout.jsp";
         }
-        if (code.equals("123")){
+        if (code.equals("tera123bits")){
+            //从充值，下单跳转过来，附加验证信息，可以直接返回首页
         	return "main/login.jsp";
         }
         JSONObject jsonObject = WeixinUtil.getOpenid(code, WeixinGlobal.APP_ID, WeixinGlobal.APP_SECRET);
         if(jsonObject.has("openid")==false){
             String sessionOpenId = (String)session.getAttribute("openid");
             if (sessionOpenId == null) {
-                //进入方式不对，从手机端重新进入
+                //session过期，重新进入
                 return "main/timeout.jsp";
             }else if (sessionOpenId.equals("unregister")){
-            	return "signup.jsp";
+                //在注册页刷新
+            	return "main/signup.jsp";
             }else {
+                //获取openId出问题了，若session中仍存有openId，则可返回首页
                 UserPO userPO = userService.selectUser(sessionOpenId);
                 model.addAttribute("openId", userPO.getOpenId());
                 model.addAttribute("language", userPO.getLanguage());
@@ -69,18 +72,21 @@ public class MainController {
                 return "main/login.jsp";
             }
         }
+        //正常获取openId
         String openId = jsonObject.getString("openid");
         WeixinUserBO weixinUserBO = userService.userRegistered(openId);
+
+        //首先判断是否是之前点进来而没注册的,如果是，则返回注册页，将unregister存入session中
         if((weixinUserBO != null) && ((weixinUserBO.getPhone()==null ||(weixinUserBO.getPhone().equals(""))))){
         	UserPO userPO = userService.selectUser(openId);
             model.addAttribute("openId", userPO.getOpenId());
             model.addAttribute("language", userPO.getLanguage());
             model.addAttribute("nickname", userPO.getNickname());
             model.addAttribute("headimgurl", userPO.getHeadImgUrl());
+            session.setAttribute("openid","unregister");
         	return "main/signup.jsp";
         }
-        //存入session中，以备后续使用
-        session.setAttribute("openid", openId);
+
         String accesstoken = jsonObject.getString("access_token");
         //获取用户信息
         JSONObject jsonObject1 = WeixinUtil.getUserInfo(accesstoken, openId);
@@ -97,25 +103,9 @@ public class MainController {
         System.out.println("userPO" + userPO);
 
 
-        String phone = null;
-        try{
-        	phone = weixinUserBO.getPhone();
-        }catch(Exception e){
-        	phone = "123";
-        }
         //phone不为null，表明已注册，则更新一下信息，返回首页
         if ((weixinUserBO == null)==false) {
-            if ((phone == null)||phone.equals("")) {
-                //phone为null，表明之前点进来过，则更新一下信息，进入注册页
-                try {
-                    userService.updateInfo(userPO);
-                } catch (Exception e) {
-                    logger.error("userService.updateInfo error for unregistered user in mainpage!");
-                }
-                model.addAttribute("openId", openId);
-                model.addAttribute("language", jsonObject1.getString("language"));
-                return "main/signup.jsp";
-            }
+            session.setAttribute("openid", openId);
             try {
                 userService.updateInfo(userPO);
             } catch (Exception e) {
@@ -126,9 +116,10 @@ public class MainController {
             model.addAttribute("nickname", jsonObject1.getString("nickname"));
             model.addAttribute("headimgurl", jsonObject1.getString("headimgurl"));
             return "main/login.jsp";
+
         } else {
             //若language为null，则表明之前从未进来过，则插入该用户信息，进入注册页
-
+            session.setAttribute("openid","unregister");
             try {
                 userService.insertUser(userPO);
             } catch (Exception e) {

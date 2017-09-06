@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,7 +35,10 @@ public class RechargeController {
 
     //显示我的钱包页,同时显示余额
     @RequestMapping(value = "/wallet", method = RequestMethod.GET)
-    public String showRecharge(HttpServletRequest request, ModelMap model){
+    public String showRecharge(HttpServletRequest request, ModelMap model, HttpSession session){
+        if(session.getAttribute("openid") == null){
+            return "main/timeout.jsp";
+        }
         String openId = request.getParameter("openid");
         try{
             UserPO userPO = userService.selectUser(openId);

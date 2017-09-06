@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Created by Administrator on 2017/8/20.
@@ -32,7 +33,10 @@ public class MailController {
 
     //显示邮件页
     @RequestMapping(value = "/mail", method = RequestMethod.GET)
-    public String showRecord(){
+    public String showRecord(HttpSession session){
+        if(session.getAttribute("openid") == null){
+            return "main/timeout.jsp";
+        }
         return "main/service.jsp";
     }
 
