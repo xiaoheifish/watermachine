@@ -215,7 +215,7 @@ function loadservice(){
 	if(language != "zh_CN"){
 		$("#suggestion").text("Please give some suggestion to help us improve!");
 		$("#emailtext").text("Email");
-		$("#suggestionbutton").text("submit");
+		$("#suggestionbutton").text("Submit");
 		$("#text").remove();
 		$("#entext").show();
 		$("title").html("Feedback");

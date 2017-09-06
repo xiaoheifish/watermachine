@@ -1,15 +1,10 @@
 ﻿var openid,language;
 function load(){
-	settime();
 	openid = getCookie("openid");
 	language = getCookie("language");
 	
 	if(language != "zh_CN"){
 		$("#recharge").val("Confirm");
-		if(status == "空闲"){
-			status = "usable";
-		}
-		else{status = "using";}
 		$("title").text("Information");
 		$("#timeoutinfor").remove();
 		$("#entimeoutinfor").show();
@@ -17,6 +12,10 @@ function load(){
 	}
 	else{
 		$("#recharge").val("确认");
+	}
+
+	if(status == "下单中"){
+		settime();
 	}
 }
 
