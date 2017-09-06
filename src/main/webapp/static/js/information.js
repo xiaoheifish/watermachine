@@ -1,11 +1,11 @@
 ﻿var openid,language;
 function load(){
+	settime();
 	openid = getCookie("openid");
 	language = getCookie("language");
 	
 	if(language != "zh_CN"){
 		$("#recharge").val("Confirm");
-		$("#soorytext").text("Sorry, this water fountain is unavailable.");
 		if(status == "空闲"){
 			status = "usable";
 		}
@@ -18,6 +18,14 @@ function load(){
 	else{
 		$("#recharge").val("确认");
 	}
+}
+
+/* 一秒刷新函数 */
+function settime(){
+    setTimeout(function() {
+    	window.location.href = "http://www.terabits-wx.cn/watermachine/info/" + id;
+    	settime();
+    },1000);
 }
 
 /* 读取cookie */

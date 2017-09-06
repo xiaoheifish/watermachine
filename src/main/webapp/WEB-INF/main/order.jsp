@@ -9,7 +9,9 @@
 <script language="javascript" src="/watermachine/static/js/information.js"></script>
 <link rel="stylesheet" href="/watermachine/static/css/bootstrap.css">
 <link rel="stylesheet" href="/watermachine/static/css/information.css">
-
+<script>
+	var id = "${id}";
+</script>
 <title>欢迎使用智能饮水机</title>
 </head>
 
@@ -30,8 +32,7 @@
 <img style="height:0.6rem;width:0.522rem;" src="/watermachine/static/pic/status.png">&nbsp;&nbsp;
 <span id="status">${status}</span>
 </div>
-<br>
-<p style="font-size:0.4rem;" id="soorytext">很抱歉！该设备暂时无法使用。</p>
+
 
 
 
