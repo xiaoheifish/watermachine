@@ -36,6 +36,6 @@ public class WeixinGlobal {
     public static String EPAY_DESC = "xxxx";//企业付款描述
 
     //项目标号
-    public static final String PRO_NUMBER= "4006663";
+    public static final String PRO_NUMBER= "63";
 
 }

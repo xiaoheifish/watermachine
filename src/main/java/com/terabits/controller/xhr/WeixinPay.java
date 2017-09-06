@@ -55,11 +55,11 @@ public class WeixinPay {
             return;
         }
 
-
         //将该条交易记录插入数据库
         RechargeOrderPO orderPO = new RechargeOrderPO();
-        orderPO.setPayment(totalmoney * 2);
+        orderPO.setPayment(totalmoney);
         orderPO.setOpenId(openId);
+        orderPO.setPresent(totalmoney);
         try {
             orderService.insertOrder(orderPO);
         }catch (Exception e){

@@ -9,6 +9,7 @@
         <result property="tradeNo" column="tradeno" javaType="java.lang.String"></result>
         <result property="openId" column="openid" javaType="java.lang.String"></result>
         <result property="payment" column = "payment" javaType="java.lang.Double"></result>
+        <result property="present" column="present" javaType="java.lang.Double"></result>
         <result property="gmtCreate" column="gmtcreate" javaType="java.lang.String"></result>
         <result property="gmtModified" column="gmtmodified" javaType="java.lang.String"></result>
     </resultMap>
@@ -20,8 +21,8 @@
     <!--#{}中的内容，为占位符，当参数为某个JavaBean时，表示放置该Bean对象的属性值  -->
 
     <insert id="insertOrder" useGeneratedKeys="true" keyProperty="id" parameterType="com.terabits.meta.po.RechargeOrderPO">
-        insert into rechargerecord (orderid, tradeno, openid, payment, gmtcreate, gmtmodified)
-        values (#{orderId}, #{tradeNo}, #{openId}, #{payment}, now(), now())
+        insert into rechargerecord (orderid, tradeno, openid, payment, present, gmtcreate, gmtmodified)
+        values (#{orderId}, #{tradeNo}, #{openId}, #{payment}, #{present}, now(), now())
     </insert>
 
     <select id="selectCountByTime" parameterType="com.terabits.meta.bo.TimeSpanBO" resultType="java.lang.Integer">

@@ -16,6 +16,8 @@ public class RechargeOrderPO {
     private String openId;
     //交易金额
     private double payment;
+    //赠送金额
+    private double present;
     private String gmtCreate;
     private String gmtModified;
 
@@ -59,6 +61,14 @@ public class RechargeOrderPO {
         this.payment = payment;
     }
 
+    public double getPresent() {
+        return present;
+    }
+
+    public void setPresent(double present) {
+        this.present = present;
+    }
+
     public String getGmtCreate() {
         return gmtCreate;
     }
@@ -83,6 +93,7 @@ public class RechargeOrderPO {
                 ", tradeNo='" + tradeNo + '\'' +
                 ", openId='" + openId + '\'' +
                 ", payment=" + payment +
+                ", present=" + present +
                 ", gmtCreate='" + gmtCreate + '\'' +
                 ", gmtModified='" + gmtModified + '\'' +
                 ']';

@@ -73,17 +73,19 @@ public class WeixinNotify{
                 }
                 //比对金额是否相等，注意实际使用中money的单位是分，目前是充多少送多少，所以将微信发回来的值乘2，与数据库中的值比较
                 double payment = orderPO.getPayment();
-                int prepayment = (int)payment;
-                int premoney = Integer.parseInt(money);
-                double auxPayment = payment / 2.0;
-                if(prepayment == premoney * 2){
+                double premoney = Double.parseDouble(money);
+
+                //用户余额和历史总充值及总余额，要直接加双倍
+                double addPayment = payment * 2.0;
+                
+                if(payment == premoney){
                     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
                     String currentDay = sdf.format(new Date());
                     int result = orderService.updatePaymentStatus(tradeNo, orderId);
                     if (result == 1){
                         UserPO userPO = userService.selectUser((String)map.get("openid"));
                         double remain = userPO.getRemain();
-                        remain = remain + payment;
+                        remain = remain + addPayment;
                         try{
                             //更新用户余额
                             userService.updateRemain(remain, (String)map.get("openid"));
@@ -91,16 +93,16 @@ public class WeixinNotify{
                             logger.error("更新用户余额失败，订单号="+orderId);
                         }
                         try{
-                            //当日统计数据，更新总充值
+                            //当日统计数据，更新总充值和总赠送
                             AuxcalPO auxcalPO = new AuxcalPO();
-                            auxcalPO.setRecharge(auxPayment);
+                            auxcalPO.setRecharge(payment);
                             auxcalPO.setGmtCreate(currentDay);
-                            auxcalPO.setPresent(auxPayment);
+                            auxcalPO.setPresent(payment);
                             statisticService.updateTodayAuxcal(auxcalPO);
                             //历史统计数据，更新总充值和总余额
                             TotalPO totalPO = new TotalPO();
-                            totalPO.setRecharge(payment);
-                            totalPO.setRemain(payment);
+                            totalPO.setRecharge(addPayment);
+                            totalPO.setRemain(addPayment);
                             statisticService.updateTotalRecharge(totalPO);
                         }catch (Exception e){
                             logger.error("更新统计数据失败，订单号="+orderId);
