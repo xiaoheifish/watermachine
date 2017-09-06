@@ -9,8 +9,11 @@
 <script language="javascript" src="/watermachine/static/js/information.js"></script>
 <link rel="stylesheet" href="/watermachine/static/css/bootstrap.css">
 <link rel="stylesheet" href="/watermachine/static/css/information.css">
-
-<title>欢迎使用智能饮水机</title>
+<script>
+	var id = "${id}";
+	var status = "${status}";
+</script>
+<title>欢迎使用智能直饮水机</title>
 </head>
 
 <body onload="money1(),load()" style="font-family: 'Microsoft YaHei' 'Cambria Math';background-color: rgb(240, 240, 240);display: flex;flex-direction: column;align-items: center;padding-top: 0.15rem;">
@@ -30,18 +33,11 @@
 <img style="height:0.6rem;width:0.522rem;" src="/watermachine/static/pic/status.png">&nbsp;&nbsp;
 <span id="status">${status}</span>
 </div>
-<br>
-<p style="font-size:0.4rem;" id="soorytext">很抱歉！该设备暂时无法使用。</p>
-
-
 
 <div class="col-sm-12 col-xs-12" id="bottombar">
 天风物业<br>
 powered by Terabits
 </div>
-
-
-
 
 </body>
 </html>

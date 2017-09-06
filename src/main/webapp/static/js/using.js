@@ -14,6 +14,8 @@ function load(){
         $("title").text("Using Information");
 		$("#savebox").remove();
         $("#ensavebox").show();
+        $("#warn").remove();
+        $("#enwarn").show();
 	}
     else{
         $("#chwarnningtext").show();
