@@ -46,27 +46,39 @@ public class MainController {
         //获取code和openid
         String code = request.getParameter("code");
         if (code == null) {
-        	//jia shang ti shi ye, cong shouji duan jin ru
-        	System.out.println("code null");
-            String sessionOpenId = (String)session.getAttribute("openid");
-            UserPO userPO = userService.selectUser(sessionOpenId);
-            model.addAttribute("openId", userPO.getOpenId());
-            model.addAttribute("language", userPO.getLanguage());
-            model.addAttribute("nickname", userPO.getNickname());
-            model.addAttribute("headimgurl", userPO.getHeadImgUrl());
-            return "main/login.jsp";
+        	//进入方式不对，从手机端重新进入
+            return "main/timeout.jsp";
+        }
+        if (code.equals("123")){
+        	return "main/login.jsp";
         }
         JSONObject jsonObject = WeixinUtil.getOpenid(code, WeixinGlobal.APP_ID, WeixinGlobal.APP_SECRET);
         if(jsonObject.has("openid")==false){
             String sessionOpenId = (String)session.getAttribute("openid");
-            UserPO userPO = userService.selectUser(sessionOpenId);
+            if (sessionOpenId == null) {
+                //进入方式不对，从手机端重新进入
+                return "main/timeout.jsp";
+            }else if (sessionOpenId.equals("unregister")){
+            	return "signup.jsp";
+            }else {
+                UserPO userPO = userService.selectUser(sessionOpenId);
+                model.addAttribute("openId", userPO.getOpenId());
+                model.addAttribute("language", userPO.getLanguage());
+                model.addAttribute("nickname", userPO.getNickname());
+                model.addAttribute("headimgurl", userPO.getHeadImgUrl());
+                return "main/login.jsp";
+            }
+        }
+        String openId = jsonObject.getString("openid");
+        WeixinUserBO weixinUserBO = userService.userRegistered(openId);
+        if((weixinUserBO != null) && ((weixinUserBO.getPhone()==null ||(weixinUserBO.getPhone().equals(""))))){
+        	UserPO userPO = userService.selectUser(openId);
             model.addAttribute("openId", userPO.getOpenId());
             model.addAttribute("language", userPO.getLanguage());
             model.addAttribute("nickname", userPO.getNickname());
             model.addAttribute("headimgurl", userPO.getHeadImgUrl());
-            return "main/login.jsp";
+        	return "main/signup.jsp";
         }
-        String openId = jsonObject.getString("openid");
         //存入session中，以备后续使用
         session.setAttribute("openid", openId);
         String accesstoken = jsonObject.getString("access_token");
@@ -83,13 +95,8 @@ public class MainController {
         userPO.setCountry(jsonObject1.getString("country"));
         userPO.setHeadImgUrl(jsonObject1.getString("headimgurl"));
         System.out.println("userPO" + userPO);
-       /* try {
-            //取回phone和language
-            weixinUserBO = userService.userRegistered(openId);
-        }catch (Exception e){
-            logger.error("userService.userRegistered error in mainpage!");
-        }*/
-        WeixinUserBO weixinUserBO = userService.userRegistered(openId);
+
+
         String phone = null;
         try{
         	phone = weixinUserBO.getPhone();

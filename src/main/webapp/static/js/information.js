@@ -108,17 +108,17 @@ function recharge() {
 					if(language != "zh_CN"){alert("Failure to place order");}
 					else{alert("下单失败，请稍后重试！");}
 
-					window.location.href = "/watermachine/mainpage";
+					window.location.href = "/watermachine/mainpage?code=123";
                 }
                 if(data["result"] == "openid not match"){
                     if(language != "zh_CN"){alert("Failure to place order");}
 					else{alert("下单失败，请稍后重试！");}
-					window.location.href = "/watermachine/mainpage";
+					window.location.href = "/watermachine/mainpage?code=123";
                 }
                 if(data["result"] == "error"){
                     if(language != "zh_CN"){alert("Failure to place order");}
 					else{alert("下单失败，请稍后重试！");}
-					window.location.href = "/watermachine/mainpage";
+					window.location.href = "/watermachine/mainpage?code=123";
                 }
                 if(data["result"] == "order later"){
                     if(language != "zh_CN"){alert("Failure to place order");}

@@ -24,7 +24,7 @@ The session has expired, please re-enter from the official accounts.
 
 
 
-<div class="col-sm-12 col-xs-12" id="bottombar">
+<div class="col-sm-12 col-xs-12" id="bottombar" style="text-align:center;position:absolute;bottom:0.2rem;color: rgb(136,136,136);font-size: 0.25rem;">
 天风物业<br>
 powered by Terabits
 </div>

@@ -46,7 +46,7 @@ public class InfomationController {
             model.addAttribute("status","不可使用");
             model.addAttribute("id",displayId);
             model.addAttribute("location",terminalPO.getLocation());
-            return "main/offline.jsp";
+            return "main/order.jsp";
         }else{
             String gmtModified = heartBeatPO.getGmtModified();
             Date now = new Date();
@@ -56,7 +56,7 @@ public class InfomationController {
                 model.addAttribute("status","不可使用");
                 model.addAttribute("id",displayId);
                 model.addAttribute("location",terminalPO.getLocation());
-                return "main/offline.jsp";
+                return "main/order.jsp";
             }
         }
 
@@ -71,7 +71,12 @@ public class InfomationController {
             model.addAttribute("status","下单中");
             model.addAttribute("id",displayId);
             model.addAttribute("location",terminalPO.getLocation());
-            return "main/offline.jsp";
+            return "main/order.jsp";
+        }else if (terminalPO.getState() == Constants.NO_RESPONSE){
+        	  model.addAttribute("status","不可使用");
+              model.addAttribute("id",displayId);
+              model.addAttribute("location",terminalPO.getLocation());
+              return "main/order.jsp";
         }
         else{
             //如果state是使用中的话，则去consumeOrder中查询此设备对应的最后一笔交易，取出该记录产生的时间，用以算使用时间，取出该记录的水量，用以算剩余时间

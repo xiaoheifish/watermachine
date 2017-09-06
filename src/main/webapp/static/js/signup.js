@@ -1,11 +1,6 @@
 ﻿
 function load(){
-	//查询语言并保存cookie,查询昵称及头像
-	setCookie("openid",openid);
-	setCookie("language",language);
-	setCookie("avatar",avatar);
-	setCookie("nickname",nickname);
-
+	
 	if(language != "zh_CN"){
 		$("#signuppic").attr("src","/watermachine/static/pic/ensignuppic.png");
 		$("#tel").val("input telephone number");
@@ -22,18 +17,6 @@ function load(){
 		$("#signup").text("立即注册");
 		$("#vcode").text("确认");
 	}
-}
-
-/* 读取cookie */
-function getCookie(cname)
-{
-	var name = cname + "=";
-	var ca = parent.document.cookie.split(';');
-	for(var i=0; i<ca.length; i++) {
-		var c = ca[i].trim();
-		if (c.indexOf(name)==0) return c.substring(name.length,c.length);
-	}
-	return null;
 }
 
 var certificate,countdown;
@@ -77,7 +60,7 @@ function icode(){
 			success:function(data){
 				if(data["testpass"]=="yes"){
                     open();
-                    setTimeout(function() { window.location.href="http://www.terabits-wx.cn/watermachine/mainpage"; },3000);
+                    setTimeout(function() { window.location.href="http://www.terabits-wx.cn/watermachine/mainpage?code=123"; },3000);
 
 				}else{
 					alert("error");

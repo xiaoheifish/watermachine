@@ -95,7 +95,7 @@ function recharge() {
                         $("#waittime").text(countdown);
                         countdown--;
                         if (countdown == 0){
-                            window.location.href="/watermachine/mainpage";
+                            window.location.href="/watermachine/mainpage?code=123";
                         }
                         else{
                             setTimeout(function() { settime() },1000);
