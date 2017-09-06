@@ -215,7 +215,7 @@ function loadservice(){
 	if(language != "zh_CN"){
 		$("#suggestion").text("Please give some suggestion to help us improve!");
 		$("#emailtext").text("Email");
-		$("#suggestionbutton").val("submit");
+		$("#suggestionbutton").text("submit");
 		$("#text").remove();
 		$("#entext").show();
 		$("title").html("Feedback");
@@ -223,7 +223,7 @@ function loadservice(){
 	else{
 		$("#suggestion").text("欢迎您提出对智能饮水机的感受和意见，期待您的声音。");
 		$("#emailtext").text("您的邮箱");
-		$("#suggestionbutton").val("提交");
+		$("#suggestionbutton").text("提交");
 		$("#text").show();
 		$("#entext").remove();
 	}

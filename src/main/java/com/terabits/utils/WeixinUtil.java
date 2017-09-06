@@ -163,27 +163,29 @@ public class WeixinUtil {
         }
         return jsapiTicket;
     }
-   /* public static void main(String[] args){
-        String token = "ll7-C7JGKJMasLoSf-aUUsN2xtqcszb9I93BKlXyn3boUPJBzV8U8f5cvN_dLw-3JRO07XIZoWYR8O4ik6bIV8sRHtDlHKUI_jYkbfndt-LFFXZgqDgNCYiI09dOurqETVDjAGAJLT";
+    //生成带参数二维码
+    public static String generateQrcode(String token, String displayId){
+        //String token = "TXjoY6oJHPBNNLCM_MyjMLVddYfntWntCbjs_d-2Ogeys_gWB9EoeCALoEbm6M8qhHk5mA5LenF1tvTrzGvopTtnfu_8LpoZZZtOebUOx4FbsCefJ1N9kziWkt9FgLgHNARfAFAANE";
         String requestUrl = get_qrcode_url.replace("TOKEN", token);
         String qrscene = "{\n" +
                 "    \"action_name\": \"QR_LIMIT_SCENE\",\n" +
                 "    \"action_info\": {\n" +
                 "        \"scene\": {\n" +
-                "            \"scene_id\": 4\n" +
+                "            \"scene_id\": "+
+                displayId +
+                " \n" +
                 "        }\n" +
                 "    }\n" +
                 "}";
         String data = httpRequest(requestUrl, "POST", qrscene);
-        System.out.println("Data:"+ data);
-        log.error(data);
-    }*/
+        return data;
+    }
 
     //获取用户信息
-    public static JSONObject getUserInfo(String accesstoken, String openid){
+    public static JSONObject getUserInfo(String accesstoken, String openid) {
         String get_usrinfo_url = "https://api.weixin.qq.com/sns/userinfo?access_token=ACCESS_TOKEN&openid=OPENID&lang=zh_CN";
-        String requestUrl = get_usrinfo_url.replace("ACCESS_TOKEN",accesstoken).replace("OPENID", openid);
-        String data = httpRequest(requestUrl,"GET", null);
+        String requestUrl = get_usrinfo_url.replace("ACCESS_TOKEN", accesstoken).replace("OPENID", openid);
+        String data = httpRequest(requestUrl, "GET", null);
         JSONObject jsonObject = JSONObject.fromObject(data);
         return jsonObject;
     }

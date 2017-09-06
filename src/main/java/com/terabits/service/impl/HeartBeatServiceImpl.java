@@ -35,7 +35,6 @@ public class HeartBeatServiceImpl implements HeartBeatService{
     根据deviceId取出心跳包，将gmtModified与当前时间比较，若大于120s，则表明丢失上次心跳包，设备很可能已经掉线，所以判断为禁止使用状态
      */
     public HeartBeatPO selectHeartBeat(String deviceId) throws Exception{
-    	logger.error("[op:selectHeartBeat] print here");
         return heartBeatMapper.selectHeartBeat(deviceId);
     }
 

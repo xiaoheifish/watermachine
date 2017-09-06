@@ -67,7 +67,7 @@ public class InfomationController {
             model.addAttribute("id",displayId);
             model.addAttribute("location",terminalPO.getLocation());
             return "main/information.jsp";
-        }else if(terminalPO.getState() == Constants.ORDER_STATE){
+        }else if((terminalPO.getState() == Constants.ORDER_STATE)|| (terminalPO.getState() == 0)){
             model.addAttribute("status","下单中");
             model.addAttribute("id",displayId);
             model.addAttribute("location",terminalPO.getLocation());

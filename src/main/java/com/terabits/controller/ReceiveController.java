@@ -84,8 +84,9 @@ public class ReceiveController {
         }
         NotifyDataPO notifyDataPO = new NotifyDataPO();
         notifyDataPO.setContent(content);
-        notifyDataService.insertNotifyData(notifyDataPO);
-        
+        if (rawInfo[0] != (byte) 0x1A){
+        	 notifyDataService.insertNotifyData(notifyDataPO);
+        }
         if (rawInfo[0] == (byte) 0x1B) {
             String imei = terminalService.selectImeiFromDeviceId(deviceId);
             String displayId = terminalService.getDisplayIdFromImei(imei);
@@ -95,16 +96,12 @@ public class ReceiveController {
             } catch (Exception e) {
                 e.printStackTrace();
             }
+         
             //更新设备表中的设备状态
             TerminalUpdateBO terminalUpdateBO = new TerminalUpdateBO();
             terminalUpdateBO.setState(Constants.ON_STATE);
             terminalUpdateBO.setDisplayId(displayId);
             terminalService.updateTerminal(terminalUpdateBO);
-            //在数据库中添加此次操作记录,operationPO里可以记录下指令编号，用于调试！！
-            OperationPO operationPO = new OperationPO();
-            operationPO.setStatus(Constants.OFF_TO_ON);
-            operationPO.setImei(imei);
-            operationService.insertOperation(operationPO);
             //更新命令表中此条命令的状态
             commandService.updateState(Constants.HALF_STATE, deviceId);
         } else if (rawInfo[0] == (byte) 0x1C) {
@@ -115,17 +112,12 @@ public class ReceiveController {
             terminalUpdateBO.setState(Constants.OFF_STATE);
             terminalUpdateBO.setImei(imei);
             terminalService.updateTerminal(terminalUpdateBO);
-            //在操作记录中增加此次操作
-            OperationPO operationPO = new OperationPO();
-            operationPO.setStatus(Constants.ON_TO_OFF);
-            operationPO.setImei(imei);
-            operationService.insertOperation(operationPO);
             //删除redis缓存中的该设备
             credentialService.deleteExpireDevice(deviceId);
             //更新命令表中此条命令的状态
             commandService.updateState(Constants.END_STATE, deviceId);
         } else if (rawInfo[0] == (byte) 0x19) {
-            terminalService.updateStrength(rawInfo[1], deviceId);
+            terminalService.updateStrength((int)rawInfo[1], deviceId);
         } else if (rawInfo[0] == (byte) 0x1A){
             HeartBeatPO heartBeatPO = heartBeatService.selectHeartBeat(deviceId);
             if(heartBeatPO == null){
