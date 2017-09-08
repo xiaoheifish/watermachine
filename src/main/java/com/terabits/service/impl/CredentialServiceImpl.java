@@ -61,7 +61,7 @@ public class CredentialServiceImpl implements CredentialService{
     public void deleteExpireDevice(String deviceId){
         HashOperations<String, Object, Object> hashOperations = redisTemplate
                 .opsForHash();
-        hashOperations.delete("hash",deviceId);
+        hashOperations.delete("device",deviceId);
     }
 /*        hashOperations.delete("hash", "map1");
         System.out.println(hashOperations.entries("hash"));*/

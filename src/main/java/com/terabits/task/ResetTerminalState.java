@@ -30,7 +30,7 @@ public class ResetTerminalState {
     @Autowired
     private TerminalService terminalService;
     //查redis中尚在工作的，去terminal中更新在线过久的，并在redis中删除
-    @Scheduled(cron = "0/59 * * * * *")
+    @Scheduled(cron = "0/10 * * * * *")
     void resetState()throws Exception{
         Map<Object, Object> map = credentialService.getCurentDevice();
         Date now = new Date();
@@ -38,7 +38,7 @@ public class ResetTerminalState {
             now = new Date();
             Long beginTime = (Long)map.get(key);
             Long timeSpan = (now.getTime() - beginTime) / 1000;
-            if (timeSpan > 150){
+            if (timeSpan > 120){
                 TerminalUpdateBO terminalUpdateBO = new TerminalUpdateBO();
                 terminalUpdateBO.setDeviceId((String)key);
                 terminalUpdateBO.setState(Constants.OFF_STATE);
