@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+﻿<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -6,7 +6,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script language="javascript" src="/watermachine/static/js/jquery-3.2.1.min.js"></script>
 <script language="javascript" src="/watermachine/static/js/flexible.js"></script>
-<script language="javascript" src="/watermachine/static/js/login.js"></script>
+<script language="javascript" src="/watermachine/static/js/invite.js"></script>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 <link rel="stylesheet" href="/watermachine/static/css/bootstrap.css">
 <link rel="stylesheet" href="/watermachine/static/css/login.css">
 
@@ -33,7 +34,7 @@
 <div id="en" style="text-align: center;">
 <img style="width: 7rem; margin-top: 1rem;" src="/watermachine/static/pic/invitation.png">
 <p>Invite your friends. Both of you will receive a</p>
-<p style="font-size: 0.7rem">¥5 voucher</p>
+<p style="font-size: 0.7rem">¥5 coupon</p>
 <br><br><br>
 <div>
 <div id="friends" onclick="friends();" style="text-align: center; display: inline-block;">

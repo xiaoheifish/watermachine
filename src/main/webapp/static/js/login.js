@@ -299,7 +299,6 @@ function loadrechargerecord(){
 			 else{alert("暂无数据！");}
 		}
 	});
-	
 	if(language != "zh_CN"){
 		$(".cost").text("amount: ");
 		$(".id").text(" number: ");
@@ -307,28 +306,6 @@ function loadrechargerecord(){
 		$("title").html("Deposit Record");
 	}
 }
-
-//邀请好友
-function loadinvite{
-	if(language != "zh_CN"){
-		$("#ch").remove();
-	}
-	else{
-		$("#en").remove();
-	}
-}
-
-/*
-//发送给好友
-function friends{
-
-}
-
-//分享到朋友圈
-function moments(){
-
-}
-*/
 
 //加载cookie，语言和用户id
 function loadid(){
