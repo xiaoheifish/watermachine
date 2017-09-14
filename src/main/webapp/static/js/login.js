@@ -9,24 +9,24 @@ function closemenu(){
 }
 
 function openrecordbox(){
-	//$("#record").css("background-color","#f0f0f4");
 	window.location.href = "/watermachine/record";
 }
 
 function openwalletbox(){
-	//$("#wallet").css("background-color","#f0f0f4");
 	window.location.href = "/watermachine/wallet?openid=" + openid;
 
 }
 
 function openrechargerecbox(){
-	//$("#service").css("background-color","#f0f0f4");
 	window.location.href = "/watermachine/rechargerec";
 }
 
 function openservicebox(){
-	//$("#service").css("background-color","#f0f0f4");
 	window.location.href = "/watermachine/mail";
+}
+
+function openinvitationbox(){
+	window.location.href = "/watermachine/invite";
 }
 
 //打开手动输入窗口
@@ -299,7 +299,6 @@ function loadrechargerecord(){
 			 else{alert("暂无数据！");}
 		}
 	});
-	
 	if(language != "zh_CN"){
 		$(".cost").text("amount: ");
 		$(".id").text(" number: ");
