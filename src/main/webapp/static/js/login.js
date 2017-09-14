@@ -216,6 +216,7 @@ function loadservice(){
 		$("#suggestion").text("Please give some suggestion to help us improve!");
 		$("#emailtext").text("Email");
 		$("#suggestionbutton").text("Submit");
+		$("#suggestionbutton").css("color","white");
 		$("#text").remove();
 		$("#entext").show();
 		$("title").html("Feedback");
@@ -223,7 +224,7 @@ function loadservice(){
 	else{
 		$("#suggestion").text("欢迎您提出对智能饮水机的感受和意见，期待您的声音。");
 		$("#emailtext").text("您的邮箱");
-		$("#suggestionbutton").text("提交");
+		$("#suggestionbutton").css("color","white");
 		$("#text").show();
 		$("#entext").remove();
 	}
@@ -247,24 +248,6 @@ function suggestion(){
 			}
         }
     });
-}
-
-//我的钱包
-function loadwallet(){
-	loadid();
-	if(language != "zh_CN"){
-		$("#balancetext").text("Balance(¥)");
-		$("#jumprecharge").text("Recharge");
-		$("title").html("My Wallet");
-	}
-	else{
-		$("#balancetext").text("余额(元)");
-		$("#jumprecharge").text("充值");
-	}
-}
-
-function jumprecharge(){
-	window.location.href = "/watermachine/callback";
 }
 
 //充值记录

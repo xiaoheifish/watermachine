@@ -19,7 +19,7 @@
 <textarea id="suggestion" onfocus="this.value = ''"> </textarea>
 <div>
 <p style="position: absolute;padding: 0.3rem;margin-top: 0.2rem;" id="emailtext"> </p><input type="email" id="email" class="inputdiv"></input></div>
-<button class="RQ" onclick="suggestion();" id="suggestionbutton"> </button>
+<button class="RQ" onclick="suggestion();" id="suggestionbutton"  style="color: rgb(37, 109, 243)">提交</button>
 
 <p id="text" style="display:none;font-size: 0.3rem;margin-top: 0.3rem;text-align: center;"><span style="color: rgb(230, 67,64);">我们将选取有价值的意见及建议进行奖励</span>,谢谢！</p>
 <p id="entext" style="display:none;font-size: 0.3rem;margin-top: 0.3rem;text-align: center;">Thanks for your advice.<br><span style="color: rgb(230, 67,64);">We will pick valuable comments and suggestions and reward.</span></p>

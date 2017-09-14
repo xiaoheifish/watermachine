@@ -124,6 +124,18 @@ function recharge() {
                     if(language != "zh_CN"){alert("Failure to place order");}
 					else{alert("下单失败，请稍后重试！");}
                 }
+                if(data["result"] == "not enough"){
+                    if(language != "zh_CN"){
+                    	var flag = confirm("您的余额不足，是否跳转至充值页面？");
+                    	if(flag == true){window.location.href = "/watermachine/callback";}
+                    	else{window.location.reload();}
+                    }
+					else{
+						var flag = confirm("Not sufficient funds. Would you like to jump to recharge?");
+                    	if(flag == true){window.location.href = "/watermachine/callback";}
+                    	else{window.location.reload();}
+					}
+                }
 			}
 		});
 	}

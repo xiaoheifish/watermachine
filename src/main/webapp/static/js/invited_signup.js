@@ -1,5 +1,12 @@
 ﻿function load(){
-	if(language != "zh_CN"){
+	var primiurl = "http://www.terabits-wx.cn/watermachine/getcode";
+	var encodeurl = encodeURIComponent(primiurl);
+    var url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx34690a5342af3858&redirect_uri="+encodeurl+"&response_type=code&scope=snsapi_base&state=1#wechat_redirect";
+    window.location.href=url;
+
+    //查询openid 和language
+
+    if(language != "zh_CN"){
 		$("#signuppic").attr("src","/watermachine/static/pic/ensignuppic.png");
 		$("#inputdiv1").remove();
 		$("#sucdiv").remove();
@@ -13,13 +20,13 @@
 
 var certificate,countdown;
 function signup(){
-	tel = $("#tel").val();
+	phone = $("#tel").val();
 	$.ajax({
-            type:'GET',
-            url:'/watermachine/????' + tel,
+            type:'POST',
+            url:'/watermachine/userexist',
             dataType:'json',
             success:function(data){
-                if (data["existence"] === "yes"){
+                if (data["result"] === "new"){
 					$("#signup").attr("disabled", true); 
 				    $("#signup").css("color", "rgb(200, 200, 200)");
 				    countdown = 60;
@@ -51,15 +58,19 @@ function signup(){
 }
 
 function icode(){
+	var url=location.href; 
+	var url1=url.split("{")[1];
+	var authphone=url.split("}")[0];
+
     //验证验证码
 	   $.ajax({
 			type:'POST',
 			url:'/watermachine/testcode',
 			data:{
-				"openid":openid,
-				"tel":$("#tel").val(),
 				"auth":certificate,
-				"code":$("#icode").val()
+				"tel":$("#tel").val(),
+				"code":$("#icode").val(),
+				"phone":authphone
 			},
 			dataType:'json',
 			success:function(data){

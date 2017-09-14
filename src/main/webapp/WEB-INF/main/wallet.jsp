@@ -6,32 +6,56 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script language="javascript" src="/watermachine/static/js/jquery-3.2.1.min.js"></script>
 <script language="javascript" src="/watermachine/static/js/flexible.js"></script>
-<script language="javascript" src="/watermachine/static/js/login.js"></script>
+<script language="javascript" src="/watermachine/static/js/wallet.js"></script>
 <link rel="stylesheet" href="/watermachine/static/css/bootstrap.css">
 <link rel="stylesheet" href="/watermachine/static/css/login.css">
 
 <title>我的钱包</title>
 </head>
 
-<body onload="loadwallet()" style="font-family: 'Microsoft YaHei' 'Cambria Math';background-color: rgb(240, 240, 240);display: flex;flex-direction: column;align-items: center;">
-<script>
-    var balance = "${balance}";
-</script>
+<body onload="loadwallet()" style="font-family: 'Microsoft YaHei' 'Cambria Math';background-color: rgb(240, 240, 240);display: flex;flex-direction: column;align-items: center;text-align: center;font-size: 0.3rem;">
 
-<div id="walletbox">
+
 <!-- 二级菜单-我的钱包 -->
-<div id="balance">
-<p>${balance}</p>
-<p style="font-size: 0.3rem;" id="balancetext"> </p>
+<div style="background-image: url(/watermachine/static/pic/balancepic.png);background-size: 100% 100%;width: 100%;">
+<div id="balancebox">
+<p style="font-size: 1.4rem" id="balance"></p>
+<p id="balancetext">余额(元)</p>
+</div>
+
+<div style="display: inline;margin-top: 2rem;color: rgb(113,113,113);">
+	<div class="presenttext"><p style="font-size: 0.4rem;color: black;" id="recharge"></p><p id="rechargetext"></p></div>
+	<div class="presenttext"><p style="font-size: 0.4rem;color: black;" id="present"></p><p id="presenttext"></p></div>
+</div>
 </div>
 
 
-<button class="RQ" onclick="jumprecharge()" id="jumprecharge"> </button><br>
+<button class="RQ" onclick="jumprecharge()" id="jumprecharge" style="color: rgb(37, 109, 243)">充值</button><br>
+<button class="RQ" onclick="jumpreimburse()" id="jumpreimburse" style="color: rgb(37, 109, 243)">提现</button><br>
 
-<div class="col-sm-12 col-xs-12" id="bottombar">
-天风物业<br>
-Powered by Terabits
+<a href="/watermachine/refundrec">提现记录</a>
+
+<!-- 提现窗口 -->
+<div id="refunddiv" style="position: absolute;height: 100%; width: 100%; top: 0;left: 0; background-color: rgb(240, 240, 240);text-align: center;padding-top: 2rem;display: none;">
+<p style="font-size: 0.4rem">提现金额(元)</p>
+<p style="font-size: 1.2rem" id="recharge"></p><br><br>
+<button class="RQ" onclick="refund();">确定</button><br>
+<img style="height: 0.8rem;margin-top: 1rem;" src="/static/pic/lefttime.png"><br><br>
+1.点击“确定”即表示您同意下述规则。<br>
+2.请至“提现记录”查询相关操作状态。<br>
+3.提现成功后，您的账户余额将被清空，赠送余额被收回。<br>
+4.提现金额将在提现申请提交后1-2个工作日转入您的微信钱包。<br>
 </div>
+
+<div id="enrefunddiv" style="position: absolute;height: 100%; width: 100%; top: 0;left: 0; background-color: rgb(240, 240, 240);text-align: center;padding-top: 2rem;display: none;">
+<p style="font-size: 0.4rem">Refund Amount(¥)</p>
+<p style="font-size: 1.2rem" id="recharge"></p><br><br>
+<button class="RQ" onclick="refund();">Confirm</button><br>
+<img style="height: 0.8rem;margin-top: 1rem;" src="/static/pic/lefttime.png"><br><br>
+1.Click "Confirm" means you agree the following rules.<br>
+2.You can check your refund process in "Refund record".<br>
+3.After the refund succeed, your balance will be cleared.<br>
+4.The refund amount will be transfered to you Wechat Wallet in 1-2 days.<br>
 </div>
 
 </body>

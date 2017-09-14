@@ -205,27 +205,19 @@ body{}
 }
 
 /* 二级菜单-我的钱包div样式 */
-#walletbox{
-	height: 100%;
-	width: 100%; 
-	top: 0;
-	background-color: rgb(250, 250, 250);
-	position: absolute;
-	left: 0%; 
-	color: rgb(123,123,123);
-	font-size: 0.5rem;
-	text-align: center;
-	z-index: 1;
-}
-
-#balance{
-	background-image: url(/watermachine/static/pic/balancepic.png);
-	background-size: 100% 100%;
+#balancebox{
 	width: 100%;
-	height: 50%;
-	font-size: 1.4rem;
+	height: 6rem;
 	color: black;
 	display: flex;flex-direction: column;align-items: center;justify-content: center;
+}
+
+.presenttext{
+	display: inline-block;
+	text-align: center;
+	padding: 1rem;
+	padding-bottom: 0.2rem;
+	padding-top: 0;
 }
 
 /* 二级菜单-我的客服div样式 */

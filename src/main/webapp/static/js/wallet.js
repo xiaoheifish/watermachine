@@ -1,0 +1,140 @@
+//我的钱包
+var recharge;
+function loadwallet(){
+	loadid();
+	$.ajax({
+        type:'GET',
+        url:'/watermachine/wallet',
+        data:{
+            "openid":openid
+        },
+        dataType:'json',
+        success:function(data){
+        	recharge = data["recharge"];
+			$("#balance").text(data["balance"]);
+			$("#present").text(data["present"]);
+			$("#recharge").text(data["recharge"]);
+        }
+    });
+	if(language != "zh_CN"){
+		$("#balancetext").text("Balance(¥)");
+		$("#rechargetext").text("Recharge Balance(¥)");
+		$("#presenttext").text("Present(¥)");
+		$("#jumprecharge").text("Recharge");
+		$("#jumprecharge").css("color","white");
+		$("#jumpreimburse").text("Refund");
+		$("#jumpreimburse").css("color","white");
+		$("title").html("My Wallet");
+	}
+	else{
+		$("#balancetext").text("余额(元)");
+		$("#rechargetext").text("可提现余额(元)");
+		$("#presenttext").text("赠送余额(元)");
+		$("#jumprecharge").css("color","white");
+		$("#jumpreimburse").css("color","white");
+	}
+}
+
+function jumprecharge(){
+	window.location.href = "/watermachine/callback";
+}
+
+function jumpreimburse(){
+	if (recharge == "0.0"){
+		if(language != "zh_CN"){alert("Can't withdraw deposit.");}
+		else{alert("余额不足，无法提现");}
+	}
+	else{window.location.href = "/watermachine/reimburse";} //可提现，跳转
+	
+}
+
+//提现记录
+function loadrefundrecord(){
+	loadid();
+	$.ajax({
+		type:'POST',
+		url:'/watermachine/refundrecord',
+		data:{
+			"openid":openid
+        },
+		dataType:'json',
+		success:function(data){
+			var length = getJsonObjLength(data);
+			if(length != 0){
+				$("#record0").show();
+		            for(i=0; i<length; i++){
+		            	$("#record"+i).find("#time").text(data[i]["gmtCreate"]);
+		            	$("#record"+i).find("#money").text(data[i]["money"]);
+		            	$("#record"+i).find("#refundNo").text(data[i]["refundNo"]);
+		            	if(i != (length-1)){
+		            		i++;
+							/*  增加div */
+                            object = $("#record0").clone();
+                            $(object).attr("id","record"+i);
+                            $("body").append(object);
+                            i--;
+						}
+		            }
+		    }
+			 else{alert("暂无数据！");}
+		}
+	});
+	if(language != "zh_CN"){
+		$(".cost").text("money: ");
+		$(".id").text(" number: ");
+		$("title").html("Deposit Record");
+	}
+}
+
+//退款操作
+function refund(){
+	$.ajax({
+		type:'POST',
+		url:'/watermachine/refundrecord',
+		data:{
+			"openid":openid,
+			"money":recharge,
+			"auth":openid+"D2FFD4FAEF6778E26813CB08FE3CB3C5"
+        },
+		dataType:'json',
+		success:function(data){
+			if(result == "success"){
+				if(language != "zh_CN"){alert("Refund succeed!")}
+				else{alert("退款申请成功！");}
+			}
+			if(result == "simpleban"){
+				if(language != "zh_CN"){alert("Refund succeed!")}
+				else{alert("Your WeChat account is not bound with a card. Please bind your card firstly.");}
+			}
+		}
+	});
+}
+
+
+//加载cookie，语言和用户id
+function loadid(){
+	openid = getCookie("openid");
+	language = getCookie("language");
+}
+
+
+/* json数据长度 */
+function getJsonObjLength(jsonObj) {
+    var Length = 0;
+    for (var item in jsonObj) {
+        Length++;
+    }
+    return Length;
+}
+
+/* 读取cookie */
+function getCookie(cname)
+{
+	var name = cname + "=";
+	var ca = parent.document.cookie.split(';');
+	for(var i=0; i<ca.length; i++) {
+		var c = ca[i].trim();
+		if (c.indexOf(name)==0) return c.substring(name.length,c.length);
+	}
+	return null;
+}
