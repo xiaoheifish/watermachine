@@ -79,6 +79,26 @@ public class RegisterController {
         }
 
         if(tempCode.equals(code)){
+        	if(request.getParameter("openid")!=null){
+        		UserPO userPO = new UserPO();
+        		userPO.setOpenId(request.getParameter("openid"));
+        		userPO.setPhone(request.getParameter("phone"));
+        		userPO.setRecharge(0.0);
+        		userPO.setPresent(5.0);
+        		try{
+        			userService.insertUser(userPO);
+        			invitationService.insertInvitation(request.getParameter("phone"), request.getParameter("tel"));
+        			UserPO inviterPO = userService.userExist(request.getParameter("phone"));
+        			userService.updateRemain(inviterPO.getRecharge(), inviterPO.getPresent() + 5.0, inviterPO.getOpenId());
+        			jsonObject.put("testpass","yes");
+        	        response.getWriter().print(jsonObject);
+        	        return;
+        		}catch(Exception e){
+        			jsonObject.put("testpass","no");
+        	        response.getWriter().print(jsonObject);
+        	        return;
+        		}
+        	}
             String openId = (String)session.getAttribute("openid");
             try{
                 userService.updatePhone(id, openId);
@@ -91,6 +111,8 @@ public class RegisterController {
             }
             if(request.getParameter("phone") != null){
                 invitationService.insertInvitation(request.getParameter("phone"), request.getParameter("tel"));
+                UserPO inviterPO = userService.userExist(request.getParameter("phone"));
+    			userService.updateRemain(inviterPO.getRecharge(), inviterPO.getPresent() + 5.0, inviterPO.getOpenId());
             }
             jsonObject.put("testpass","yes");
             response.getWriter().print(jsonObject);

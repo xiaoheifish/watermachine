@@ -6,17 +6,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script language="javascript" src="/watermachine/static/js/jquery-3.2.1.min.js"></script>
 <script language="javascript" src="/watermachine/static/js/flexible.js"></script>
-<script language="javascript" src="/watermachine/static/js/signup.js"></script>
+<script language="javascript" src="/watermachine/static/js/invited_signup.js"></script>
 <link rel="stylesheet" href="/watermachine/static/css/bootstrap.css">
 <link rel="stylesheet" href="/watermachine/static/css/signup.css">
 <title>接收邀请</title>
 <script>
-	var openid = "${openId}";
-	var language = "${language}";
+	var phone = "${phone}";
+    var openid = "${openid}";
 </script>
 </head>
 
-<body onload="load();" style="font-family: 'Microsoft YaHei' 'Cambria Math';background-color: rgb(240, 240, 240);display: flex;flex-direction: column;align-items: center;font-size: 0.4rem;">
+<body style="font-family: 'Microsoft YaHei' 'Cambria Math';background-color: rgb(240, 240, 240);display: flex;flex-direction: column;align-items: center;font-size: 0.4rem;">
 <!-- 广告图片 -->
 <img src="/watermachine/static/pic/signuppic.png" style="width: 101.5%;" />
 
@@ -35,7 +35,7 @@
 
 
 <!-- 注册成功div -->
-<div id="sucdiv" style="width: 100%; height: 100% ;position: absolute;top: 0;background-color: rgb(240, 240, 240);display: flex;flex-direction: column;align-items: center;font-size: 0.4rem;display: none;">
+<div id="sucdiv" style="width: 100%; height: 100% ;position: absolute;top: 0;background-color: rgb(240, 240, 240);display: flex;flex-direction: column;align-items: center;font-size: 0.4rem;display: none;text-align:center;">
 <p style="margin-top: 1rem">您已获得</p>
 <p style="font-size: 0.6rem;"><span style="color: rgb(230, 67,64);">5元</span>饮水体验券</p>
 <img style="width: 5rem; margin-top: 1rem;" src="/watermachine/static/pic/officialQR.jpg">
@@ -43,8 +43,9 @@
 <p>立即开启高品质饮水之旅！</p>
 </div>
 
+
 <!-- 英文版 -->
-<!-- 输入部分 -->
+<!-- 输入部分 
 <div id="eninputdiv1" style="text-align: center;width: 100%;margin-top: 0.3rem;">
 <p>Sign up! Both of you will receive a </p>
 <p style="font-size: 0.6rem;"><span style="color: rgb(230, 67,64);">¥5</span> coupon </p>
@@ -55,10 +56,10 @@
 <input type="tel" class="inputbox" id="icode" maxlength="6" value="input verification code" onfocus="this.value = '', positionhide()" onblur="positionshow()" >
 <button class="inputbutton" onclick="icode()">Confirm</button>
 <button class="shadow">&nbsp;</button>
-</div>
+</div>-->
 
 
-<!-- 注册成功div -->
+<!-- 注册成功div 
 <div id="ensucdiv" style="width: 100%; height: 100% ;position: absolute;top: 0;background-color: rgb(240, 240, 240);display: flex;flex-direction: column;align-items: center;font-size: 0.4rem;display: none;">
 <p style="margin-top: 1rem">You received</p>
 <p style="font-size: 0.6rem;"><span style="color: rgb(230, 67,64);">¥5</span> coupon </p>
@@ -66,6 +67,7 @@
 <p style="margin-top: 2rem;">Search official accounts “<span style="color: rgb(230, 67,64);">钛比科技</span>” or scan the QR code.</p>
 <p>Drink high quality water Now!</p>
 </div>
+-->
 
 
 <div class="col-sm-12 col-xs-12" id="bottombar">

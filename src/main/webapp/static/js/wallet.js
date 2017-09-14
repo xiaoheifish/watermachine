@@ -1,34 +1,19 @@
 //我的钱包
-var recharge;
 function loadwallet(){
 	loadid();
-	$.ajax({
-        type:'GET',
-        url:'/watermachine/wallet',
-        data:{
-            "openid":openid
-        },
-        dataType:'json',
-        success:function(data){
-        	recharge = data["recharge"];
-			$("#balance").text(data["balance"]);
-			$("#present").text(data["present"]);
-			$("#recharge").text(data["recharge"]);
-        }
-    });
 	if(language != "zh_CN"){
 		$("#balancetext").text("Balance(¥)");
 		$("#rechargetext").text("Recharge Balance(¥)");
-		$("#presenttext").text("Present(¥)");
-		$("#jumprecharge").text("Recharge");
-		$("#jumprecharge").css("color","white");
-		$("#jumpreimburse").text("Refund");
-		$("#jumpreimburse").css("color","white");
-		$("title").html("My Wallet");
-	}
-	else{
-		$("#balancetext").text("余额(元)");
-		$("#rechargetext").text("可提现余额(元)");
+        $("#presenttext").text("Present(¥)");
+        $("#jumprecharge").text("Recharge");
+        $("#jumprecharge").css("color","white");
+        $("#jumpreimburse").text("Refund");
+        $("#jumpreimburse").css("color","white");
+        $("title").html("My Wallet");
+    }
+else{
+        $("#balancetext").text("余额(元)");
+        $("#rechargetext").text("可提现余额(元)");
 		$("#presenttext").text("赠送余额(元)");
 		$("#jumprecharge").css("color","white");
 		$("#jumpreimburse").css("color","white");
@@ -44,7 +29,11 @@ function jumpreimburse(){
 		if(language != "zh_CN"){alert("Can't withdraw deposit.");}
 		else{alert("余额不足，无法提现");}
 	}
-	else{window.location.href = "/watermachine/reimburse";} //可提现，跳转
+	else{
+        if(language != "zh_CN"){$("#enrefunddiv").show();}
+        else{$("#refunddiv").show();}
+
+	} //可提现，跳转
 	
 }
 
@@ -88,22 +77,26 @@ function loadrefundrecord(){
 
 //退款操作
 function refund(){
+	$("#confirm").attr("disabled", true);
+	$("#enconfirm").attr("disabled", true);
+	var value = openid+"D2FFD4FAEF6778E26813CB08FE3CB3C5";
+    var auth = md5(value);
 	$.ajax({
 		type:'POST',
-		url:'/watermachine/refundrecord',
+		url:'/watermachine/refund',
 		data:{
 			"openid":openid,
 			"money":recharge,
-			"auth":openid+"D2FFD4FAEF6778E26813CB08FE3CB3C5"
+			"auth":auth
         },
 		dataType:'json',
 		success:function(data){
 			if(result == "success"){
-				if(language != "zh_CN"){alert("Refund succeed!")}
+				if(language != "zh_CN"){alert("Refund succeed!");}
 				else{alert("退款申请成功！");}
 			}
 			if(result == "simpleban"){
-				if(language != "zh_CN"){alert("Refund succeed!")}
+				if(language != "zh_CN"){alert("Refund succeed!");}
 				else{alert("Your WeChat account is not bound with a card. Please bind your card firstly.");}
 			}
 		}

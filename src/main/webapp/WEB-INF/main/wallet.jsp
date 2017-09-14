@@ -5,12 +5,18 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script language="javascript" src="/watermachine/static/js/jquery-3.2.1.min.js"></script>
+	<script src="http://cdn.bootcss.com/blueimp-md5/1.1.0/js/md5.js"></script>
 <script language="javascript" src="/watermachine/static/js/flexible.js"></script>
 <script language="javascript" src="/watermachine/static/js/wallet.js"></script>
-<link rel="stylesheet" href="/watermachine/static/css/bootstrap.css">
+	<link rel="stylesheet" href="/watermachine/static/css/bootstrap.css">
 <link rel="stylesheet" href="/watermachine/static/css/login.css">
 
 <title>我的钱包</title>
+	<script>
+        var balance = "${balance}";
+        var recharge = "${recharge}";
+        var present = "${present}";
+	</script>
 </head>
 
 <body onload="loadwallet()" style="font-family: 'Microsoft YaHei' 'Cambria Math';background-color: rgb(240, 240, 240);display: flex;flex-direction: column;align-items: center;text-align: center;font-size: 0.3rem;">
@@ -19,13 +25,13 @@
 <!-- 二级菜单-我的钱包 -->
 <div style="background-image: url(/watermachine/static/pic/balancepic.png);background-size: 100% 100%;width: 100%;">
 <div id="balancebox">
-<p style="font-size: 1.4rem" id="balance"></p>
+<p style="font-size: 1.4rem">${balance}</p>
 <p id="balancetext">余额(元)</p>
 </div>
 
 <div style="display: inline;margin-top: 2rem;color: rgb(113,113,113);">
-	<div class="presenttext"><p style="font-size: 0.4rem;color: black;" id="recharge"></p><p id="rechargetext"></p></div>
-	<div class="presenttext"><p style="font-size: 0.4rem;color: black;" id="present"></p><p id="presenttext"></p></div>
+	<div class="presenttext"><p style="display: inline-block;font-size: 0.4rem;color: black;">${recharge}</p><p id="rechargetext"></p></div>
+	<div class="presenttext"><p style="display: inline-block;font-size: 0.4rem;color: black;">${present}</p><p id="presenttext"></p></div>
 </div>
 </div>
 
@@ -35,12 +41,14 @@
 
 <a href="/watermachine/refundrec">提现记录</a>
 
+
+
 <!-- 提现窗口 -->
 <div id="refunddiv" style="position: absolute;height: 100%; width: 100%; top: 0;left: 0; background-color: rgb(240, 240, 240);text-align: center;padding-top: 2rem;display: none;">
 <p style="font-size: 0.4rem">提现金额(元)</p>
-<p style="font-size: 1.2rem" id="recharge"></p><br><br>
-<button class="RQ" onclick="refund();">确定</button><br>
-<img style="height: 0.8rem;margin-top: 1rem;" src="/static/pic/lefttime.png"><br><br>
+<p style="font-size: 1.2rem">${recharge}</p><br><br>
+<button class="RQ" onclick="refund();" id="confirm">确定</button><br>
+<img style="height: 0.8rem;margin-top: 1rem;" src="/watermachine/static/pic/lefttime.png"><br><br>
 1.点击“确定”即表示您同意下述规则。<br>
 2.请至“提现记录”查询相关操作状态。<br>
 3.提现成功后，您的账户余额将被清空，赠送余额被收回。<br>
@@ -49,9 +57,9 @@
 
 <div id="enrefunddiv" style="position: absolute;height: 100%; width: 100%; top: 0;left: 0; background-color: rgb(240, 240, 240);text-align: center;padding-top: 2rem;display: none;">
 <p style="font-size: 0.4rem">Refund Amount(¥)</p>
-<p style="font-size: 1.2rem" id="recharge"></p><br><br>
-<button class="RQ" onclick="refund();">Confirm</button><br>
-<img style="height: 0.8rem;margin-top: 1rem;" src="/static/pic/lefttime.png"><br><br>
+<p style="font-size: 1.2rem">${recharge}</p><br><br>
+<button class="RQ" onclick="refund();" id="enconfirm">Confirm</button><br>
+<img style="height: 0.8rem;margin-top: 1rem;" src="/watermachine/static/pic/lefttime.png"><br><br>
 1.Click "Confirm" means you agree the following rules.<br>
 2.You can check your refund process in "Refund record".<br>
 3.After the refund succeed, your balance will be cleared.<br>

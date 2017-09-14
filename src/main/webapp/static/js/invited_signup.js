@@ -1,5 +1,5 @@
 ﻿function load(){
-	var primiurl = "http://www.terabits-wx.cn/watermachine/getcode";
+	var primiurl = "http://www.terabits-wx.cn/watermachine/getcode?phone=" + phone;
 	var encodeurl = encodeURIComponent(primiurl);
     var url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx34690a5342af3858&redirect_uri="+encodeurl+"&response_type=code&scope=snsapi_base&state=1#wechat_redirect";
     window.location.href=url;
@@ -16,28 +16,27 @@
 	}
 }
 
-var certificate,countdown,openid,language;
+var certificate,countdown;
 function signup(){
-	phone = $("#tel").val();
 	$.ajax({
-            type:'POST',
+            type:'GET',
             url:'/watermachine/userexist',
             dataType:'json',
+            data:{
+				"phone":$("#tel").val()
+			},
             success:function(data){
-                if (data["result"] === "new"){
+                if (data["result"] == "new"){
 					$("#signup").attr("disabled", true); 
 				    $("#signup").css("color", "rgb(200, 200, 200)");
 				    countdown = 60;
 				    settime();
-				    openid = data["openid"];
-				    language = data["language"];
 				    
 				    //发送手机号，回收凭证
 				    $.ajax({
 						type:'GET',
 						url:'/watermachine/sendmessage',
 						data:{
-							"openid":openid,
 							"tel":$("#tel").val()
 						},
 						dataType:'json',
@@ -50,7 +49,7 @@ function signup(){
 						}
 					});
                 }
-                else{
+                if (data["result"] == "old"){
                     alert("您已经是本系统的老用户了哦~");
                 }
             }
@@ -58,10 +57,6 @@ function signup(){
 }
 
 function icode(){
-	var url=location.href; 
-	var url1=url.split("{")[1];
-	var authphone=url.split("}")[0];
-
     //验证验证码
 	   $.ajax({
 			type:'POST',
@@ -70,7 +65,8 @@ function icode(){
 				"auth":certificate,
 				"tel":$("#tel").val(),
 				"code":$("#icode").val(),
-				"phone":authphone
+				"phone":phone,
+				"openid":openid
 			},
 			dataType:'json',
 			success:function(data){
@@ -86,8 +82,8 @@ function icode(){
 
 //跳转至注册成功提示
 function open(){
-    if(language != "zh_CN"){$("#ensucdiv").show();}	
-    else{$("#sucdiv").show();}
+    
+    $("#sucdiv").show();
 }
 
 function positionhide(){
@@ -100,23 +96,16 @@ function positionshow(){
 
 //倒计时函数
 function settime() {
-	if(language != "zh_CN"){
-		document.getElementById("signup").innerText = "try again("+countdown+"s)";
-	}
-	else{
 		document.getElementById("signup").innerText = "重试("+countdown+"s)";
-	}
+	
     countdown--;
     if (countdown != 0){
         setTimeout(function() { settime() },1000);
     }
     else{
-    	if(language != "zh_CN"){
-    		document.getElementById("signup").innerText = "try again";
-    	}
-    	else{
+    	
     		document.getElementById("signup").innerText = "重新发送";
-    	}
+    	
         $("#signup").attr("disabled", false); 
         $("#signup").css("color", "white");
     }

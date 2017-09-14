@@ -25,9 +25,10 @@ function openservicebox(){
 	window.location.href = "/watermachine/mail";
 }
 
-function openinvitationbox(){
-	window.location.href = "/watermachine/invite";
-}
+//$("#invite").click(function(){
+	//alert(123);
+	//window.location.href = "/watermachine/showinvitation?openid=" + openid;
+//});
 
 //打开手动输入窗口
 function opennumber(){
@@ -48,7 +49,6 @@ function closenumber(){
 //输入编码-登录数据交互
 function login() {
 	id = $("#id").val();
-	id = id;
 	if(id == ""){
 		alert("请输入编号！");
 	}

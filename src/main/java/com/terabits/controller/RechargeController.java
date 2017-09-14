@@ -97,8 +97,9 @@ public class RechargeController {
             if (userPO.getRecharge() == 0.0) {
                 return;
             }
-
-            int money = Integer.parseInt(strMoney);
+            System.out.println(strMoney);
+            double money = Double.parseDouble(strMoney);
+            int requestMoney = (int)(money * 100);
             int id = refundRecordService.insertRefund(openId, money);
             String refundNo = null;
             try {
@@ -114,7 +115,7 @@ public class RechargeController {
             data.put("partner_trade_no", refundNo);
             data.put("openid", openId);
             data.put("check_name", "NO_CHECK");
-            data.put("amount", String.valueOf(money * 100));
+            data.put("amount", String.valueOf(requestMoney));
             data.put("desc", "退款");
             data.put("spbill_create_ip", "119.23.210.52");
             try {
@@ -134,6 +135,9 @@ public class RechargeController {
                         jsonObject.put("result", "simpleban");
                         response.getWriter().print(jsonObject);
                     }
+                    if(resp.get("err_code").equals("NOTENOUGH")){
+                    	System.out.println("++++++++++++++++NOTENOUGH");
+                    }
                 }
             } catch (Exception e) {
                 e.printStackTrace();
@@ -149,7 +153,7 @@ public class RechargeController {
     @RequestMapping(value = "/menu/refundrecord", method = RequestMethod.POST)
     public void getRefundRecord(HttpServletRequest request, HttpServletResponse response){
         String openId = request.getParameter("openid");
-        List<RefundRecordPO> refundRecordPOS = new ArrayList<>();
+        List<RefundRecordPO> refundRecordPOS = new ArrayList<RefundRecordPO>();
         try{
             refundRecordPOS = refundRecordService.selectRefundByOpenId(openId);
             JSONArray jsonArray = JSONArray.fromObject(refundRecordPOS);

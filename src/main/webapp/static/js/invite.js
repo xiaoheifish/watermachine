@@ -1,6 +1,6 @@
-﻿var openid,language,phone;
+﻿var openid,language;
 //邀请好友
-function loadinvite{
+function loadinvite(){
     openid = getCookie("openid");
     language = getCookie("language");
 	if(language != "zh_CN"){
@@ -33,46 +33,46 @@ function loadinvite{
                     signature: data["signature"],
                     jsApiList : [ 'checkJsApi','onMenuShareTimeline', 'onMenuShareAppMessage']
                 });
-            }
-    });
-
-    //查询手机号
-    $.ajax({
-            type:'GET',
-            url:'/watermachine/showinvitation',
-            data:{
-                "openid":openid
-            },
-            dataType:'json',
-            success:function(data){
-                phone = data["phone"];
+                wx.ready(function (){
+                        var shareData = {
+                            title: '邀您共享高品质饮用水',
+                            desc: '接受邀请，好友与您各得5元饮水券！点击立即体验便捷、高质、卫生饮水！',
+                            link: 'http://www.terabits-wx.cn/watermachine/invitation/'+ phone,
+                            imgUrl: 'http://www.terabits-wx.cn/watermachine/static/pic/sharepic.jpg'
+                        };
+                        wx.onMenuShareAppMessage(shareData);
+                        wx.onMenuShareTimeline(shareData);
+                });
+                wx.error(function (res) {
+                    alert(res.errMsg);
+                });
             }
     });
 }
 
 
-//发送给好友
-function friends{
+/*//发送给好友
+function friends(){
 	wx.onMenuShareAppMessage();
 }
 
 //分享到朋友圈
 function moments(){
 	wx.onMenuShareTimeline();
-}
-
+}*/
+/*
 //分享到朋友圈内容
 wx.onMenuShareTimeline({
     title: '邀您共享高品质饮用水', // 分享标题
-    link: '/watermachine/invitation/{'+phone+'}', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-    imgUrl: '/watermachine/static/pic/sharepic.jpg', // 分享图标
+    link: 'http://www.terabits-wx.cn/mainpage', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+    imgUrl: 'http://www.terabits-wx.cn/watermachine/static/pic/sharepic.jpg', // 分享图标
     success: function () { 
-        alert(分享成功！)
+        alert("分享成功！");
         // 用户确认分享后执行的回调函数
     },
     cancel: function () { 
         // 用户取消分享后执行的回调函数
-        alert(分享已取消！)
+        alert("分享已取消！");
     }
 });
 
@@ -80,19 +80,19 @@ wx.onMenuShareTimeline({
 wx.onMenuShareAppMessage({
     title: '邀您共享高品质饮用水', // 分享标题
     desc: '接受邀请，好友与您各得5元饮水券！点击立即体验便捷、高质、卫生饮水！', // 分享描述
-    link: '/watermachine/invitation/{'+phone+'}', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-    imgUrl: '/watermachine/static/pic/sharepic.jpg', // 分享图标
+    link: 'http://www.terabits-wx.cn/mainpage', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+    imgUrl: 'http://www.terabits-wx.cn/watermachine/static/pic/sharepic.jpg', // 分享图标
     type: 'link', // 分享类型,music、video或link，不填默认为link
     dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
     success: function () { 
         // 用户确认分享后执行的回调函数
-        alert(分享成功！)
+        alert("分享成功！");
     },
     cancel: function () { 
         // 用户取消分享后执行的回调函数
-        alert(分享已取消！)
+        alert("分享已取消！");
     }
-});
+});*/
 
 /* 读取cookie */
 function getCookie(cname)

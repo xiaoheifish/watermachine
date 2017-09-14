@@ -10,7 +10,9 @@
 <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 <link rel="stylesheet" href="/watermachine/static/css/bootstrap.css">
 <link rel="stylesheet" href="/watermachine/static/css/login.css">
-
+<script>
+    var phone = "${phone}";
+</script>
 <title>邀请好友</title>
 </head>
 
