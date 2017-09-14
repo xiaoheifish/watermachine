@@ -8,7 +8,8 @@
         <result property="openId" column="openid" javaType="java.lang.String"></result>
         <result property="nickname" column="nickname" javaType="java.lang.String"></result>
         <result property="phone" column="phone"  javaType="java.lang.String"></result>
-        <result property="remain" column="remain" javaType="java.lang.Double"></result>
+        <result property="recharge" column="recharge" javaType="java.lang.Double"></result>
+        <result property="present" column="present" javaType="java.lang.Double"></result>
         <result property="sex" column="sex" javaType="java.lang.Integer"></result>
         <result property="language" column="language" javaType="java.lang.String"></result>
         <result property="city" column="city" javaType="java.lang.String"></result>
@@ -25,8 +26,8 @@
     </resultMap>
 
     <insert id="insertUser" parameterType="com.terabits.meta.po.UserPO" keyProperty="id">
-        insert into user (openid, nickname, phone, remain, sex, language, city, province, country, headimgurl, gmtcreate, gmtmodified) values
-        (#{openId}, #{nickname}, #{phone}, #{remain}, #{sex}, #{language}, #{city}, #{province}, #{country}, #{headImgUrl}, now(),now())
+        insert into user (openid, nickname, phone, recharge, present, sex, language, city, province, country, headimgurl, gmtcreate, gmtmodified) values
+        (#{openId}, #{nickname}, #{phone}, #{recharge}, #{present},#{sex}, #{language}, #{city}, #{province}, #{country}, #{headImgUrl}, now(),now())
     </insert>
 
     <update id="updateInfo" parameterType="com.terabits.meta.po.UserPO" keyProperty="id">
@@ -35,7 +36,7 @@
     </update>
 
     <update id="updateRemain">
-        update user set remain = #{remain}, gmtmodified = now() where openid = #{openId}
+        update user set recharge = #{recharge}, present = #{present}, gmtmodified = now() where openid = #{openId}
     </update>
 
     <update id="updatePhone" parameterType="java.lang.String">
@@ -51,4 +52,7 @@
         select phone, language from user where openid = #{openId}
     </select>
 
+    <select id = "userExist" parameterType="java.lang.String" resultMap = "userMap">
+        select * from user where phone = #{phone}
+    </select>
 </mapper>

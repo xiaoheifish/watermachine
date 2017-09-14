@@ -12,8 +12,10 @@ public class UserPO {
     private String nickname;
     //phone, 用户注册用的手机号
     private String phone;
-    //remain, 用户账户余额
-    private double remain;
+    //recharge, 用户充值余额
+    private double recharge;
+    //present, 全部赠送金额
+    private double present;
     //sex，性别，1代表男性，2代表女性
     private int sex;
     //language，语言，用户设置的语言
@@ -61,12 +63,20 @@ public class UserPO {
         this.phone = phone;
     }
 
-    public double getRemain() {
-        return remain;
+    public double getRecharge() {
+        return recharge;
     }
 
-    public void setRemain(double remain) {
-        this.remain = remain;
+    public void setRecharge(double recharge) {
+        this.recharge = recharge;
+    }
+
+    public double getPresent() {
+        return present;
+    }
+
+    public void setPresent(double present) {
+        this.present = present;
     }
 
     public int getSex() {
@@ -140,7 +150,8 @@ public class UserPO {
                 ", openId='" + openId + '\'' +
                 ", nickname='" + nickname + '\'' +
                 ", phone='" + phone + '\'' +
-                ", remain=" + remain +
+                ", recharge=" + recharge +
+                ", present=" + present +
                 ", sex=" + sex +
                 ", language='" + language + '\'' +
                 ", city='" + city + '\'' +

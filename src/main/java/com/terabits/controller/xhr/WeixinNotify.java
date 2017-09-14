@@ -71,11 +71,11 @@ public class WeixinNotify{
                 if(orderPO.getTradeNo()!=null){
                     return PayCommonUtil.setXML(WeixinGlobal.SUCCESS, "OK");
                 }
-                //比对金额是否相等，注意实际使用中money的单位是分，目前是充多少送多少，所以将微信发回来的值乘2，与数据库中的值比较
+                //比对金额是否相等，注意实际使用中money的单位是分，将微信发回来的值与数据库中的值比较
                 double payment = orderPO.getPayment();
                 double premoney = Double.parseDouble(money);
 
-                //用户余额和历史总充值及总余额，要直接加双倍
+                //历史总余额，要直接加双倍
                 double addPayment = payment * 2.0;
 
                 if(payment == premoney){
@@ -84,11 +84,13 @@ public class WeixinNotify{
                     int result = orderService.updatePaymentStatus(tradeNo, orderId);
                     if (result == 1){
                         UserPO userPO = userService.selectUser((String)map.get("openid"));
-                        double remain = userPO.getRemain();
-                        remain = remain + addPayment;
+
+                        //充值金额和赠送金额都要加本次充值钱数
+                        double recharge = userPO.getRecharge() + payment;
+                        double present = userPO.getPresent() + payment;
                         try{
                             //更新用户余额
-                            userService.updateRemain(remain, (String)map.get("openid"));
+                            userService.updateRemain(recharge, present, (String)map.get("openid"));
                         }catch (Exception e){
                             logger.error("更新用户余额失败，订单号="+orderId);
                         }

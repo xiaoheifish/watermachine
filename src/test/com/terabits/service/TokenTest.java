@@ -35,21 +35,15 @@ public class TokenTest extends BaseTest {
     private CredentialService credentialService;
     @Autowired(required = false)
     private FeedbackMapper feedbackMapper;
+    @Autowired
+    private InvitationService invitationService;
+    @Autowired
+    private RefundRecordService refundRecordService;
     //private TerminalManager terminalManager;
     @Test   //标明是测试方法
     @Transactional(value="transactionManager")//标明此方法需使用事务
     @Rollback(false)  //标明使用完此方法后事务不回滚,true时为回滚
     public void token() throws Exception {
-       /* FeedbackPO feedbackPO = new FeedbackPO();
-        feedbackPO.setStatus(23);
-        feedbackPO.setNickname("23");
-        try{
-            feedbackMapper.insertFeedback(feedbackPO);
-
-        }catch (Exception e){
-            e.printStackTrace();
-        }*/
-       TimeSpanBO timeSpanBO = TimeSpanUtil.generateTimeSpan();
-       feedbackMapper.deleteFeedbackByTimeOnlySolved(23, timeSpanBO);
+        refundRecordService.updateRefundStatus("40088208820","2017091425000001");
     }
 }

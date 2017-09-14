@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace = "com.terabits.mapper.InvitationMapper">
+
+    <!-- 自定义返回结果集 -->
+    <resultMap id="invitationMap" type="com.terabits.meta.po.InvitationPO">
+        <id property="id" column="id" javaType="java.lang.Integer"></id>
+        <result property="inviterPhone" column="inviterphone" javaType="java.lang.String"></result>
+        <result property="inviteePhone" column="inviteephone" javaType="java.lang.String"></result>
+        <result property="gmtCreate" column="gmtcreate" javaType="java.lang.String"></result>
+        <result property="gmtModified" column="gmtmodified" javaType="java.lang.String"></result>
+    </resultMap>
+
+    <insert id="insertInvitation" useGeneratedKeys="true" keyProperty="id" parameterType="com.terabits.meta.po.InvitationPO">
+        insert into invitation (inviterphone, inviteephone, gmtcreate, gmtmodified) values (#{inviterPhone}, #{inviteePhone}, now(), now())
+    </insert>
+
+
+    <select id="selectInvitation" resultMap="invitationMap">
+        select * from invitation
+        <where>
+            <if test="inviterPhone != null and inviterPhone != ''">
+                and inviterphone = #{inviterPhone}
+            </if>
+        </where>
+    </select>
+
+
+</mapper>

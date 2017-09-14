@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.terabits.mapper.RefundRecordMapper">
+
+    <!-- 自定义返回结果集 -->
+    <resultMap id="refundMap" type="com.terabits.meta.po.RefundRecordPO">
+        <id property="id" column="id" javaType="java.lang.Integer"></id>
+        <result property="openId" column="openid" javaType="java.lang.String"></result>
+        <result property="money" column = "money" javaType="java.lang.Double"></result>
+        <result property="refundNo" column="refundno" javaType="java.lang.String"></result>
+        <result property="paymentNo" column="paymentno" javaType="java.lang.String"></result>
+        <result property="state" column="state" javaType="java.lang.Integer"></result>
+        <result property="gmtCreate" column="gmtcreate" javaType="java.lang.String"></result>
+        <result property="gmtModified" column="gmtmodified" javaType="java.lang.String"></result>
+    </resultMap>
+
+    <insert id="insertRefund" useGeneratedKeys="true" keyProperty="id" parameterType="com.terabits.meta.po.RefundRecordPO">
+        insert into refundrecord (openid, money, refundno, state, gmtcreate, gmtmodified)
+        values (#{openId}, #{money}, #{refundNo}, #{state}, now(), now())
+    </insert>
+
+
+    <select id="selectAllRefund" parameterType="com.terabits.meta.bo.TimeSpanBO" resultMap="refundMap">
+        select * from refundrecord
+        <where>
+            <if test="beginTime != null and beginTime != ''">
+                and gmtcreate >= #{beginTime}
+            </if>
+            <if test="endTime != null and endTime != ''">
+                and gmtcreate &lt; #{endTime}
+            </if>
+        </where>
+    </select>
+
+    <update id="updateRefundStatus" parameterType="java.lang.String">
+        update refundrecord set state = 11, paymentno = #{paymentNo} where refundno = #{refundNo}
+    </update>
+
+
+    <select id="selectRefundByOpenId" parameterType="String" resultMap="refundMap">
+        select * from refundrecord where openid = #{openId} order by gmtcreate desc
+    </select>
+
+    <update id = "updateRefundNoById">
+        update refundrecord set refundno = #{refundNo} where id = #{id}
+    </update>
+
+</mapper>
+

@@ -1,9 +1,15 @@
 package com.terabits.controller;
 
+import com.sun.org.apache.regexp.internal.RE;
+import com.terabits.config.MyConfig;
+import com.terabits.config.MyWXPay;
 import com.terabits.meta.po.RechargeOrderPO;
+import com.terabits.meta.po.RefundRecordPO;
 import com.terabits.meta.po.UserPO;
 import com.terabits.service.RechargeOrderService;
+import com.terabits.service.RefundRecordService;
 import com.terabits.service.UserService;
+import com.terabits.utils.MD5Util;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.slf4j.Logger;
@@ -13,12 +19,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Administrator on 2017/8/19.
@@ -30,6 +39,8 @@ public class RechargeController {
     private RechargeOrderService rechargeOrderService;
     @Autowired
     private UserService userService;
+    @Autowired
+    private RefundRecordService refundRecordService;
 
     private static Logger logger = LoggerFactory.getLogger(RechargeController.class);
 
@@ -42,8 +53,10 @@ public class RechargeController {
         String openId = request.getParameter("openid");
         try{
             UserPO userPO = userService.selectUser(openId);
-            double balance = userPO.getRemain();
+            double balance = userPO.getRecharge() + userPO.getPresent();
             model.addAttribute("balance", String.valueOf(balance));
+            model.addAttribute("recharge", String.valueOf(userPO.getRecharge()));
+            model.addAttribute("present", String.valueOf(userPO.getPresent()));
         }catch (Exception e){
             logger.error("consumeOrderService.selectConsumptionByDisplayId error in recordcontroller");
         }
@@ -58,7 +71,7 @@ public class RechargeController {
     @RequestMapping(value = "/rechargerec", method = RequestMethod.GET)
     public String rechargerec(){return "main/rechargerec.jsp";}
 
-    //获取充值
+    //获取充值记录
     @RequestMapping(value = "/menu/rechargerecord", method = RequestMethod.POST)
     public void getRechargeRecord(HttpServletRequest request, HttpServletResponse response){
         String openId = request.getParameter("openid");
@@ -72,4 +85,78 @@ public class RechargeController {
         }
 
     }
+
+    //提交退款请求
+    @RequestMapping(value = "/refund", method = RequestMethod.POST)
+    public void refund(HttpServletRequest request, HttpServletResponse response) throws Exception{
+        String openId = request.getParameter("openid");
+        String strMoney = request.getParameter("money");
+        String auth = request.getParameter("auth");
+        if(auth.equals(MD5Util.MD5Encode(openId + "D2FFD4FAEF6778E26813CB08FE3CB3C5","UTF-8"))) {
+            UserPO userPO = userService.selectUser(openId);
+            if (userPO.getRecharge() == 0.0) {
+                return;
+            }
+
+            int money = Integer.parseInt(strMoney);
+            int id = refundRecordService.insertRefund(openId, money);
+            String refundNo = null;
+            try {
+                refundNo = refundRecordService.updateRefundNoById(id);
+            } catch (Exception e) {
+                logger.error("updateRefundNo error in RechargeController" + id);
+            }
+
+            MyConfig config = new MyConfig();
+            MyWXPay wxpay = new MyWXPay(config);
+
+            Map<String, String> data = new HashMap<String, String>();
+            data.put("partner_trade_no", refundNo);
+            data.put("openid", openId);
+            data.put("check_name", "NO_CHECK");
+            data.put("amount", String.valueOf(money * 100));
+            data.put("desc", "退款");
+            data.put("spbill_create_ip", "119.23.210.52");
+            try {
+                Map<String, String> resp = wxpay.personalPay(data);
+                if (resp.get("payment_no") != null) {
+                    //退款成功，更新退款订单状态，更新用户余额
+                    refundRecordService.updateRefundStatus(resp.get("payment_no"), refundNo);
+                    JSONObject jsonObject = new JSONObject();
+                    jsonObject.put("result", "success");
+                    response.getWriter().print(jsonObject);
+                    userService.updateRemain(0.0, 0.0, openId);
+                }
+                if (resp.get("err_code") != null) {
+                    //用户为非实名制的，提醒用户绑卡
+                    if (resp.get("err_code").equals("V2_ACCOUNT_SIMPLE_BAN")) {
+                        JSONObject jsonObject = new JSONObject();
+                        jsonObject.put("result", "simpleban");
+                        response.getWriter().print(jsonObject);
+                    }
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    //显示退款记录页面
+    @RequestMapping(value = "/refundrec", method = RequestMethod.GET)
+    public String refundrec(){return "main/refundrec.jsp";}
+
+    //查询退款记录
+    @RequestMapping(value = "/menu/refundrecord", method = RequestMethod.POST)
+    public void getRefundRecord(HttpServletRequest request, HttpServletResponse response){
+        String openId = request.getParameter("openid");
+        List<RefundRecordPO> refundRecordPOS = new ArrayList<>();
+        try{
+            refundRecordPOS = refundRecordService.selectRefundByOpenId(openId);
+            JSONArray jsonArray = JSONArray.fromObject(refundRecordPOS);
+            response.getWriter().print(jsonArray);
+        }catch (Exception e){
+            logger.error("refundRecordService.selectRefundByOpenId error in rechargeController");
+        }
+    }
+
 }

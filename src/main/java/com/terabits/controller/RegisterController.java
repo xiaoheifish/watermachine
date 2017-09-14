@@ -1,5 +1,8 @@
 package com.terabits.controller;
 
+import com.terabits.meta.po.InvitationPO;
+import com.terabits.meta.po.UserPO;
+import com.terabits.service.InvitationService;
 import com.terabits.service.SmsService;
 import com.terabits.service.UserService;
 import com.terabits.service.impl.SmsServiceImpl;
@@ -25,13 +28,24 @@ public class RegisterController {
     private SmsService smsService;
     @Autowired
     private UserService userService;
-
+    @Autowired
+    private InvitationService invitationService;
     private static Logger logger = LoggerFactory.getLogger(RegisterController.class);
     @RequestMapping(value="/sendmessage",method= RequestMethod.GET)
     public void sendmessage(HttpServletRequest request, HttpServletResponse response)throws Exception{
         HttpSession session = request.getSession();
         String tel = request.getParameter("tel");
-        System.out.println(tel);
+        try {
+            UserPO userPO = userService.userExist(tel);
+            if(userPO != null){
+                JSONObject jsonObject = new JSONObject();
+                jsonObject.put("auth", "existence");
+                response.getWriter().print(jsonObject);
+                return;
+            }
+        }catch (Exception e){
+            logger.error("userService.userExist error in RegisterController");
+        }
         String code = smsService.sendMessage(tel, "zh_CN");
         String auth = UUID.randomUUID().toString();
         JSONObject jsonObject = new JSONObject();
@@ -52,7 +66,7 @@ public class RegisterController {
         String auth = request.getParameter("auth");
         String id = request.getParameter("tel");
         String code = request.getParameter("code");
-        System.out.println(tempAuth +auth+ tempId+id+tempCode+code);
+
         if(!(tempAuth.equals(auth))){
             jsonObject.put("testpass","no");
             response.getWriter().print(jsonObject);
@@ -68,12 +82,15 @@ public class RegisterController {
             String openId = (String)session.getAttribute("openid");
             try{
                 userService.updatePhone(id, openId);
-                userService.updateRemain(5.0, openId);
+                userService.updateRemain(0.0,5.0, openId);
             }catch (Exception e){
                 logger.error("userService.update phone and remain error!");
                 jsonObject.put("testpass","no");
                 response.getWriter().print(jsonObject);
                 return;
+            }
+            if(request.getParameter("phone") != null){
+                invitationService.insertInvitation(request.getParameter("phone"), request.getParameter("tel"));
             }
             jsonObject.put("testpass","yes");
             response.getWriter().print(jsonObject);

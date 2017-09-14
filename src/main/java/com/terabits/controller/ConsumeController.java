@@ -74,6 +74,16 @@ public class ConsumeController {
             response.getWriter().print(jsonObject);
             return;
         }
+
+        // 查询用户余额，如果余额不足，则提示用户充值
+        UserPO userPO = userService.selectUser(openId);
+        if(userPO.getPresent() < actualCost){
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("result", "not enough");
+            response.getWriter().print(jsonObject);
+            return;
+        }
+
         try{
             int result = terminalService.updateStatusWhenOrder(displayId);
             if(result == 0){
@@ -182,34 +192,21 @@ public class ConsumeController {
 
         //更新redis缓存中该设备的开始时间
         credentialService.updateDeviceTime(communicationBO.getDeviceId());
-
-        Boolean flag = false;
         for (int i = 0; i < 21; i++) {
-            // 之后加一个根据消费订单编号查询的方法
-        /*    ConsumeOrderPO consumeOrderPO1 = consumeOrderService
-                    .selectLastConsumption(displayId);*/
-            ConsumeOrderPO consumeOrderPO1 = new ConsumeOrderPO();
-            consumeOrderPO1.setState(Constants.HAVE_RESPONSE);
             if (i == 20) {
-                JSONObject jsonObject = new JSONObject();
-                jsonObject.put("result", "error");
-                response.getWriter().print(jsonObject);
-                TerminalUpdateBO terminalUpdateBO = new TerminalUpdateBO();
-                terminalUpdateBO.setState(Constants.OFF_STATE);
-                terminalUpdateBO.setDisplayId(displayId);
-                terminalService.updateTerminal(terminalUpdateBO);
-                return;
-            }
-            if (consumeOrderPO1.getState() == Constants.HAVE_RESPONSE) {
-                if (flag == false) {
+                ConsumeOrderPO consumeOrderPO1 = consumeOrderService.selectLastConsumption(displayId);
+                if(consumeOrderPO1.getState() == Constants.HAVE_RESPONSE){
                     JSONObject jsonObject = new JSONObject();
                     jsonObject.put("result", "success");
                     response.getWriter().print(jsonObject);
-                    flag = true;
-                    // 更新用户余额
-                    UserPO userPO = userService.selectUser(openId);
-                    userService.updateRemain(userPO.getRemain() - actualCost,
-                            openId);
+
+                    if(userPO.getRecharge() >= actualCost){
+                        userService.updateRemain(userPO.getRecharge() - actualCost, userPO.getPresent(), openId);
+                    }else if((userPO.getRecharge()<actualCost)&&(userPO.getRecharge()>0)){
+                        userService.updateRemain(0.0, userPO.getPresent() + userPO.getRecharge() - actualCost, openId);
+                    }else{
+                        userService.updateRemain(0.0, userPO.getPresent() - actualCost, openId);
+                    }
                     // 更新统计余额及流量
                     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
                     AuxcalPO auxcalPO = new AuxcalPO();
@@ -226,17 +223,26 @@ public class ConsumeController {
                     statisticService.updateTotalConsume(totalPO);
                     return;
                 }
+                JSONObject jsonObject = new JSONObject();
+                jsonObject.put("result", "error");
+                response.getWriter().print(jsonObject);
+                TerminalUpdateBO terminalUpdateBO = new TerminalUpdateBO();
+                terminalUpdateBO.setState(Constants.OFF_STATE);
+                terminalUpdateBO.setDisplayId(displayId);
+                terminalService.updateTerminal(terminalUpdateBO);
+                return;
             }
-            if ((consumeOrderPO1.getState() == Constants.NO_RESPONSE)
-                    && (i % 12 == 0)&&(i != 0)) {
-                // 每隔12秒，重新下发开启插座命令给终端
-                result = postCommandManager.command(openbytes, communicationBO.getDeviceId());
-                map = gson.fromJson(result, map.getClass());
-                //记录第二次下发的commandId，方便去华为平台上做查询比对
-                commandService.updateCommandId((String)map.get("commandId"), communicationBO.getDeviceId());
-                logger.error("result:::"+ result);
+            else if ((i % 12 == 0)&&(i != 0)) {
+                // 第12s，若仍未收到回复，重新下发开启插座命令给终端
+                ConsumeOrderPO consumeOrderPO1 = consumeOrderService.selectLastConsumption(displayId);
+                if(consumeOrderPO1.getState() == Constants.NO_RESPONSE) {
+                    result = postCommandManager.command(openbytes, communicationBO.getDeviceId());
+                    map = gson.fromJson(result, map.getClass());
+                    //记录第二次下发的commandId，方便去华为平台上做查询比对
+                    commandService.updateCommandId((String) map.get("commandId"), communicationBO.getDeviceId());
+                    logger.error("result:::" + result);
+                }
             } else {
-                // 隔一秒取一次数据库中记录
                 Thread.sleep(1000L);
             }
         }

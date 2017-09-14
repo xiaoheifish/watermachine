@@ -22,9 +22,9 @@ public interface UserService {
     public int updateInfo(UserPO userPO)throws Exception;
 
     /**
-     * 根据openId更新余额
+     * 根据openId更新余额,分别更新充值部分和赠送部分
      */
-    public int updateRemain(Double remain, String openId) throws Exception;
+    public int updateRemain(Double recharge, Double present, String openId) throws Exception;
 
     /**
      * 根据openId更新手机号
@@ -40,4 +40,9 @@ public interface UserService {
      *根据openId查询手机号，判断用户是否已经注册
      */
     public WeixinUserBO userRegistered(String openId)throws Exception;
+
+    /**
+     * 根据phone判断某个用户是否存在
+     */
+    public UserPO userExist(String phone)throws Exception;
 }

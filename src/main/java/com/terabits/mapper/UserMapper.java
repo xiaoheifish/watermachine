@@ -28,13 +28,14 @@ public interface UserMapper
     public int updateInfo(UserPO userPO)throws Exception;
 
     /**
-     * 根据openId更新余额
-     * @param remain
+     * 根据openId更新余额,分别更新充值部分和赠送部分
+     * @param recharge
+     * @param present
      * @param openId
      * @return
      * @throws Exception
      */
-    public int updateRemain(@Param("remain")Double remain, @Param("openId")String openId) throws Exception;
+    public int updateRemain(@Param("recharge")Double recharge, @Param("present")Double present, @Param("openId")String openId) throws Exception;
 
     /**
      * 根据openId更新手机号
@@ -61,5 +62,13 @@ public interface UserMapper
      */
     public WeixinUserBO userRegistered(@Param("openId")String openId)throws Exception;
 
+
+    /**
+     * 根据phone查询某个用户是否存在，用于邀请链接判断是否是新用户
+     * @param phone
+     * @return
+     * @throws Exception
+     */
+    public UserPO userExist(@Param("phone") String phone)throws Exception;
 
 }

@@ -35,8 +35,8 @@ public class UserServiceImpl implements UserService {
     /**
      * 根据openId更新余额
      */
-    public int updateRemain(Double remain, String openId) throws Exception{
-        return userMapper.updateRemain(remain, openId);
+    public int updateRemain(Double recharge, Double present, String openId) throws Exception{
+        return userMapper.updateRemain(recharge, present, openId);
     }
 
     /**
@@ -60,4 +60,11 @@ public class UserServiceImpl implements UserService {
         return userMapper.userRegistered(openId);
     }
 
+    /**
+     * 根据phone判断某个用户是否存在
+     */
+
+    public UserPO userExist(String phone)throws Exception{
+        return userMapper.userExist(phone);
+    }
 }

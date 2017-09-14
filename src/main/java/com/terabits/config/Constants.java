@@ -71,8 +71,11 @@ public class Constants {
     public static final byte COMMAND_TWO = (byte)0x2f;
 
     //消费编号
+
     //项目标号
-    public static final String CONSUME_PRO_NUMBER = "4003336";
+    public static final String CONSUME_PRO_NUMBER = "36";
+    //退款编号
+    public static final String REFUND_PRO_NUMBER = "25";
 
     //下发命令执行状态
     public static final String BEGIN_STATE = "10";
@@ -85,4 +88,9 @@ public class Constants {
     public static final int FEEDBACK_UNRESOLVED = 23;
 
     public static final int FEEDBACK_SOLVED = 66;
+
+    //退款订单状态, 10表示处理中, 11表示处理完成
+    public static final int IN_HAND = 10;
+
+    public static final int FINISHED = 11;
 }
