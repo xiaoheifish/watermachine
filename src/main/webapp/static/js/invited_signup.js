@@ -4,8 +4,6 @@
     var url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx34690a5342af3858&redirect_uri="+encodeurl+"&response_type=code&scope=snsapi_base&state=1#wechat_redirect";
     window.location.href=url;
 
-    //查询openid 和language
-
     if(language != "zh_CN"){
 		$("#signuppic").attr("src","/watermachine/static/pic/ensignuppic.png");
 		$("#inputdiv1").remove();
@@ -18,7 +16,7 @@
 	}
 }
 
-var certificate,countdown;
+var certificate,countdown,openid,language;
 function signup(){
 	phone = $("#tel").val();
 	$.ajax({
@@ -31,6 +29,8 @@ function signup(){
 				    $("#signup").css("color", "rgb(200, 200, 200)");
 				    countdown = 60;
 				    settime();
+				    openid = data["openid"];
+				    language = data["language"];
 				    
 				    //发送手机号，回收凭证
 				    $.ajax({
