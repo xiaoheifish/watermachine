@@ -21,7 +21,8 @@ else{
 }
 
 function jumprecharge(){
-	window.location.href = "/watermachine/callback";
+	if(parseInt(balance) < 6){window.location.href = "/watermachine/callback";}
+	else{alert("您的余额大于6元，无法充值！");}
 }
 
 function jumpreimburse(){
