@@ -38,7 +38,7 @@
 
 
     <select id="selectRefundByOpenId" parameterType="String" resultMap="refundMap">
-        select * from refundrecord where openid = #{openId} order by gmtcreate desc
+        select * from refundrecord where openid = #{openId} and state = 11 order by gmtcreate desc
     </select>
 
     <update id = "updateRefundNoById">

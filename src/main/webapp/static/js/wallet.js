@@ -42,7 +42,7 @@ function loadrefundrecord(){
 	loadid();
 	$.ajax({
 		type:'POST',
-		url:'/watermachine/refundrecord',
+		url:'/watermachine/menu/refundrecord',
 		data:{
 			"openid":openid
         },
