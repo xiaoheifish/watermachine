@@ -52,7 +52,9 @@ function loadrefundrecord(){
 			if(length != 0){
 				$("#record0").show();
 		            for(i=0; i<length; i++){
-		            	$("#record"+i).find("#time").text(data[i]["gmtCreate"]);
+		            	var time = data[i]["gmtCreate"];
+		            	var reformtime=time.split(".")[0];
+		            	$("#record"+i).find("#time").text(reformtime);
 		            	$("#record"+i).find("#money").text(data[i]["money"]);
 		            	$("#record"+i).find("#refundNo").text(data[i]["refundNo"]);
 		            	if(i != (length-1)){
@@ -94,6 +96,7 @@ function refund(){
 			if(result == "success"){
 				if(language != "zh_CN"){alert("Refund succeed!");}
 				else{alert("退款申请成功！");}
+				window.location.href="/watermachine/mainpage?code=tera123bits";
 			}
 			if(result == "simpleban"){
 				if(language != "zh_CN"){alert("Refund succeed!");}

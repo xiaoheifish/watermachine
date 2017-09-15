@@ -8,28 +8,6 @@ function closemenu(){
 	$("#closemenudiv").hide();
 }
 
-function openrecordbox(){
-	window.location.href = "/watermachine/record";
-}
-
-function openwalletbox(){
-	window.location.href = "/watermachine/wallet?openid=" + openid;
-
-}
-
-function openrechargerecbox(){
-	window.location.href = "/watermachine/rechargerec";
-}
-
-function openservicebox(){
-	window.location.href = "/watermachine/mail";
-}
-
-//$("#invite").click(function(){
-	//alert(123);
-	//window.location.href = "/watermachine/showinvitation?openid=" + openid;
-//});
-
 //打开手动输入窗口
 function opennumber(){
 	$("#bottombar").hide();
@@ -182,7 +160,9 @@ function loadrecord(){
 			if(length != 0){
 				$("#record0").show();
 		            for(i=0; i<length; i++){
-		            	$("#record"+i).find("#time").text(data[i]["gmtCreate"]);
+		            	var time = data[i]["gmtCreate"];
+		            	var reformtime=time.split(".")[0];
+		            	$("#record"+i).find("#time").text(reformtime);
 		            	$("#record"+i).find("#cost").text(data[i]["payment"]);
 		            	$("#record"+i).find("#idtext").text(data[i]["displayId"]);
 		            	$("#record"+i).find("#water").text(data[i]["flow"]);
@@ -265,7 +245,9 @@ function loadrechargerecord(){
 			if(length != 0){
 				$("#record0").show();
 		            for(i=0; i<length; i++){
-		            	$("#record"+i).find("#time").text(data[i]["gmtCreate"]);
+		            	var time = data[i]["gmtCreate"];
+		            	var reformtime=time.split(".")[0];
+		            	$("#record"+i).find("#time").text(reformtime);
 		            	$("#record"+i).find("#amount").text(data[i]["payment"]);
 		            	$("#record"+i).find("#present").text(data[i]["present"]);
 		            	$("#record"+i).find("#idtext").text(data[i]["orderId"]);

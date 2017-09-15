@@ -29,7 +29,8 @@
 <div id="moments" style="text-align: center; display: inline-block;margin-left: 1rem;">
 <img style="width: 1.3rem" src="/watermachine/static/pic/invite-moments.png"><br>分享至朋友圈</div>
 </div>
-<p>请点击右上角分享</p>
+<br>
+<p style="font-size: 0.25rem; color: rgb(113,113,113);">请点击右上角分享</p>
 <br><br><br>
 <a href = "/watermachine/rules">详细活动规则</a>
 </div>
