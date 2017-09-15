@@ -24,13 +24,13 @@
 <p style="font-size: 0.7rem">5元饮水体验券</p>
 <br><br><br>
 <div style="display: inline;">
-<div id="friends" style="text-align: center; display: inline-block;">
+<div style="text-align: center; display: inline-block;">
 <img style="width: 1.3rem" src="/watermachine/static/pic/invite-friends.png"><br>发送给好友</div>
-<div id="moments" style="text-align: center; display: inline-block;margin-left: 1rem;">
+<div style="text-align: center; display: inline-block;margin-left: 1rem;">
 <img style="width: 1.3rem" src="/watermachine/static/pic/invite-moments.png"><br>分享至朋友圈</div>
 </div>
 <br>
-<p style="font-size: 0.25rem; color: rgb(113,113,113);">请点击右上角分享</p>
+<p style="font-size: 0.25rem; color: rgb(113,113,113);margin-top: 0.1rem;">请点击右上角分享</p>
 <br><br><br>
 <a href = "/watermachine/rules">详细活动规则</a>
 </div>
@@ -40,13 +40,13 @@
 <p>Invite your friends. Both of you will receive a</p>
 <p style="font-size: 0.7rem">¥5 coupon</p>
 <br><br><br>
-<div>
-<div id="friends" onclick="friends();" style="text-align: center; display: inline-block;">
+<div style="text-align: center; display: inline-block;">
 <img style="width: 1.3rem" src="/watermachine/static/pic/invite-friends.png"><br>Send to chat</div>
-<div id="moments" onclick="moments();" style="text-align: center; display: inline-block;margin-left: 1rem;">
+<div style="text-align: center; display: inline-block;margin-left: 1rem;">
 <img style="width: 1.3rem" src="/watermachine/static/pic/invite-moments.png"><br>Share on moments
 </div>
-</div>
+<br>
+<p style="font-size: 0.25rem; color: rgb(113,113,113);margin-top: 0.1rem;">Please click on the top right corner to share.</p>
 <br><br><br>
 <a href = "/watermachine/rules">Detail Rules</a>
 </div>
