@@ -24,11 +24,12 @@
 <p style="font-size: 0.7rem">5元饮水体验券</p>
 <br><br><br>
 <div style="display: inline;">
-<div id="friends" onclick="friends();" style="text-align: center; display: inline-block;">
+<div id="friends" style="text-align: center; display: inline-block;">
 <img style="width: 1.3rem" src="/watermachine/static/pic/invite-friends.png"><br>发送给好友</div>
-<div id="moments" onclick="moments();" style="text-align: center; display: inline-block;margin-left: 1rem;">
+<div id="moments" style="text-align: center; display: inline-block;margin-left: 1rem;">
 <img style="width: 1.3rem" src="/watermachine/static/pic/invite-moments.png"><br>分享至朋友圈</div>
 </div>
+<p>请点击右上角分享</p>
 <br><br><br>
 <a href = "/watermachine/rules">详细活动规则</a>
 </div>

@@ -9,7 +9,7 @@
 <script language="javascript" src="/watermachine/static/js/invited_signup.js"></script>
 <link rel="stylesheet" href="/watermachine/static/css/bootstrap.css">
 <link rel="stylesheet" href="/watermachine/static/css/signup.css">
-<title>接收邀请</title>
+<title>接受邀请</title>
 <script>
 	var phone = "${phone}";
     var openid = "${openid}";
@@ -22,7 +22,7 @@
 
 <!-- 输入部分 -->
 <div id="inputdiv1" style="text-align: center;width: 100%;margin-top: 0.3rem;">
-<p>接收邀请并注册，好友与你各得</p>
+<p>接受邀请并注册，好友与你各得</p>
 <p style="font-size: 0.6rem;"><span style="color: rgb(230, 67,64);">5元</span>饮水体验券</p>
 <input type="tel" class="inputbox" id="tel" maxlength="11" value="请输入手机号" onfocus="this.value = '', positionhide()" onblur="positionshow()" >
 <button class="inputbutton" onclick="signup()" id="signup">立即注册</button>

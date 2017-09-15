@@ -141,9 +141,9 @@
 	<img style="width: 0.7rem" src="/watermachine/static/pic/rechargerec.png"/>&nbsp;&nbsp;充值记录
     <img style="width: 0.7rem;"></button>
 
-    <a href="/watermachine/showinvitation?openid=${openid}"><button id="invite" class="menu_1">
+    <button id="invite" class="menu_1" onclick="window.location.href='/watermachine/showinvitation?openid=${openid}'">
 	<img style="width: 0.7rem" src="/watermachine/static/pic/invite.png"/>&nbsp;&nbsp;邀请好友
-    <img style="width: 0.7rem;"></button></a>
+    <img style="width: 0.7rem;"></button>
 
     <button id="service" onclick="openservicebox();" class="menu_1">
 	<img style="width: 0.7rem" src="/watermachine/static/pic/service.png"/>&nbsp;&nbsp;意见反馈
