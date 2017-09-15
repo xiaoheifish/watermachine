@@ -30,7 +30,7 @@
 <img style="width: 1.3rem" src="/watermachine/static/pic/invite-moments.png"><br>分享至朋友圈</div>
 </div>
 <br>
-<p style="font-size: 0.25rem; color: rgb(113,113,113);margin-top: 0.1rem;">请点击右上角分享</p>
+<p style="font-size: 0.25rem; color: rgb(113,113,113);margin-top: 0.3rem;">请点击右上角分享</p>
 <br><br><br>
 <a href = "/watermachine/rules">详细活动规则</a>
 </div>
@@ -46,7 +46,7 @@
 <img style="width: 1.3rem" src="/watermachine/static/pic/invite-moments.png"><br>Share on moments
 </div>
 <br>
-<p style="font-size: 0.25rem; color: rgb(113,113,113);margin-top: 0.1rem;">Please click on the top right corner to share.</p>
+<p style="font-size: 0.25rem; color: rgb(113,113,113);margin-top: 0.3rem;">Please click on the top right corner to share.</p>
 <br><br><br>
 <a href = "/watermachine/rules">Detail Rules</a>
 </div>
