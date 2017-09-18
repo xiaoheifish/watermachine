@@ -4,10 +4,10 @@ function load(){
 	language = getCookie("language");
 
 	if(language != "zh_CN"){
-		document.getElementById('50').innerHTML ="¥ 50\n<br/>Gift ¥50";
-		document.getElementById('20').innerHTML ="¥ 20\n<br/>Gift ¥20";
-		document.getElementById('10').innerHTML ="¥ 10\n<br/>Gift ¥10";
-		document.getElementById('5').innerHTML ="¥ 5\n<br/>Gift ¥5";
+		document.getElementById('50').innerHTML ="¥ 5\n<br/>Gift ¥5";
+		document.getElementById('20').innerHTML ="¥ 3\n<br/>Gift ¥3";
+		document.getElementById('10').innerHTML ="¥ 2\n<br/>Gift ¥2";
+		document.getElementById('5').innerHTML ="¥ 1\n<br/>Gift ¥1";
 		$("#recharge").val("recharge");
 		$("#rechargewarntext").text("Click 'recharge' means you agree the above rules.");
 		$("#rechargepic").attr("src","/watermachine/static/pic/enrechargepic.png");
