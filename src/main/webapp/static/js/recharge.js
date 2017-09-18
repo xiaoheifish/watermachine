@@ -31,7 +31,7 @@ function getCookie(cname)
 var money;
 //容量选择按钮选中效果
 function money1(){
-	money = 50;
+	money = 5;
 	$("#money1image").attr("src", "/watermachine/static/pic/aselect.png");
 	$("#money2image").attr("src", "/watermachine/static/pic/bselect.png");
 	$("#money3image").attr("src", "/watermachine/static/pic/bselect.png");
@@ -40,7 +40,7 @@ function money1(){
 }
 
 function money2(){
-	money = 20;
+	money = 3;
 	$("#money1image").attr("src", "/watermachine/static/pic/bselect.png");
 	$("#money2image").attr("src", "/watermachine/static/pic/aselect.png");
 	$("#money3image").attr("src", "/watermachine/static/pic/bselect.png");
@@ -48,7 +48,7 @@ function money2(){
 }
 
 function money3(){
-	money = 10;
+	money = 2;
 	$("#money1image").attr("src", "/watermachine/static/pic/bselect.png");
 	$("#money2image").attr("src", "/watermachine/static/pic/bselect.png");
 	$("#money3image").attr("src", "/watermachine/static/pic/aselect.png");
@@ -56,7 +56,7 @@ function money3(){
 }
 
 function money4(){
-	money = 5;
+	money = 1;
 	$("#money1image").attr("src", "/watermachine/static/pic/bselect.png");
 	$("#money2image").attr("src", "/watermachine/static/pic/bselect.png");
 	$("#money3image").attr("src", "/watermachine/static/pic/bselect.png");
