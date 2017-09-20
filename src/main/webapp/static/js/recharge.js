@@ -31,11 +31,13 @@ function getCookie(cname)
 var money;
 //容量选择按钮选中效果
 function money1(){
-	money = 5;
+	alert("请您选择3元或3元以下的金额进行充值！");
+	/*money = 5;
 	$("#money1image").attr("src", "/watermachine/static/pic/aselect.png");
 	$("#money2image").attr("src", "/watermachine/static/pic/bselect.png");
 	$("#money3image").attr("src", "/watermachine/static/pic/bselect.png");
 	$("#money4image").attr("src", "/watermachine/static/pic/bselect.png");
+	*/
 	
 }
 
