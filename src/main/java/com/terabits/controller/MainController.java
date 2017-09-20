@@ -51,7 +51,22 @@ public class MainController {
         }
         if (code.equals("tera123bits")){
             //从充值，下单跳转过来，附加验证信息，可以直接返回首页
-        	return "main/login.jsp";
+        	 String sessionOpenId = (String)session.getAttribute("openid");
+             if (sessionOpenId == null) {
+                 //session过期，重新进入
+                 return "main/timeout.jsp";
+             }else if (sessionOpenId.equals("unregister")){
+                 //在注册页刷新
+             	return "main/signup.jsp";
+             }else {
+                 //获取openId出问题了，若session中仍存有openId，则可返回首页
+                 UserPO userPO = userService.selectUser(sessionOpenId);
+                 model.addAttribute("openId", userPO.getOpenId());
+                 model.addAttribute("language", userPO.getLanguage());
+                 model.addAttribute("nickname", userPO.getNickname());
+                 model.addAttribute("headimgurl", userPO.getHeadImgUrl());
+                 return "main/login.jsp";
+             }
         }
         JSONObject jsonObject = WeixinUtil.getOpenid(code, WeixinGlobal.APP_ID, WeixinGlobal.APP_SECRET);
         if(jsonObject.has("openid")==false){
