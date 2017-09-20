@@ -80,43 +80,47 @@ public class RegisterController {
 
         if(tempCode.equals(code)){
         	if(request.getParameter("openid")!=null){
-        		UserPO userPO = new UserPO();
-        		userPO.setOpenId(request.getParameter("openid"));
-        		userPO.setPhone(request.getParameter("phone"));
-        		userPO.setRecharge(0.0);
-        		userPO.setPresent(5.0);
-        		try{
-        			userService.insertUser(userPO);
-        			invitationService.insertInvitation(request.getParameter("phone"), request.getParameter("tel"));
-        			UserPO inviterPO = userService.userExist(request.getParameter("phone"));
-        			userService.updateRemain(inviterPO.getRecharge(), inviterPO.getPresent() + 5.0, inviterPO.getOpenId());
-        			jsonObject.put("testpass","yes");
-        	        response.getWriter().print(jsonObject);
-        	        return;
-        		}catch(Exception e){
-        			jsonObject.put("testpass","no");
-        	        response.getWriter().print(jsonObject);
-        	        return;
-        		}
-        	}
-            String openId = (String)session.getAttribute("openid");
-            try{
-                userService.updatePhone(id, openId);
-                userService.updateRemain(0.0,5.0, openId);
-            }catch (Exception e){
-                logger.error("userService.update phone and remain error!");
+        	    String openId = request.getParameter("openid");
+        	    UserPO userPO = userService.selectUser(openId);
+        	    if(userPO != null){
+                    try{
+                        userService.updatePhone(id, openId);
+                        userService.updateRemain(0.0,5.0, openId);
+                    }catch (Exception e){
+                        logger.error("userService.update phone and remain error!");
+                        jsonObject.put("testpass","no");
+                        response.getWriter().print(jsonObject);
+                        return;
+                    }
+
+                }else{
+                    UserPO inviteeUserPO = new UserPO();
+                    inviteeUserPO.setOpenId(request.getParameter("openid"));
+                    inviteeUserPO.setPhone(request.getParameter("tel"));
+                    inviteeUserPO.setRecharge(0.0);
+                    inviteeUserPO.setPresent(5.0);
+                    try{
+                        userService.insertUser(inviteeUserPO);
+                        invitationService.insertInvitation(request.getParameter("phone"), request.getParameter("tel"));
+                        UserPO inviterPO = userService.userExist(request.getParameter("phone"));
+                        userService.updateRemain(inviterPO.getRecharge(), inviterPO.getPresent() + 5.0, inviterPO.getOpenId());
+                        jsonObject.put("testpass","yes");
+                        response.getWriter().print(jsonObject);
+                        return;
+                    }catch(Exception e){
+                        jsonObject.put("testpass","no");
+                        response.getWriter().print(jsonObject);
+                        return;
+                    }
+
+                }
+
+        	}else{
                 jsonObject.put("testpass","no");
                 response.getWriter().print(jsonObject);
                 return;
             }
-            if(request.getParameter("phone") != null){
-                invitationService.insertInvitation(request.getParameter("phone"), request.getParameter("tel"));
-                UserPO inviterPO = userService.userExist(request.getParameter("phone"));
-    			userService.updateRemain(inviterPO.getRecharge(), inviterPO.getPresent() + 5.0, inviterPO.getOpenId());
-            }
-            jsonObject.put("testpass","yes");
-            response.getWriter().print(jsonObject);
-            return;
+
         }
     }
 
