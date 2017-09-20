@@ -13,6 +13,7 @@ import org.springframework.stereotype.Component;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by Administrator on 2017/7/20.
@@ -63,6 +64,26 @@ public class CredentialServiceImpl implements CredentialService{
                 .opsForHash();
         hashOperations.delete("device",deviceId);
     }
+
+    //插入某退款用户的openId, 30min过期
+    public void createRefundUser(String openId) {
+
+        ValueOperations<String, String> stringOperations = redisTemplate
+                .opsForValue();
+        //String类型数据存储，设置过期时间，采用TimeUnit控制时间单位
+        Date now = new Date();
+        stringOperations.set(openId, String.valueOf(now.getTime() / 1000) , 30, TimeUnit.MINUTES);
+
+    }
+
+    //查询某个退款用户是否在redis缓存中,若在,则不允许此次退款操作
+    public String getRefundUserTime(String openId){
+        ValueOperations<String, String> stringOperations = redisTemplate
+                .opsForValue();
+        String value1 = stringOperations.get(openId);
+        return value1;
+    }
+
 /*        hashOperations.delete("hash", "map1");
         System.out.println(hashOperations.entries("hash"));*/
      /*   for (int i = 0; i < 5; i++) {

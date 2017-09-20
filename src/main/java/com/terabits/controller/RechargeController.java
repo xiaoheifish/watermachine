@@ -6,6 +6,7 @@ import com.terabits.config.MyWXPay;
 import com.terabits.meta.po.RechargeOrderPO;
 import com.terabits.meta.po.RefundRecordPO;
 import com.terabits.meta.po.UserPO;
+import com.terabits.service.CredentialService;
 import com.terabits.service.RechargeOrderService;
 import com.terabits.service.RefundRecordService;
 import com.terabits.service.UserService;
@@ -41,6 +42,8 @@ public class RechargeController {
     private UserService userService;
     @Autowired
     private RefundRecordService refundRecordService;
+    @Autowired
+    private CredentialService credentialService;
 
     private static Logger logger = LoggerFactory.getLogger(RechargeController.class);
 
@@ -94,9 +97,22 @@ public class RechargeController {
         String auth = request.getParameter("auth");
         if(auth.equals(MD5Util.MD5Encode(openId + "D2FFD4FAEF6778E26813CB08FE3CB3C5","UTF-8"))) {
             UserPO userPO = userService.selectUser(openId);
+            //若余额为0，则不允许退款
             if (userPO.getRecharge() == 0.0) {
+                JSONObject jsonObject = new JSONObject();
+                jsonObject.put("result", "notenough");
+                response.getWriter().print(jsonObject);
                 return;
             }
+            //半小时内只允许一次退款操作
+            String time = credentialService.getRefundUserTime(openId);
+            if(time != null){
+                JSONObject jsonObject = new JSONObject();
+                jsonObject.put("result", "frequent");
+                response.getWriter().print(jsonObject);
+                return;
+            }
+            credentialService.createRefundUser(openId);
             System.out.println(strMoney);
             double money = Double.parseDouble(strMoney);
             int requestMoney = (int)(money * 100);

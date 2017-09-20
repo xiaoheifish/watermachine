@@ -86,6 +86,14 @@ public class RegisterController {
                     try{
                         userService.updatePhone(id, openId);
                         userService.updateRemain(0.0,5.0, openId);
+                        if(request.getParameter("phone") != null){
+                            invitationService.insertInvitation(request.getParameter("phone"), request.getParameter("tel"));
+                            UserPO inviterPO = userService.userExist(request.getParameter("phone"));
+                            userService.updateRemain(inviterPO.getRecharge(), inviterPO.getPresent() + 5.0, inviterPO.getOpenId());
+                        }
+                        jsonObject.put("testpass","yes");
+                        response.getWriter().print(jsonObject);
+                        return;
                     }catch (Exception e){
                         logger.error("userService.update phone and remain error!");
                         jsonObject.put("testpass","no");
