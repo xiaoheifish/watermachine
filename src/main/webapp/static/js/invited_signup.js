@@ -73,7 +73,7 @@ function icode(){
 				if(data["testpass"]=="yes"){
                     open();
 				}
-				if(data["testpass"]=="no"){
+				if(data["testpass"]=="wrongcode"){
                     alert("验证码不正确！");
 				}
 				else{

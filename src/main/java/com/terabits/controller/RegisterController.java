@@ -126,7 +126,7 @@ public class RegisterController {
                 }
 
         	}else{
-                jsonObject.put("testpass","no");
+                jsonObject.put("testpass","wrongcode");
                 response.getWriter().print(jsonObject);
                 return;
             }
