@@ -40,13 +40,16 @@ function signup(){
 			if(length != 0){
 				//凭证
 				certificate = data["auth"];
+				setCookie("certificate",certificate);
 		    }
 		}
 	});
 }
 
 function icode(){
-    //验证验证码
+	certificate = getCookie("certificate");
+	if(certificate != null){
+		//验证验证码
 	   $.ajax({
 			type:'POST',
 			url:'/watermachine/testcode',
@@ -70,6 +73,10 @@ function icode(){
 				}
 			}
 		});
+	}
+    else{
+    	alert("请先获取验证码！");
+    }
 }
 
 //跳转至注册成功提示
@@ -129,4 +136,25 @@ iframe.style.display="none";
 document.documentElement.appendChild(iframe);
 window.frames[0].window.alert(name);
 iframe.parentNode.removeChild(iframe);
+}
+
+/* 设置cookie */
+function setCookie(name,value)
+{
+	  var d = new Date();
+	  d.setTime(d.getTime()+(10*24*60*60*1000));
+	  var expires = "expires="+d.toGMTString();
+	  document.cookie = name + "=" + value;
+}
+
+/* 读取cookie */
+function getCookie(cname)
+{
+	var name = cname + "=";
+	var ca = parent.document.cookie.split(';');
+	for(var i=0; i<ca.length; i++) {
+		var c = ca[i].trim();
+		if (c.indexOf(name)==0) return c.substring(name.length,c.length);
+	}
+	return null;
 }
