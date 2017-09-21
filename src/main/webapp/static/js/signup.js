@@ -62,7 +62,7 @@ function icode(){
                     open();
                     setTimeout(function() { window.location.href="http://www.terabits-wx.cn/watermachine/mainpage?code=tera123bits"; },3000);
 				}
-				if(data["testpass"]=="wrongcode"){
+				else if(data["testpass"]=="wrongcode"){
                     alert("验证码不正确！");
 				}
 				else{
