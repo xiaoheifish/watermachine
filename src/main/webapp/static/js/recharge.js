@@ -15,18 +15,6 @@ function load(){
 	}
 }
 
-/* 读取cookie */
-function getCookie(cname)
-{
-	var name = cname + "=";
-	var ca = parent.document.cookie.split(';');
-	for(var i=0; i<ca.length; i++) {
-		var c = ca[i].trim();
-		if (c.indexOf(name)==0) return c.substring(name.length,c.length);
-	}
-	return null;
-}
-
 
 var money;
 //容量选择按钮选中效果
@@ -111,8 +99,24 @@ function recharge() {
 	
 }
 
+/* 读取cookie */
+function getCookie(cname)
+{
+	var name = cname + "=";
+	var ca = parent.document.cookie.split(';');
+	for(var i=0; i<ca.length; i++) {
+		var c = ca[i].trim();
+		if (c.indexOf(name)==0) return c.substring(name.length,c.length);
+	}
+	return null;
+}
 
-//充值取消跳回information页
-function cancel(){
-	//跳转页面
+//弹出框去掉网址
+window.alert = function(name){
+var iframe = document.createElement("IFRAME");
+iframe.style.display="none";
+//iframe.setAttribute("src", 'data:text/plain,');
+document.documentElement.appendChild(iframe);
+window.frames[0].window.alert(name);
+iframe.parentNode.removeChild(iframe);
 }
