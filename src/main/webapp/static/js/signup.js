@@ -17,6 +17,7 @@ function load(){
 		$("#signup").text("立即注册");
 		$("#vcode").text("确认");
 	}
+	setCookie("openid",openid);
 }
 
 var certificate,countdown;
@@ -48,6 +49,7 @@ function signup(){
 
 function icode(){
 	certificate = getCookie("certificate");
+	openid = getCookie("openid");
 	if(certificate != null){
 		//验证验证码
 	   $.ajax({

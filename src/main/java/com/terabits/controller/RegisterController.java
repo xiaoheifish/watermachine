@@ -81,6 +81,7 @@ public class RegisterController {
         if(tempCode.equals(code)){
         	if(request.getParameter("openid")!=null){
         	    String openId = request.getParameter("openid");
+        	    System.out.println("openid:::::"+openId);
         	    UserPO userPO = userService.selectUser(openId);
         	    if(userPO != null){
                     try{
