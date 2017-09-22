@@ -24,7 +24,7 @@ function settime(){
     setTimeout(function() {
     	window.location.href = "http://www.terabits-wx.cn/watermachine/info/" + id;
     	settime();
-    },1000);
+    },3000);
 }
 
 /* 读取cookie */

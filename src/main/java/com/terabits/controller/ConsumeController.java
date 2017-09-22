@@ -156,7 +156,12 @@ public class ConsumeController {
             return;
         }
 
-        //若下发成功，则取出返回里面的commandId,在自己的平台上做出记录，
+        //下发成功，先返回给前端跳转
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("result", "success");
+        response.getWriter().print(jsonObject);
+
+        //取出返回里面的commandId,在自己的平台上做出记录，
         Gson gson = new Gson();
         Map<String, Object> map = new HashMap<String, Object>();
         map = gson.fromJson(result, map.getClass());
@@ -196,9 +201,6 @@ public class ConsumeController {
             if (i == 20) {
                 ConsumeOrderPO consumeOrderPO1 = consumeOrderService.selectLastConsumption(displayId);
                 if(consumeOrderPO1.getState() == Constants.HAVE_RESPONSE){
-                    JSONObject jsonObject = new JSONObject();
-                    jsonObject.put("result", "success");
-                    response.getWriter().print(jsonObject);
 
                     if(userPO.getRecharge() >= actualCost){
                         userService.updateRemain(userPO.getRecharge() - actualCost, userPO.getPresent(), openId);
@@ -222,15 +224,13 @@ public class ConsumeController {
                     totalPO.setRecharge(0.0);
                     statisticService.updateTotalConsume(totalPO);
                     return;
+                }else {
+                    TerminalUpdateBO terminalUpdateBO = new TerminalUpdateBO();
+                    terminalUpdateBO.setState(Constants.OFF_STATE);
+                    terminalUpdateBO.setDisplayId(displayId);
+                    terminalService.updateTerminal(terminalUpdateBO);
+                    return;
                 }
-                JSONObject jsonObject = new JSONObject();
-                jsonObject.put("result", "error");
-                response.getWriter().print(jsonObject);
-                TerminalUpdateBO terminalUpdateBO = new TerminalUpdateBO();
-                terminalUpdateBO.setState(Constants.OFF_STATE);
-                terminalUpdateBO.setDisplayId(displayId);
-                terminalService.updateTerminal(terminalUpdateBO);
-                return;
             }
             else if ((i % 12 == 0)&&(i != 0)) {
                 // 第12s，若仍未收到回复，重新下发开启插座命令给终端
