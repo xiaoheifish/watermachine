@@ -1,10 +1,14 @@
 ﻿
 function load(){
+	if(openid == ""){
+		openid = getCookie("openid");
+		language = getCookie("language");
+	}
+	else{
+		setCookie("openid",openid);
+		setCookie("language",language);
+	}
 	if(language != "zh_CN"){
-		$("#tel").css("color","#616161");
-		$("#icode").css("color","#616161");
-		$("#signup").css("color","white");
-		$("#vcode").css("color","white");
 		$("#signuppic").attr("src","/watermachine/static/pic/ensignuppic.png");
 		$("#tel").val("input telephone number");
 		$("#icode").val("input verification code");
@@ -13,24 +17,16 @@ function load(){
 		$("#inputdiv2").remove();
 		$("#eninputdiv2").show();
 		$("title").html("Register");
+		$("#tel").css("color","#616161");
+		$("#icode").css("color","#616161");
+		$("#signup").css("color","white");
+		$("#vcode").css("color","white");
 	}
 	else{
 		$("#tel").css("color","#616161");
 		$("#icode").css("color","#616161");
 		$("#signup").css("color","white");
 		$("#vcode").css("color","white");
-	}
-	if(openid == null){
-		alert(111);
-		openid = getCookie("openid");
-		language = getCookie("language");
-		alert(openid);
-	}
-	else{
-		alert(222);
-		setCookie("openid",openid);
-		setCookie("language",language);
-		alert(openid);
 	}
 }
 
