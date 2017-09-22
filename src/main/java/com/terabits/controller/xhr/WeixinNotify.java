@@ -78,7 +78,7 @@ public class WeixinNotify{
                 //历史总余额，要直接加双倍
                 double addPayment = payment * 2.0;
 
-                if(payment == premoney){
+                if(payment * 100 == premoney){
                     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
                     String currentDay = sdf.format(new Date());
                     int result = orderService.updatePaymentStatus(tradeNo, orderId);

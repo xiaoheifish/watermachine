@@ -82,7 +82,7 @@ public class WeixinPay {
         data.put("body", "智慧饮水");
         data.put("out_trade_no", orderId);
         data.put("fee_type", "CNY");
-        data.put("total_fee", money);
+        data.put("total_fee", money + "00");
         data.put("spbill_create_ip", request.getRemoteAddr());
         data.put("notify_url", WeixinGlobal.NOTIFY_URL);
         data.put("trade_type", "JSAPI");  // 此处指定为JSAPI支付
