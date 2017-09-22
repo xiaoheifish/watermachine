@@ -4,7 +4,7 @@
     var url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx34690a5342af3858&redirect_uri="+encodeurl+"&response_type=code&scope=snsapi_base&state=1#wechat_redirect";
     window.location.href=url;
 
-    if(language != "zh_CN"){
+    /*if(language != "zh_CN"){
 		$("#signuppic").attr("src","/watermachine/static/pic/ensignuppic.png");
 		$("#inputdiv1").remove();
 		$("#sucdiv").remove();
@@ -13,7 +13,7 @@
 	else{
 		$("#eninputdiv1").remove();
 		$("#ensucdiv").remove();
-	}
+	}*/
 }
 
 var certificate,countdown;

@@ -26,12 +26,12 @@
 
 <!-- 输入部分 -->
 <div id="inputdiv1" style="text-align: center;width: 100%;">
-<input type="tel" class="inputbox" id="tel" maxlength="11" value=" " onfocus="this.value = '', positionhide()" onblur="positionshow()" >
-<button class="inputbutton" onclick="signup()" id="signup"> </button>
+<input type="tel" class="inputbox" id="tel" maxlength="11" value="请输入手机号" onfocus="this.value = '', positionhide()" onblur="positionshow()">
+<button class="inputbutton" onclick="signup()" id="signup">立即注册</button>
 <button class="shadow">&nbsp;</button>
 
-<input type="tel" class="inputbox" id="icode" maxlength="6" value=" " onfocus="this.value = '', positionhide()" onblur="positionshow()" >
-<button class="inputbutton" onclick="icode()" id="vcode"> </button>
+<input type="tel" class="inputbox" id="icode" maxlength="6" value="请输入验证码" onfocus="this.value = '', positionhide()" onblur="positionshow()">
+<button class="inputbutton" onclick="icode()" id="vcode">确认</button>
 <button class="shadow">&nbsp;</button>
 </div>
 

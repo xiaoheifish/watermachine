@@ -53,7 +53,7 @@ function login() {
 function load(){
 //中英文切换
     if(language != "zh_CN"){
-        $("title").html("Smart Water Fountain");
+        $("title").html("Smart Potable Water Fountain");
         $("#RQ").text("Scan QR Code");
         $("#RQ").css("color","white");
         $("#numbertext").text("Input the device serial number");
@@ -193,7 +193,7 @@ function loadrecord(){
 function loadservice(){
 	loadid();
 	if(language != "zh_CN"){
-		$("#suggestion").text("Please give some suggestion to help us improve!");
+		$("#suggestion").text("Please write down some suggestions and comments to help us improve!");
 		$("#emailtext").text("Email");
 		$("#suggestionbutton").text("Submit");
 		$("#suggestionbutton").css("color","white");

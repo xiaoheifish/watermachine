@@ -2,6 +2,10 @@
 function load(){
 	
 	if(language != "zh_CN"){
+		$("#tel").css("color","#616161");
+		$("#icode").css("color","#616161");
+		$("#signup").css("color","white");
+		$("#vcode").css("color","white");
 		$("#signuppic").attr("src","/watermachine/static/pic/ensignuppic.png");
 		$("#tel").val("input telephone number");
 		$("#icode").val("input verification code");
@@ -12,10 +16,10 @@ function load(){
 		$("title").html("Register");
 	}
 	else{
-		$("#tel").val("请输入手机号");
-		$("#icode").val("请输入验证码");
-		$("#signup").text("立即注册");
-		$("#vcode").text("确认");
+		$("#tel").css("color","#616161");
+		$("#icode").css("color","#616161");
+		$("#signup").css("color","white");
+		$("#vcode").css("color","white");
 	}
 	setCookie("openid",openid);
 }

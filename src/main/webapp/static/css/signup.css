@@ -10,7 +10,7 @@ body{}
 	text-align: left;
 	font-size: 0.45rem;
 	margin-top: 0.25rem;
-	color: rgb(97, 97, 97);
+	color: white;
 	padding: 0.35rem;
 	overflow: hidden;
 	white-space: nowrap;
@@ -23,6 +23,7 @@ body{}
 	border: none;
 	outline: none;
 	background-color: rgb(78, 135, 242);
+	color: rgb(78, 135, 242);
 	font-size: 0.45rem;
 	margin-top: 0.25rem;
 	color: white;
