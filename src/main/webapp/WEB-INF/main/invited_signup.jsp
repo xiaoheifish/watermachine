@@ -24,12 +24,12 @@
 <div id="inputdiv1" style="text-align: center;width: 100%;margin-top: 0.3rem;">
 <p>接受邀请并注册，好友与你各得</p>
 <p style="font-size: 0.6rem;"><span style="color: rgb(230, 67,64);">5元</span>饮水体验券</p>
-<input type="tel" class="inputbox" id="tel" maxlength="11" value="请输入手机号" onfocus="this.value = '', positionhide()" onblur="positionshow()" >
-<button class="inputbutton" onclick="signup()" id="signup">立即注册</button>
+<input type="tel" class="inputbox" id="tel" maxlength="11" value="请输入手机号" onfocus="this.value = '', positionhide()" onblur="positionshow()" style="color:#616161">
+<button class="inputbutton" onclick="signup()" id="signup" style="color:white;">立即注册</button>
 <button class="shadow">&nbsp;</button>
 
-<input type="tel" class="inputbox" id="icode" maxlength="6" value="请输入验证码" onfocus="this.value = '', positionhide()" onblur="positionshow()" >
-<button class="inputbutton" onclick="icode()">确认</button>
+<input type="tel" class="inputbox" id="icode" maxlength="6" value="请输入验证码" onfocus="this.value = '', positionhide()" onblur="positionshow()" style="color:#616161">
+<button class="inputbutton" onclick="icode()" style="color:white">确认</button>
 <button class="shadow">&nbsp;</button>
 </div>
 
