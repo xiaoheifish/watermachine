@@ -36,11 +36,11 @@
     </update>
 
     <update id="updateRemain">
-        update user set recharge = #{recharge}, present = #{present}, gmtmodified = now() where openid = #{openId}
+        update user set recharge = #{recharge}, present = #{present} where openid = #{openId}
     </update>
 
     <update id="updatePhone" parameterType="java.lang.String">
-        update user set phone = #{phone}, gmtcreate = now(), gmtmodified = now() where openid = #{openId}
+        update user set phone = #{phone}, gmtcreate = now() where openid = #{openId}
     </update>
 
 

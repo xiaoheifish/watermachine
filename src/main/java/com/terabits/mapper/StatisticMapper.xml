@@ -18,6 +18,7 @@
         <id property="id" column="id" javaType="java.lang.Integer"></id>
         <result property="flow" column="flow" javaType="java.lang.Double"></result>
         <result property="recharge" column="recharge" javaType="java.lang.Double"></result>
+        <result property="present" column="present" javaType="java.lang.Double"></result>
         <result property="payment" column="payment" javaType="java.lang.Double"></result>
         <result property="remain" column="remain" javaType="java.lang.Double"></result>
     </resultMap>
@@ -41,8 +42,9 @@
     </update>
 
     <update id="updateTotalRecharge" parameterType="com.terabits.meta.po.TotalPO">
-        update total set flow=flow + #{flow}, recharge=recharge + #{recharge}, payment=payment + #{payment}, remain=remain + #{remain}
+        update total set flow=flow + #{flow}, recharge=recharge + #{recharge}, present = present + #{present}, payment = payment + #{payment}, remain = remain + #{remain}
     </update>
+
     <update id="updateTotalConsume" parameterType="com.terabits.meta.po.TotalPO">
         update total set flow=flow + #{flow}, recharge=recharge + #{recharge}, payment=payment + #{payment}, remain=remain-#{remain}
     </update>

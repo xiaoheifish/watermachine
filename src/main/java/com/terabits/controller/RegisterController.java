@@ -1,9 +1,12 @@
 package com.terabits.controller;
 
+import com.terabits.meta.po.AuxcalPO;
 import com.terabits.meta.po.InvitationPO;
+import com.terabits.meta.po.TotalPO;
 import com.terabits.meta.po.UserPO;
 import com.terabits.service.InvitationService;
 import com.terabits.service.SmsService;
+import com.terabits.service.StatisticService;
 import com.terabits.service.UserService;
 import com.terabits.service.impl.SmsServiceImpl;
 import net.sf.json.JSONObject;
@@ -17,6 +20,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.UUID;
 
 /**
@@ -30,6 +35,9 @@ public class RegisterController {
     private UserService userService;
     @Autowired
     private InvitationService invitationService;
+    @Autowired
+    private StatisticService statisticService;
+
     private static Logger logger = LoggerFactory.getLogger(RegisterController.class);
     @RequestMapping(value="/sendmessage",method= RequestMethod.GET)
     public void sendmessage(HttpServletRequest request, HttpServletResponse response)throws Exception{
@@ -83,6 +91,8 @@ public class RegisterController {
         	    String openId = request.getParameter("openid");
         	    System.out.println("openid:::::"+openId);
         	    UserPO userPO = userService.selectUser(openId);
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                String currentDay = sdf.format(new Date());
         	    if(userPO != null){
                     try{
                         userService.updatePhone(id, openId);
@@ -92,6 +102,42 @@ public class RegisterController {
                             invitationService.insertInvitation(request.getParameter("phone"), request.getParameter("tel"));
                             UserPO inviterPO = userService.userExist(request.getParameter("phone"));
                             userService.updateRemain(inviterPO.getRecharge(), inviterPO.getPresent() + 5.0, inviterPO.getOpenId());
+                            try{
+                                //当日统计数据，更新总赠送
+                                AuxcalPO auxcalPO = new AuxcalPO();
+                                auxcalPO.setGmtCreate(currentDay);
+                                auxcalPO.setPresent(10.0);
+                                statisticService.updateTodayAuxcal(auxcalPO);
+                                //历史统计数据，更新总赠送和总余额
+                                TotalPO totalPO = new TotalPO();
+                                totalPO.setPresent(10.0);
+                                totalPO.setRemain(10.0);
+                                statisticService.updateTotalRecharge(totalPO);
+                            }catch (Exception e){
+                                logger.error("邀请注册页更新统计数据失败，"+request.getParameter("phone")+request.getParameter("tel"));
+                                jsonObject.put("testpass","no");
+                                response.getWriter().print(jsonObject);
+                                return;
+                            }
+                        }
+                        if(request.getParameter("phone") == null) {
+                            try {
+                                //当日统计数据，更新总赠送
+                                AuxcalPO auxcalPO = new AuxcalPO();
+                                auxcalPO.setGmtCreate(currentDay);
+                                auxcalPO.setPresent(5.0);
+                                statisticService.updateTodayAuxcal(auxcalPO);
+                                //历史统计数据，更新总赠送和总余额
+                                TotalPO totalPO = new TotalPO();
+                                totalPO.setPresent(5.0);
+                                totalPO.setRemain(5.0);
+                                statisticService.updateTotalRecharge(totalPO);
+                            } catch (Exception e) {
+                                logger.error("邀请注册页更新统计数据失败，" + request.getParameter("tel"));
+                                jsonObject.put("testpass", "no");
+                                response.getWriter().print(jsonObject);
+                                return;
+                            }
                         }
                         jsonObject.put("testpass","yes");
                         response.getWriter().print(jsonObject);
@@ -114,6 +160,23 @@ public class RegisterController {
                         invitationService.insertInvitation(request.getParameter("phone"), request.getParameter("tel"));
                         UserPO inviterPO = userService.userExist(request.getParameter("phone"));
                         userService.updateRemain(inviterPO.getRecharge(), inviterPO.getPresent() + 5.0, inviterPO.getOpenId());
+                        try{
+                            //当日统计数据，更新总赠送
+                            AuxcalPO auxcalPO = new AuxcalPO();
+                            auxcalPO.setGmtCreate(currentDay);
+                            auxcalPO.setPresent(10.0);
+                            statisticService.updateTodayAuxcal(auxcalPO);
+                            //历史统计数据，更新总赠送和总余额
+                            TotalPO totalPO = new TotalPO();
+                            totalPO.setPresent(10.0);
+                            totalPO.setRemain(10.0);
+                            statisticService.updateTotalRecharge(totalPO);
+                        }catch (Exception e){
+                            logger.error("邀请注册页更新统计数据失败，"+request.getParameter("phone")+request.getParameter("tel"));
+                            jsonObject.put("testpass","no");
+                            response.getWriter().print(jsonObject);
+                            return;
+                        }
                         session.setAttribute("openid", openId);
                         jsonObject.put("testpass","yes");
                         response.getWriter().print(jsonObject);

@@ -6,6 +6,8 @@ public class TotalPO {
     private Double flow;
     //总充值金额
     private Double recharge;
+    //总赠送金额
+    private Double present;
     //总消费金额
     private Double payment;
     //总余额
@@ -35,6 +37,14 @@ public class TotalPO {
         this.recharge = recharge;
     }
 
+    public Double getPresent() {
+        return present;
+    }
+
+    public void setPresent(Double present) {
+        this.present = present;
+    }
+
     public Double getPayment() {
         return payment;
     }
@@ -53,17 +63,20 @@ public class TotalPO {
 
     @Override
     public String toString() {
-        return "TotalPO[" +
+        return "TotalPO{" +
                 "id=" + id +
                 ", flow=" + flow +
                 ", recharge=" + recharge +
+                ", present=" + present +
                 ", payment=" + payment +
                 ", remain=" + remain +
-                ']';
+                '}';
     }
+
     public TotalPO(){
         this.flow = 0.0;
         this.recharge = 0.0;
+        this.present = 0.0;
         this.payment = 0.0;
         this.remain = 0.0;
     }

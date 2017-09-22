@@ -103,7 +103,8 @@ public class WeixinNotify{
                             statisticService.updateTodayAuxcal(auxcalPO);
                             //历史统计数据，更新总充值和总余额
                             TotalPO totalPO = new TotalPO();
-                            totalPO.setRecharge(addPayment);
+                            totalPO.setRecharge(payment);
+                            totalPO.setPresent(payment);
                             totalPO.setRemain(addPayment);
                             statisticService.updateTotalRecharge(totalPO);
                         }catch (Exception e){
