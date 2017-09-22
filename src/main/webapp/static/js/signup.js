@@ -1,6 +1,5 @@
 ﻿
 function load(){
-	
 	if(language != "zh_CN"){
 		$("#tel").css("color","#616161");
 		$("#icode").css("color","#616161");
@@ -21,7 +20,18 @@ function load(){
 		$("#signup").css("color","white");
 		$("#vcode").css("color","white");
 	}
-	setCookie("openid",openid);
+	if(openid == null){
+		alert(111);
+		openid = getCookie("openid");
+		language = getCookie("language");
+		alert(openid);
+	}
+	else{
+		alert(222);
+		setCookie("openid",openid);
+		setCookie("language",language);
+		alert(openid);
+	}
 }
 
 var certificate,countdown;
