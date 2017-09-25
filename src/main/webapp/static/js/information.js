@@ -13,18 +13,6 @@ function load(){
 	else{
 		$("#recharge").val("确认");
 	}
-
-	if(status == "下单中"){
-		settime();
-	}
-}
-
-/* 一秒刷新函数 */
-function settime(){
-    setTimeout(function() {
-    	window.location.href = "http://www.terabits-wx.cn/watermachine/info/" + id;
-    	settime();
-    },3000);
 }
 
 /* 读取cookie */
@@ -104,23 +92,23 @@ function recharge() {
 				if(data["result"] == "success") {
                     window.location.href = "/watermachine/info/" + displayid;
                 }
-                if(data["result"] == "in order service"){
+                else if(data["result"] == "in order service"){
 					if(language != "zh_CN"){alert("Failure to place order");}
 					else{alert("下单失败，请稍后重试！");}
 
 					window.location.href = "/watermachine/mainpage?code=tera123bits";
                 }
-                if(data["result"] == "openid not match"){
+                else if(data["result"] == "openid not match"){
                     if(language != "zh_CN"){alert("Failure to place order");}
 					else{alert("下单失败，请稍后重试！");}
 					window.location.href = "/watermachine/mainpage?code=tera123bits";
                 }
-                if(data["result"] == "error"){
+                else if(data["result"] == "error"){
                     if(language != "zh_CN"){alert("Failure to place order");}
 					else{alert("下单失败，请稍后重试！");}
 					window.location.href = "/watermachine/mainpage?code=tera123bits";
                 }
-                if(data["result"] == "order later"){
+                else (data["result"] == "order later"){
                     if(language != "zh_CN"){alert("Failure to place order");}
 					else{alert("下单失败，请稍后重试！");}
                 }
