@@ -92,12 +92,12 @@ public class ReceiveController {
             String displayId = terminalService.getDisplayIdFromImei(imei);
             ConsumeOrderPO consumeOrderPO = consumeOrderService.selectLastConsumption(displayId);
             //如果订单状态没有被更新过，表明是第一次收到回复，则更新订单状态及设备状态
-            if(consumeOrderPO.getState() == Constants.NO_RESPONSE) {
-                try {
+            if(consumeOrderPO.getState() == Constants.HAVE_RESPONSE) {}
+                /*try {
                     consumeOrderService.updateStateById(consumeOrderPO.getOrderNo());
                 } catch (Exception e) {
                     e.printStackTrace();
-                }
+                }*/
                 //更新设备表中的设备状态
                 TerminalUpdateBO terminalUpdateBO = new TerminalUpdateBO();
                 terminalUpdateBO.setState(Constants.ON_STATE);
@@ -105,7 +105,7 @@ public class ReceiveController {
                 terminalService.updateTerminal(terminalUpdateBO);
                 //更新命令表中此条命令的状态
                 commandService.updateState(Constants.HALF_STATE, deviceId);
-            }
+            
         } else if (rawInfo[0] == (byte) 0x1C) {
             String imei = terminalService.selectImeiFromDeviceId(deviceId);
             System.out.println("doneimei:::::" + imei);

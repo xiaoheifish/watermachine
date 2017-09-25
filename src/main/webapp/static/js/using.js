@@ -62,7 +62,7 @@ iframe.parentNode.removeChild(iframe);
 function settime(){
     if(status == "下单中"){
         setTimeout(function() {
-        window.location.href = "http://www.terabits-wx.cn/watermachine/info/" + id;
+        window.reload();
         settime();
     },1000);
     }

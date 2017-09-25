@@ -88,31 +88,7 @@ function recharge() {
 			},
 			dataType:'json',
 			success:function(data){
-				//跳转到using页
-				if(data["result"] == "success") {
-                    window.location.href = "/watermachine/info/" + displayid;
-                }
-                else if(data["result"] == "in order service"){
-					if(language != "zh_CN"){alert("Failure to place order");}
-					else{alert("下单失败，请稍后重试！");}
-
-					window.location.href = "/watermachine/mainpage?code=tera123bits";
-                }
-                else if(data["result"] == "openid not match"){
-                    if(language != "zh_CN"){alert("Failure to place order");}
-					else{alert("下单失败，请稍后重试！");}
-					window.location.href = "/watermachine/mainpage?code=tera123bits";
-                }
-                else if(data["result"] == "error"){
-                    if(language != "zh_CN"){alert("Failure to place order");}
-					else{alert("下单失败，请稍后重试！");}
-					window.location.href = "/watermachine/mainpage?code=tera123bits";
-                }
-                else (data["result"] == "order later"){
-                    if(language != "zh_CN"){alert("Failure to place order");}
-					else{alert("下单失败，请稍后重试！");}
-                }
-                if(data["result"] == "not enough"){
+				if(data["result"] == "not enough"){
                     if(language != "zh_CN"){
                     	var flag = confirm("您的余额不足，是否跳转至充值页面？");
                     	if(flag == true){window.location.href = "/watermachine/callback";}
@@ -124,6 +100,34 @@ function recharge() {
                     	else{window.location.reload();}
 					}
                 }
+				else{
+					//跳转到using页
+					if(data["result"] == "success") {
+	                    window.location.href = "/watermachine/info/" + displayid;
+	                }
+	                else if(data["result"] == "in order service"){
+						if(language != "zh_CN"){alert("Failure to place order");}
+						else{alert("下单失败，请稍后重试！in order service");}
+
+						window.location.href = "/watermachine/mainpage?code=tera123bits";
+	                }
+	                else if(data["result"] == "openid not match"){
+	                    if(language != "zh_CN"){alert("Failure to place order");}
+						else{alert("下单失败，请稍后重试！openid not match");}
+						window.location.href = "/watermachine/mainpage?code=tera123bits";
+	                }
+	                else if(data["result"] == "error"){
+	                    if(language != "zh_CN"){alert("Failure to place order");}
+						else{alert("下单失败，请稍后重试！error");}
+						window.location.href = "/watermachine/mainpage?code=tera123bits";
+	                }
+	                else if(data["result"] == "order later"){
+	                    if(language != "zh_CN"){alert("Failure to place order");}
+						else{alert("下单失败，请稍后重试！order later");}
+	                }
+				}
+				
+                
 			}
 		});
 	}

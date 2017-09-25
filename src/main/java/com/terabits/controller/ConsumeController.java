@@ -68,26 +68,28 @@ public class ConsumeController {
         String cost = request.getParameter("cost");
         double actualCost = Double.parseDouble(cost);
         double flow = FlowUtil.costToFlow(actualCost);
+        
+       
         if (!requestOpenId.equals(openId)) {
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("result", "openid not match");
             response.getWriter().print(jsonObject);
             return;
         }
+        JSONObject jsonObject = new JSONObject();
 
         // 查询用户余额，如果余额不足，则提示用户充值
         UserPO userPO = userService.selectUser(openId);
         if(userPO.getPresent() < actualCost){
-            JSONObject jsonObject = new JSONObject();
+            jsonObject = new JSONObject();
             jsonObject.put("result", "not enough");
             response.getWriter().print(jsonObject);
             return;
         }
-
         try{
             int result = terminalService.updateStatusWhenOrder(displayId);
             if(result == 0){
-                JSONObject jsonObject = new JSONObject();
+                jsonObject = new JSONObject();
                 jsonObject.put("result", "in order service");
                 response.getWriter().print(jsonObject);
                 return;
@@ -95,7 +97,7 @@ public class ConsumeController {
         }catch (Exception e){
             e.printStackTrace();
             logger.error("updateStatusWhenOrder error in consumeorController" );
-            JSONObject jsonObject = new JSONObject();
+            jsonObject = new JSONObject();
             jsonObject.put("result", "in order service");
             response.getWriter().print(jsonObject);
             return;
@@ -150,18 +152,13 @@ public class ConsumeController {
             terminalUpdateBO.setDisplayId(displayId);
             terminalUpdateBO.setState(Constants.OFF_STATE);
             terminalService.updateTerminal(terminalUpdateBO);
-            JSONObject jsonObject = new JSONObject();
+            jsonObject = new JSONObject();
             jsonObject.put("result", "order later");
             response.getWriter().print(jsonObject);
             return;
         }
-
-        //下发成功，先返回给前端跳转
-        JSONObject jsonObject = new JSONObject();
-        jsonObject.put("result", "success");
-        response.getWriter().print(jsonObject);
-
-        //取出返回里面的commandId,在自己的平台上做出记录，
+        
+      //取出返回里面的commandId,在自己的平台上做出记录，
         Gson gson = new Gson();
         Map<String, Object> map = new HashMap<String, Object>();
         map = gson.fromJson(result, map.getClass());
@@ -198,7 +195,8 @@ public class ConsumeController {
         //更新redis缓存中该设备的开始时间
         credentialService.updateDeviceTime(communicationBO.getDeviceId());
         for (int i = 0; i < 21; i++) {
-            if (i == 20) {
+        	consumeOrderService.updateStateById(consumeOrder);
+            if (i == 0) {
                 ConsumeOrderPO consumeOrderPO1 = consumeOrderService.selectLastConsumption(displayId);
                 if(consumeOrderPO1.getState() == Constants.HAVE_RESPONSE){
 
@@ -223,6 +221,8 @@ public class ConsumeController {
                     totalPO.setRemain(actualCost);
                     totalPO.setRecharge(0.0);
                     statisticService.updateTotalConsume(totalPO);
+                    jsonObject.put("result", "success");
+                    response.getWriter().print(jsonObject);
                     return;
                 }else {
                     TerminalUpdateBO terminalUpdateBO = new TerminalUpdateBO();
