@@ -113,6 +113,9 @@ public class RegisterController {
                                 totalPO.setPresent(10.0);
                                 totalPO.setRemain(10.0);
                                 statisticService.updateTotalRecharge(totalPO);
+                                jsonObject.put("testpass","yes");
+                                response.getWriter().print(jsonObject);
+                                return;
                             }catch (Exception e){
                                 logger.error("邀请注册页更新统计数据失败，"+request.getParameter("phone")+request.getParameter("tel"));
                                 jsonObject.put("testpass","no");
@@ -132,6 +135,9 @@ public class RegisterController {
                                 totalPO.setPresent(5.0);
                                 totalPO.setRemain(5.0);
                                 statisticService.updateTotalRecharge(totalPO);
+                                jsonObject.put("testpass","yes");
+                                response.getWriter().print(jsonObject);
+                                return;
                             } catch (Exception e) {
                                 logger.error("邀请注册页更新统计数据失败，" + request.getParameter("tel"));
                                 jsonObject.put("testpass", "no");
@@ -139,9 +145,7 @@ public class RegisterController {
                                 return;
                             }
                         }
-                        jsonObject.put("testpass","yes");
-                        response.getWriter().print(jsonObject);
-                        return;
+
                     }catch (Exception e){
                         logger.error("userService.update phone and remain error!");
                         jsonObject.put("testpass","no");
@@ -171,22 +175,21 @@ public class RegisterController {
                             totalPO.setPresent(10.0);
                             totalPO.setRemain(10.0);
                             statisticService.updateTotalRecharge(totalPO);
+                            session.setAttribute("openid", openId);
+                            jsonObject.put("testpass","yes");
+                            response.getWriter().print(jsonObject);
+                            return;
                         }catch (Exception e){
                             logger.error("邀请注册页更新统计数据失败，"+request.getParameter("phone")+request.getParameter("tel"));
                             jsonObject.put("testpass","no");
                             response.getWriter().print(jsonObject);
                             return;
                         }
-                        session.setAttribute("openid", openId);
-                        jsonObject.put("testpass","yes");
-                        response.getWriter().print(jsonObject);
-                        return;
                     }catch(Exception e){
                         jsonObject.put("testpass","no");
                         response.getWriter().print(jsonObject);
                         return;
                     }
-
                 }
 
         	}else{
