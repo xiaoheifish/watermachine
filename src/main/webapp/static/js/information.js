@@ -15,6 +15,22 @@ function load(){
 	}
 }
 
+function orderload(){
+	openid = getCookie("openid");
+	language = getCookie("language");
+	
+	if(language != "zh_CN"){
+		$("title").text("Information");
+	}
+	else{
+		$("#recharge").val("确认");
+	}
+
+	if(status == "下单中"){
+        settime();
+    } 
+}
+
 /* 读取cookie */
 function getCookie(cname)
 {
@@ -141,4 +157,14 @@ iframe.style.display="none";
 document.documentElement.appendChild(iframe);
 window.frames[0].window.alert(name);
 iframe.parentNode.removeChild(iframe);
+}
+
+/* 2秒刷新函数 */
+function settime(){
+    if(status == "下单中"){
+        setTimeout(function() {
+        window.reload();
+        settime();
+    },2000);
+    }
 }

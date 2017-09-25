@@ -32,9 +32,10 @@ function load(){
 
     if(status == "下单中"){
         settime();
-    }
-    
+    } 
 }
+
+
 
 /* 读取cookie */
 function getCookie(cname)
