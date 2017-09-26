@@ -29,10 +29,6 @@ function load(){
     if(water == "0.5"){$("#save").text("1");}
     if(water == "1.0"){$("#save").text("2");}
     if(water == "2.0"){$("#save").text("4");}
-
-    if(status == "下单中"){
-        settime();
-    } 
 }
 
 
@@ -57,14 +53,4 @@ iframe.style.display="none";
 document.documentElement.appendChild(iframe);
 window.frames[0].window.alert(name);
 iframe.parentNode.removeChild(iframe);
-}
-
-/* 一秒刷新函数 */
-function settime(){
-    if(status == "下单中"){
-        setTimeout(function() {
-        window.reload();
-        settime();
-    },1000);
-    }
 }

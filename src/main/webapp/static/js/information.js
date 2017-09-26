@@ -15,6 +15,14 @@ function load(){
 	}
 }
 
+/* 2秒刷新函数 */
+function settime(){
+        setTimeout(function() {
+        	window.location.href = "/watermachine/info/" + id;
+         },2000);
+ 
+}
+
 function orderload(){
 	openid = getCookie("openid");
 	language = getCookie("language");
@@ -159,12 +167,3 @@ window.frames[0].window.alert(name);
 iframe.parentNode.removeChild(iframe);
 }
 
-/* 2秒刷新函数 */
-function settime(){
-    if(status == "下单中"){
-        setTimeout(function() {
-        window.reload();
-        settime();
-    },2000);
-    }
-}

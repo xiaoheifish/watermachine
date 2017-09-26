@@ -61,12 +61,20 @@ public class MailController {
         feedbackPO.setNickname(userPO.getNickname());
         feedbackPO.setStatus(Constants.FEEDBACK_UNRESOLVED);
         feedbackPO.setEmail(email);
-        feedbackPO.setFeedback(feedback);
+        feedbackPO.setFeedback(removeNonBmpUnicode(feedback));
         feedbackPO.setPhone(userPO.getPhone());
         feedbackService.insertFeedback(feedbackPO);
 
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("result","ok");
         response.getWriter().print(jsonObject);
+    }
+
+    private static String removeNonBmpUnicode(String str) {
+        if (str == null) {
+            return null;
+        }
+        str = str.replaceAll("[^\\u0000-\\uFFFF]", "");
+        return str;
     }
 }

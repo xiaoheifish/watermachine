@@ -63,7 +63,7 @@
     </select>
 
     <update id="updateStateById" parameterType="String">
-        update consumeorder set state = 66 where orderno = #{orderNo}
+        update consumeorder set state = 66, gmtmodified = now() where orderno = #{orderNo}
     </update>
 
     <update id = "updateOrderNoById">

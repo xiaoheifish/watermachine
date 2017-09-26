@@ -108,7 +108,7 @@ public class MainController {
         //将用户信息存入userPO，备用
         UserPO userPO = new UserPO();
         userPO.setOpenId(openId);
-        userPO.setNickname(jsonObject1.getString("nickname"));
+        userPO.setNickname(removeNonBmpUnicode(jsonObject1.getString("nickname")));
         userPO.setSex(Integer.parseInt(jsonObject1.getString("sex")));
         userPO.setLanguage(jsonObject1.getString("language"));
         userPO.setCity(jsonObject1.getString("city"));
@@ -124,7 +124,7 @@ public class MainController {
             try {
                 userService.updateInfo(userPO);
             } catch (Exception e) {
-                logger.error("userService.updateInfo error for registered user in mainpage!");
+                logger.error("userService.updateInfo error for registered user in mainpage!" + userPO);
             }
             model.addAttribute("openId", openId);
             model.addAttribute("language", jsonObject1.getString("language"));
@@ -147,5 +147,12 @@ public class MainController {
         }
     }
 
+    private static String removeNonBmpUnicode(String str) {
+        if (str == null) {
+            return null;
+        }
+        str = str.replaceAll("[^\\u0000-\\uFFFF]", "");
+        return str;
+    }
 
 }
