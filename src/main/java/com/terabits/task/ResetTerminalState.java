@@ -47,4 +47,25 @@ public class ResetTerminalState {
             }
         }
     }
+    @Scheduled(cron = "0 0 7 * * ?")
+    void setTerminalStateOn()throws Exception{
+        List<TerminalPO> terminalPOS = terminalService.selectAllTerminal();
+        for(TerminalPO terminalPO : terminalPOS){
+            TerminalUpdateBO terminalUpdateBO = new TerminalUpdateBO();
+            terminalUpdateBO.setDeviceId(terminalPO.getDeviceId());
+            terminalUpdateBO.setState(Constants.OFF_STATE);
+            terminalService.updateTerminal(terminalUpdateBO);
+        }
+    }
+
+    @Scheduled(cron = "0 0 21 * * ?")
+    void setTerminalStateOff()throws Exception{
+        List<TerminalPO> terminalPOS = terminalService.selectAllTerminal();
+        for(TerminalPO terminalPO : terminalPOS){
+            TerminalUpdateBO terminalUpdateBO = new TerminalUpdateBO();
+            terminalUpdateBO.setDeviceId(terminalPO.getDeviceId());
+            terminalUpdateBO.setState(Constants.BREAKDOWN_STATE);
+            terminalService.updateTerminal(terminalUpdateBO);
+        }
+    }
 }
