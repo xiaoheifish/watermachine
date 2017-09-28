@@ -28,7 +28,9 @@
 <p style="font-size: 1.4rem">${balance}</p>
 <p id="balancetext">余额(元)</p>
 </div>
-<HR style="FILTER: alpha(opacity=100,finishopacity=0,style=3)" width="95%" color=rgb(180, 180, 180) SIZE=4>
+
+<HR style="FILTER: alpha(opacity=100,finishopacity=0,style=3)" width="95%" color=#b4b4b4 SIZE=4>
+
 <div style="display: inline;margin-top: 2rem;color: rgb(113,113,113);">
 	<div class="presenttext"><p style="display: inline-block;font-size: 0.4rem;color: black;">${recharge}</p><p id="rechargetext"></p></div>
 	<div class="presenttext" style="border-left: 2px rgb(180, 180, 180) solid"><p style="display: inline-block;font-size: 0.4rem;color: black;">${present}</p><p id="presenttext"></p></div>

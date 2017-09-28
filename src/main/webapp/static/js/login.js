@@ -158,6 +158,7 @@ function loadrecord(){
 			var length = getJsonObjLength(data);
 
 			if(length != 0){
+				$("nothingbox").remove();
 				$("#record0").show();
 		            for(i=0; i<length; i++){
 		            	var time = data[i]["gmtCreate"];
@@ -253,6 +254,7 @@ function loadrechargerecord(){
 		success:function(data){
 			var length = getJsonObjLength(data);
 			if(length != 0){
+				$("nothingbox").remove();
 				$("#record0").show();
 		            for(i=0; i<length; i++){
 		            	var time = data[i]["gmtCreate"];
@@ -269,18 +271,19 @@ function loadrechargerecord(){
                             $("body").append(object);
                             i--;
 						}
-		            }
+		        	}
 		    }
-			 else{
+			else{
+				alert(123);
+				$("nothingbox").show();
 			 	$("#record0").remove();
-			 	$("nothingbox").show();
 			 	if (language != "zh_CN") {
 			 		$("nothingtext").text("You don't have recharge records.");
 			 	}
 			 	else{
 			 		$("nothingtext").text("您暂时没有充值记录哦~");
 			 	}
-			 }
+			}
 		}
 	});
 	if(language != "zh_CN"){
