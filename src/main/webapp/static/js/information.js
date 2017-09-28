@@ -93,14 +93,15 @@ function money4(){
 
 //跳转使用页
 function recharge() {
-	$("#recharge").attr("disabled", true);
-	if(language != "zh_CN"){$("#wait").remove();$("#enwait").show();}
-    else{$("#wait").show();}
-	var displayid = document.getElementById("id").innerText;
 	if(money == null){
 		alert("请选择取水量！");
 	}
 	else{
+		$("#recharge").attr("disabled", true);
+		if(language != "zh_CN"){$("#wait").remove();$("#enwait").show();}
+    	else{$("#wait").show();$("#enwait").remove();}
+		var displayid = document.getElementById("id").innerText;
+
 		//发起扣款查询及跳转
 		$.ajax({
 			type:'POST',

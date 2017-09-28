@@ -211,6 +211,7 @@ function loadservice(){
 }
 
 function suggestion(){
+	$("#suggestionbutton").attr("disabled", true);
     $.ajax({
         type:'POST',
         url:'/watermachine/mail/feedback',
