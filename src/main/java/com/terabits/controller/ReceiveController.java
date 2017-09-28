@@ -119,7 +119,9 @@ public class ReceiveController {
             //更新命令表中此条命令的状态
             commandService.updateState(Constants.END_STATE, deviceId);
         } else if (rawInfo[0] == (byte) 0x19) {
-            terminalService.updateStrength((int)rawInfo[1], deviceId);
+            int strength = (int)rawInfo[1];
+            String hexStrenght = Integer.toHexString(strength);
+            terminalService.updateStrength(Integer.parseInt(hexStrenght), deviceId);
         } else if (rawInfo[0] == (byte) 0x1A){
             HeartBeatPO heartBeatPO = heartBeatService.selectHeartBeat(deviceId);
             if(heartBeatPO == null){
