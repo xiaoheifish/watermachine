@@ -9,6 +9,8 @@ public class MailConstant {
 
     public static final String TO_MAIL = "2418467573@qq.com";
 
+    public static final String TO_MAIL_PAN = "panjun@terabits.cn";
+
     public static final String MAIL_HOST = "smtp.qq.com";
 
     public static final String MAIL_PASSWORD = "dbgsufulrhjedjdc";

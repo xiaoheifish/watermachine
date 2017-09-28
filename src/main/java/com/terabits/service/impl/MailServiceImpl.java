@@ -39,15 +39,28 @@ public class MailServiceImpl implements MailService {
         message = new SimpleMailMessage();
         message.setFrom(MailConstant.FROM_MAIL);
         message.setTo(MailConstant.TO_MAIL);
-        message.setSubject("智能饮水用户反馈");
+        message.setSubject("智慧饮水用户反馈");
         message.setText(content);
         email.send(message);
     }
 
+    public void sendToPan(String content){
+        message = new SimpleMailMessage();
+        message.setFrom(MailConstant.FROM_MAIL);
+        message.setTo(MailConstant.TO_MAIL_PAN);
+        message.setSubject("智慧饮水用户反馈");
+        message.setText(content);
+        email.send(message);
+    }
+
+
     //供controller层调用接口
     public void userFeedback(String feedback) {
         MailServiceImpl sendMail = new MailServiceImpl();
+        //发送邮件给于碧涵
         sendMail.send(feedback);
+        //发送邮件给潘骏
+        sendMail.sendToPan(feedback);
         System.out.println("邮件已发送");
     }
 

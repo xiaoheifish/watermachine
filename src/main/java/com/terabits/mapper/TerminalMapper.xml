@@ -101,7 +101,7 @@
     </update>
 
     <update id="updateStrength">
-        update terminal set strength = #{strength},gmtcreate = now() where deviceid = #{deviceId}
+        update terminal set strength = #{strength}, gmtmodified = now() where deviceid = #{deviceId}
     </update>
 
     <select id="selectTerminalByDeviceId" parameterType="java.lang.String" resultMap="terminalMap">

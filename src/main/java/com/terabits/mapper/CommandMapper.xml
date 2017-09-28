@@ -20,7 +20,7 @@
     </insert>
 
     <update id="updateState">
-        update command set cmdstate=#{state} where deviceid = #{deviceId} order by gmtcreate desc limit 1
+        update command set cmdstate=#{state}, gmtmodified = now() where deviceid = #{deviceId} order by gmtcreate desc limit 1
     </update>
 
     <update id="updateCommandId">

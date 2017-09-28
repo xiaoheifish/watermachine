@@ -35,6 +35,9 @@ public class Constants {
     //数据库中字段，标记正在下单
     public static final int ORDER_STATE = 12;
 
+    //数据库中字段，标记设备出现其他故障导致不可使用
+    public static final int BREAKDOWN_STATE = 13;
+
     //数据库中字段，标记命令尚未收到回复,尚未执行
     public static final int NO_RESPONSE = 23;
 

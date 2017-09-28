@@ -44,8 +44,8 @@ public class InfomationController {
         //根据终端的displayId取出终端数据
         TerminalPO terminalPO = terminalService.selectOneTerminal(displayId);
         
-        //先查询心跳包，判断是否离线,数据为空和gmtModified在两分钟以前都判读为离线
-        HeartBeatPO heartBeatPO = heartBeatService.selectHeartBeat(terminalPO.getDeviceId());
+        //先查询心跳包，判断是否离线,数据为空和gmtModified在两分钟以前都判读为离线，由于有管理平台判断了，故这步省略
+      /*  HeartBeatPO heartBeatPO = heartBeatService.selectHeartBeat(terminalPO.getDeviceId());
         if(heartBeatPO == null){
             model.addAttribute("status","不可使用");
             model.addAttribute("id",displayId);
@@ -62,7 +62,7 @@ public class InfomationController {
                 model.addAttribute("location",terminalPO.getLocation());
                 return "main/order.jsp";
             }
-        }
+        }*/
 
         //如果state是未使用的话，则返回空闲状态;如果state是下单中，则返回下单中；如果是使用中，则计算剩余时间，后续可能用到
 
@@ -77,10 +77,15 @@ public class InfomationController {
             model.addAttribute("location",terminalPO.getLocation());
             return "main/order.jsp";
         }else if (terminalPO.getState() == Constants.NO_RESPONSE){
-        	  model.addAttribute("status","不可使用");
-              model.addAttribute("id",displayId);
-              model.addAttribute("location",terminalPO.getLocation());
-              return "main/order.jsp";
+            model.addAttribute("status","不可使用");
+            model.addAttribute("id",displayId);
+            model.addAttribute("location",terminalPO.getLocation());
+            return "main/order.jsp";
+        }else if(terminalPO.getState() == Constants.BREAKDOWN_STATE){
+            model.addAttribute("status","设备故障");
+            model.addAttribute("id",displayId);
+            model.addAttribute("location",terminalPO.getLocation());
+            return "main/order.jsp";
         }
         else{
             //如果state是使用中的话，则去consumeOrder中查询此设备对应的最后一笔交易，取出该记录产生的时间，用以算使用时间，取出该记录的水量，用以算剩余时间
