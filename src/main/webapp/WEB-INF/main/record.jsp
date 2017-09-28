@@ -15,15 +15,17 @@
 
 <body onload="loadrecord()" style="font-family: 'Microsoft YaHei' 'Cambria Math';background-color: rgb(240, 240, 240);display: flex;flex-direction: column;align-items: center;padding-top: 0.1rem;">
 
-
 <!-- 二级菜单-取水记录 -->
-
 <div class="recordcontent" id="record0" style="display:none;">
 	<img style="width: 0.4rem" src="/watermachine/static/pic/clock.png">&nbsp;<span id="time"></span><br>
 	<span class="cost">取水消费:</span>&nbsp;<span style="color: #e9ca33;">¥<span style="font-size: 1.5em" id="cost"></span></span>&nbsp;&nbsp;&nbsp;<span class="id">
 	饮水机编号:</span><span id="idtext"></span>&nbsp;&nbsp;&nbsp;<span class="water">取水量:</span><span id="water"></span><span class="L">升</span>
 </div>
 
+<div id="nothingbox" style="font-size: 0.45rem;text-align: center;display: none;">
+	<img style="width: 2rem;margin-top: 2rem;" src="/watermachine/static/pic/nothing.png">
+	<p style="margin-top: 1rem;" id="nothingtext"> </p>
+</div>
 
 
 </body>

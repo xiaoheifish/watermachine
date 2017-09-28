@@ -26,7 +26,10 @@
 	<span class="id">单号:</span><span id="idtext"></span>
 </div>
 
-
+<div id="nothingbox" style="font-size: 0.45rem;text-align: center;display: none;">
+	<img style="width: 2rem;margin-top: 2rem;" src="/watermachine/static/pic/nothing.png">
+	<p style="margin-top: 1rem;" id="nothingtext"> </p>
+</div>
 
 </body>
 </html>

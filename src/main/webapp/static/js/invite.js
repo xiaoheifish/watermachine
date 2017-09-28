@@ -6,7 +6,9 @@ function loadinvite(){
 	if(language != "zh_CN"){
 		$("#ch").remove();
 		$("title").html("Invitation");
-	}
+        $("#sharetip").css("font-size","0.35rem");
+        $("#sharetip").text("Please click on the top right corner.");
+    }
 	else{
 		$("#en").remove();
 	}
@@ -48,6 +50,12 @@ function loadinvite(){
                 });
             }
     });
+}
+
+/* 提示右上角分享 */
+function sharetip(){
+    $("#sharetip").show();
+    $("#sharetip").fadeOut(2000);
 }
 
 /* 读取cookie */

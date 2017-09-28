@@ -17,16 +17,16 @@
 </head>
 
 <body onload="loadinvite();" style="font-family: 'Microsoft YaHei' 'Cambria Math';background-color: rgb(240, 240, 240);display: flex;flex-direction: column;align-items: center;font-size: 0.3rem;">
-
+<!-- 中文分享 -->
 <div id="ch" style="text-align: center;">
 <img style="width: 7rem; margin-top: 1rem;" src="/watermachine/static/pic/invitation.png">
 <p>邀请好友，好友与你各得</p>
 <p style="font-size: 0.7rem">5元饮水体验券</p>
 <br><br><br>
 <div style="display: inline;">
-<div style="text-align: center; display: inline-block;">
+<div style="text-align: center; display: inline-block;" onclick="sharetip();">
 <img style="width: 1.3rem" src="/watermachine/static/pic/invite-friends.png"><br>发送给好友</div>
-<div style="text-align: center; display: inline-block;margin-left: 1rem;">
+<div style="text-align: center; display: inline-block;margin-left: 1rem;"  onclick="sharetip();">
 <img style="width: 1.3rem" src="/watermachine/static/pic/invite-moments.png"><br>分享至朋友圈</div>
 </div>
 <br>
@@ -35,14 +35,15 @@
 <a href = "/watermachine/rules">详细活动规则</a>
 </div>
 
+<!-- 英文分享 -->
 <div id="en" style="text-align: center;">
 <img style="width: 7rem; margin-top: 1rem;" src="/watermachine/static/pic/invitation.png">
 <p>Invite your friends. Both of you will receive a</p>
 <p style="font-size: 0.7rem">¥5 coupon</p>
 <br><br><br>
-<div style="text-align: center; display: inline-block;">
+<div style="text-align: center; display: inline-block;"  onclick="sharetip();">
 <img style="width: 1.3rem" src="/watermachine/static/pic/invite-friends.png"><br>Send to chat</div>
-<div style="text-align: center; display: inline-block;margin-left: 1rem;">
+<div style="text-align: center; display: inline-block;margin-left: 1rem;"  onclick="sharetip();">
 <img style="width: 1.3rem" src="/watermachine/static/pic/invite-moments.png"><br>Share on moments
 </div>
 <br>
@@ -54,6 +55,13 @@
 <div class="col-sm-12 col-xs-12" id="bottombar">
 天风物业<br>
 powered by Terabits
+</div>
+
+</div>
+
+<!-- 提示使用右上角分享 -->
+<div id="sharetip">
+	请点击右上角分享~
 </div>
 
 
