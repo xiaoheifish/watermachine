@@ -85,7 +85,7 @@ public class ReceiveController {
         NotifyDataPO notifyDataPO = new NotifyDataPO();
         notifyDataPO.setContent(content);
         if (rawInfo[0] != (byte) 0x1A){
-        	 notifyDataService.insertNotifyData(notifyDataPO);
+            notifyDataService.insertNotifyData(notifyDataPO);
         }
         if (rawInfo[0] == (byte) 0x1B) {
             String imei = terminalService.selectImeiFromDeviceId(deviceId);

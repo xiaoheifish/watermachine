@@ -82,7 +82,7 @@ public class InfomationController {
             model.addAttribute("location",terminalPO.getLocation());
             return "main/order.jsp";
         }else if(terminalPO.getState() == Constants.BREAKDOWN_STATE){
-            model.addAttribute("status","设备故障");
+            model.addAttribute("status","不可使用");
             model.addAttribute("id",displayId);
             model.addAttribute("location",terminalPO.getLocation());
             return "main/order.jsp";

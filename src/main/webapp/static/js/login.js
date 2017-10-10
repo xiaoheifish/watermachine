@@ -179,12 +179,12 @@ function loadrecord(){
 		    }
 			 else{
 			 	$("#record0").remove();
-			 	$("nothingbox").show();
+			 	$("#nothingbox").show();
 			 	if (language != "zh_CN") {
-			 		$("nothingtext").text("You don't have any records.");
+			 		$("#nothingtext").text("You don't have any records.");
 			 	}
 			 	else{
-			 		$("nothingtext").text("您暂时没有取水记录哦~");
+			 		$("#nothingtext").text("您暂时没有取水记录哦~");
 			 	}
 			 }
 		}
@@ -274,14 +274,13 @@ function loadrechargerecord(){
 		        	}
 		    }
 			else{
-				alert(123);
-				$("nothingbox").show();
+				$("#nothingbox").show();
 			 	$("#record0").remove();
 			 	if (language != "zh_CN") {
-			 		$("nothingtext").text("You don't have recharge records.");
+			 		$("#nothingtext").text("You don't have recharge records.");
 			 	}
 			 	else{
-			 		$("nothingtext").text("您暂时没有充值记录哦~");
+			 		$("#nothingtext").text("您暂时没有充值记录哦~");
 			 	}
 			}
 		}

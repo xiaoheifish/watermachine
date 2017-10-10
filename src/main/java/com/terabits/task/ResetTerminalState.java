@@ -47,6 +47,8 @@ public class ResetTerminalState {
             }
         }
     }
+    
+    /*
     @Scheduled(cron = "0 0 7 * * ?")
     void setTerminalStateOn()throws Exception{
         List<TerminalPO> terminalPOS = terminalService.selectAllTerminal();
@@ -68,4 +70,5 @@ public class ResetTerminalState {
             terminalService.updateTerminal(terminalUpdateBO);
         }
     }
+    */
 }
