@@ -53,6 +53,9 @@
                 content: "/watermachine/static/pic/toppicture2.png",
             },
             {
+                content: "/watermachine/static/pic/toppicture3.png",
+            },
+            {
                 content: "/watermachine/static/pic/guidlines.png",
             },
         ];
@@ -67,6 +70,9 @@
             },
             {
                 content: "/watermachine/static/pic/entoppicture2.png",
+            },
+            {
+                content: "/watermachine/static/pic/entoppicture3.png",
             },
             {
                 content: "/watermachine/static/pic/enguidlines.png",
