@@ -61,8 +61,15 @@
 
 <!-- 确认按钮 -->
 <input type="submit" value=" " id="recharge" onclick="recharge()">
+<!-- 支付类型选择 -->
+<div class="paymenttypebox">
+<div class="paymenttype" id="wechat">
+<img src="/static/pic/bselect.png" id="wechatimage" style="height: 0.35rem;"/>&nbsp;&nbsp;微信支付</div>
+<div class="paymenttype" id="balance">
+<img src="/static/pic/bbselect.png" id="balanceimage" style="height: 0.35rem;"/>&nbsp;&nbsp;余额支付</div>
+</div>
 
-<img src="/watermachine/static/pic/tip.png" style="height: 2rem;margin-top: 0.5rem" id="tippicture"/>
+<img src="/watermachine/static/pic/tip.png" style="height: 1.6rem;margin-top: 0.2rem" id="tippicture"/>
 
 <div class="col-sm-12 col-xs-12" id="bottombar">
 天风物业<br>
