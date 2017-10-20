@@ -21,7 +21,12 @@ else{
 }
 
 function jumprecharge(){
-	window.location.href = "/watermachine/callback";
+	if(Number(balance) < 2.0){
+		window.location.href = "/watermachine/callback";
+	}
+	else{
+		alert("您的余额大于2元，无法充值！");
+	}
 }
 
 function jumpreimburse(){
