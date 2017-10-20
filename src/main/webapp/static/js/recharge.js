@@ -2,6 +2,7 @@
 function load(){
 	openid = getCookie("openid");
 	language = getCookie("language");
+	money1();
 
 	if(language != "zh_CN"){
 		document.getElementById('50').innerHTML ="¥ 5\n<br/>Gift ¥5";
@@ -19,14 +20,11 @@ function load(){
 var money;
 //容量选择按钮选中效果
 function money1(){
-	alert("请您选择3元或3元以下的金额进行充值！");
-	/*money = 5;
+	money = 5;
 	$("#money1image").attr("src", "/watermachine/static/pic/aselect.png");
 	$("#money2image").attr("src", "/watermachine/static/pic/bselect.png");
 	$("#money3image").attr("src", "/watermachine/static/pic/bselect.png");
 	$("#money4image").attr("src", "/watermachine/static/pic/bselect.png");
-	*/
-	
 }
 
 function money2(){
