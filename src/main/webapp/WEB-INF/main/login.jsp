@@ -86,7 +86,6 @@
         ];
     }
 
-
     //all animation effect
     var islider1 = new iSlider({
         data: picList,
@@ -143,19 +142,19 @@
 
     <button id="record" onclick="window.location.href='/watermachine/record'" class="menu_1">
 	<img style="width: 0.7rem" src="/watermachine/static/pic/record.png"/>&nbsp;&nbsp;交易记录
-    <img style="width: 0.7rem;"></button>
+    <img style="width: 0.5rem;"></button>
 
     <button id="wallet" onclick="window.location.href='/watermachine/wallet?openid=${openid}'" class="menu_1">
 	<img style="width: 0.7rem" src="/watermachine/static/pic/wallet.png"/>&nbsp;&nbsp;我的钱包
-    <img style="width: 0.7rem;"></button>
+    <img style="width: 0.5rem;"></button>
 	
 	<button id="rechargerec" onclick="window.location.href='/watermachine/rechargerec'" class="menu_1">
 	<img style="width: 0.7rem" src="/watermachine/static/pic/rechargerec.png"/>&nbsp;&nbsp;充值记录
-    <img style="width: 0.7rem;"></button>
+    <img style="width: 0.5rem;"></button>
 
     <button id="invite" class="menu_1" onclick="window.location.href='/watermachine/showinvitation?openid=${openid}'">
 	<img style="width: 0.7rem" src="/watermachine/static/pic/invite.png"/>&nbsp;&nbsp;邀请好友
-    <img style="width: 0.7rem;"></button>
+    <img style="width: 0.5rem;"></button>
 
     <button id="service" onclick="window.location.href='/watermachine/mail'" class="menu_1">
 	<img style="width: 0.7rem" src="/watermachine/static/pic/service.png"/>&nbsp;&nbsp;意见反馈
