@@ -2,7 +2,7 @@
 function load(){
 	openid = getCookie("openid");
 	language = getCookie("language");
-	$("#balance").click();
+	balance();
 	
 	if(language != "zh_CN"){
 		$("#recharge").val("Confirm");
@@ -70,7 +70,7 @@ function money2(){
 	water = 0.5;
 	$("#money1image").attr("src", "/watermachine/static/pic/bselect.png");
 	$("#money2image").attr("src", "/watermachine/static/pic/aselect.png");
-	$("#money3image").attr("src", "/watermachine/static/pic/bselect.png");
+	$("#money3image").attr("src", "/waterm.achine/static/pic/bselect.png");
 	$("#money4image").attr("src", "/watermachine/static/pic/bselect.png");
 }
 
@@ -94,17 +94,17 @@ function money4(){
 
 //支付方式选择
 var payment_type;
-$("#wechat").click(function(){
-	payment_type = wechat;
+function wechat(){
+	payment_type = 1;
 	$("#wechatimage").attr("src", "/watermachine/static/pic/bbselect.png");
 	$("#balanceimage").attr("src", "/watermachine/static/pic/bselect.png");
-});
+}
 
-$("#balance").click(function(){
-	payment_type = balance;
+function balance(){
+	payment_type = 1;
 	$("#wechatimage").attr("src", "/watermachine/static/pic/bselect.png");
 	$("#balanceimage").attr("src", "/watermachine/static/pic/bbselect.png");
-});
+}
 
 //跳转使用页
 function recharge() {
@@ -113,7 +113,7 @@ function recharge() {
 	}
 	else{
 		$("#recharge").attr("disabled", true);
-		if(payment_type == "balance"){
+		if(payment_type != "2"){
 			order();
 		}
 		else{

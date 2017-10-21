@@ -63,9 +63,9 @@
 <input type="submit" value=" " id="recharge" onclick="recharge()">
 <!-- 支付类型选择 -->
 <div class="paymenttypebox">
-<div class="paymenttype" id="wechat">
+<div class="paymenttype" id="wechat" onclick="wechat()">
 <img src="/watermachine/static/pic/bselect.png" id="wechatimage" style="height: 0.35rem;"/>&nbsp;&nbsp;微信支付</div>
-<div class="paymenttype" id="balance">
+<div class="paymenttype" id="balance" onclick="balance()">
 <img src="/watermachine/static/pic/bbselect.png" id="balanceimage" style="height: 0.35rem;"/>&nbsp;&nbsp;余额支付</div>
 </div>
 
