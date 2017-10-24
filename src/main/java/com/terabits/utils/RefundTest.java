@@ -5,6 +5,7 @@ package com.terabits.utils;
  */
 public class RefundTest {
     public static void main(String[] args){
-        System.out.println(MD5Util.MD5Encode("o1S07wuDO9ivY_55p3OT4bEMNUL0" + "D2FFD4FAEF6778E26813CB08FE3CB3C5","UTF-8"));
+        //System.out.println(MD5Util.MD5Encode("o1S07wuDO9ivY_55p3OT4bEMNUL0" + "D2FFD4FAEF6778E26813CB08FE3CB3C5","UTF-8"));
+        System.out.println("yyyy-MM-dd HH:mm:ss".substring(5,7));
     }
 }

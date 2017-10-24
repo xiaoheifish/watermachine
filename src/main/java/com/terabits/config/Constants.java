@@ -105,4 +105,5 @@ public class Constants {
 
     public static final int INVITE_PRESENT = 12;
 
+    public static final int MEDAL_PRESENT = 13;
 }
