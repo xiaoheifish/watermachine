@@ -10,8 +10,10 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
@@ -82,6 +84,36 @@ public class CredentialServiceImpl implements CredentialService{
                 .opsForValue();
         String value1 = stringOperations.get(openId);
         return value1;
+    }
+
+    // 查询指令编号并更新
+    public List<String> UpdateCommandNo(){
+        List<String> commandNo = new ArrayList<String>(2);
+
+        String commandOne = getCommandNo("commandOne");
+        String commandTwo = getCommandNo("commandTwo");
+        CommandNoModel commandNoModel1 = new CommandNoModel();
+        CommandNoModel commandNoModel2 = new CommandNoModel();
+        commandNoModel1.setCommandId("commandOne");
+        commandNoModel2.setCommandId("commandTwo");
+        int tempCommandOne = Integer.parseInt(commandOne);
+        int tempCommandTwo = Integer.parseInt(commandTwo) + 1;
+        //若编号2到127了，则回退到1，同时编号1加1；若编号1到127了，则编号1和2一同回退到1
+        if(tempCommandTwo == 127) {
+            tempCommandTwo = 1;
+            tempCommandOne += 1;
+            if (tempCommandOne == 127) {
+                tempCommandOne = 1;
+                tempCommandTwo = 1;
+            }
+            commandNoModel1.setNumber(String.valueOf(tempCommandOne));
+            createCommand(commandNoModel1);
+        }
+        commandNoModel2.setNumber(String.valueOf(tempCommandTwo));
+        createCommand(commandNoModel2);
+        commandNo.add(commandOne);
+        commandNo.add(commandTwo);
+        return commandNo;
     }
 
 /*        hashOperations.delete("hash", "map1");

@@ -151,8 +151,10 @@ public class RechargeController {
                         jsonObject.put("result", "simpleban");
                         response.getWriter().print(jsonObject);
                     }
-                    if(resp.get("err_code").equals("NOTENOUGH")){
-                    	System.out.println("++++++++++++++++NOTENOUGH");
+                    else{
+                        JSONObject jsonObject = new JSONObject();
+                        jsonObject.put("result", resp.get("err_code"));
+                        response.getWriter().print(jsonObject);
                     }
                 }
             } catch (Exception e) {

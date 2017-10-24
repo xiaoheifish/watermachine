@@ -16,6 +16,8 @@ public class WeixinGlobal {
     public static final String UNIFIED_ORDER_URL = "https://api.mch.weixin.qq.com/pay/unifiedorder";
     //微信支付回调URL, 需告知微信操作成功
     public static final String NOTIFY_URL= "http://www.terabits-wx.cn/watermachine/notify";
+    //微信直接下单回调URL
+    public static final String WECHAT_CONSUME_URL = "http://wx.terabits-wx.cn/watermachine/consumenotify";
     //获取JS_API TICKET 的URL
     public static final String JSAPI_URL = "https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=ACCESS_TOKEN&type=jsapi";
 
@@ -35,7 +37,11 @@ public class WeixinGlobal {
 
     public static String EPAY_DESC = "xxxx";//企业付款描述
 
-    //项目标号
+    //项目标号,用于用户充值
     public static final String PRO_NUMBER= "63";
+
+    //用于用户直接使用微信支付下单时生成订单编号
+    public static final String WECHAT_CONSUME_NUMBER = "64";
+
 
 }

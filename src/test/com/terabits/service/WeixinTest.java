@@ -2,6 +2,8 @@ package com.terabits.service;
 
 import com.github.wxpay.sdk.WXPay;
 import com.terabits.config.MyConfig;
+import com.terabits.config.MyWXPay;
+import net.sf.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,6 +14,28 @@ public class WeixinTest {
     public static void main(String[] args) throws Exception {
 
         MyConfig config = new MyConfig();
+        MyWXPay wxpay = new MyWXPay(config);
+
+        Map<String, String> data = new HashMap<String, String>();
+        data.put("partner_trade_no", "2017102325000013");
+        data.put("openid", "o1S07wuDO9ivY_55p3OT4bEMNUL0");
+        data.put("check_name", "NO_CHECK");
+        data.put("amount", "200");
+        data.put("desc", "退款");
+        data.put("spbill_create_ip", "119.23.210.52");
+        try {
+            Map<String, String> resp = wxpay.personalPay(data);
+            if (resp.get("payment_no") != null) {
+                //退款成功，更新退款订单状态，更新用户余额
+                System.out.println("paymentNo="+resp.get("payment_no"));
+            }
+            if (resp.get("err_code") != null) {
+                System.out.println("errorCode"+resp.get("err_code"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+      /*  MyConfig config = new MyConfig();
         WXPay wxpay = new WXPay(config);
 
 
@@ -25,7 +49,7 @@ public class WeixinTest {
             System.out.println(resp);
         } catch (Exception e) {
             e.printStackTrace();
-        }
+        }*/
     }
     /* 微信退款返回值
     {transaction_id=4002342001201709121686130348,

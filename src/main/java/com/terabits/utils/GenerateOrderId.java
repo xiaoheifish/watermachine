@@ -34,4 +34,12 @@ public class GenerateOrderId {
         return pre + Constants.REFUND_PRO_NUMBER + post;
     }
 
+    public static String generateWechatConsumeId(int k){
+        Date date = new Date();
+        String orderId = String.format("%tY%<tm%<td%06d", date, k);
+        String pre = orderId.substring(0,8);
+        String post = orderId.substring(8);
+        return pre + WeixinGlobal.WECHAT_CONSUME_NUMBER + post;
+    }
+
 }
