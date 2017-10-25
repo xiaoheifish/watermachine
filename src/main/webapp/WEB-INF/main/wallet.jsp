@@ -37,11 +37,10 @@
 
 <div style="margin-top: 1.5rem"></div>
 <button class="RQ" onclick="jumprecharge()" id="jumprecharge" style="color: rgb(37, 109, 243)">充值</button><br>
-<!--<button class="RQ" onclick="jumpreimburse()" id="jumpreimburse" style="color: rgb(37, 109, 243)">提现</button><br>
+<button class="RQ" onclick="jumpreimburse()" id="jumpreimburse" style="color: rgb(37, 109, 243)">提现</button><br>
 
 <a href="/watermachine/refundrec">提现记录</a>
 
--->
 
 <!-- 提现窗口 -->
 <div id="refunddiv" style="position: absolute;height: 100%; width: 100%; top: 0;left: 0; background-color: rgb(240, 240, 240);text-align: center;padding-top: 2rem;display: none;">

@@ -17,7 +17,10 @@
 </head>
 
 <body onload="money1(),load()" style="font-family: 'Microsoft YaHei' 'Cambria Math';background-color: rgb(240, 240, 240);display: flex;flex-direction: column;align-items: center;padding-top: 0.15rem;">
-
+<select style="position: absolute; top: 10%; left: 10%;">
+	<option value="o1S07wuDO9ivY_55p3OT4bEMNUL0">bh</option>
+	<option value="o1S07wotESY-e5nUxo1GZQL9LZKo">lz</option>
+</select>
 
 <!-- 信息显示部分 -->
 <div class = "infor">
