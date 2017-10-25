@@ -2,6 +2,7 @@ package com.terabits.controller;
 
 import com.terabits.config.Constants;
 import com.terabits.meta.po.TerminalPO;
+import com.terabits.service.CredentialService;
 import com.terabits.service.TerminalService;
 import net.sf.json.JSONObject;
 import org.slf4j.Logger;
@@ -23,6 +24,8 @@ public class TerminalController {
 
     @Autowired
     private TerminalService terminalService;
+    @Autowired
+    private CredentialService credentialService;
 
     private static Logger logger = LoggerFactory.getLogger(TerminalController.class);
 
@@ -37,11 +40,14 @@ public class TerminalController {
         }else if(terminalPO.getState() == Constants.ON_STATE){
             state = "使用中";
         }else if(terminalPO.getState() == Constants.OFF_STATE){
+            credentialService.createWechatConsume(displayId, "123");
             state = "空闲";
         }else{
             state = "不可使用";
         }
+        String openId = credentialService.getWechatConsumer(displayId);
         jsonObject.put("state", state);
+        jsonObject.put("openid", openId);
         try {
             response.getWriter().print(jsonObject);
         }catch (Exception e){

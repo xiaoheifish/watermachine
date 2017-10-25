@@ -116,6 +116,20 @@ public class CredentialServiceImpl implements CredentialService{
         return commandNo;
     }
 
+    //当某用户使用微信支付直接下单时，将displayId和openId的关系暂时缓存
+    public void createWechatConsume(String displayId, String openId){
+        ValueOperations<String, String> stringOperations = redisTemplate
+                .opsForValue();
+        //String类型数据存储，设置过期时间，采用TimeUnit控制时间单位
+        stringOperations.set(displayId, openId);
+    }
+    //查询正在下单的设备对应的openId
+    public String getWechatConsumer(String displayId){
+        ValueOperations<String, String> stringOperations = redisTemplate
+                .opsForValue();
+        String openId = stringOperations.get(displayId);
+        return openId;
+    }
 /*        hashOperations.delete("hash", "map1");
         System.out.println(hashOperations.entries("hash"));*/
      /*   for (int i = 0; i < 5; i++) {

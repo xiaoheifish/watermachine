@@ -72,6 +72,7 @@ public class WechatConsumeNotify {
     private static Logger logger = LoggerFactory.getLogger(WechatConsumeNotify.class);
     @RequestMapping(value="/consumenotify", method= RequestMethod.POST)
     public String wechatConsumeCallback(HttpSession session, HttpServletRequest request) {
+
         try {
             String responseStr = parseWeixinCallback(request);
             Map<String, Object> map = XMLUtil.doXMLParse(responseStr);
@@ -112,6 +113,8 @@ public class WechatConsumeNotify {
                         //准备openId, displayId和flow
                         String openId = (String)map.get("openid");
                         String displayId = orderId.substring(0,4);
+                        //插入缓存
+                        credentialService.createWechatConsume(displayId, openId);
                         double flow = FlowUtil.costToFlow(payment);
                         // 查询指令编号并更新
                         List<String> commandNo = credentialService.UpdateCommandNo();

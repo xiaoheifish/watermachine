@@ -90,7 +90,7 @@ public class WechatConsumePay{
             logger.error("wechatConsumeService.insertWechatConsume error in WechatConsumePay" + wechatConsumePO);
         }
 
-        //根据主键id，生成新的orderId
+        //根据主键id，生成新的orderId，将displayId信息作为orderId的头四位
         int count = wechatConsumePO.getId();
         String orderId = displayId + GenerateOrderId.generateWechatConsumeId(count);
         try{

@@ -39,4 +39,10 @@ public interface CredentialService {
     // 查询指令编号并更新
     public List<String> UpdateCommandNo();
 
+    //当某用户使用微信支付直接下单时，将displayId和openId的关系暂时缓存
+    public void createWechatConsume(String displayId, String openId);
+
+    //查询正在下单的设备对应的openId
+    public String getWechatConsumer(String displayId);
+
 }
