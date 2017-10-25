@@ -138,7 +138,8 @@
     </div>
 
     <img src="/watermachine/static/pic/avatar.png" style="width: 1.4rem;" id="avatar"/><br>
-    &nbsp;<span style="font-size: 0.6rem; color: black;" id="nickname"></span>
+    &nbsp;<span style="font-size: 0.6rem; color: black; width: 90%; overflow: hidden;" id="nickname"></span>
+    <div id="medal"></div>
 
     <button id="record" onclick="window.location.href='/watermachine/record'" class="menu_1">
 	<img style="width: 0.7rem" src="/watermachine/static/pic/record.png"/>&nbsp;&nbsp;交易记录
@@ -162,6 +163,13 @@
 
 <a href="/watermachine/rules" id="enrule" style="margin-top: 0.5rem;font-size: 0.3rem;width: 100%;text-align: center;">详细活动规则</a>
 
+</div>
+
+<!-- 积分兑换提示页 -->
+<div id="adwindow" style="background-color: rgba(0 ,0 ,0 ,0.8);height: 100%; width: 100%;position: absolute; top: 0; left: 0;display: flex;flex-direction: column;align-items: center;">
+    <img src="/static/pic/Medal activities.png" style="width: 8rem;margin-top: 20%;">
+    <button onclick="closewindow()" style="background-image: url(/static/pic/close.png); background-size: 100% 100%; height: 1.3rem; width: 1.3rem; outline: none; border: none; margin-top: 20%">
+    </button>
 </div>
 
 </body>
