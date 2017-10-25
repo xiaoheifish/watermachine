@@ -4,6 +4,9 @@ function load(){
 	language = getCookie("language");
 	balance();
 	
+	//测试用需要删除
+	openid = $("#openvalue").value();
+
 	if(language != "zh_CN"){
 		$("#recharge").val("Confirm");
 		$("title").text("Information");

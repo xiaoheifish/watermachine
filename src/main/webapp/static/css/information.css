@@ -73,13 +73,13 @@ body{}
     flex-direction: row;
     justify-content: center;
     text-align: center;
-    margin-top: 0.4rem;
+    margin-top: 0.6rem;
 }
 
 .paymenttype{
     width: 23%; 
     line-height: 0.8rem;
-    font-size: 0.35rem; 
+    font-size: 0.5rem; 
     display: inline-block;
     display: inline-flex;
     align-items: center;
