@@ -20,7 +20,7 @@
         <result property="recharge" column="recharge" javaType="java.lang.Double"></result>
         <result property="present" column="present" javaType="java.lang.Double"></result>
         <result property="payment" column="payment" javaType="java.lang.Double"></result>
-        <result property="refund" column =
+        <result property="refund" column = "refund" javaType="java.lang.Double"></result>
         <result property="remain" column="remain" javaType="java.lang.Double"></result>
     </resultMap>
 
