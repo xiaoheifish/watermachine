@@ -12,6 +12,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.core.task.TaskExecutor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -38,6 +39,15 @@ public class TestController {
     @Autowired
     private QueryPayStatus springThread;
     private static Logger logger = LoggerFactory.getLogger(TestController.class);
+
+    @RequestMapping(value="/wechatpaytest",method= RequestMethod.GET)
+    public String wechatPayTest(ModelMap model){
+        model.addAttribute("status","空闲");
+        model.addAttribute("id", 1004);
+        model.addAttribute("location", "华星A座802测试中");
+       return "main/information.jsp";
+    }
+
     @RequestMapping(value="/testuser",method= RequestMethod.GET)
     public String testuser(){
         CommandPO commandPO = new CommandPO();
