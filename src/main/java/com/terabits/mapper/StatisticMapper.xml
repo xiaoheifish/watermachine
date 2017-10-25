@@ -20,6 +20,7 @@
         <result property="recharge" column="recharge" javaType="java.lang.Double"></result>
         <result property="present" column="present" javaType="java.lang.Double"></result>
         <result property="payment" column="payment" javaType="java.lang.Double"></result>
+        <result property="refund" column =
         <result property="remain" column="remain" javaType="java.lang.Double"></result>
     </resultMap>
 
@@ -47,6 +48,10 @@
 
     <update id="updateTotalConsume" parameterType="com.terabits.meta.po.TotalPO">
         update total set flow=flow + #{flow}, recharge=recharge + #{recharge}, payment=payment + #{payment}, remain=remain-#{remain}
+    </update>
+
+    <update id="updateTotalRefund" parameterType="com.terabits.meta.po.TotalPO">
+        update total set refund = refund + #{refund}, remain = remain - #{remain}
     </update>
 
     <select id="selectTotal" resultType="com.terabits.meta.po.TotalPO">

@@ -7,13 +7,14 @@
         <id property="id" column="id" javaType="java.lang.Integer"></id>
         <result property="openId" column="openid" javaType="java.lang.String"></result>
         <result property="exchange" column="exchange" javaType="java.lang.String"></result>
+        <result property="money" column="money" javaType="java.lang.Double"></result>
         <result property="gmtCreate" column="gmtcreate" javaType="java.lang.String"></result>
         <result property="gmtModified" column="gmtmodified" javaType="java.lang.String"></result>
     </resultMap>
 
     <insert id="insertMedalExchange" parameterType="com.terabits.meta.po.MedalExchangePO">
-        insert into medalexchange (openid, exchange, gmtcreate, gmtmodified)
-        values (#{openId}, #{exchange}, now(), now())
+        insert into medalexchange (openid, exchange, money, gmtcreate, gmtmodified)
+        values (#{openId}, #{exchange}, #{money}, now(), now())
     </insert>
 
     <select id="selectMedalExchange" resultMap="medalExchangeMap">

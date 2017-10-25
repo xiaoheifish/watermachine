@@ -9,6 +9,8 @@ public class MedalExchangePO {
     private String openId;
     //使用勋章情况
     private String exchange;
+    //本次兑换获得的奖励金额
+    private Double money;
     private String gmtCreate;
     private String gmtModified;
 
@@ -36,6 +38,14 @@ public class MedalExchangePO {
         this.exchange = exchange;
     }
 
+    public Double getMoney() {
+        return money;
+    }
+
+    public void setMoney(Double money) {
+        this.money = money;
+    }
+
     public String getGmtCreate() {
         return gmtCreate;
     }
@@ -58,6 +68,7 @@ public class MedalExchangePO {
                 "id=" + id +
                 ", openId='" + openId + '\'' +
                 ", exchange='" + exchange + '\'' +
+                ", money=" + money +
                 ", gmtCreate='" + gmtCreate + '\'' +
                 ", gmtModified='" + gmtModified + '\'' +
                 ']';

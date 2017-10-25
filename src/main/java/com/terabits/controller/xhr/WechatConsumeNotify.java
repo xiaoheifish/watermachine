@@ -6,6 +6,7 @@ import com.terabits.config.Constants;
 import com.terabits.config.WeixinGlobal;
 import com.terabits.manager.PostCommandManager;
 import com.terabits.meta.bo.CommunicationBO;
+import com.terabits.meta.bo.ConsumeRefundBO;
 import com.terabits.meta.bo.TerminalUpdateBO;
 import com.terabits.meta.po.AuxcalPO;
 import com.terabits.meta.po.CommandPO;
@@ -16,6 +17,7 @@ import com.terabits.service.CommandService;
 import com.terabits.service.ConsumeOrderService;
 import com.terabits.service.CredentialService;
 import com.terabits.service.HuaweiTokenService;
+import com.terabits.service.RefundRecordService;
 import com.terabits.service.StatisticService;
 import com.terabits.service.TerminalService;
 import com.terabits.service.WechatConsumeService;
@@ -61,7 +63,7 @@ public class WechatConsumeNotify {
     @Autowired
     private TerminalService terminalService;
     @Autowired
-    private PostCommandManager postCommandManager;
+    private RefundRecordService refundRecordService;
     @Autowired
     private CommandService commandService;
     @Autowired
@@ -132,10 +134,17 @@ public class WechatConsumeNotify {
                         //判断是否下发成功，如果不成功则将本次消费金额退给用户，插入退款表，定时处理退款任务，同时将termianl的状态更新回可使用
                         //前端查询状态时，发现状态由12变为10了，则可提醒用户重新下单
                         if(commandResult == null){
+                            //更新terminal状态
                             TerminalUpdateBO terminalUpdateBO = new TerminalUpdateBO();
                             terminalUpdateBO.setDisplayId(displayId);
                             terminalUpdateBO.setState(Constants.OFF_STATE);
                             terminalService.updateTerminal(terminalUpdateBO);
+                            //插入待退款数据
+                            ConsumeRefundBO consumeRefundBO = new ConsumeRefundBO();
+                            consumeRefundBO.setMoney(payment);
+                            consumeRefundBO.setOpenId(openId);
+                            consumeRefundBO.setTradeNo(tradeNo);
+                            refundRecordService.insertConsumeRefund(consumeRefundBO);
                             //返回ok结果给微信
                             return PayCommonUtil.setXML(WeixinGlobal.SUCCESS, "OK");
                         }

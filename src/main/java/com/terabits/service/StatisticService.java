@@ -40,6 +40,10 @@ public interface StatisticService {
      */
     public int updateTotalConsume(TotalPO totalPO) throws Exception;
 
+    /**
+     * 用于退余额情况
+     */
+    public int updateTotalRefund(TotalPO totalPO) throws Exception;
 
     /**
      * 获取历史的统计值

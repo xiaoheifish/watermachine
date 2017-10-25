@@ -53,4 +53,11 @@ public interface RefundRecordMapper {
      */
     int updateRefundNoById(@Param("refundNo") String refundNo, @Param("id") int id) throws Exception;
 
+    /**
+     * 查找待退款记录
+     * @return
+     * @throws Exception
+     */
+    List<RefundRecordPO> selectUnsolveRefund() throws Exception;
+
 }

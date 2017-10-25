@@ -132,7 +132,7 @@ public class ReceiveController {
                 heartBeatService.updateHeartBeat(deviceId);
             }
         }
-    /*    String url = "http://119.23.210.52/waterplatform/data" ;
+        String url = "http://119.23.210.52/waterplatform/data" ;
         HttpClient httpClient = new DefaultHttpClient();
         // get method
         HttpPost httpPost = new HttpPost(url);
@@ -145,7 +145,7 @@ public class ReceiveController {
             dataResponse = httpClient.execute(httpPost);
         }catch (Exception e) {
 
-        }*/
+        }
     }
 
 }

@@ -78,7 +78,8 @@ public class WechatConsumePay{
 
         //微信支付金额，以元为单位
         double totalmoney = Double.parseDouble(money);
-
+        String strmoney = String.valueOf((int)(totalmoney * 100));
+        System.out.println("strmoney::::"+strmoney);
         //将该条微信消费记录插入数据库
         WechatConsumePO wechatConsumePO = new WechatConsumePO();
         wechatConsumePO.setOpenId(requestopenId);
@@ -105,7 +106,7 @@ public class WechatConsumePay{
         data.put("body", "智慧饮水");
         data.put("out_trade_no", orderId);
         data.put("fee_type", "CNY");
-        data.put("total_fee", String.valueOf(totalmoney * 100));
+        data.put("total_fee", strmoney);
         data.put("spbill_create_ip", request.getRemoteAddr());
         data.put("notify_url", WeixinGlobal.WECHAT_CONSUME_URL);
         data.put("trade_type", "JSAPI");  // 此处指定为JSAPI支付
@@ -122,7 +123,7 @@ public class WechatConsumePay{
         //生成前端可调用的config参数
         JsapiConfigBO config = unifiedOrderService.createPayConfig(prepaidId);
         JSONObject jsonConfig = JSONObject.fromObject(config);
-        jsonConfig.put("result", "ok");
+        jsonConfig.put("result", "success");
 
         try {
             response.getWriter().print(jsonConfig);
