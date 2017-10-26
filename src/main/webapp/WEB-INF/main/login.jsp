@@ -47,9 +47,6 @@
                 content: "/watermachine/static/pic/toppicture.png",
             },
             {
-                content: "/watermachine/static/pic/toppicture4.png",
-            },
-            {
                 content: "/watermachine/static/pic/toppicture1.png",
             },
             {
@@ -67,9 +64,6 @@
         var picList = [
             {
                 content: "/watermachine/static/pic/entoppicture.png",
-            },
-            {
-                content: "/watermachine/static/pic/entoppicture4.png",
             },
             {
                 content: "/watermachine/static/pic/entoppicture1.png",
