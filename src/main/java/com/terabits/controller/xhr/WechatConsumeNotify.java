@@ -124,8 +124,8 @@ public class WechatConsumeNotify {
 
                         CommunicationBO communicationBO = terminalService.getTerminalDeviceId(displayId);
 
-                        String huaweiToken = huaweiTokenService.getToken().getHuaweiToken();
-                        //String huaweiToken = huaweiTokenService.getLatestToken().getHuaweiToken();
+                        //String huaweiToken = huaweiTokenService.getToken().getHuaweiToken();
+                        String huaweiToken = huaweiTokenService.getLatestToken().getHuaweiToken();
                         Date now = new Date();
                         SimpleDateFormat dfs = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                         String time1 = dfs.format(now);

@@ -32,7 +32,6 @@ public class ManageRefund {
     //每隔2分钟查询待处理退款，完成退款操作
     @Scheduled(cron = "0 0/2 * * * *")
     void manageConsumeRefund()throws Exception{
-        System.out.println("12346");
         List<RefundRecordPO> refundRecordPOList = new ArrayList<RefundRecordPO>();
         try{
             refundRecordPOList = refundRecordService.selectUnsolveRefund();
