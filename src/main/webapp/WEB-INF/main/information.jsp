@@ -69,10 +69,10 @@
 <input type="submit" value=" " id="recharge" onclick="recharge()">
 <!-- 支付类型选择 -->
 <div class="paymenttypebox">
-<div class="paymenttype" id="wechat" onclick="wechat()" style="font-size: 0.4rem;">
-<img src="/watermachine/static/pic/bselect.png" id="wechatimage" style="height: 0.4rem;"/>&nbsp;&nbsp;微信支付</div>
-<div class="paymenttype" id="balance" onclick="balance()" style="font-size: 0.4rem;">
-<img src="/watermachine/static/pic/bbselect.png" id="balanceimage" style="height: 0.4rem;"/>&nbsp;&nbsp;余额支付</div>
+<div class="paymenttype" id="wechat" onclick="wechat()" style="font-size: 0.35rem;">
+<img src="/watermachine/static/pic/bselect.png" id="wechatimage" style="height: 0.35rem;"/>&nbsp;&nbsp;微信支付</div>
+<div class="paymenttype" id="balance" onclick="balance()" style="font-size: 0.35rem;">
+<img src="/watermachine/static/pic/bbselect.png" id="balanceimage" style="height: 0.35rem;"/>&nbsp;&nbsp;余额支付</div>
 </div>
 
 <img src="/watermachine/static/pic/tip.png" style="height: 1.6rem;margin-top: 0.2rem" id="tippicture"/>

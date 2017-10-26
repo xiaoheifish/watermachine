@@ -11,13 +11,39 @@ function loadwallet(){
         $("#jumpreimburse").css("color","white");
         $("title").html("My Wallet");
     }
-else{
+	else{
         $("#balancetext").text("余额(元)");
         $("#rechargetext").text("可提现余额(元)");
 		$("#presenttext").text("赠送余额(元)");
 		$("#jumprecharge").css("color","white");
 		$("#jumpreimburse").css("color","white");
 	}
+
+	//显示勋章
+	$.ajax({
+		type:'POST',
+		url:'/watermachine/medal/number',
+		data:{
+			"openid": openid
+		},
+		dataType:'json',
+		success:function(data){
+			var number = data["number"].split("");
+			var gold = number[0];
+			var silver = number[1];
+			var bronze = number[2];
+			for (var i=0; i<parseInt(gold); i++){
+				$("#medal").append("<img style='width: 0.4rem' src='/watermachine/static/pic/gold.png'>");
+			}
+			for (var i=0; i<parseInt(silver); i++){
+				$("#medal").append("<img style='width: 0.4rem' src='/watermachine/static/pic/silver.png'>");
+			}
+			for (var i=0; i<parseInt(bronze); i++){
+				$("#medal").append("<img style='width: 0.4rem' src='/watermachine/static/pic/bronze.png'>");
+			}
+			$("#day").text(data["day"]);
+		}
+	});
 }
 
 function jumprecharge(){
