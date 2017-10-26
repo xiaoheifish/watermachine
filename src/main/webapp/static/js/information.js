@@ -20,47 +20,39 @@ function load(){
 function settime(){
     setTimeout(function() {
         $.ajax({
-		type:'POST',
-		url:'/watermachine/terminal/state',
-		data:{
-			"displayid": id
-		},
-		dataType:'json',
-		success:function(data){
-			if(data["state"] == "下单中"){
-				settime();
-			}
-			if(data["state"] == "使用中"){
-				window.location.href = "/watermachine/info/" + id;
-			}
-			if(data["state"] == "空闲"){
-				if(openid == data["openid"]){
-					alert("下单失败。您支付的金额将在五分钟内退回微信账户。");
+			type:'POST',
+			url:'/watermachine/terminal/state',
+			data:{
+				"displayid": id
+			},
+			dataType:'json',
+			success:function(data){
+				if(data["state"] == "下单中"){
+					settime();
 				}
-				else{
+				if(data["state"] == "使用中"){
 					window.location.href = "/watermachine/info/" + id;
 				}
+				if(data["state"] == "空闲"){
+					if(openid == data["openid"]){
+						alert("下单失败，您支付的金额将在五分钟内退回微信账户。");
+					}
+					else{
+						window.location.href = "/watermachine/info/" + id;
+					}
+				}
+				if(data["state"] == "不可使用"){
+					if(openid == data["openid"]){
+						alert("下单失败，您支付的金额将在五分钟内退回微信账户。");
+					}
+					else{
+						window.location.href = "/watermachine/info/" + id;
+					}
+				}
+				$("#state").text(data["state"]);
 			}
-			$("#state").text(data["state"]);
-		}
 		});
     },2000);
- 
-}
-
-function orderload(){
-	openid = getCookie("openid");
-	language = getCookie("language");
-	
-	if(language != "zh_CN"){
-		$("title").text("Information");
-	}
-	else{
-		$("#recharge").val("确认");
-	}
-	if(status == "下单中"){
-        settime();
-    } 
 }
 
 /* 读取cookie */
@@ -131,7 +123,6 @@ function balance(){
 function recharge() {
     //测试用需要删除
 	openid = $("#open").val();
-	alert(openid);
 
 	if(money == null){
 		alert("请选择取水量！");
@@ -139,20 +130,16 @@ function recharge() {
 	else{
 		$("#recharge").attr("disabled", true);
 		if(payment_type == "2"){
-			alert("balance");
 			order();
 		}
 		else{
-            alert("wechat");
-            alert(money);
-            alert(openid);
 			$.ajax({
         		type:'POST',
         		url:'/watermachine/wechatconsume',
         		data: {
            			 "openid": openid,
            			 "cost": money,
-           			 "displayid": "1004"
+           			 "displayid": id
         		},
         		dataType: 'json',
         		error: function(XMLHttpRequest, textStatus, errorThrown){
@@ -204,7 +191,7 @@ function order(){
 		data:{
 			"openid":openid,
 			"cost":money,
-			"displayid": "1004"
+			"displayid": id
 		},
 		dataType:'json',
 		success:function(data){
@@ -251,11 +238,26 @@ function order(){
 
 //弹出框去掉网址
 window.alert = function(name){
-var iframe = document.createElement("IFRAME");
-iframe.style.display="none";
-//iframe.setAttribute("src", 'data:text/plain,');
-document.documentElement.appendChild(iframe);
-window.frames[0].window.alert(name);
-iframe.parentNode.removeChild(iframe);
+	var iframe = document.createElement("IFRAME");
+	iframe.style.display="none";
+	//iframe.setAttribute("src", 'data:text/plain,');
+	document.documentElement.appendChild(iframe);
+	window.frames[0].window.alert(name);
+	iframe.parentNode.removeChild(iframe);
 }
 
+//下单中页面的刷新函数
+function orderload(){
+	openid = getCookie("openid");
+	language = getCookie("language");
+	
+	if(language != "zh_CN"){
+		$("title").text("Information");
+	}
+	else{
+		$("#recharge").val("确认");
+	}
+	if(status == "下单中"){
+        settime();
+    } 
+}
