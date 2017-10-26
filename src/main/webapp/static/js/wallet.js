@@ -28,20 +28,25 @@ function loadwallet(){
 		},
 		dataType:'json',
 		success:function(data){
-			var number = data["number"].split("");
-			var gold = number[0];
-			var silver = number[1];
-			var bronze = number[2];
-			for (var i=0; i<parseInt(gold); i++){
-				$("#medal").append("<img style='width: 0.4rem' src='/watermachine/static/pic/gold.png'>");
+			if(data["number"] == "000"){
+				$("#day").text(data["day"]);
 			}
-			for (var i=0; i<parseInt(silver); i++){
-				$("#medal").append("<img style='width: 0.4rem' src='/watermachine/static/pic/silver.png'>");
+			else{
+				var number = data["number"].split("");
+				var gold = number[0];
+				var silver = number[1];
+				var bronze = number[2];
+				for (var i=0; i<parseInt(gold); i++){
+					$("#medal").append("<img style='width: 0.4rem' src='/watermachine/static/pic/gold.png'>");
+				}
+				for (var i=0; i<parseInt(silver); i++){
+					$("#medal").append("<img style='width: 0.4rem' src='/watermachine/static/pic/silver.png'>");
+				}
+				for (var i=0; i<parseInt(bronze); i++){
+					$("#medal").append("<img style='width: 0.4rem' src='/watermachine/static/pic/bronze.png'>");
+				}
+				$("#day").text(data["day"]);
 			}
-			for (var i=0; i<parseInt(bronze); i++){
-				$("#medal").append("<img style='width: 0.4rem' src='/watermachine/static/pic/bronze.png'>");
-			}
-			$("#day").text(data["day"]);
 		}
 	});
 }

@@ -28,7 +28,7 @@
 <p style="font-size: 1.4rem">${balance}</p>
 <p id="balancetext">余额(元)</p>
 <!-- 显示勋章 -->
-<div>已连续使用<span id="day"></span>天：<span id="medal"></span> &nbsp;&nbsp;<a href="/watermachine/exchange" style="font-weight: bold;">兑换</a></div>
+<div>已连续使用<span id="day"></span>天&nbsp;&nbsp; <span id="medal"></span> &nbsp;&nbsp;<a href="/watermachine/exchange" style="font-weight: bold;">兑换</a></div>
 </div>
 
 <div style="display: inline;margin-top: 2rem;color: rgb(113,113,113);">
