@@ -8,6 +8,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -19,6 +21,8 @@ import java.util.Map;
 /**
  * Created by Administrator on 2017/10/25.
  */
+@Component
+@Transactional
 public class ManageRefund {
     @Autowired
     private RefundRecordService refundRecordService;
@@ -28,6 +32,7 @@ public class ManageRefund {
     //每隔2分钟查询待处理退款，完成退款操作
     @Scheduled(cron = "0 0/2 * * * *")
     void manageConsumeRefund()throws Exception{
+        System.out.println("12346");
         List<RefundRecordPO> refundRecordPOList = new ArrayList<RefundRecordPO>();
         try{
             refundRecordPOList = refundRecordService.selectUnsolveRefund();

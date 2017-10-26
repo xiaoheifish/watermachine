@@ -1,11 +1,8 @@
 ﻿var openid,language;
 function load(){
-	openid = getCookie("openid");
-	language = getCookie("language");
+	//openid = getCookie("openid");
+    //language = getCookie("language");
 	balance();
-	
-	//测试用需要删除
-	openid = $("#openvalue").value();
 
 	if(language != "zh_CN"){
 		$("#recharge").val("Confirm");
@@ -26,7 +23,7 @@ function settime(){
 		type:'POST',
 		url:'/watermachine/terminal/state',
 		data:{
-			"displayid": $("#id").text()
+			"displayid": id
 		},
 		dataType:'json',
 		success:function(data){
@@ -34,14 +31,14 @@ function settime(){
 				settime();
 			}
 			if(data["state"] == "使用中"){
-				window.location.href = "/watermachine/info/" + $("#id").text();
+				window.location.href = "/watermachine/info/" + id;
 			}
 			if(data["state"] == "空闲"){
 				if(openid == data["openid"]){
 					alert("下单失败。您支付的金额将在五分钟内退回微信账户。");
 				}
 				else{
-					window.location.href = "/watermachine/info/" + $("#id").text();
+					window.location.href = "/watermachine/info/" + id;
 				}
 			}
 			$("#state").text(data["state"]);
@@ -132,45 +129,60 @@ function balance(){
 
 //跳转使用页
 function recharge() {
+    //测试用需要删除
+	openid = $("#open").val();
+	alert(openid);
+
 	if(money == null){
 		alert("请选择取水量！");
 	}
 	else{
 		$("#recharge").attr("disabled", true);
 		if(payment_type == "2"){
+			alert("balance");
 			order();
 		}
 		else{
+            alert("wechat");
+            alert(money);
+            alert(openid);
 			$.ajax({
         		type:'POST',
-        		url:'/watermachine/wxpay',
+        		url:'/watermachine/wechatconsume',
         		data: {
-           			 "id": openid,
-           			 "money": money,
-           			 "displayid": $("#id").text()
+           			 "openid": openid,
+           			 "cost": money,
+           			 "displayid": "1004"
         		},
         		dataType: 'json',
         		error: function(XMLHttpRequest, textStatus, errorThrown){
             		alert(XMLHttpRequest.status);
         		},
         		success:function(response){
-        			//判断前后端openid是否一致
-           	 		WeixinJSBridge.invoke('getBrandWCPayRequest',{
-                		"appId" : response.appId,                  //公众号名称，由商户传入
-                		"timeStamp":response.timestamp,          //时间戳，自 1970 年以来的秒数
-                		"nonceStr" : response.nonce,         //随机串
-                		"package" : response.packageName,      //商品包信息</span>
-                		"signType" : response.signType,        //微信签名方式
-                		"paySign" : response.signature           //微信签名
-            		},function(res){
-                		if(res.err_msg == "get_brand_wcpay_request:ok" ) {
-  							window.location.href = "/watermachine/info/" + $("#id").text();
-                		}
-						else{
-							alert("支付失败，请重试！");
-							$("#recharge").removeAttr("disabled");
-						}
-            		});
+        			alert(response["result"]);
+        			if(response["result"] == "success"){
+                        //判断前后端openid是否一致
+                        WeixinJSBridge.invoke('getBrandWCPayRequest',{
+                            "appId" : response.appId,                  //公众号名称，由商户传入
+                            "timeStamp":response.timestamp,          //时间戳，自 1970 年以来的秒数
+                            "nonceStr" : response.nonce,         //随机串
+                            "package" : response.packageName,      //商品包信息</span>
+                            "signType" : response.signType,        //微信签名方式
+                            "paySign" : response.signature           //微信签名
+                        },function(res){
+                            if(res.err_msg == "get_brand_wcpay_request:ok" ) {
+                                window.location.href = "/watermachine/info/" + id;
+                            }
+                            else{
+                                alert("支付失败，请重试！");
+                                $("#recharge").removeAttr("disabled");
+                            }
+                        });
+					}
+					else{
+        				alert("支付失败");
+					}
+
         		}
     		});
 		}
@@ -179,6 +191,8 @@ function recharge() {
 
 //下单函数
 function order(){
+	alert("order");
+    alert(money);
 	if(language != "zh_CN"){$("#wait").remove();$("#enwait").show();}
     else{$("#wait").show();$("#enwait").remove();}
 	var displayid = document.getElementById("id").innerText;
@@ -190,7 +204,7 @@ function order(){
 		data:{
 			"openid":openid,
 			"cost":money,
-			"displayid":displayid
+			"displayid": "1004"
 		},
 		dataType:'json',
 		success:function(data){

@@ -77,6 +77,11 @@ public class WechatConsumePay{
         }
 
         //微信支付金额，以元为单位
+        System.out.println("money:::::"+money);
+        System.out.println("displayid:::::"+displayId);
+        System.out.println("openid:::::"+requestopenId);
+
+
         double totalmoney = Double.parseDouble(money);
         String strmoney = String.valueOf((int)(totalmoney * 100));
         System.out.println("strmoney::::"+strmoney);

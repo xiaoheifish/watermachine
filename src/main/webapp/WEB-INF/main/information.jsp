@@ -13,16 +13,17 @@
 <title>欢迎使用智能直饮水机</title>
 <script>
 	var status = "${status}";
+    var status = "${id}";
 </script>
 </head>
 
 <body onload="money1(),load()" style="font-family: 'Microsoft YaHei' 'Cambria Math';background-color: rgb(240, 240, 240);display: flex;flex-direction: column;align-items: center;padding-top: 0.15rem;">
 
 <!-- 测试用 需要删除 -->
-<select id="openvalue" style="position: absolute; top: 10%; left: 10%;">
+<span><select id="open" style="position: absolute; top: 10%; left: 10%; font-size: 0.5rem;">
 	<option value="o1S07wuDO9ivY_55p3OT4bEMNUL0">bh</option>
 	<option value="o1S07wotESY-e5nUxo1GZQL9LZKo">lz</option>
-</select>
+</select></span>
 
 <!-- 信息显示部分 -->
 <div class = "infor">
@@ -68,10 +69,10 @@
 <input type="submit" value=" " id="recharge" onclick="recharge()">
 <!-- 支付类型选择 -->
 <div class="paymenttypebox">
-<div class="paymenttype" id="wechat" onclick="wechat()">
-<img src="/watermachine/static/pic/bselect.png" id="wechatimage" style="height: 0.5rem;"/>&nbsp;&nbsp;微信支付</div>
-<div class="paymenttype" id="balance" onclick="balance()">
-<img src="/watermachine/static/pic/bbselect.png" id="balanceimage" style="height: 0.5rem;"/>&nbsp;&nbsp;余额支付</div>
+<div class="paymenttype" id="wechat" onclick="wechat()" style="font-size: 0.4rem;">
+<img src="/watermachine/static/pic/bselect.png" id="wechatimage" style="height: 0.4rem;"/>&nbsp;&nbsp;微信支付</div>
+<div class="paymenttype" id="balance" onclick="balance()" style="font-size: 0.4rem;">
+<img src="/watermachine/static/pic/bbselect.png" id="balanceimage" style="height: 0.4rem;"/>&nbsp;&nbsp;余额支付</div>
 </div>
 
 <img src="/watermachine/static/pic/tip.png" style="height: 1.6rem;margin-top: 0.2rem" id="tippicture"/>
