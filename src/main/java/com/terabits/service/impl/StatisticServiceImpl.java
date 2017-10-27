@@ -59,6 +59,13 @@ public class StatisticServiceImpl implements StatisticService {
     }
 
     /**
+     * 更新历史统计值，用于退余额情况
+     */
+    public int updateTotalRefund(TotalPO totalPO) throws Exception{
+        return statisticMapper.updateTotalRefund(totalPO);
+    }
+
+    /**
      * 获取历史的统计值
      */
     public TotalPO selectTotal() throws Exception{

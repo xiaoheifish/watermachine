@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.terabits.mapper.WechatConsumeMapper">
+
+    <!-- 自定义返回结果集 -->
+    <resultMap id="wechatConsumeMap" type="com.terabits.meta.po.WechatConsumePO">
+        <id property="id" column="id" javaType="java.lang.Integer"></id>
+        <result property="openId" column="openid" javaType="java.lang.String"></result>
+        <result property="money" column = "money" javaType="java.lang.Double"></result>
+        <result property="orderId" column="orderid" javaType="java.lang.String"></result>
+        <result property="tradeNo" column="tradeno" javaType="java.lang.String"></result>
+        <result property="consumeNo" column="consumeno" javaType="java.lang.String"></result>
+        <result property="gmtCreate" column="gmtcreate" javaType="java.lang.String"></result>
+        <result property="gmtModified" column="gmtmodified" javaType="java.lang.String"></result>
+    </resultMap>
+
+    <insert id="insertWechatConsume" useGeneratedKeys="true" keyProperty="id" parameterType="com.terabits.meta.po.WechatConsumePO">
+        insert into wechatconsume (openid, money, orderid, tradeno, consumeno, gmtcreate, gmtmodified)
+        values (#{openId}, #{money}, #{orderId}, #{tradeNo}, #{consumeNo}, now(), now())
+    </insert>
+
+    <update id="updatePaymentStatus" parameterType="java.lang.String">
+        update wechatconsume set tradeno = #{tradeNo}, gmtmodified = now() where orderid = #{orderId}
+    </update>
+
+    <update id = "updateOrderIdById">
+        update wechatconsume set orderid = #{orderId} where id = #{id}
+    </update>
+
+    <update id = "updateLastWechatConsume" parameterType="java.lang.String">
+        update wechatconsume set consumeno = #{consumeNo} where orderid = #{orderId}
+    </update>
+
+    <select id = "selectLastWechatConsume" parameterType="java.lang.String" resultType="java.lang.String">
+        select orderid from wechatconsume where openid = #{openId} and tradeno is not null order by gmtcreate desc limit 1
+    </select>
+
+    <select id = "selectWechatConsumeByOrderId" parameterType="java.lang.String" resultMap="wechatConsumeMap">
+        select * from wechatconsume where orderid = #{orderId}
+    </select>
+
+</mapper>

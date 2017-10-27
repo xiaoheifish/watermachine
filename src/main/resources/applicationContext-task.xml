@@ -18,6 +18,8 @@
        ">
        <mvc:annotation-driven/>
        <context:component-scan base-package="com.terabits.task"/>
+
        <!--启动定时器-->
-       <task:annotation-driven/>
+       <task:annotation-driven executor="asyncExecutor" />
+       <task:executor id="asyncExecutor" pool-size="100-10000" queue-capacity="10"/>
 </beans>

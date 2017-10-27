@@ -3,7 +3,7 @@ function load(){
 	openid = getCookie("openid");
 	language = getCookie("language");
 	balance();
-	
+
 	if(language != "zh_CN"){
 		$("#recharge").val("Confirm");
 		$("title").text("Information");
@@ -18,26 +18,41 @@ function load(){
 
 /* 2秒刷新函数 */
 function settime(){
-        setTimeout(function() {
-        	window.location.href = "/watermachine/info/" + id;
-         },2000);
- 
-}
-
-function orderload(){
-	openid = getCookie("openid");
-	language = getCookie("language");
-	
-	if(language != "zh_CN"){
-		$("title").text("Information");
-	}
-	else{
-		$("#recharge").val("确认");
-	}
-
-	if(status == "下单中"){
-        settime();
-    } 
+    setTimeout(function() {
+        $.ajax({
+			type:'POST',
+			url:'/watermachine/terminal/state',
+			data:{
+				"displayid": id
+			},
+			dataType:'json',
+			success:function(data){
+				if(data["state"] == "下单中"){
+					settime();
+				}
+				if(data["state"] == "使用中"){
+					window.location.href = "/watermachine/info/" + id;
+				}
+				if(data["state"] == "空闲"){
+					if(openid == data["openid"]){
+						alert("下单失败，您支付的金额将在五分钟内退回微信账户。");
+					}
+					else{
+						window.location.href = "/watermachine/info/" + id;
+					}
+				}
+				if(data["state"] == "不可使用"){
+					if(openid == data["openid"]){
+						alert("下单失败，您支付的金额将在五分钟内退回微信账户。");
+					}
+					else{
+						window.location.href = "/watermachine/info/" + id;
+					}
+				}
+				$("#state").text(data["state"]);
+			}
+		});
+    },2000);
 }
 
 /* 读取cookie */
@@ -52,7 +67,6 @@ function getCookie(cname)
 	return null;
 }
 
-
 var money,water;
 //容量选择按钮选中效果
 function money1(){
@@ -62,7 +76,6 @@ function money1(){
 	$("#money2image").attr("src", "/watermachine/static/pic/bselect.png");
 	$("#money3image").attr("src", "/watermachine/static/pic/bselect.png");
 	$("#money4image").attr("src", "/watermachine/static/pic/bselect.png");
-	
 }
 
 function money2(){
@@ -101,7 +114,7 @@ function wechat(){
 }
 
 function balance(){
-	payment_type = 1;
+	payment_type = 2;
 	$("#wechatimage").attr("src", "/watermachine/static/pic/bselect.png");
 	$("#balanceimage").attr("src", "/watermachine/static/pic/bbselect.png");
 }
@@ -113,35 +126,48 @@ function recharge() {
 	}
 	else{
 		$("#recharge").attr("disabled", true);
-		if(payment_type != "2"){
+		if(payment_type == "2"){
 			order();
 		}
 		else{
 			$.ajax({
         		type:'POST',
-        		url:'/watermachine/wxpay',
+        		url:'/watermachine/wechatconsume',
         		data: {
-           			 "id":openid,
-           			 "money" : money
+           			 "openid": openid,
+           			 "cost": money,
+           			 "displayid": id
         		},
         		dataType: 'json',
         		error: function(XMLHttpRequest, textStatus, errorThrown){
             		alert(XMLHttpRequest.status);
         		},
         		success:function(response){
-           	 		WeixinJSBridge.invoke('getBrandWCPayRequest',{
-                		"appId" : response.appId,                  //公众号名称，由商户传入
-                		"timeStamp":response.timestamp,          //时间戳，自 1970 年以来的秒数
-                		"nonceStr" : response.nonce,         //随机串
-                		"package" : response.packageName,      //商品包信息</span>
-                		"signType" : response.signType,        //微信签名方式
-                		"paySign" : response.signature           //微信签名
-            		},function(res){
-                		if(res.err_msg == "get_brand_wcpay_request:ok" ) {
-  							order();
-                		}
-						else{alert("支付失败，请重试！");$("#recharge").removeAttr("disabled");}
-            		});
+        			alert(response["result"]);
+        			if(response["result"] == "success"){
+                        //判断前后端openid是否一致
+                        WeixinJSBridge.invoke('getBrandWCPayRequest',{
+                            "appId" : response.appId,                  //公众号名称，由商户传入
+                            "timeStamp":response.timestamp,          //时间戳，自 1970 年以来的秒数
+                            "nonceStr" : response.nonce,         //随机串
+                            "package" : response.packageName,      //商品包信息</span>
+                            "signType" : response.signType,        //微信签名方式
+                            "paySign" : response.signature           //微信签名
+                        },function(res){
+                            if(res.err_msg == "get_brand_wcpay_request:ok" ) {
+                                window.location.href = "/watermachine/info/" + id;
+                            }
+                            else{
+                                alert("支付失败，请重试！");
+                                $("#recharge").removeAttr("disabled");
+                            }
+                        });
+					}
+					else{
+        				alert("支付失败,请重试。");
+        				$("#recharge").removeAttr("disabled");
+					}
+
         		}
     		});
 		}
@@ -152,7 +178,6 @@ function recharge() {
 function order(){
 	if(language != "zh_CN"){$("#wait").remove();$("#enwait").show();}
     else{$("#wait").show();$("#enwait").remove();}
-	var displayid = document.getElementById("id").innerText;
 
 	//发起扣款查询及跳转
 	$.ajax({
@@ -161,7 +186,7 @@ function order(){
 		data:{
 			"openid":openid,
 			"cost":money,
-			"displayid":displayid
+			"displayid": id
 		},
 		dataType:'json',
 		success:function(data){
@@ -180,7 +205,7 @@ function order(){
 			else{
 				//跳转到using页
 				if(data["result"] == "success") {
-	                window.location.href = "/watermachine/info/" + displayid;
+	                window.location.href = "/watermachine/info/" + id;
 	            }
 	            else if(data["result"] == "in order service"){
 					if(language != "zh_CN"){alert("Failure to place order");}
@@ -208,11 +233,26 @@ function order(){
 
 //弹出框去掉网址
 window.alert = function(name){
-var iframe = document.createElement("IFRAME");
-iframe.style.display="none";
-//iframe.setAttribute("src", 'data:text/plain,');
-document.documentElement.appendChild(iframe);
-window.frames[0].window.alert(name);
-iframe.parentNode.removeChild(iframe);
+	var iframe = document.createElement("IFRAME");
+	iframe.style.display="none";
+	//iframe.setAttribute("src", 'data:text/plain,');
+	document.documentElement.appendChild(iframe);
+	window.frames[0].window.alert(name);
+	iframe.parentNode.removeChild(iframe);
 }
 
+//下单中页面的刷新函数
+function orderload(){
+	openid = getCookie("openid");
+	language = getCookie("language");
+	
+	if(language != "zh_CN"){
+		$("title").text("Information");
+	}
+	else{
+		$("#recharge").val("确认");
+	}
+	if(status == "下单中"){
+        settime();
+    } 
+}

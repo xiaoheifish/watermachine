@@ -10,8 +10,10 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
@@ -84,6 +86,50 @@ public class CredentialServiceImpl implements CredentialService{
         return value1;
     }
 
+    // 查询指令编号并更新
+    public List<String> UpdateCommandNo(){
+        List<String> commandNo = new ArrayList<String>(2);
+
+        String commandOne = getCommandNo("commandOne");
+        String commandTwo = getCommandNo("commandTwo");
+        CommandNoModel commandNoModel1 = new CommandNoModel();
+        CommandNoModel commandNoModel2 = new CommandNoModel();
+        commandNoModel1.setCommandId("commandOne");
+        commandNoModel2.setCommandId("commandTwo");
+        int tempCommandOne = Integer.parseInt(commandOne);
+        int tempCommandTwo = Integer.parseInt(commandTwo) + 1;
+        //若编号2到127了，则回退到1，同时编号1加1；若编号1到127了，则编号1和2一同回退到1
+        if(tempCommandTwo == 127) {
+            tempCommandTwo = 1;
+            tempCommandOne += 1;
+            if (tempCommandOne == 127) {
+                tempCommandOne = 1;
+                tempCommandTwo = 1;
+            }
+            commandNoModel1.setNumber(String.valueOf(tempCommandOne));
+            createCommand(commandNoModel1);
+        }
+        commandNoModel2.setNumber(String.valueOf(tempCommandTwo));
+        createCommand(commandNoModel2);
+        commandNo.add(commandOne);
+        commandNo.add(commandTwo);
+        return commandNo;
+    }
+
+    //当某用户使用微信支付直接下单时，将displayId和openId的关系暂时缓存
+    public void createWechatConsume(String displayId, String openId){
+        ValueOperations<String, String> stringOperations = redisTemplate
+                .opsForValue();
+        //String类型数据存储，设置过期时间，采用TimeUnit控制时间单位
+        stringOperations.set(displayId, openId);
+    }
+    //查询正在下单的设备对应的openId
+    public String getWechatConsumer(String displayId){
+        ValueOperations<String, String> stringOperations = redisTemplate
+                .opsForValue();
+        String openId = stringOperations.get(displayId);
+        return openId;
+    }
 /*        hashOperations.delete("hash", "map1");
         System.out.println(hashOperations.entries("hash"));*/
      /*   for (int i = 0; i < 5; i++) {

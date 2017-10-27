@@ -22,7 +22,10 @@ function closenumber(){
 	$("#bottombar").show();
 	$("#menubutton").show();
 }
-
+//关闭广告窗口
+function closewindow(){
+        $("#adwindow").hide();
+}
 
 //输入编码-登录数据交互
 function login() {
@@ -83,6 +86,32 @@ function load(){
 		$("#avatar").attr("src", avatar);
 		setCookie("openid",openid);
 		setCookie("language",language);
+
+	//显示勋章
+	$.ajax({
+		type:'POST',
+		url:'/watermachine/medal/number',
+		data:{
+			"openid": openid
+		},
+		dataType:'json',
+		success:function(data){
+			var number = data["number"].split("");
+			var gold = number[0];
+			var silver = number[1];
+			var bronze = number[2];
+			for (var i=0; i<parseInt(gold); i++){
+				$("#medal").append("<img style='width: 0.4rem' src='/watermachine/static/pic/gold.png'>");
+			}
+			for (var i=0; i<parseInt(silver); i++){
+				$("#medal").append("<img style='width: 0.4rem' src='/watermachine/static/pic/silver.png'>");
+			}
+			for (var i=0; i<parseInt(bronze); i++){
+				$("#medal").append("<img style='width: 0.4rem' src='/watermachine/static/pic/bronze.png'>");
+			}
+		}
+	});
+	
 	
 	if (isWeiXin5() == false) {
         alert("您的微信版本低于5.0，无法使用微信支付功能，请先升级！");

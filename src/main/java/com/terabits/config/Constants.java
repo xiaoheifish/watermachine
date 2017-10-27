@@ -96,4 +96,14 @@ public class Constants {
     public static final int IN_HAND = 10;
 
     public static final int FINISHED = 11;
+
+    //赠送金额类别,10表示注册赠送，11表示充值赠送，12表示邀请赠送，13表示兑换勋章赠送
+
+    public static final int REGISTER_PRESENT = 10;
+
+    public static final int RECHARGE_PRESENT = 11;
+
+    public static final int INVITE_PRESENT = 12;
+
+    public static final int MEDAL_PRESENT = 13;
 }

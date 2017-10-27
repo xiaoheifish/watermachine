@@ -45,7 +45,7 @@ public class InfomationController {
         TerminalPO terminalPO = terminalService.selectOneTerminal(displayId);
         
         //先查询心跳包，判断是否离线,数据为空和gmtModified在两分钟以前都判读为离线，由于有管理平台判断了，故这步省略
-      /*  HeartBeatPO heartBeatPO = heartBeatService.selectHeartBeat(terminalPO.getDeviceId());
+        /*  HeartBeatPO heartBeatPO = heartBeatService.selectHeartBeat(terminalPO.getDeviceId());
         if(heartBeatPO == null){
             model.addAttribute("status","不可使用");
             model.addAttribute("id",displayId);

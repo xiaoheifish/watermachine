@@ -4,10 +4,15 @@ import com.terabits.config.Constants;
 import com.terabits.meta.bo.TerminalUpdateBO;
 import com.terabits.meta.po.*;
 import com.terabits.service.*;
+import com.terabits.manager.QueryPayStatus;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.core.task.TaskExecutor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -31,8 +36,18 @@ public class TestController {
     private OperationService operationService;
     @Autowired
     private CommandService commandService;
-
+    @Autowired
+    private QueryPayStatus springThread;
     private static Logger logger = LoggerFactory.getLogger(TestController.class);
+
+    @RequestMapping(value="/wechatpaytest",method= RequestMethod.GET)
+    public String wechatPayTest(ModelMap model){
+        model.addAttribute("status","空闲");
+        model.addAttribute("id", 1004);
+        model.addAttribute("location", "华星A座802测试中");
+       return "main/information.jsp";
+    }
+
     @RequestMapping(value="/testuser",method= RequestMethod.GET)
     public String testuser(){
         CommandPO commandPO = new CommandPO();
@@ -68,5 +83,13 @@ public class TestController {
         operationService.insertOperation(operationPO);
     }
 
+    @RequestMapping(value="/threadtest",method=RequestMethod.GET)
+    public void threadTest(HttpServletResponse response) throws Exception{
+       /* for (int i = 0; i < 3; i++) {
+            springThread.getStatus();
+        }
+        System.out.println("main process is finish .....");
+        response.getWriter().print("123");*/
+    }
 
 }

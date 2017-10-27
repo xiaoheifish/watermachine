@@ -4,9 +4,6 @@
 <head>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<script language="javascript" src="/watermachine/static/js/jquery-3.2.1.min.js"></script>
-<script language="javascript" src="/watermachine/static/js/flexible.js"></script>
-<script language="javascript" src="/watermachine/static/js/signup.js"></script>
 <link rel="stylesheet" href="/watermachine/static/css/bootstrap.css">
 <link rel="stylesheet" href="/watermachine/static/css/signup.css">
 <title>注册</title>
@@ -63,5 +60,8 @@ You already have <span style="color: rgb(230, 67,64);">¥5</span> in your wallet
 Powered by Terabits
 </div>
 
+<script language="javascript" src="/watermachine/static/js/jquery-3.2.1.min.js"></script>
+<script language="javascript" src="/watermachine/static/js/flexible.js"></script>
+<script language="javascript" src="/watermachine/static/js/signup.js"></script>
 </body>
 </html>

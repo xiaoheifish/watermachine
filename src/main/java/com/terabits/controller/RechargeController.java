@@ -1,14 +1,16 @@
 package com.terabits.controller;
 
-import com.sun.org.apache.regexp.internal.RE;
+
 import com.terabits.config.MyConfig;
 import com.terabits.config.MyWXPay;
 import com.terabits.meta.po.RechargeOrderPO;
 import com.terabits.meta.po.RefundRecordPO;
+import com.terabits.meta.po.TotalPO;
 import com.terabits.meta.po.UserPO;
 import com.terabits.service.CredentialService;
 import com.terabits.service.RechargeOrderService;
 import com.terabits.service.RefundRecordService;
+import com.terabits.service.StatisticService;
 import com.terabits.service.UserService;
 import com.terabits.utils.MD5Util;
 import net.sf.json.JSONArray;
@@ -44,6 +46,8 @@ public class RechargeController {
     private RefundRecordService refundRecordService;
     @Autowired
     private CredentialService credentialService;
+    @Autowired
+    private StatisticService statisticService;
 
     private static Logger logger = LoggerFactory.getLogger(RechargeController.class);
 
@@ -116,7 +120,7 @@ public class RechargeController {
             System.out.println(strMoney);
             double money = Double.parseDouble(strMoney);
             int requestMoney = (int)(money * 100);
-            int id = refundRecordService.insertRefund(openId, money);
+            int id = refundRecordService.insertRefund(openId, money, userPO.getPresent());
             String refundNo = null;
             try {
                 refundNo = refundRecordService.updateRefundNoById(id);
@@ -143,6 +147,10 @@ public class RechargeController {
                     jsonObject.put("result", "success");
                     response.getWriter().print(jsonObject);
                     userService.updateRemain(0.0, 0.0, openId);
+                    TotalPO totalPO = new TotalPO();
+                    totalPO.setRefund(money);
+                    totalPO.setRemain(money + userPO.getPresent());
+                    statisticService.updateTotalRefund(totalPO);
                 }
                 if (resp.get("err_code") != null) {
                     //用户为非实名制的，提醒用户绑卡
@@ -151,8 +159,10 @@ public class RechargeController {
                         jsonObject.put("result", "simpleban");
                         response.getWriter().print(jsonObject);
                     }
-                    if(resp.get("err_code").equals("NOTENOUGH")){
-                    	System.out.println("++++++++++++++++NOTENOUGH");
+                    else{
+                        JSONObject jsonObject = new JSONObject();
+                        jsonObject.put("result", resp.get("err_code"));
+                        response.getWriter().print(jsonObject);
                     }
                 }
             } catch (Exception e) {

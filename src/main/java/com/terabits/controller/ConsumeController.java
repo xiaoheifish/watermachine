@@ -11,6 +11,7 @@ import com.terabits.meta.po.*;
 import com.terabits.service.*;
 import com.terabits.utils.FlowUtil;
 import com.terabits.utils.GenerateOrderId;
+import com.terabits.utils.HuaweiCommandUtil;
 import com.terabits.utils.TimeSpanUtil;
 import com.terabits.utils.huawei.PlatformGlobal;
 import net.sf.json.JSONObject;
@@ -27,6 +28,7 @@ import javax.servlet.http.HttpSession;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 /**
  * Created by Administrator on 2017/8/28.
@@ -104,39 +106,14 @@ public class ConsumeController {
         }
 
         // 查询指令编号并更新
-        String commandOne = credentialService.getCommandNo("commandOne");
-        String commandTwo = credentialService.getCommandNo("commandTwo");
-        CommandNoModel commandNoModel1 = new CommandNoModel();
-        CommandNoModel commandNoModel2 = new CommandNoModel();
-        commandNoModel1.setCommandId("commandOne");
-        commandNoModel2.setCommandId("commandTwo");
-        int tempCommandOne = Integer.parseInt(commandOne);
-        int tempCommandTwo = Integer.parseInt(commandTwo) + 1;
-        //若编号2到127了，则回退到1，同时编号1加1；若编号1到127了，则编号1和2一同回退到1
-        if(tempCommandTwo == 127) {
-            tempCommandTwo = 1;
-            tempCommandOne += 1;
-            if (tempCommandOne == 127) {
-                tempCommandOne = 1;
-                tempCommandTwo = 1;
-            }
-            commandNoModel1.setNumber(String.valueOf(tempCommandOne));
-            credentialService.createCommand(commandNoModel1);
-        }
-        commandNoModel2.setNumber(String.valueOf(tempCommandTwo));
-        credentialService.createCommand(commandNoModel2);
+        List<String> commandNo = credentialService.UpdateCommandNo();
+        String commandOne = commandNo.get(0);
+        String commandTwo = commandNo.get(1);
 
-        // 下发指令
-        int cmdOne = Integer.parseInt(commandOne);
-        int cmdTwo = Integer.parseInt(commandTwo);
+        byte[] openbytes = HuaweiCommandUtil.generateOpenbytes(flow, commandOne, commandTwo);
+
         CommunicationBO communicationBO = terminalService.getTerminalDeviceId(displayId);
-        byte[] openbytes = new byte[6];
-        openbytes[0] = Constants.SEND_COMMAND_START;
-        openbytes[1] = Constants.POWER_ON_COMMAND;
-        openbytes[2] = FlowUtil.flowToCommand(flow);
-        openbytes[3] = (byte) cmdOne;
-        openbytes[4] = (byte) cmdTwo;
-        openbytes[5] = Constants.SEND_COMMAND_END;
+
         //String result = postCommandManager.command(openbytes, communicationBO.getDeviceId());
         String huaweiToken = huaweiTokenService.getLatestToken().getHuaweiToken();
         Date now = new Date();
@@ -158,7 +135,7 @@ public class ConsumeController {
             return;
         }
         
-      //取出返回里面的commandId,在自己的平台上做出记录，
+        //取出返回里面的commandId,在自己的平台上做出记录
         Gson gson = new Gson();
         Map<String, Object> map = new HashMap<String, Object>();
         map = gson.fromJson(result, map.getClass());

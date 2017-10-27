@@ -4,11 +4,7 @@
 <head>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<script language="javascript" src="/watermachine/static/js/jquery-3.2.1.min.js"></script>
-	<script src="http://cdn.bootcss.com/blueimp-md5/1.1.0/js/md5.js"></script>
-<script language="javascript" src="/watermachine/static/js/flexible.js"></script>
-<script language="javascript" src="/watermachine/static/js/wallet.js"></script>
-	<link rel="stylesheet" href="/watermachine/static/css/bootstrap.css">
+<link rel="stylesheet" href="/watermachine/static/css/bootstrap.css">
 <link rel="stylesheet" href="/watermachine/static/css/login.css">
 
 <title>我的钱包</title>
@@ -27,7 +23,10 @@
 <div id="balancebox">
 <p style="font-size: 1.4rem">${balance}</p>
 <p id="balancetext">余额(元)</p>
+<!-- 显示勋章 
+<div>已连续使用<span id="day"></span>天&nbsp;&nbsp; <span id="medal"></span> &nbsp;&nbsp;<a href="/watermachine/exchange" style="font-weight: bold;">兑换</a></div>
 </div>
+-->
 
 <div style="display: inline;margin-top: 2rem;color: rgb(113,113,113);">
 	<div class="presenttext"><p style="display: inline-block;font-size: 0.4rem;color: black;">${recharge}</p><p id="rechargetext"></p></div>
@@ -37,11 +36,10 @@
 
 <div style="margin-top: 1.5rem"></div>
 <button class="RQ" onclick="jumprecharge()" id="jumprecharge" style="color: rgb(37, 109, 243)">充值</button><br>
-<!--<button class="RQ" onclick="jumpreimburse()" id="jumpreimburse" style="color: rgb(37, 109, 243)">提现</button><br>
+<button class="RQ" onclick="jumpreimburse()" id="jumpreimburse" style="color: rgb(37, 109, 243)">提现</button><br>
 
 <a href="/watermachine/refundrec">提现记录</a>
 
--->
 
 <!-- 提现窗口 -->
 <div id="refunddiv" style="position: absolute;height: 100%; width: 100%; top: 0;left: 0; background-color: rgb(240, 240, 240);text-align: center;padding-top: 2rem;display: none;">
@@ -66,5 +64,9 @@
 4.The refund amount will be transfered to you Wechat Wallet in 1-2 days.<br>
 </div>
 
+<script language="javascript" src="/watermachine/static/js/jquery-3.2.1.min.js"></script>
+<script src="http://cdn.bootcss.com/blueimp-md5/1.1.0/js/md5.js"></script>
+<script language="javascript" src="/watermachine/static/js/flexible.js"></script>
+<script language="javascript" src="/watermachine/static/js/wallet.js"></script>
 </body>
 </html>

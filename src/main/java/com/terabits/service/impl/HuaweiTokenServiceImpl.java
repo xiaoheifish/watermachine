@@ -30,6 +30,16 @@ public class HuaweiTokenServiceImpl implements HuaweiTokenService {
     public int updateToken(HuaweiTokenPO huaweiTokenPO) throws Exception{
         return huaweiTokenMapper.updateToken(huaweiTokenPO);
     }
+    //取出当前唯一的一条token
+    public HuaweiTokenPO getToken(){
+        try {
+            return huaweiTokenMapper.selectToken();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     //取出数据库中的huaweiToken，若存入时间和当前时间比较，小于7000秒，则重新获取一个token
     public HuaweiTokenPO getLatestToken() throws Exception{
         HuaweiTokenPO huaweiTokenPO = null;

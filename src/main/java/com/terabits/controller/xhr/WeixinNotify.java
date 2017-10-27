@@ -1,7 +1,9 @@
 package com.terabits.controller.xhr;
 
+import com.terabits.config.Constants;
 import com.terabits.config.WeixinGlobal;
 import com.terabits.meta.po.AuxcalPO;
+import com.terabits.meta.po.PresentPO;
 import com.terabits.meta.po.TotalPO;
 import com.terabits.meta.po.UserPO;
 import com.terabits.service.*;
@@ -16,6 +18,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import sun.dc.pr.PRError;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -39,6 +42,8 @@ public class WeixinNotify{
     private UserService userService;
     @Autowired
     private StatisticService statisticService;
+    @Autowired
+    private PresentService presentService;
 
     private static Logger logger = LoggerFactory.getLogger(WeixinNotify.class);
     @RequestMapping(value="/notify", method= RequestMethod.POST)
@@ -109,6 +114,15 @@ public class WeixinNotify{
                             statisticService.updateTotalRecharge(totalPO);
                         }catch (Exception e){
                             logger.error("更新统计数据失败，订单号="+orderId);
+                        }
+                        try{
+                            PresentPO presentPO = new PresentPO();
+                            presentPO.setPhone(userPO.getPhone());
+                            presentPO.setMoney(payment);
+                            presentPO.setType(Constants.RECHARGE_PRESENT);
+                            presentService.insertPresent(presentPO);
+                        }catch (Exception e){
+                            logger.error("充值时插入赠送金额及类型失败，用户 = " + userPO.getPhone() + "金额 = " + payment);
                         }
                         //返回ok结果给微信
                         return PayCommonUtil.setXML(WeixinGlobal.SUCCESS, "OK");

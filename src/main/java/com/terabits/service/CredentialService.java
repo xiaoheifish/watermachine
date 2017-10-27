@@ -6,6 +6,7 @@ import org.springframework.data.redis.core.ValueOperations;
 
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
@@ -34,5 +35,14 @@ public interface CredentialService {
 
     //查询某个退款用户是否在redis缓存中,若在,则不允许此次退款操作
     public String getRefundUserTime(String openId);
+
+    // 查询指令编号并更新
+    public List<String> UpdateCommandNo();
+
+    //当某用户使用微信支付直接下单时，将displayId和openId的关系暂时缓存
+    public void createWechatConsume(String displayId, String openId);
+
+    //查询正在下单的设备对应的openId
+    public String getWechatConsumer(String displayId);
 
 }
