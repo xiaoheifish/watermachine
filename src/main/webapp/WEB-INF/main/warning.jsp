@@ -4,9 +4,6 @@
 <head>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<script language="javascript" src="/watermachine/static/js/jquery-3.2.1.min.js"></script>
-<script language="javascript" src="/watermachine/static/js/flexible.js"></script>
-<script language="javascript" src="/watermachine/static/js/using.js"></script>
 <link rel="stylesheet" href="/watermachine/static/css/bootstrap.css">
 <title>请重新进入</title>
 </head>
@@ -28,5 +25,8 @@ Request timed out. Please re-enter from the Official Accounts.
 Powered by Terabits
 </div>
 
+<script language="javascript" src="/watermachine/static/js/jquery-3.2.1.min.js"></script>
+<script language="javascript" src="/watermachine/static/js/flexible.js"></script>
+<script language="javascript" src="/watermachine/static/js/using.js"></script>
 </body>
 </html>

@@ -4,11 +4,6 @@
 <head>
 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <script language="javascript" src="/watermachine/static/js/jquery-3.2.1.min.js"></script>
-    <script language="javascript" src="/watermachine/static/js/flexible.js"></script>
-    <script language="javascript" src="/watermachine/static/js/login.js"></script>
-    <script language="javascript" src="/watermachine/static/js/islider.js"></script>
-    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
     <link rel="stylesheet" href="/watermachine/static/css/bootstrap.css">
     <link rel="stylesheet" href="/watermachine/static/css/login.css">
 
@@ -133,7 +128,7 @@
 
     <img src="/watermachine/static/pic/avatar.png" style="width: 1.4rem;" id="avatar"/><br>
     &nbsp;<span style="font-size: 0.6rem; color: black; width: 90%; overflow: hidden;" id="nickname"></span>
-    <div id="medal"></div>
+    <!--<div id="medal"></div>-->
 
     <button id="record" onclick="window.location.href='/watermachine/record'" class="menu_1">
 	<img style="width: 0.7rem" src="/watermachine/static/pic/record.png"/>&nbsp;&nbsp;交易记录
@@ -166,5 +161,10 @@
     </button>
 </div>
 
+    <script language="javascript" src="/watermachine/static/js/jquery-3.2.1.min.js"></script>
+    <script language="javascript" src="/watermachine/static/js/flexible.js"></script>
+    <script language="javascript" src="/watermachine/static/js/login.js"></script>
+    <script language="javascript" src="/watermachine/static/js/islider.js"></script>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 </body>
 </html>

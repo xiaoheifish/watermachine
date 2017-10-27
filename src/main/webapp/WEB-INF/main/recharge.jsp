@@ -4,9 +4,6 @@
 <head>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<script language="javascript" src="/watermachine/static/js/jquery-3.2.1.min.js"></script>
-<script language="javascript" src="/watermachine/static/js/flexible.js"></script>
-<script language="javascript" src="/watermachine/static/js/recharge.js"></script>
 <link rel="stylesheet" href="/watermachine/static/css/bootstrap.css">
 <link rel="stylesheet" href="/watermachine/static/css/information.css">
 <title>充值</title>
@@ -85,5 +82,8 @@ Powered by Terabits
  </div>
  </div>
 
+<script language="javascript" src="/watermachine/static/js/jquery-3.2.1.min.js"></script>
+<script language="javascript" src="/watermachine/static/js/flexible.js"></script>
+<script language="javascript" src="/watermachine/static/js/recharge.js"></script>
 </body>
 </html>

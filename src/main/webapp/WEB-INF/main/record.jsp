@@ -4,9 +4,6 @@
 <head>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<script language="javascript" src="/watermachine/static/js/jquery-3.2.1.min.js"></script>
-<script language="javascript" src="/watermachine/static/js/flexible.js"></script>
-<script language="javascript" src="/watermachine/static/js/login.js"></script>
 <link rel="stylesheet" href="/watermachine/static/css/bootstrap.css">
 <link rel="stylesheet" href="/watermachine/static/css/login.css">
 
@@ -27,6 +24,8 @@
 	<p style="margin-top: 1rem;" id="nothingtext"> </p>
 </div>
 
-
+<script language="javascript" src="/watermachine/static/js/jquery-3.2.1.min.js"></script>
+<script language="javascript" src="/watermachine/static/js/flexible.js"></script>
+<script language="javascript" src="/watermachine/static/js/login.js"></script>
 </body>
 </html>
