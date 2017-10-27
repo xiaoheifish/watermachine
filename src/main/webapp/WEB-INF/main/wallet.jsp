@@ -6,6 +6,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="/watermachine/static/css/bootstrap.css">
 <link rel="stylesheet" href="/watermachine/static/css/login.css">
+<script language="javascript" src="/watermachine/static/js/jquery-3.2.1.min.js"></script>
+<script src="http://cdn.bootcss.com/blueimp-md5/1.1.0/js/md5.js"></script>
+<script language="javascript" src="/watermachine/static/js/flexible.js"></script>
+<script language="javascript" src="/watermachine/static/js/wallet.js"></script>
 
 <title>我的钱包</title>
 	<script>
@@ -63,10 +67,5 @@
 3.After the refund succeed, your balance will be cleared.<br>
 4.The refund amount will be transfered to you Wechat Wallet in 1-2 days.<br>
 </div>
-
-<script language="javascript" src="/watermachine/static/js/jquery-3.2.1.min.js"></script>
-<script src="http://cdn.bootcss.com/blueimp-md5/1.1.0/js/md5.js"></script>
-<script language="javascript" src="/watermachine/static/js/flexible.js"></script>
-<script language="javascript" src="/watermachine/static/js/wallet.js"></script>
 </body>
 </html>

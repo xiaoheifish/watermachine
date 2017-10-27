@@ -5,6 +5,9 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="/watermachine/static/css/bootstrap.css">
+<script language="javascript" src="/watermachine/static/js/jquery-3.2.1.min.js"></script>
+<script language="javascript" src="/watermachine/static/js/flexible.js"></script>
+<script language="javascript" src="/watermachine/static/js/information.js"></script>
 
 <title>会话过期</title>
 </head>
@@ -25,10 +28,6 @@ The session has expired, please re-enter from the official accounts.
 天风物业<br>
 powered by Terabits
 </div>
-
-<script language="javascript" src="/watermachine/static/js/jquery-3.2.1.min.js"></script>
-<script language="javascript" src="/watermachine/static/js/flexible.js"></script>
-<script language="javascript" src="/watermachine/static/js/information.js"></script>
 
 
 </body>

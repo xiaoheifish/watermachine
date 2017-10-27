@@ -83,7 +83,7 @@ function money2(){
 	water = 0.5;
 	$("#money1image").attr("src", "/watermachine/static/pic/bselect.png");
 	$("#money2image").attr("src", "/watermachine/static/pic/aselect.png");
-	$("#money3image").attr("src", "/waterm.achine/static/pic/bselect.png");
+	$("#money3image").attr("src", "/watermachine/static/pic/bselect.png");
 	$("#money4image").attr("src", "/watermachine/static/pic/bselect.png");
 }
 
@@ -143,7 +143,6 @@ function recharge() {
             		alert(XMLHttpRequest.status);
         		},
         		success:function(response){
-        			alert(response["result"]);
         			if(response["result"] == "success"){
                         //判断前后端openid是否一致
                         WeixinJSBridge.invoke('getBrandWCPayRequest',{

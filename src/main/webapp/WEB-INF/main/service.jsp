@@ -6,6 +6,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="/watermachine/static/css/bootstrap.css">
 <link rel="stylesheet" href="/watermachine/static/css/login.css">
+<script language="javascript" src="/watermachine/static/js/jquery-3.2.1.min.js"></script>
+<script language="javascript" src="/watermachine/static/js/flexible.js"></script>
+<script language="javascript" src="/watermachine/static/js/login.js"></script>
 
 <title>意见反馈</title>
 </head>
@@ -20,9 +23,5 @@
 
 <p id="text" style="display:none;font-size: 0.3rem;margin-top: 0.3rem;text-align: center;"><span style="color: rgb(230, 67,64);">我们将选取有价值的意见及建议进行奖励</span>,谢谢！</p>
 <p id="entext" style="display:none;font-size: 0.3rem;margin-top: 0.3rem;text-align: center;">Thanks for your advice.<br><span style="color: rgb(230, 67,64);">We will pick valuable comments and suggestions and reward.</span></p>
-
-<script language="javascript" src="/watermachine/static/js/jquery-3.2.1.min.js"></script>
-<script language="javascript" src="/watermachine/static/js/flexible.js"></script>
-<script language="javascript" src="/watermachine/static/js/login.js"></script>
 </body>
 </html>
