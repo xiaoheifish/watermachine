@@ -15,4 +15,7 @@ public interface ConsumeSignService {
 
     //根据openId和最后消费时间更新消费历史记录表
     public int updateSign(String openId, String gmtModified);
+
+    //根据openId获取某个用户本月剩余的勋章数量
+    public int getRemainMedal(String openId);
 }

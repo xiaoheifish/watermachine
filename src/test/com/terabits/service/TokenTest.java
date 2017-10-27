@@ -9,7 +9,9 @@ import com.terabits.meta.bo.CommunicationBO;
 import com.terabits.meta.bo.TerminalUpdateBO;
 import com.terabits.meta.bo.TimeSpanBO;
 import com.terabits.meta.po.CommandPO;
+import com.terabits.meta.po.ConsumeSignPO;
 import com.terabits.meta.po.FeedbackPO;
+import com.terabits.meta.po.MedalExchangePO;
 import com.terabits.meta.po.PresentPO;
 import com.terabits.meta.po.TerminalPO;
 import com.terabits.meta.po.UserPO;
@@ -33,7 +35,9 @@ public class TokenTest extends BaseTest {
     @Autowired(required = false)
     private CommandMapper commandMapper;
     @Autowired
-    private WechatConsumeService wechatConsumeService;
+    private MedalExchangeService medalExchangeService;
+    @Autowired
+    private ConsumeSignService consumeSignService;
     //private TerminalManager terminalManager;
     @Test   //标明是测试方法
     @Transactional(value="transactionManager")//标明此方法需使用事务
@@ -48,6 +52,18 @@ public class TokenTest extends BaseTest {
         System.out.println("id::::::::::::::"+ id);
         String orderId = GenerateOrderId.generateWechatConsumeId(id);
         wechatConsumeService.updateOrderIdById(orderId, id);*/
-        System.out.println("WechatConsumePO="+wechatConsumeService.selectWechatConsumeByOrderId("2017102264000002"));
+        //System.out.println("WechatConsumePO="+wechatConsumeService.selectWechatConsumeByOrderId("2017102264000002"));
+        /* MedalExchangePO medalExchangePO = new MedalExchangePO();
+        medalExchangePO.setExchange("110");
+        medalExchangePO.setMoney(0.8);
+        medalExchangePO.setOpenId("o1S07wuDO9ivY_55p3OT4bEMNUL0");*/
+        //int monthly = medalExchangeService.getMonthlyExchange("o1S07wuDO9ivY_55p3OT4bEMNUL0");
+        /*ConsumeSignPO consumeSignPO = new ConsumeSignPO();
+        consumeSignPO.setSignHistory(1073741823);
+        consumeSignPO.setSignCount(30);
+        consumeSignPO.setOpenId("o1S07wuDO9ivY_55p3OT4bEMNUL0");
+        consumeSignService.insertConsumeSign(consumeSignPO);*/
+        int medal = consumeSignService.getRemainMedal("o1S07wuDO9ivY_55p3OT4bEMNUL0");
+        System.out.println("monthly:::::"+medal);
     }
 }
