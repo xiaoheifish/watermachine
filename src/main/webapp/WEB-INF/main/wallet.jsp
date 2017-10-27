@@ -29,8 +29,8 @@
 <p id="balancetext">余额(元)</p>
 <!-- 显示勋章 
 <div>已连续使用<span id="day"></span>天&nbsp;&nbsp; <span id="medal"></span> &nbsp;&nbsp;<a href="/watermachine/exchange" style="font-weight: bold;">兑换</a></div>
-</div>
 -->
+</div>
 
 <div style="display: inline;margin-top: 2rem;color: rgb(113,113,113);">
 	<div class="presenttext"><p style="display: inline-block;font-size: 0.4rem;color: black;">${recharge}</p><p id="rechargetext"></p></div>
@@ -38,7 +38,7 @@
 </div>
 </div>
 
-<div style="margin-top: 1.5rem"></div>
+<div style="margin-top: 0.5rem"></div>
 <button class="RQ" onclick="jumprecharge()" id="jumprecharge" style="color: rgb(37, 109, 243)">充值</button><br>
 <button class="RQ" onclick="jumpreimburse()" id="jumpreimburse" style="color: rgb(37, 109, 243)">提现</button><br>
 

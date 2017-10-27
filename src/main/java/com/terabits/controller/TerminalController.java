@@ -49,6 +49,7 @@ public class TerminalController {
         jsonObject.put("state", state);
         jsonObject.put("openid", openId);
         try {
+        	response.setContentType("text/html;charset=utf-8");
             response.getWriter().print(jsonObject);
         }catch (Exception e){
             logger.error("response.getWriter().error in TerminalController" + e.toString());

@@ -106,5 +106,29 @@ Powered by Terabits
 </div>
 <div class="waitbox">We are preparing for you.<br>Please wait a moment.</div>
 </div>
+
+<!-- wechat pay success -->
+<div id="wechatsuccess" style="display:none; position:absolute;top:0;left:0;z-index:1; width: 100%; height: 100%;font-family: 'Microsoft YaHei' 'Cambria Math';background-color: rgb(240, 240, 240);padding-left: 3%;">
+<!-- 信息显示部分 -->
+<div class = "infor">
+<img style="height:0.6rem;width:0.522rem;" src="/watermachine/static/pic/location.png">&nbsp;&nbsp; 
+<span id="location" style="text-overflow: ellipsis;">${location}</span>
+</div>
+
+<div class="infor">
+<img style="height:0.6rem;width:0.522rem;" src="/watermachine/static/pic/id.png">&nbsp;&nbsp;
+<span id="id">${id}</span>
+</div>
+
+<div class="infor">
+<img style="height:0.6rem;width:0.522rem;" src="/watermachine/static/pic/status.png">&nbsp;&nbsp;
+<span id="sustatus"></span>
+</div>
+
+<div class="col-sm-12 col-xs-12" id="bottombar">
+天风物业<br>
+powered by Terabits
+</div>
+</div>
 </body>
 </html>

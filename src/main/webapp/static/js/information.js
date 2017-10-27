@@ -49,7 +49,7 @@ function settime(){
 						window.location.href = "/watermachine/info/" + id;
 					}
 				}
-				$("#state").text(data["state"]);
+				$("#sustatus").text(data["state"]);
 			}
 		});
     },2000);
@@ -154,7 +154,11 @@ function recharge() {
                             "paySign" : response.signature           //微信签名
                         },function(res){
                             if(res.err_msg == "get_brand_wcpay_request:ok" ) {
-                                window.location.href = "/watermachine/info/" + id;
+                            	//$("#sustatus").text("下单中");
+                                //$("#wechatsuccess").show();
+                                //settime();
+                            	alert(1);
+                            	window.location.href = "/watermachine/info/" + id;
                             }
                             else{
                                 alert("支付失败，请重试！");
