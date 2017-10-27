@@ -1,7 +1,7 @@
 ﻿var openid,language;
 function load(){
-	//openid = getCookie("openid");
-    //language = getCookie("language");
+	openid = getCookie("openid");
+	language = getCookie("language");
 	balance();
 
 	if(language != "zh_CN"){
@@ -121,9 +121,6 @@ function balance(){
 
 //跳转使用页
 function recharge() {
-    //测试用需要删除
-	openid = $("#open").val();
-
 	if(money == null){
 		alert("请选择取水量！");
 	}
@@ -167,7 +164,8 @@ function recharge() {
                         });
 					}
 					else{
-        				alert("支付失败");
+        				alert("支付失败,请重试。");
+        				$("#recharge").removeAttr("disabled");
 					}
 
         		}
@@ -178,11 +176,8 @@ function recharge() {
 
 //下单函数
 function order(){
-	alert("order");
-    alert(money);
 	if(language != "zh_CN"){$("#wait").remove();$("#enwait").show();}
     else{$("#wait").show();$("#enwait").remove();}
-	var displayid = document.getElementById("id").innerText;
 
 	//发起扣款查询及跳转
 	$.ajax({
@@ -210,7 +205,7 @@ function order(){
 			else{
 				//跳转到using页
 				if(data["result"] == "success") {
-	                window.location.href = "/watermachine/info/" + displayid;
+	                window.location.href = "/watermachine/info/" + id;
 	            }
 	            else if(data["result"] == "in order service"){
 					if(language != "zh_CN"){alert("Failure to place order");}
