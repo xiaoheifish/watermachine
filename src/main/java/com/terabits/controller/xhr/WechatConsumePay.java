@@ -52,13 +52,13 @@ public class WechatConsumePay{
 
         JSONObject jsonObject = new JSONObject();
 
-       /* //获取存在session中的openid，和前端发来的比对，不同则支付存在问题，返回
+        //获取存在session中的openid，和前端发来的比对，不同则支付存在问题，返回
         String openId = (String)session.getAttribute("openid");
         if(!requestopenId.equals(openId)){
             jsonObject.put("result", "openid not match");
             response.getWriter().print(jsonObject);
             return;
-        }*/
+        }
 
         //将设备状态更改为下单中，防止多人同时下单
         try{
@@ -76,15 +76,9 @@ public class WechatConsumePay{
             return;
         }
 
-        //微信支付金额，以元为单位
-        System.out.println("money:::::"+money);
-        System.out.println("displayid:::::"+displayId);
-        System.out.println("openid:::::"+requestopenId);
-
-
         double totalmoney = Double.parseDouble(money);
         String strmoney = String.valueOf((int)(totalmoney * 100));
-        System.out.println("strmoney::::"+strmoney);
+
         //将该条微信消费记录插入数据库
         WechatConsumePO wechatConsumePO = new WechatConsumePO();
         wechatConsumePO.setOpenId(requestopenId);

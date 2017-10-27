@@ -17,7 +17,7 @@ public class WeixinGlobal {
     //微信支付回调URL, 需告知微信操作成功
     public static final String NOTIFY_URL= "http://www.terabits-wx.cn/watermachine/notify";
     //微信直接下单回调URL
-    public static final String WECHAT_CONSUME_URL = "http://wx.terabits-wx.cn/watermachine/consumenotify";
+    public static final String WECHAT_CONSUME_URL = "http://www.terabits-wx.cn/watermachine/consumenotify";
     //获取JS_API TICKET 的URL
     public static final String JSAPI_URL = "https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=ACCESS_TOKEN&type=jsapi";
 
