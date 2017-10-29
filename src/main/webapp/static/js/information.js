@@ -154,10 +154,6 @@ function recharge() {
                             "paySign" : response.signature           //微信签名
                         },function(res){
                             if(res.err_msg == "get_brand_wcpay_request:ok" ) {
-                            	//$("#sustatus").text("下单中");
-                                //$("#wechatsuccess").show();
-                                //settime();
-                            	alert(1);
                             	window.location.href = "/watermachine/info/" + id;
                             }
                             else{
