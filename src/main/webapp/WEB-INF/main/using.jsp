@@ -14,7 +14,7 @@
 </script>
 </head>
 
-<body onload="load()" style="font-family: 'Microsoft YaHei' 'Cambria Math';background-color: rgb(240, 240, 240);display: flex;flex-direction: column;align-items: center;padding-top: 0.15rem;">
+<body onload="loadusing()" style="font-family: 'Microsoft YaHei' 'Cambria Math';background-color: rgb(240, 240, 240);display: flex;flex-direction: column;align-items: center;padding-top: 0.15rem;">
 
 
 <!-- 信息显示部分 -->
@@ -63,6 +63,6 @@ Powered by Terabits
 
 <script language="javascript" src="/watermachine/static/js/jquery-3.2.1.min.js"></script>
 <script language="javascript" src="/watermachine/static/js/flexible.js"></script>
-<script language="javascript" src="/watermachine/static/js/using.js"></script>
+<script language="javascript" src="/watermachine/static/js/login.js"></script>
 </body>
 </html>

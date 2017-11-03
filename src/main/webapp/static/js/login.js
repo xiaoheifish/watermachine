@@ -322,6 +322,97 @@ function loadrechargerecord(){
 	}
 }
 
+//邀请好友
+function loadinvite(){
+    openid = getCookie("openid");
+    language = getCookie("language");
+	if(language != "zh_CN"){
+		$("#ch").remove();
+		$("title").html("Invitation");
+        $("#sharetip").css("font-size","0.35rem");
+        $("#sharetip").text("Please click on the top right corner.");
+    }
+	else{
+		$("#en").remove();
+}
+
+	//配置分享接口
+    $.ajax({
+            url : "/watermachine/wxconfig",
+            type : 'post',
+            dataType : 'json',
+            contentType : "application/x-www-form-urlencoded; charset=utf-8",
+            data : {
+                'url' : location.href.split('#')[0]
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown){
+                alert(XMLHttpRequest.status);
+            },
+            success:function(data){
+                //分享相关函数
+                wx.config({
+                    debug: false,
+                    appId: data["appId"],
+                    timestamp: data["timestamp"],
+                    nonceStr: data["nonceStr"],
+                    signature: data["signature"],
+                    jsApiList : [ 'checkJsApi','onMenuShareTimeline', 'onMenuShareAppMessage']
+                });
+                wx.ready(function (){
+                        var shareData = {
+                            title: '邀您共享高品质饮用水',
+                            desc: '接受邀请，好友与您各得5元饮水券！点击立即体验便捷、高质、卫生饮水！',
+                            link: 'http://www.terabits-wx.cn/watermachine/invitation/'+ phone,
+                            imgUrl: 'http://www.terabits-wx.cn/watermachine/static/pic/sharepic.jpg'
+                        };
+                        wx.onMenuShareAppMessage(shareData);
+                        wx.onMenuShareTimeline(shareData);
+                });
+                wx.error(function (res) {
+                    alert(res.errMsg);
+                });
+            }
+    });
+}
+
+/* 提示右上角分享 */
+function sharetip(){
+    $("#sharetip").show();
+    $("#sharetip").fadeOut(2000);
+}
+
+//使用页、超时页加载函数
+function loadusing(){
+	loadid();
+	
+	if(language != "zh_CN"){
+		$("#chwarnningtext").remove();
+		$("#enwarnningtext").show();
+		$("#L").text("L");
+        if(status == "空闲"){
+            status = "usable";
+        }
+        else{status = "using";}
+        $("title").text("Using Information");
+		$("#savebox").remove();
+        $("#ensavebox").show();
+        $("#warn").remove();
+        $("#enwarn").show();
+	}
+    else{
+        $("#chwarnningtext").show();
+        $("#enwarnningtext").remove();
+        $("#L").text("升取水量");
+        $("#savebox").show();
+        $("#ensavebox").remove();
+    }
+
+    if(water == "0.3"){$("#save").text("1/2");}
+    if(water == "0.5"){$("#save").text("1");}
+    if(water == "1.0"){$("#save").text("2");}
+    if(water == "2.0"){$("#save").text("4");}
+}
+
 //加载cookie，语言和用户id
 function loadid(){
 	openid = getCookie("openid");

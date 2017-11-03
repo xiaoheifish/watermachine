@@ -8,7 +8,7 @@
 <title>请重新进入</title>
 </head>
 
-<body onload="load()" style="font-family: 'Microsoft YaHei' 'Cambria Math';background-color: rgb(240, 240, 240);display: flex;flex-direction: column;align-items: center;padding-top: 0.15rem;font-size:0.4rem;">
+<body onload="loadusing()" style="font-family: 'Microsoft YaHei' 'Cambria Math';background-color: rgb(240, 240, 240);display: flex;flex-direction: column;align-items: center;padding-top: 0.15rem;font-size:0.4rem;">
 
 
 <!-- 信息显示部分 -->
@@ -27,6 +27,6 @@ Powered by Terabits
 
 <script language="javascript" src="/watermachine/static/js/jquery-3.2.1.min.js"></script>
 <script language="javascript" src="/watermachine/static/js/flexible.js"></script>
-<script language="javascript" src="/watermachine/static/js/using.js"></script>
+<script language="javascript" src="/watermachine/static/js/login.js"></script>
 </body>
 </html>

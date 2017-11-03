@@ -62,7 +62,7 @@ powered by Terabits
 
 <script language="javascript" src="/watermachine/static/js/jquery-3.2.1.min.js"></script>
 <script language="javascript" src="/watermachine/static/js/flexible.js"></script>
-<script language="javascript" src="/watermachine/static/js/invite.js"></script>
+<script language="javascript" src="/watermachine/static/js/login.js"></script>
 <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 </body>
 </html>
