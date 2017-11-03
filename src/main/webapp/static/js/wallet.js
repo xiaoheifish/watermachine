@@ -107,6 +107,12 @@ function loadrefundrecord(){
 			 else{
 			 	$("#record0").remove();
 			 	$("nothingbox").show();
+			 	if (language != "zh_CN") {
+			 		$("#nothingtext").text("You don't have any records.");
+			 	}
+			 	else{
+			 		$("#nothingtext").text("您暂时没有提现记录哦~");
+			 	}
 			 }
 		}
 	});
@@ -294,6 +300,12 @@ function exchangerec(){
             else{
             	$("#record0").remove();
             	$("#nothingbox").show();
+            	if (language != "zh_CN") {
+			 		$("#nothingtext").text("You don't have any record.");
+			 	}
+			 	else{
+			 		$("#nothingtext").text("您暂时没有兑换记录哦~");
+			 	}
             }
         }
     });
