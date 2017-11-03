@@ -23,10 +23,13 @@
 <div id="balancebox">
 <p style="font-size: 1.4rem">${balance}</p>
 <p id="balancetext">余额(元)</p>
-<!-- 显示勋章 
-<div>已连续使用<span id="day"></span>天&nbsp;&nbsp; <span id="medal"></span> &nbsp;&nbsp;<a href="/watermachine/exchange" style="font-weight: bold;">兑换</a></div>
+<!-- 显示勋章--> 
+<div>
+	已连续使用<span id="day"></span>天&nbsp;&nbsp; <span id="medal"></span> &nbsp;&nbsp;
+	<a href="/watermachine/exchange" id="exbutton" style="font-weight: bold;">兑换</a>
+	<a href="/watermachine/exchangerec" style="font-weight: bold;">记录</a>
 </div>
--->
+</div>
 
 <div style="display: inline;margin-top: 2rem;color: rgb(113,113,113);">
 	<div class="presenttext"><p style="display: inline-block;font-size: 0.4rem;color: black;">${recharge}</p><p id="rechargetext"></p></div>

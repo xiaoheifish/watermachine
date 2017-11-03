@@ -7,18 +7,15 @@
 <link rel="stylesheet" href="/watermachine/static/css/bootstrap.css">
 <link rel="stylesheet" href="/watermachine/static/css/login.css">
 
-<title>提现记录</title>
+<title>勋章兑换记录</title>
 </head>
 
-<body onload="loadrefundrecord()" style="font-family: 'Microsoft YaHei' 'Cambria Math';background-color: rgb(240, 240, 240);display: flex;flex-direction: column;align-items: center;padding-top: 0.1rem;">
-<!-- 二级菜单-提现记录 -->
+<body onload="exchangerec()" style="font-family: 'Microsoft YaHei' 'Cambria Math';background-color: rgb(240, 240, 240);display: flex;flex-direction: column;align-items: center;padding-top: 0.1rem;">
 
+<!-- 二级菜单-取水记录 -->
 <div class="recordcontent" id="record0" style="display:none;">
-	<img style="width: 0.35rem" src="/watermachine/static/pic/clock.png">&nbsp;<span id="time" style="font-size: 0.35rem"></span><br>
-	<span class="cost">金额:</span>&nbsp;
-	<span style="color: #e9ca33;">¥<span style="font-size: 1.5em" id="money"></span></span>
-	&nbsp;&nbsp;
-	<span class="id">单号:</span><span id="refundNo"></span>
+	<img style="width: 0.4rem" src="/watermachine/static/pic/clock.png">&nbsp;<span id="time"></span><br>
+	<p style="margin-left: 0.4rem; margin-top: 0.15rem;">兑换勋章：&nbsp;<span id="medal"><img style='width: 0.4rem' src='/static/pic/silver.png'></span>&nbsp;&nbsp;&nbsp;兑换金额：&nbsp;<span style="color: #e9ca33;">¥</span><span id="money" style="color: #e9ca33;">1</span></p>
 </div>
 
 <div id="nothingbox" style="font-size: 0.45rem;text-align: center;display: none;">

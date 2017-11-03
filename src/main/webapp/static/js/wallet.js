@@ -30,6 +30,7 @@ function loadwallet(){
 		success:function(data){
 			if(data["number"] == "000"){
 				$("#day").text(data["day"]);
+				$("#exbutton").removeAttr('href');//去掉a标签中的href属性
 			}
 			else{
 				var number = data["number"].split("");
@@ -85,6 +86,7 @@ function loadrefundrecord(){
 		success:function(data){
 			var length = getJsonObjLength(data);
 			if(length != 0){
+				$("nothingbox").remove();
 				$("#record0").show();
 		            for(i=0; i<length; i++){
 		            	var time = data[i]["gmtCreate"];
@@ -102,7 +104,10 @@ function loadrefundrecord(){
 						}
 		            }
 		    }
-			 else{alert("暂无数据！");}
+			 else{
+			 	$("#record0").remove();
+			 	$("nothingbox").show();
+			 }
 		}
 	});
 	if(language != "zh_CN"){
@@ -141,6 +146,158 @@ function refund(){
 	});
 }
 
+var gold, silver, bronze;
+//积分兑换页面加载函数
+function loadex(){
+	$.ajax({
+		type:'POST',
+		url:'/watermachine/medal/number',
+		data:{
+			"openid": openid
+		},
+		dataType:'json',
+		success:function(data){
+			if(data["number"] == "000"){
+				$("#day").text(data["day"]);
+			}
+			else{
+				var number = data["number"].split("");
+				gold = parseInt(number[0]);
+                silver = parseInt(number[1]);
+                bronze = parseInt(number[2]);
+				for (var i=0; i<gold; i++){
+					$("#medal").append("<img style='width: 0.4rem' src='/watermachine/static/pic/gold.png'>");
+				}
+				for (var i=0; i<silver; i++){
+					$("#medal").append("<img style='width: 0.4rem' src='/watermachine/static/pic/silver.png'>");
+				}
+				for (var i=0; i<bronze; i++){
+					$("#medal").append("<img style='width: 0.4rem' src='/watermachine/static/pic/bronze.png'>");
+				}
+				$("#day").text(data["day"]);
+			}
+		}
+	});
+}
+
+//金勋章控制数量
+function plusgold(){
+    var goldnum = parseInt($("#goldnum").text());
+    if(goldnum < gold){
+        $("#goldnum").text(++goldnum);
+    }
+}
+function minusgold(){
+    var goldnum = parseInt($("#goldnum").text());
+    if(goldnum != 0){
+        $("#goldnum").text(--goldnum);
+    }
+}
+
+//银勋章控制数量
+function plussilver(){
+    var silvernum = parseInt($("#silvernum").text());
+    if(silvernum < silver){
+        $("#silvernum").text(++silvernum);
+    }
+}
+function minussilver(){
+    var silvernum = parseInt($("#silvernum").text());
+    if(silvernum != 0){
+        $("#silvernum").text(--silvernum);
+    }
+}
+
+//铜勋章控制数量
+function plusbronze(){
+    var bronzenum = parseInt($("#bronzenum").text());
+    if(bronzenum < bronze){
+        $("#bronzenum").text(++bronzenum);
+    }
+}
+function minusbronze(){
+    var bronzenum = parseInt($("#bronzenum").text());
+    if(bronzenum != 0){
+        $("#bronzenum").text(--bronzenum);
+    }
+}
+
+//兑换勋章
+function EX(){
+    loadid();
+    var number = $("#goldnum").text() + $("#silvernum").text() + $("#bronzenum").text();
+    $.ajax({
+        type:'POST',
+        url:'/watermachine/medal/exchange',
+        data:{
+            "openid": openid,
+            "number": number
+        },
+        dataType:'json',
+        success:function(data){
+            if(result == "success"){
+                alert("兑换成功！");
+                location.reload();
+            }
+            if else(result == "error"){
+                alert("兑换失败！");
+            }
+        }
+    });
+}
+
+//兑换记录
+function exchangerec(){
+    loadid();
+    $.ajax({
+        type:'POST',
+        url:'/watermachine/medalrecord',
+        data:{
+            "openid":openid
+        },
+        dataType:'json',
+        success:function(data){
+            var length = getJsonObjLength(data);
+            if(length != 0){
+            	$("nothingbox").remove();
+				$("#record0").show();
+                    for(i=0; i<length; i++){
+                        var time = data[i]["gmtCreate"];
+                        var reformtime=time.split(".")[0];
+                        $("#record"+i).find("#time").text(reformtime);
+                        $("#record"+i).find("#money").text(data[i]["money"]);
+                        
+                        var number = data["exchange"].split("");
+                        var gold = number[0];
+                        var silver = number[1];
+                        var bronze = number[2];
+                        for (var i=0; i<parseInt(gold); i++){
+                            $("#record"+i).find("#medal").append("<img style='width: 0.4rem' src='/watermachine/static/pic/gold.png'>");
+                        }
+                        for (var i=0; i<parseInt(silver); i++){
+                            $("#record"+i).find("<img style='width: 0.4rem' src='/watermachine/static/pic/silver.png'>");
+                        }
+                        for (var i=0; i<parseInt(bronze); i++){
+                            $("#record"+i).find("<img style='width: 0.4rem' src='/watermachine/static/pic/bronze.png'>");
+                        }
+
+                        if(i != (length-1)){
+                            i++;
+                            /*  增加div */
+                            object = $("#record0").clone();
+                            $(object).attr("id","record"+i);
+                            $("body").append(object);
+                            i--;
+                        }
+                    }
+            }
+            else{
+            	$("#record0").remove();
+            	$("#nothingbox").show();
+            }
+        }
+    });
+}
 
 //加载cookie，语言和用户id
 function loadid(){

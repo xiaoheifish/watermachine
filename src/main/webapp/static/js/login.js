@@ -305,12 +305,6 @@ function loadrechargerecord(){
 			else{
 				$("#nothingbox").show();
 			 	$("#record0").remove();
-			 	if (language != "zh_CN") {
-			 		$("#nothingtext").text("You don't have recharge records.");
-			 	}
-			 	else{
-			 		$("#nothingtext").text("您暂时没有充值记录哦~");
-			 	}
 			}
 		}
 	});

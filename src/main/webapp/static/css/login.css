@@ -274,4 +274,32 @@ body{}
 	display: none;
 }
 
+/* 勋章兑换样式 */
+.box{
+	display: flex;
+	flex-direction: row; 
+	justify-content: center; 
+	align-items: center; 
+	margin-top: 1rem;
+}
+
+.minus{
+	width: 0.6rem; 
+	height: 0.6rem; 
+	background-image: url(/watermachine/static/pic/minus.png); 
+	background-size: 100% 100%; 
+	border: none; 
+	outline: none; 
+	padding: 0;
+}
+
+.plus{
+	width: 0.6rem; 
+	height: 0.6rem; 
+	background-image: url(/watermachine/static/pic/plus.png); 
+	background-size: 100% 100%; 
+	border: none; 
+	outline: none; 
+	padding: 0;
+}
 </style>

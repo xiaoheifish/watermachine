@@ -143,7 +143,6 @@ function recharge() {
             		alert(XMLHttpRequest.status);
         		},
         		success:function(response){
-        			alert(response["result"]);
         			if(response["result"] == "success"){
                         //判断前后端openid是否一致
                         WeixinJSBridge.invoke('getBrandWCPayRequest',{
