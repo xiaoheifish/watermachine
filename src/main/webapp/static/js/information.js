@@ -49,7 +49,7 @@ function settime(){
 						window.location.href = "/watermachine/info/" + id;
 					}
 				}
-				$("#state").text(data["state"]);
+				$("#sustatus").text(data["state"]);
 			}
 		});
     },2000);
@@ -83,7 +83,7 @@ function money2(){
 	water = 0.5;
 	$("#money1image").attr("src", "/watermachine/static/pic/bselect.png");
 	$("#money2image").attr("src", "/watermachine/static/pic/aselect.png");
-	$("#money3image").attr("src", "/waterm.achine/static/pic/bselect.png");
+	$("#money3image").attr("src", "/watermachine/static/pic/bselect.png");
 	$("#money4image").attr("src", "/watermachine/static/pic/bselect.png");
 }
 
@@ -154,7 +154,7 @@ function recharge() {
                             "paySign" : response.signature           //微信签名
                         },function(res){
                             if(res.err_msg == "get_brand_wcpay_request:ok" ) {
-                                window.location.href = "/watermachine/info/" + id;
+                            	window.location.href = "/watermachine/info/" + id;
                             }
                             else{
                                 alert("支付失败，请重试！");

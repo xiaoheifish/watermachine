@@ -10,7 +10,7 @@ public class RefundRecordPO {
     private String openId;
     //money 退款金额
     private double money;
-    //remain 用户退余额时剩余的赠送余额
+    //remain 用户退余额时剩余的赠送余额,为了保持统计数据的准确性。。。因为这个用户的赠送余额会清零，但是在统计表中并没有体现出来。这样总余额就对不上了。
     private double remain;
     //tradeNo 微信支付单号, 此列不为空表明是消费下单失败
     private String tradeNo;

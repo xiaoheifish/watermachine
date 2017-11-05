@@ -6,6 +6,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="/watermachine/static/css/bootstrap.css">
 <link rel="stylesheet" href="/watermachine/static/css/signup.css">
+<script language="javascript" src="/watermachine/static/js/jquery-3.2.1.min.js"></script>
+<script language="javascript" src="/watermachine/static/js/flexible.js"></script>
+<script language="javascript" src="/watermachine/static/js/invited_signup.js"></script>
 <title>接收邀请</title>
 <script>
 	var phone = "${phone}";
@@ -20,10 +23,6 @@
 天风物业<br>
 powered by Terabits
 </div>
-
-<script language="javascript" src="/watermachine/static/js/jquery-3.2.1.min.js"></script>
-<script language="javascript" src="/watermachine/static/js/flexible.js"></script>
-<script language="javascript" src="/watermachine/static/js/invited_signup.js"></script>
 
 </body>
 </html>

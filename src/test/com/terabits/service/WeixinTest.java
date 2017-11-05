@@ -13,7 +13,7 @@ import java.util.Map;
 public class WeixinTest {
     public static void main(String[] args) throws Exception {
 
-        MyConfig config = new MyConfig();
+        /* MyConfig config = new MyConfig();
         MyWXPay wxpay = new MyWXPay(config);
 
         Map<String, String> data = new HashMap<String, String>();
@@ -34,22 +34,45 @@ public class WeixinTest {
             }
         } catch (Exception e) {
             e.printStackTrace();
-        }
-      /*  MyConfig config = new MyConfig();
-        WXPay wxpay = new WXPay(config);
-
-
-        Map<String, String> data = new HashMap<String, String>();
-        data.put("transaction_id", "4002342001201709121713650661");
-        data.put("out_refund_no","400688208821");
-        data.put("total_fee","5");
-        data.put("refund_fee","5");
-        try {
-            Map<String, String> resp = wxpay.refund(data);
-            System.out.println(resp);
-        } catch (Exception e) {
-            e.printStackTrace();
         }*/
+        String[] strList = new String[14];
+        //strList[0] = "4200000012201710270583039676";
+        strList[0] = "4200000012201710270583039676";
+        strList[1]="4200000025201710270582264549";
+        strList[2]="4200000025201710270626026368";
+        strList[3]="4200000024201710270628225952";
+        strList[4]="4200000010201710270629748754";
+        strList[5]="4200000016201710270631617473";
+        strList[6]="4200000030201710270633341346";
+
+        strList[7]="4200000022201710270637202087";
+        strList[8]="4200000022201710270653032272";
+        strList[9]="4200000027201710270653389644";
+        strList[10]="4200000004201710270655391120";
+        strList[11]="4200000005201710270658496422";
+        strList[12]="4200000028201710270655871299";
+        strList[13]="4200000025201710270659504072";
+        String refundNo = "2017102788208821";
+        long a = Long.parseLong(refundNo);
+        MyConfig config = new MyConfig();
+        WXPay wxpay = new WXPay(config);
+        for(int i = 0; i<strList.length;i++) {
+
+            Map<String, String> data = new HashMap<String, String>();
+            data.put("transaction_id", "4002342001201709121713650661");
+            data.put("out_refund_no", refundNo);
+            data.put("total_fee", "5");
+            data.put("refund_fee", "5");
+            try {
+                Map<String, String> resp = wxpay.refund(data);
+                System.out.println(resp);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            a = a + 1;
+            refundNo = Long.toString(a);
+            //System.out.println(refundNo);
+        }
     }
     /* 微信退款返回值
     {transaction_id=4002342001201709121686130348,

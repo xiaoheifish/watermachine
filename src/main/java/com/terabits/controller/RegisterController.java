@@ -107,7 +107,7 @@ public class RegisterController {
                         userService.updateRemain(0.0,5.0, openId);
                         //在成功给新注册用户加钱后，将这笔赠送金额记录到present表中，目前为5元
                         try{
-                            presentPO.setPhone(userPO.getPhone());
+                            presentPO.setPhone(request.getParameter("tel"));
                             presentPO.setMoney(5.0);
                             presentPO.setType(Constants.REGISTER_PRESENT);
                             presentService.insertPresent(presentPO);
