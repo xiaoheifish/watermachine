@@ -1,6 +1,7 @@
 package com.terabits.service;
 
 import com.terabits.meta.po.ConsumeSignPO;
+import net.sf.json.JSONObject;
 
 /**
  * Created by Administrator on 2017/10/24.
@@ -17,5 +18,5 @@ public interface ConsumeSignService {
     public int updateSign(String openId, String gmtModified);
 
     //根据openId获取某个用户本月剩余的勋章数量
-    public int getRemainMedal(String openId);
+    public JSONObject getRemainMedal(String openId);
 }

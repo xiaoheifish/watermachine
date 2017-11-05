@@ -7,18 +7,19 @@
         <id property="id" column="id" javaType="java.lang.Integer"></id>
         <result property="openId" column="openid" javaType="java.lang.String"></result>
         <result property="signHistory" column="signhistory" javaType="java.lang.Long"></result>
+        <result property="exchangeHistory" column="exchangehistory" javaType="java.lang.Long"></result>
         <result property="signCount" column="signcount" javaType="java.lang.Integer"></result>
         <result property="gmtCreate" column="gmtcreate" javaType="java.lang.String"></result>
         <result property="gmtModified" column="gmtmodified" javaType="java.lang.String"></result>
     </resultMap>
 
     <insert id="insertConsumeSign" parameterType="com.terabits.meta.po.ConsumeSignPO">
-        insert into consumesign (openid, signhistory, signcount, gmtcreate, gmtmodified)
-        values (#{openId}, #{signHistory}, #{signCount}, now(), now())
+        insert into consumesign (openid, signhistory, exchangehistory, signcount, gmtcreate, gmtmodified)
+        values (#{openId}, #{signHistory}, #{exchangeHistory}, #{signCount}, now(), now())
     </insert>
 
     <update id="updateConsumeSign" parameterType="com.terabits.meta.po.ConsumeSignPO">
-        update consumesign set signhistory = #{signHistory}, signcount = #{signCount}, gmtmodified = now() where openid = #{openId}
+        update consumesign set signhistory = #{signHistory}, exchangehistory = #{exchangeHistory}, signcount = #{signCount}, gmtmodified = now() where openid = #{openId}
     </update>
 
     <select id="selectConsumeSign" parameterType="String" resultMap="consumeSignMap">

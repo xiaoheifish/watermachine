@@ -10,6 +10,8 @@ public class ConsumeSignPO {
     private String openId;
     //用户本月签到历史
     private long signHistory;
+    //用户兑换勋章后本月的签到历史
+    private long exchangeHistory;
     //用户连续签到天数
     private int signCount;
     private String gmtCreate;
@@ -37,6 +39,14 @@ public class ConsumeSignPO {
 
     public void setSignHistory(long signHistory) {
         this.signHistory = signHistory;
+    }
+
+    public long getExchangeHistory() {
+        return exchangeHistory;
+    }
+
+    public void setExchangeHistory(long exchangeHistory) {
+        this.exchangeHistory = exchangeHistory;
     }
 
     public int getSignCount() {
@@ -69,6 +79,7 @@ public class ConsumeSignPO {
                 "id=" + id +
                 ", openId='" + openId + '\'' +
                 ", signHistory=" + signHistory +
+                ", exchangeHistory=" + exchangeHistory +
                 ", signCount=" + signCount +
                 ", gmtCreate='" + gmtCreate + '\'' +
                 ", gmtModified='" + gmtModified + '\'' +
