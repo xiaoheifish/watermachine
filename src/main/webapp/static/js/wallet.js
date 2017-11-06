@@ -28,16 +28,14 @@ function load(){
 		},
 		dataType:'json',
 		success:function(data){
-			if(data["number"] == "000"){
+			if(data["number"] == "0"){
 				$("#day").text(data["day"]);
 				$("#exbutton").removeAttr('href');//去掉a标签中的href属性
 			}
 			else{
-                var numberr = String(data["number"]);
-                var number = numberr.split("");
-				var gold = number[0];
-				var silver = number[1];
-				var bronze = number[2];
+				var gold = parseInt(parseInt(data["number"]) / parseInt(100));
+				var silver = parseInt((parseInt(data["number"]) - parseInt(gold) * parseInt(100)) / parseInt(10));
+				var bronze = parseInt((parseInt(data["number"]) - parseInt(gold) * parseInt(100) - parseInt(silver) * parseInt(10)));
 				for (var i=0; i<parseInt(gold); i++){
 					$("#medal").append("<img style='width: 0.4rem' src='/watermachine/static/pic/gold.png'>");
 				}
@@ -168,11 +166,9 @@ function loadex(){
 				$("#day").text(data["day"]);
 			}
 			else{
-                var numberr = String(data["number"]);
-                var number = numberr.split("");
-				gold = parseInt(number[0]);
-                silver = parseInt(number[1]);
-                bronze = parseInt(number[2]);
+                gold = parseInt(parseInt(data["number"]) / parseInt(100));
+                silver = parseInt((parseInt(data["number"]) - parseInt(gold) * parseInt(100)) / parseInt(10));
+                bronze = parseInt((parseInt(data["number"]) - parseInt(gold) * parseInt(100) - parseInt(silver) * parseInt(10)));
 				for (var i=0; i<gold; i++){
 					$("#medal").append("<img style='width: 0.4rem' src='/watermachine/static/pic/gold.png'>");
 				}
@@ -243,11 +239,11 @@ function EX(){
         },
         dataType:'json',
         success:function(data){
-            if(result == "success"){
+            if(data["result"] == "success"){
                 alert("兑换成功！");
                 location.reload();
             }
-            else if(result == "error"){
+            else if(data["result"] == "error"){
                 alert("兑换失败！");
             }
         }
@@ -274,11 +270,9 @@ function exchangerec(){
                     var reformtime = time.split(".")[0];
                     $("#record"+i).find("#time").text(reformtime);
                     $("#record"+i).find("#money").text(data[i]["money"]);
-                    var numberr = String(data[i]["exchange"]);
-                    var number = numberr.split("");
-                    var gold = number[0];
-                    var silver = number[1];
-                    var bronze = number[2];
+                    var gold = parseInt(parseInt(data[i]["exchange"]) / parseInt(100));
+                    var silver = parseInt((parseInt(data[i]["exchange"]) - parseInt(gold) * parseInt(100)) / parseInt(10));
+                    var bronze = parseInt((parseInt(data[i]["exchange"]) - parseInt(gold) * parseInt(100) - parseInt(silver) * parseInt(10)));
                     $("#record"+i).find("#medal").empty();
                     for (var j=0; j<parseInt(gold); j++){
                         $("#record"+i).find("#medal").append("<img style='width: 0.4rem' src='/watermachine/static/pic/gold.png'>");

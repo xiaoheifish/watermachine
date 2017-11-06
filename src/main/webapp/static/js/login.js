@@ -53,7 +53,7 @@ function login() {
 
 
 //微信接口认证
-function load(){
+function loadlog(){
 //中英文切换
     if(language != "zh_CN"){
         $("title").html("Smart Potable Water Fountain");
@@ -92,15 +92,13 @@ function load(){
 		type:'POST',
 		url:'/watermachine/medal/number',
 		data:{
-			"openid": openid
+			"openid": "o1S07wuDO9ivY_55p3OT4bEMNUL0"
 		},
 		dataType:'json',
 		success:function(data){
-		    var numberr = String(data["number"]);
-			var number = numberr.split("");
-			var gold = number[0];
-			var silver = number[1];
-			var bronze = number[2];
+            var gold = parseInt(parseInt(data["number"]) / parseInt(100));
+            var silver = parseInt((parseInt(data["number"]) - parseInt(gold) * parseInt(100)) / parseInt(10));
+            var bronze = parseInt((parseInt(data["number"]) - parseInt(gold) * parseInt(100) - parseInt(silver) * parseInt(10)));
 			for (var i=0; i<parseInt(gold); i++){
 				$("#medal").append("<img style='width: 0.4rem' src='/watermachine/static/pic/gold.png'>");
 			}
