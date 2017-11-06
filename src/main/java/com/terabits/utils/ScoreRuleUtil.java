@@ -127,37 +127,37 @@ public class ScoreRuleUtil {
     }
 */
 
-    private static List<MedalType> computeMedalType(long signHistory) {
+    private static List<MedalType> computeMedalType(List<Integer> number) {
         List<MedalType> medalTypeSign = new ArrayList<MedalType>(31);
         for (int i = 0; i < 31; i++) {
             medalTypeSign.add(MedalType.NULL);
         }
         int count = 0;
-        int result = 0;
-        for (int i = 30; i >= 0; i--) {
-            if ((signHistory & (1 << i)) > 0) {
+        for(int i = 0; i < 31; i++){
+            if(number.get(i) == 1){
                 count++;
-                if(i != 0){
+                if(i != 30){
                     continue;
                 }
             }
-            result = count / MedalType.GOLD.getDay();
+            int result = count / MedalType.GOLD.getDay();
             int withoutGold = count - result * MedalType.GOLD.getDay();
             if (result >= 1) {
-                for (int j = i + count; j > i + withoutGold; j--) {
-                    medalTypeSign.set(31 - j, MedalType.GOLD);
+                for (int j = i - count; j < i - count + result * MedalType.GOLD.getDay(); j++) {
+                    medalTypeSign.set(j, MedalType.GOLD);
                 }
             }
-
             MedalType leftType = MedalType.NULL;
             if (withoutGold >= MedalType.SILVER.getDay()) {
                 leftType = MedalType.SILVER;
             } else if (withoutGold >= MedalType.BRONZE.getDay()) {
                 leftType = MedalType.BRONZE;
             }
-
-            for (int j = i + withoutGold; j > i + withoutGold - leftType.getDay(); j--) {
-                medalTypeSign.set(31 - j, leftType);
+            if(i == 30){
+                i = i + 1;
+            }
+            for (int j = i - count + result * MedalType.GOLD.getDay(); j < i; j++) {
+                medalTypeSign.set(j, leftType);
             }
 
             count = 0;
@@ -194,7 +194,6 @@ public class ScoreRuleUtil {
     }
     //根据签到历史和本次提交的兑换勋章请求，修改签到历史
     public static long modifyExchangeHistory(long exchangeHistory, List<MedalType> medalRequest){
-        List<MedalType> count = computeMedalType(exchangeHistory);
         String strNumber = toFullBinaryString(exchangeHistory);
         List<Integer> number = new ArrayList<Integer>(31);
         for (int i = 0; i < 31; i++) {
@@ -207,6 +206,7 @@ public class ScoreRuleUtil {
             }
             number.set(i, k);
         }
+        List<MedalType> count = computeMedalType(number);
         for (MedalType medalType : medalRequest){
             for (int i = 0; i < 31; i++){
                 if(count.get(i) == medalType){
@@ -242,13 +242,13 @@ public class ScoreRuleUtil {
 
     }
 
-    public static void main(String[] args) {
-        long history = 268421095;
+  /*  public static void main(String[] args) {
+        long history = 536842191;
         List<MedalType> medalRequest = new ArrayList<MedalType>();
         medalRequest.add(MedalType.BRONZE);
         long result = modifyExchangeHistory(history, medalRequest);
         System.out.println("result::::" + result);
 
-    }
+    }*/
 
 }
