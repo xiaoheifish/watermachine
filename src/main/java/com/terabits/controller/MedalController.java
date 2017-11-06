@@ -31,7 +31,7 @@ public class MedalController {
     @RequestMapping(value = "/medal/number", method = RequestMethod.POST)
     public void medalNumber(HttpServletRequest request, HttpServletResponse response) throws Exception{
         String openId = request.getParameter("openid");
-        int remainMedal =consumeSignService.getRemainMedal(openId);
+        JSONObject remainMedal =consumeSignService.getRemainMedal(openId);
         ConsumeSignPO consumeSignPO = new ConsumeSignPO();
         try{
             consumeSignPO = consumeSignService.selectConsumeSign(openId);

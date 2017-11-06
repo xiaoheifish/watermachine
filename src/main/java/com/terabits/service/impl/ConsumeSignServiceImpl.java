@@ -12,7 +12,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -95,11 +97,11 @@ public class ConsumeSignServiceImpl implements ConsumeSignService {
             updateConsumeSign(consumeSignPO);
             return 1;
         } catch (Exception e) {
-            logger.error("cosumeSignService.updateConsumeSign gmtModified error " + consumeSignPO + e.toString());
+            logger.error("consumeSignService.updateConsumeSign gmtModified error " + consumeSignPO + e.toString());
             return 0;
         }
     }
-
+    //根据openId获取某个用户本月剩余的勋章数量和连续签到天数
     public JSONObject getRemainMedal(String openId) {
         ConsumeSignPO consumeSignPO = null;
         JSONObject jsonObject = new JSONObject();
@@ -134,5 +136,26 @@ public class ConsumeSignServiceImpl implements ConsumeSignService {
         jsonObject.put("day", signCount);
         return jsonObject;
     }
+
+    //提交兑换勋章请求时，修改exchangehistory
+    public int pullExchangeRequest(String openId, List<ScoreRuleUtil.MedalType> medalType){
+        ConsumeSignPO consumeSignPO = new ConsumeSignPO();
+        try{
+            consumeSignPO = selectConsumeSign(openId);
+        }catch (Exception e){
+            logger.error("consumeSignService.pullExchangeRequest error " + openId + e.toString());
+            return 500;
+        }
+        long exchangeResult = ScoreRuleUtil.modifyExchangeHistory(consumeSignPO.getExchangeHistory(), medalType);
+        consumeSignPO.setExchangeHistory(exchangeResult);
+        try{
+            updateConsumeSign(consumeSignPO);
+        }catch (Exception e){
+            logger.error("consumeSignService.pulllExchangeRequest update error" + consumeSignPO + e.toString());
+            return 500;
+        }
+        return 200;
+    }
+
 
 }

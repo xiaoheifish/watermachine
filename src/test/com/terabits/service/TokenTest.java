@@ -63,7 +63,7 @@ public class TokenTest extends BaseTest {
         consumeSignPO.setSignCount(30);
         consumeSignPO.setOpenId("o1S07wuDO9ivY_55p3OT4bEMNUL0");
         consumeSignService.insertConsumeSign(consumeSignPO);*/
-        int medal = consumeSignService.getRemainMedal("o1S07wuDO9ivY_55p3OT4bEMNUL0");
-        System.out.println("monthly:::::"+medal);
+        //int medal = consumeSignService.getRemainMedal("o1S07wuDO9ivY_55p3OT4bEMNUL0");
+        //System.out.println("monthly:::::"+medal);
     }
 }

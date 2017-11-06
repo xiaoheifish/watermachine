@@ -137,7 +137,9 @@ public class ScoreRuleUtil {
         for (int i = 30; i >= 0; i--) {
             if ((signHistory & (1 << i)) > 0) {
                 count++;
-                continue;
+                if(i != 0){
+                    continue;
+                }
             }
             result = count / MedalType.GOLD.getDay();
             int withoutGold = count - result * MedalType.GOLD.getDay();
@@ -162,6 +164,7 @@ public class ScoreRuleUtil {
         }
         return medalTypeSign;
     }
+
 
     //根据连续签到天数计算可获得多少枚金章，银章，铜章
     private static void medalNumber(int k, Map<MedalType, Integer> map) {
@@ -189,20 +192,14 @@ public class ScoreRuleUtil {
         }
         return medalMap;
     }
-
-    public static void main(String[] args) {
-        //List<Integer> count = computeContinueNumber(16761831);
-        //Map<MedalType, Integer> map = historyToMedal(2093299);
-        //System.out.println(map);
-        List<MedalType> count = computeMedalType(16660709);
-        for (int i = 30; i >= 0; i--) {
-            System.out.println(count.get(i));
-        }
-       /* List<Integer> number = new ArrayList<Integer>(31);
+    //根据签到历史和本次提交的兑换勋章请求，修改签到历史
+    public static long modifyExchangeHistory(long exchangeHistory, List<MedalType> medalRequest){
+        List<MedalType> count = computeMedalType(exchangeHistory);
+        String strNumber = toFullBinaryString(exchangeHistory);
+        List<Integer> number = new ArrayList<Integer>(31);
         for (int i = 0; i < 31; i++) {
             number.add(0);
         }
-        String strNumber = toFullBinaryString(16761831);
         for (int i = 0; i < 31; i++) {
             int k = 0;
             if (strNumber.charAt(i) == '1') {
@@ -210,34 +207,50 @@ public class ScoreRuleUtil {
             }
             number.set(i, k);
         }
-        MedalType[] a = new MedalType[3];
-        a[0] = MedalType.GOLD;
-        a[1] = MedalType.SILVER;
-        a[2] = MedalType.BRONZE;
-        List<Integer> result = minusChosenMedal(a, count, number);
-        for (int i = 0; i < count.size(); i++) {
+        for (MedalType medalType : medalRequest){
+            for (int i = 0; i < 31; i++){
+                if(count.get(i) == medalType){
+                    for(int j = i; j < i + medalType.getDay(); j++){
+                        count.set(j, MedalType.NULL);
+                        number.set(j, 0);
+                    }
+                    break;
+                }
 
-            System.out.println(result.get(i));
-        }*/
-
+            }
+        }
+        long result = 0;
+        for(int i = 0; i < 31; i++){
+            result = (result << 1) + number.get(i);
+        }
+        return result;
     }
 
+    //enum枚举类型，表示四种不同的MedalType
     public enum MedalType {
         GOLD(7),
         SILVER(5),
         BRONZE(3),
         NULL(0);
-
         private final int day;
-
         MedalType(int day) {
             this.day = day;
         }
-
         public int getDay() {
             return day;
         }
 
     }
+
+/*    public static void main(String[] args) {
+        long history = 134211535;
+        List<MedalType> medalRequest = new ArrayList<MedalType>();
+        medalRequest.add(MedalType.BRONZE);
+        medalRequest.add(MedalType.SILVER);
+        medalRequest.add(MedalType.GOLD);
+        long result = modifyExchangeHistory(history, medalRequest);
+        System.out.println("result::::" + result);
+
+    }*/
 
 }
