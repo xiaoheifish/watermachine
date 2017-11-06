@@ -21,7 +21,7 @@
     </script>
 </head>
 
-<body onload="load();"
+<body onload="loadlog();"
       style="font-family: 'Microsoft YaHei' 'Cambria Math';background-color: rgb(240, 240, 240);display: flex;flex-direction: column;align-items: center;">
 
 
