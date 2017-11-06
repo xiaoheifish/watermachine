@@ -30,6 +30,7 @@
                 and gmtcreate &lt; #{timeSpanBO.endTime}
             </if>
         </where>
+        order by gmtcreate desc
     </select>
 
 
