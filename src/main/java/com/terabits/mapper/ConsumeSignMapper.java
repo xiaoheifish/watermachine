@@ -32,5 +32,11 @@ public interface ConsumeSignMapper {
      */
     ConsumeSignPO selectConsumeSign(@Param("openId")String openId) throws Exception;
 
+    /**
+     * 将签到历史清空
+     * @throws Exception
+     */
+    int resetConsumeSign() throws Exception;
+
 
 }

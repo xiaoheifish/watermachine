@@ -26,6 +26,9 @@
         select * from consumesign where openid = #{openId}
     </select>
 
+    <update id = "resetConsumeSign">
+        update consumesign set signhistory = 0, exchangehistory = 0, signcount = 0, gmtmodified = '2017-10-10 00:00:01'
+    </update>
 
 </mapper>
 

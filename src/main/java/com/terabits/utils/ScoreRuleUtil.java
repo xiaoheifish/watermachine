@@ -145,7 +145,7 @@ public class ScoreRuleUtil {
             int withoutGold = count - result * MedalType.GOLD.getDay();
             if (result >= 1) {
                 for (int j = i + count; j > i + withoutGold; j--) {
-                    medalTypeSign.set(30 - j, MedalType.GOLD);
+                    medalTypeSign.set(31 - j, MedalType.GOLD);
                 }
             }
 
@@ -157,7 +157,7 @@ public class ScoreRuleUtil {
             }
 
             for (int j = i + withoutGold; j > i + withoutGold - leftType.getDay(); j--) {
-                medalTypeSign.set(30 - j, leftType);
+                medalTypeSign.set(31 - j, leftType);
             }
 
             count = 0;
@@ -242,15 +242,13 @@ public class ScoreRuleUtil {
 
     }
 
-/*    public static void main(String[] args) {
-        long history = 134211535;
+    public static void main(String[] args) {
+        long history = 268421095;
         List<MedalType> medalRequest = new ArrayList<MedalType>();
         medalRequest.add(MedalType.BRONZE);
-        medalRequest.add(MedalType.SILVER);
-        medalRequest.add(MedalType.GOLD);
         long result = modifyExchangeHistory(history, medalRequest);
         System.out.println("result::::" + result);
 
-    }*/
+    }
 
 }

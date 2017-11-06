@@ -17,6 +17,8 @@ public interface ConsumeSignService {
 
     public ConsumeSignPO selectConsumeSign(String openId) throws Exception;
 
+    public int resetConsumeSign() throws Exception;
+
     //根据openId和最后消费时间更新消费历史记录表
     public int updateSign(String openId, String gmtModified);
 

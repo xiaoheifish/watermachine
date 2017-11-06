@@ -38,6 +38,10 @@ public class ConsumeSignServiceImpl implements ConsumeSignService {
         return consumeSignMapper.updateConsumeSign(consumeSignPO);
     }
 
+    public int resetConsumeSign() throws Exception{
+        return consumeSignMapper.resetConsumeSign();
+    }
+
     public ConsumeSignPO selectConsumeSign(String openId) throws Exception {
         return consumeSignMapper.selectConsumeSign(openId);
     }
@@ -45,7 +49,7 @@ public class ConsumeSignServiceImpl implements ConsumeSignService {
     //根据openId和最后消费时间更新消费历史记录表
     public int updateSign(String openId, String gmtModified) {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        ConsumeSignPO consumeSignPO = null;
+        ConsumeSignPO consumeSignPO = new ConsumeSignPO();
         try {
             consumeSignPO = selectConsumeSign(openId);
         } catch (Exception e) {
@@ -54,6 +58,7 @@ public class ConsumeSignServiceImpl implements ConsumeSignService {
         }
         //如果consumesign表中没有这条用户的签到记录，表明是第一次签到，所以新增一条记录
         if(consumeSignPO == null){
+            consumeSignPO = new ConsumeSignPO();
             consumeSignPO.setOpenId(openId);
             consumeSignPO.setSignHistory(1);
             consumeSignPO.setExchangeHistory(1);
@@ -71,8 +76,8 @@ public class ConsumeSignServiceImpl implements ConsumeSignService {
         } else {
             //如果是本月的消费，则要更新消费历史，以及兑换勋章后的历史，左移间隔天数，末位置为1
             if (consumeSignPO.getGmtModified().substring(0, 7).equals(gmtModified.substring(0, 7))) {
-                int dateRecord = Integer.parseInt(consumeSignPO.getGmtModified().substring(5, 7));
-                int dateToday = Integer.parseInt(gmtModified.substring(5, 7));
+                int dateRecord = Integer.parseInt(consumeSignPO.getGmtModified().substring(8, 10));
+                int dateToday = Integer.parseInt(gmtModified.substring(8, 10));
                 long signHistory = consumeSignPO.getSignHistory();
                 long exchangeHistory = consumeSignPO.getExchangeHistory();
                 consumeSignPO.setSignHistory(ScoreRuleUtil.moveByte(signHistory, dateToday - dateRecord));
@@ -103,7 +108,7 @@ public class ConsumeSignServiceImpl implements ConsumeSignService {
     }
     //根据openId获取某个用户本月剩余的勋章数量和连续签到天数
     public JSONObject getRemainMedal(String openId) {
-        ConsumeSignPO consumeSignPO = null;
+        ConsumeSignPO consumeSignPO = new ConsumeSignPO();
         JSONObject jsonObject = new JSONObject();
         try {
             consumeSignPO = selectConsumeSign(openId);
@@ -127,8 +132,8 @@ public class ConsumeSignServiceImpl implements ConsumeSignService {
         Date now = new Date();
         String currentTime = sdf.format(now);
         String gmtModified = consumeSignPO.getGmtModified();
-        int currentMonth = Integer.parseInt(currentTime.substring(5, 7));
-        int modifiedMonth = Integer.parseInt(gmtModified.substring(5, 7));
+        int currentMonth = Integer.parseInt(currentTime.substring(8, 10));
+        int modifiedMonth = Integer.parseInt(gmtModified.substring(8, 10));
         if((currentMonth - modifiedMonth) >= 2){
             signCount = 0;
         }

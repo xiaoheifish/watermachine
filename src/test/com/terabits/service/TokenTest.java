@@ -25,6 +25,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Map;
 
@@ -65,5 +66,9 @@ public class TokenTest extends BaseTest {
         consumeSignService.insertConsumeSign(consumeSignPO);*/
         //int medal = consumeSignService.getRemainMedal("o1S07wuDO9ivY_55p3OT4bEMNUL0");
         //System.out.println("monthly:::::"+medal);
+        //更新签到历史
+        SimpleDateFormat modifyTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+        consumeSignService.updateSign("o1S07wuDO9ivY_55p3OT4bEMNUL0",modifyTime.format(new Date()));
     }
 }

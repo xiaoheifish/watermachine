@@ -30,8 +30,8 @@
 <!-- 显示勋章--> 
 <div>
 	已连续使用<span id="day"></span>天&nbsp;&nbsp; <span id="medal"></span> &nbsp;&nbsp;
-	<a href="/watermachine/exchange" id="exbutton" style="font-weight: bold;">兑换</a>
-	<a href="/watermachine/exchangerec" style="font-weight: bold;">记录</a>
+	<a href="/watermachine/medal" id="exbutton" style="font-weight: bold;">兑换</a>
+	<a href="/watermachine/medalhistory" style="font-weight: bold;">记录</a>
 </div>
 </div>
 

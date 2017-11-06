@@ -51,6 +51,8 @@ public class ConsumeController {
     private CommandService commandService;
     @Autowired
     private HuaweiTokenService huaweiTokenService;
+    @Autowired
+    private ConsumeSignService consumeSignService;
 
     private static Logger logger = LoggerFactory
             .getLogger(ConsumeController.class);
@@ -184,6 +186,9 @@ public class ConsumeController {
                     }else{
                         userService.updateRemain(0.0, userPO.getPresent() - actualCost, openId);
                     }
+                    //更新签到历史
+                    SimpleDateFormat modifyTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                    consumeSignService.updateSign(openId, modifyTime.format(new Date()));
                     // 更新统计余额及流量
                     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
                     AuxcalPO auxcalPO = new AuxcalPO();
