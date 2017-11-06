@@ -133,7 +133,7 @@
 
     <img src="/watermachine/static/pic/avatar.png" style="width: 1.4rem;" id="avatar"/><br>
     &nbsp;<span style="font-size: 0.6rem; color: black; width: 90%; overflow: hidden;text-align: center;" id="nickname"></span>
-    <!--<div id="medal"></div>-->
+    <div id="medal"></div>
 
     <button id="record" onclick="window.location.href='/watermachine/record'" class="menu_1">
 	<img style="width: 0.7rem" src="/watermachine/static/pic/record.png"/>&nbsp;&nbsp;交易记录

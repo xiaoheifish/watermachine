@@ -1,6 +1,7 @@
 //我的钱包
-function loadwallet(){
+function load(){
 	loadid();
+    language = "zh_CN"
 	if(language != "zh_CN"){
 		$("#balancetext").text("Balance(¥)");
 		$("#rechargetext").text("Recharge Balance(¥)");
@@ -18,13 +19,12 @@ function loadwallet(){
 		$("#jumprecharge").css("color","white");
 		$("#jumpreimburse").css("color","white");
 	}
-
 	//显示勋章
 	$.ajax({
 		type:'POST',
 		url:'/watermachine/medal/number',
 		data:{
-			"openid": openid
+			"openid": "o1S07wuDO9ivY_55p3OT4bEMNUL0"
 		},
 		dataType:'json',
 		success:function(data){
@@ -33,7 +33,8 @@ function loadwallet(){
 				$("#exbutton").removeAttr('href');//去掉a标签中的href属性
 			}
 			else{
-				var number = data["number"].split("");
+                var numberr = String(data["number"]);
+                var number = numberr.split("");
 				var gold = number[0];
 				var silver = number[1];
 				var bronze = number[2];
@@ -159,7 +160,7 @@ function loadex(){
 		type:'POST',
 		url:'/watermachine/medal/number',
 		data:{
-			"openid": openid
+			"openid": "o1S07wuDO9ivY_55p3OT4bEMNUL0"
 		},
 		dataType:'json',
 		success:function(data){
@@ -167,7 +168,8 @@ function loadex(){
 				$("#day").text(data["day"]);
 			}
 			else{
-				var number = data["number"].split("");
+                var numberr = String(data["number"]);
+                var number = numberr.split("");
 				gold = parseInt(number[0]);
                 silver = parseInt(number[1]);
                 bronze = parseInt(number[2]);
@@ -236,7 +238,7 @@ function EX(){
         type:'POST',
         url:'/watermachine/medal/exchange',
         data:{
-            "openid": openid,
+            "openid": "o1S07wuDO9ivY_55p3OT4bEMNUL0",
             "number": number
         },
         dataType:'json',
@@ -245,7 +247,7 @@ function EX(){
                 alert("兑换成功！");
                 location.reload();
             }
-            if else(result == "error"){
+            else if(result == "error"){
                 alert("兑换失败！");
             }
         }
@@ -259,7 +261,7 @@ function exchangerec(){
         type:'POST',
         url:'/watermachine/medalrecord',
         data:{
-            "openid":openid
+            "openid": "o1S07wuDO9ivY_55p3OT4bEMNUL0"
         },
         dataType:'json',
         success:function(data){
@@ -267,35 +269,36 @@ function exchangerec(){
             if(length != 0){
             	$("nothingbox").remove();
 				$("#record0").show();
-                    for(i=0; i<length; i++){
-                        var time = data[i]["gmtCreate"];
-                        var reformtime=time.split(".")[0];
-                        $("#record"+i).find("#time").text(reformtime);
-                        $("#record"+i).find("#money").text(data[i]["money"]);
-                        
-                        var number = data["exchange"].split("");
-                        var gold = number[0];
-                        var silver = number[1];
-                        var bronze = number[2];
-                        for (var i=0; i<parseInt(gold); i++){
-                            $("#record"+i).find("#medal").append("<img style='width: 0.4rem' src='/watermachine/static/pic/gold.png'>");
-                        }
-                        for (var i=0; i<parseInt(silver); i++){
-                            $("#record"+i).find("<img style='width: 0.4rem' src='/watermachine/static/pic/silver.png'>");
-                        }
-                        for (var i=0; i<parseInt(bronze); i++){
-                            $("#record"+i).find("<img style='width: 0.4rem' src='/watermachine/static/pic/bronze.png'>");
-                        }
-
-                        if(i != (length-1)){
-                            i++;
-                            /*  增加div */
-                            object = $("#record0").clone();
-                            $(object).attr("id","record"+i);
-                            $("body").append(object);
-                            i--;
-                        }
+				for(i=0; i<length; i++){
+                    var time = data[i]["gmtCreate"];
+                    var reformtime = time.split(".")[0];
+                    $("#record"+i).find("#time").text(reformtime);
+                    $("#record"+i).find("#money").text(data[i]["money"]);
+                    var numberr = String(data[i]["exchange"]);
+                    var number = numberr.split("");
+                    var gold = number[0];
+                    var silver = number[1];
+                    var bronze = number[2];
+                    $("#record"+i).find("#medal").empty();
+                    for (var j=0; j<parseInt(gold); j++){
+                        $("#record"+i).find("#medal").append("<img style='width: 0.4rem' src='/watermachine/static/pic/gold.png'>");
                     }
+                    for (var j=0; j<parseInt(silver); j++){
+                        $("#record"+i).find("#medal").append("<img style='width: 0.4rem' src='/watermachine/static/pic/silver.png'>");
+                    }
+                    for (var j=0; j<parseInt(bronze); j++){
+                        $("#record"+i).find("#medal").append("<img style='width: 0.4rem' src='/watermachine/static/pic/bronze.png'>");
+                    }
+
+                    if(i != (length-1)){
+                        i++;
+						/*  增加div */
+                        object = $("#record0").clone();
+                        $(object).attr("id","record"+i);
+                        $("body").append(object);
+                        i--;
+                    }
+                }
             }
             else{
             	$("#record0").remove();

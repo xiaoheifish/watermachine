@@ -19,7 +19,7 @@
 	</script>
 </head>
 
-<body onload="loadwallet()" style="font-family: 'Microsoft YaHei' 'Cambria Math';background-color: rgb(240, 240, 240);display: flex;flex-direction: column;align-items: center;text-align: center;font-size: 0.3rem;">
+<body onload="load();" style="font-family: 'Microsoft YaHei';background-color: rgb(240, 240, 240);display: flex;flex-direction: column;align-items: center;text-align: center;font-size: 0.3rem;">
 
 
 <!-- 二级菜单-我的钱包 -->
@@ -29,7 +29,7 @@
 <p id="balancetext">余额(元)</p>
 <!-- 显示勋章--> 
 <div>
-	已连续使用<span id="day"></span>天&nbsp;&nbsp; <span id="medal"></span> &nbsp;&nbsp;
+	已连续使用<span id="day"></span>天&nbsp;<span id="medal"></span> &nbsp;&nbsp;
 	<a href="/watermachine/medal" id="exbutton" style="font-weight: bold;">兑换</a>
 	<a href="/watermachine/medalhistory" style="font-weight: bold;">记录</a>
 </div>

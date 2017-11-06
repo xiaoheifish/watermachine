@@ -96,7 +96,8 @@ function load(){
 		},
 		dataType:'json',
 		success:function(data){
-			var number = data["number"].split("");
+		    var numberr = String(data["number"]);
+			var number = numberr.split("");
 			var gold = number[0];
 			var silver = number[1];
 			var bronze = number[2];

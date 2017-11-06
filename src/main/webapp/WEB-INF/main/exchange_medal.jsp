@@ -31,13 +31,13 @@
 </div>
 
 <div class="box">
-<img style='width: 3rem;' src='/watermachinestatic/pic/exbronze.png'>&nbsp;&nbsp;&nbsp;&nbsp;
+<img style='width: 3rem;' src='/watermachine/static/pic/exbronze.png'>&nbsp;&nbsp;&nbsp;&nbsp;
 <button onclick="minusbronze()" class="minus">&nbsp;</button>
 &nbsp;&nbsp;<span id="bronzenum">0</span>&nbsp;&nbsp;
 <button onclick="plusbronze()" class="plus">&nbsp;</button>
 </div>
 
-<button id="RQ" onclick="EX()">兑换</button><br>
+<button class="RQ" onclick="EX()">兑换</button><br>
 
 
 
